@@ -1,0 +1,27 @@
+Building WebPPL Model
+webppl pg.wppl --require webppl-json
+
+Need `var viz = require('webppl-viz');` to import viz
+Or remove the last line `viz` function to remove plotting
+Need to change their GitHub example with function `mean` to `listMean`
+If needed, add `json.write('result.json', posterior);` However, this can be done outside of the in-context program, 
+and you instead just add it at the end of LLM program generation
+
+Meeting 2025-12-15
+
+Check inference results from MSA
+Plan for large-scale (10,000?) data generation; look at current prompt for scenario generaton
+
+Generation Prompts:
+
+1.txt
+* the program generated either errs, or runs but returns strange results
+* the queries are too different, so the model may not come up with a good structure for the program
+
+2.txt
+* the first program looks good so far
+
+
+
+
+

@@ -1,0 +1,87 @@
+var model = function() {
+    // BACKGROUND KNOWLEDGE
+    // Intrinsic sprint speed is an attribute of a given runner that varies from runner to runner.
+    var intrinsic_sprint_speed = mem(function ({runner}) {
+      var low_speed_mean = 8; // m/s
+      var average_speed_mean = 9; // m/s
+      var high_speed_mean = 10; // m/s
+      var speed_variance = 0.5;
+
+      var speed_category = categorical({ps: [0.3, 0.4, 0.3], vs: [low_speed_mean, average_speed_mean, high_speed_mean]});
+      return Math.max(gaussian(speed_category, speed_variance), 0);
+    });
+
+    // Handoff smoothness factor varies per race and affects the team's overall performance.
+    var handoff_smoothness_factor = mem(function({team, relay}) {
+      return gaussian(1, 0.1); // Multiplier for team speed, centered around 1
+    });
+
+    // Team combined speed is determined by the sum of intrinsic speeds and the handoff smoothness factor.
+    var team_combined_speed = function({team, relay}) {
+      var total_speed = sum(map(function(runner) { return intrinsic_sprint_speed({runner: runner}); }, team));
+      return total_speed * handoff_smoothness_factor({team, relay});
+    };
+
+    // A team beats another team if their combined speed is greater.
+    var beat = function({team1, team2, relay}) {
+      return team_combined_speed({team: team1, relay: relay}) > team_combined_speed({team: team2, relay: relay});
+    };
+
+    // A team narrowly loses if they do not beat the other team but the difference is minimal.
+    var narrowly_lost = function({team1, team2, relay}) {
+      return !beat({team1: team1, team2: team2, relay: relay}) && 
+             Math.abs(team_combined_speed({team: team1, relay: relay}) - team_combined_speed({team: team2, relay: relay})) < 0.5;
+    };
+
+    // Determine which team has the strongest average intrinsic speed.
+    var strongest_average_intrinsic_speed = function() {
+      var teams = [['liam', 'zara', 'noah', 'elise'], ['kai', 'mira', 'jonah', 'leah'], ['ravi', 'tessa', 'milo', 'quinn']];
+      var average_speeds = map(function(team) {
+        return listMean(map(function(runner) { return intrinsic_sprint_speed({runner: runner}); }, team));
+      }, teams);
+      return teams[argmax(average_speeds)];
+    };
+
+    // Estimate the likelihood of poor handoffs.
+    var likelihood_poor_handoffs = function({team, relay}) {
+      return handoff_smoothness_factor({team, relay}) < 0.9 ? 1 : 0;
+    };
+
+    // Determine the favored team and time difference in a new relay.
+    var favored_team_and_time_difference = function({team1, team2, relay}) {
+      var speed1 = team_combined_speed({team: team1, relay: relay});
+      var speed2 = team_combined_speed({team: team2, relay: relay});
+      var favored_team = speed1 > speed2 ? team1 : team2;
+      var time_difference = Math.abs(speed1 - speed2);
+      return {favored_team: favored_team, time_difference: time_difference};
+    };
+
+    // Change in performance with a substitution.
+    var change_in_performance_with_substitution = function({team, original_runner, new_runner}) {
+      var original_speed = intrinsic_sprint_speed({runner: original_runner});
+      var new_speed = intrinsic_sprint_speed({runner: new_runner});
+      return new_speed - original_speed;
+    };
+
+    // CONDITIONS
+    // In the first relay, Team Alpha (Liam, Zara, Noah, Elise) beat Team Beta (Kai, Mira, Jonah, Leah).
+    condition(beat({team1:['liam', 'zara', 'noah', 'elise'], team2:['kai', 'mira', 'jonah', 'leah'], relay: 1}));
+
+    // In the second relay, Team Beta beat Team Gamma (Ravi, Tessa, Milo, Quinn).
+    condition(beat({team1:['kai', 'mira', 'jonah', 'leah'], team2:['ravi', 'tessa', 'milo', 'quinn'], relay: 2}));
+
+    // In the third relay, Team Alpha narrowly lost to Team Gamma.
+    condition(narrowly_lost({team1:['liam', 'zara', 'noah', 'elise'], team2:['ravi', 'tessa', 'milo', 'quinn'], relay: 3}));
+
+    // QUERIES
+    return {
+      query1: strongest_average_intrinsic_speed(),
+      query2: likelihood_poor_handoffs({team: 'alpha', relay: 3}),
+      query3: favored_team_and_time_difference({team1:['liam', 'zara', 'noah', 'elise'], team2:['kai', 'mira', 'jonah', 'leah'], relay: 4}),
+      query4: change_in_performance_with_substitution({team:['ravi', 'tessa', 'jonah', 'quinn'], original_runner: 'milo', new_runner: 'jonah'})
+    };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-10000-1.json', posterior);

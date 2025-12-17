@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+Teams of two athletes compete in beach volleyball matches.
+Winners are determined by a combination of intrinsic vertical jump ability, ball control, stamina, and tactical effort.
+All matches occur on the same morning.
+
+CONDITIONS
+In the first match, Team Sun (Lila and Harper) beat Team Wave (Beck and Nora).
+In the second match, Team Sun narrowly lost to Team Coast (Nora and Eli).
+In the third match, Team Wave beat Team Coast.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Lila ranks in terms of intrinsic strength (overall volleyball skill)?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Beck put into the third match?
+Query 3: In a new match later this same day between Team Sun (Lila, Harper) and Team Wave (Beck, Nora), who would win and by how much?
+Query 4: In a new match later this same day between Team Coast (Nora, Eli) and Team Wave, who would win and by how much?
+<END_SCENARIO>

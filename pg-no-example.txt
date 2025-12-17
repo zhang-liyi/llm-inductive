@@ -1,0 +1,97 @@
+### PART I - PARSING ### 
+### INPUT: SCENARIO ###
+### OUTPUT: PARSING ###
+
+You will be asked to write code to model and answer different questions, using WebPPL.
+Below are some examples of models for other scenarios in WebPPL. Notice how the models are formatted.
+<SHUFFLED EXAMPLES OF SCENARIOS AND START_LANGUAGE_TO_WEBPPL_CODE DELIMITED BLOCK INJECTED HERE>
+Now, let's consider a new example. Translate the conditions and query into WebPPL code, following the examples provided. If there are two statements joined together, write this as a single line condition (e.g., using && as appropriate). 
+
+Reflect on what each sentence means and make sure the translation captures that knowledge.
+
+Be sure to copy each sentence from the conditions directly into the code as a comment. 
+The comments should have the exact text of each sentence, followed by a single condition. 
+There is no need to write other WebPPL definitions -- just translate each sentence.
+The broader WebPPL model will be written separately, at another time.
+
+Follow the prompts and start your response with <START_LANGUAGE_TO_WEBPPL_CODE> and end with <END_LANGUAGE_TO_WEBPPL_CODE>.
+
+<SCENARIO_INJECTED_HERE>
+
+
+
+### PART II - GENERATE BACKGROUND KNOWLEDGE and DEPENDENCY GRAPH ###
+### INPUT: SCENARIO and PARSING ###
+### OUTPUT: KNOWLEDGE and GRAPH ###
+
+You will be asked to write code to model and answer different questions, using WebPPL.
+Below are some examples of models for other scenarios in WebPPL. Notice how the models are formatted.
+<SHUFFLED EXAMPLES UP TO DEPENDENCY GRAPH INJECTED HERE>
+Now, let's consider a new example. Write a natural language description of the causal structure of the underlying model. 
+
+Make sure to describe the structure of the world that would allow you to reason about the scenario provided. Make sure to RELATE ALL RELEVANT INFORMATION in the scenario in your description.
+
+The code will later, separately, be written - based on your natural language description. You can consider the translated sentences for what may be relevant to incorporate.
+
+The natural language should describe the general, causal model of the situation and what factors matter. Draw on your prior common sense knowledge about the world to write this description, and make sure to include any frequencies, probabilities, and units for causal factors you mention.
+
+After you write your natural language description, use the description and scenario to extract out a list of concepts that your description implies. Include any dependencies between the concepts, and make sure to sort the concepts so that named concepts appear before any that depend on them. This should be enclosed in <START_CONCEPT_TRACE> and <END_CONCEPT_TRACE>.
+
+Follow the prompts and start your response with <START_SCRATCHPAD> and end with <END_SCRATCHPAD>.
+
+Here is the scenario, as well as a parse of the scenario conditions and questions. Functions called in the parse MUST appear in the concept trace!
+<SCENARIO_AND_PARSE_INJECTED_HERE>
+
+
+
+### PART III - GENERATE MODEL ###
+### INPUT: SCENARIO and PARSE and KNOWLEDGE and GRAPH ###
+### OUTPUT: MODEL ###
+
+You will be asked to write code to model and answer different questions, using WebPPL.
+Below are some examples of models for other scenarios in WebPPL. Notice how the models are formatted.
+<SHUFFLED EXAMPLES INCLUDING ALL SCENARIOS, PARSES, INFORMAL KNOWLEDGE, AND DEPENDENCY GRAPH, AND PROBABILISTIC PROGRAMS INJECTED HERE>
+Now, let's consider a new example. Write code to model the following scenario.
+
+Write a world model in WebPPL that contains relevant background knowledge, can condition on the translated WebPPL expressions, and can return the translated WebPPL query to answer the question(s), following the examples provided. Be sure to account for the information provided, where appropriate, into your model.
+
+Include units where appropriate, and write these in the comments. Sometimes you may need to posit new latents to build into your model. 
+
+You should not write any new condition() statements. Only use those provided in the parse (which is included in the START and END LANGUAGE_TO_WEBPPL code tags). 
+
+If multiple queries are asked in the scenario, be sure to return answers to ALL the queries that are included in the parse, in the form {query1: ..., query2: ...,}. If only a single query is included, just return a dictionary with that one query: {query1: ...}. 
+
+Make sure that any function that is referenced is also defined.
+
+Functions should relate to each other -- think about the CAUSAL STRUCTURE of the scenario and make sure the code reflects the dependencies between variables appropriately. 
+Consider the concept trace provided when definining functions, and which functions should depend on other functions.
+
+Follow the format in the prompts.
+
+Be sure to copy each already translated condition and query into your model, with the original scenario text as a comment, like in the examples.
+The comments should have the exact text of each sentence, followed by a single condition.
+Your model should be enclosed in the brackets <START_WEBPPL_MODEL> and <END_WEBPPL_MODEL> like in the examples.
+
+<SCENARIO, PARSE, INFORMAL KNOWLEDGE, AND DEPENDENCY GRAPH INJECTED HERE>
+
+
+
+### PART ZERO - EXAMPLE SCENARIO ###
+
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of canoe races. In each race, the team that wins depends on the average speed with which the athletes are able to row, based on their intrinsic strength modulated by other factors including how much effort they put in to that race.
+Athletes compete either individually or as a team.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Alice beat Casey.
+In the second race, Alice and Ness beat Casey and Max.
+In the third race, Max and Alice lost to Casey and Ness.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Alice ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Max put into the third race?
+Query 3: In a new race later this same day between Alice and Ness (Team 1) and Max and Taylor (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Max and Casey (Team 1) and Ness and Willow (Team 2), who would win and by how much?
+<END_SCENARIO>
