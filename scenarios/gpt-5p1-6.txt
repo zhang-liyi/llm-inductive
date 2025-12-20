@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of beach volleyball matches. In each match, the team that wins depends on the players’ intrinsic abilities to move in the sand, jump, serve, and hit, and on how much effort they choose to put into that match.
+Athletes compete in pairs.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Liam and Mason beat Noah and Owen.
+In the second match, Liam and Noah lost to Mason and Parker.
+In the third match, Mason and Quinn lost to Liam and Owen.
+
+QUERIES
+Query 1: Out of 100 random beach volleyball players, where do you think Mason ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the second match?
+Query 3: In a new match later this same day between Liam and Parker (Team 1) and Mason and Owen (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Noah and Quinn (Team 1) and Liam and Mason (Team 2), who would win and by how much?
+<END_SCENARIO>

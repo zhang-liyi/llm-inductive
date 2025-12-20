@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of table tennis matches, including both singles and doubles. Each match is determined by how well the players can control spin, speed, and placement, based on their intrinsic table tennis ability and the effort they put into that match.  
+All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Min beat Chen.  
+In the second match, Min and Arun beat Chen and Bella.  
+In the third match, Bella beat Arun.  
+
+QUERIES  
+Query 1: Out of 100 random table tennis players, where do you think Min ranks in terms of intrinsic table tennis ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Bella put into the third match?  
+Query 3: In a new doubles match later this same day between Min and Bella (Team 1) and Chen and Arun (Team 2), who would win and by how much?  
+Query 4: In a new singles match later this same day between Chen and Bella, who would win and by how much?  
+<END_SCENARIO>
