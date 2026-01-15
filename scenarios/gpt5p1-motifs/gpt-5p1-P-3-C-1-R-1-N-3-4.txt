@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the players are competing in team table tennis ties using squads of five, along with individual 1-on-1 singles matches. Results depend on each player’s intrinsic table tennis skills such as spin control, reaction speed, and consistency, as well as how much effort they exert in each tie or match.  
+All ties and matches are held on the same day.
+
+CONDITIONS  
+In the first team tie, Mei, Hana, Yuki, Sara, and Lina lost to Tom, Ben, Omar, Ivan, and Leo.  
+In the second match, Lina beat Ben in a 1-on-1 singles contest.  
+In the third team tie, Lina, Tom, Ben, Omar, and Ivan lost to Mei, Hana, Yuki, Sara, and Kai.  
+In the fourth team tie, Lina, Kai, Hana, Yuki, and Sara lost to Tom, Ben, Omar, Ivan, and Leo.
+
+QUERIES  
+Query 1: Out of 100 random table tennis players, where do you think Lina ranks in terms of intrinsic table tennis ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ben put into the second match?  
+Query 3: In a new team tie later this same day between Lina, Mei, Hana, Yuki, and Sara (Team 1) and Tom, Ben, Omar, Ivan, and Leo (Team 2), who would win and by how much in terms of matches within the tie?  
+Query 4: In a new 1-on-1 singles match later this same day between Lina and Tom, who would win and by how much in terms of games won?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of 6-a-side basketball games. In each game, the outcome depends on the players’ intrinsic basketball ability (such as shooting touch, quickness, and defensive footwork) and the level of effort they put in during that game.
+Players compete either individually in 1-on-1 games or in 6-a-side teams.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Jamal, Andre, Blake, Corey, Darius, and Ethan beat Gavin, Hunter, Isaiah, Justin, Kyle, and Leo.
+In a later 1-on-1 game, Jamal beat Kyle.
+In the third game, Andre, Blake, Corey, Darius, Ethan, and Felix lost to Jamal, Gavin, Hunter, Isaiah, Justin, and Kyle.
+In the fourth game, Andre, Blake, Corey, Darius, Ethan, and Felix beat Jamal, Gavin, Hunter, Isaiah, Justin, and Kyle.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Jamal ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Felix put into the fourth game?
+Query 3: In a new game later this same day between Jamal, Andre, Blake, Corey, Darius, and Ethan (Team 1) and Gavin, Hunter, Isaiah, Justin, Kyle, and Leo (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Andre, Blake, Corey, Darius, Ethan, and Felix (Team 1) and Jamal, Gavin, Hunter, Isaiah, Justin, and Kyle (Team 2), who would win and by how much?
+<END_SCENARIO>

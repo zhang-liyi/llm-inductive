@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the rowers are competing in a series of 3‑person sculling races. Each boat’s speed depends on the rowers’ intrinsic rowing strength and technique, together with how much effort they put into that particular race.  
+All races take place on the same day.
+
+CONDITIONS  
+In the first race, Priya, Lena, and Marco lost to Hugo, Nia, and Victor.  
+In the second race, Priya, Hugo, and Zoe lost to Lena, Marco, and Nia.  
+In the third race, Priya, Victor, and Nia beat Hugo, Lena, and Zoe.  
+In the fourth race, Priya, Marco, and Zoe lost to Victor, Hugo, and Nia.
+
+QUERIES  
+Query 1: Out of 100 random rowers, where do you think Priya ranks in terms of intrinsic strength?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Lena put into the second race?  
+Query 3: In a new race later this same day between Priya, Hugo, and Nia (Team 1) and Victor, Lena, and Marco (Team 2), who would win and by how much?  
+Query 4: In a new race later this same day between Priya, Victor, and Zoe (Team 1) and Hugo, Marco, and Nia (Team 2), who would win and by how much?
+<END_SCENARIO>

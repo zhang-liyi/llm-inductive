@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND  
+In this Ultimate Frisbee event, players compete in short 4-on-4 games. Game outcomes depend on intrinsic throwing accuracy, speed, jumping ability, and how much effort players put into each game.  
+Players compete in 4-player teams, with occasional 1-on-1 throwing contests.  
+Most players stay on fixed 4-player lines, but Caleb is moved between different groups for most games.  
+All games take place on the same day.
+
+CONDITIONS  
+In the first game, Jordan, Malik, Theo, and Bryce beat Caleb, Aaron, Cody, and Finn.  
+In the second game, Ethan, Leo, Miles, and Trent beat Caleb, Finn, Owen, and Zach.  
+In a 1-on-1 throwing accuracy contest later, Caleb beat Finn.  
+In the last game, Jordan, Malik, Theo, and Bryce beat Caleb, Aaron, Owen, and Cody.
+
+QUERIES  
+Query 1: Out of 100 random Ultimate Frisbee players, where do you think Caleb ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Finn put into the 1-on-1 throwing contest against Caleb?  
+Query 3: In a new 4-on-4 game later this same day between Caleb, Aaron, Cody, and Finn (Team 1) and Jordan, Malik, Theo, and Bryce (Team 2), who would win and by how much?  
+Query 4: In a new 4-on-4 game later this same day between Caleb, Finn, Owen, and Zach (Team 1) and Ethan, Leo, Miles, and Trent (Team 2), who would win and by how much?  
+<END_SCENARIO>

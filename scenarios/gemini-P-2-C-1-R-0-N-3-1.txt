@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee matches. In each match, the team that wins depends on their ability to advance the disc and score goals, based on their intrinsic speed and throwing technique modulated by other factors including how much effort they put into that match.
+Athletes compete in teams of 5.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Riley, Kai, Jay, Quinn, and Sam beat Alex, Drew, Morgan, Taylor, and Casey.
+In the second match, Riley, Alex, Drew, Morgan, and Taylor beat Kai, Jay, Quinn, Sam, and Casey.
+In the third match, Riley, Kai, Alex, Quinn, and Morgan beat Jay, Sam, Drew, Taylor, and Casey.
+In the fourth match, Riley, Jay, Drew, Sam, and Taylor lost to Kai, Alex, Quinn, Morgan, and Casey.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Riley ranks in terms of intrinsic speed and technique?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Riley put into the fourth match?
+Query 3: In a new match later this same day between Riley, Kai, Jay, Alex, and Drew (Team 1) and Quinn, Sam, Morgan, Taylor, and Casey (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Kai, Alex, Quinn, Morgan, and Casey (Team 1) and Riley, Jay, Drew, Sam, and Taylor (Team 2), who would win and by how much?
+<END_SCENARIO>

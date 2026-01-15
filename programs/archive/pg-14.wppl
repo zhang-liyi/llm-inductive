@@ -1,0 +1,173 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+
+  // BACKGROUND KNOWLEDGE
+  // Intrinsic attributes are stable for the day and are modeled as standardized (z-score) abilities.
+  // 0 ~ average lacrosse athlete in a broader population, ±1 ~ about one standard deviation.
+
+  // Latent general athleticism factor (dimensionless z-score).
+  var athletic_factor = mem(function({athlete}) {
+    return gaussian(0, 1);
+  });
+
+  // Intrinsic speed (dimensionless z-score).
+  var intrinsic_speed = mem(function({athlete}) {
+    var base = athletic_factor({athlete: athlete});
+    return gaussian(base * 0.7, 0.7);
+  });
+
+  // Intrinsic coordination (dimensionless z-score).
+  var intrinsic_coordination = mem(function({athlete}) {
+    var base = athletic_factor({athlete: athlete});
+    return gaussian(base * 0.6, 0.8);
+  });
+
+  // Intrinsic shooting accuracy (dimensionless z-score).
+  var intrinsic_shooting_accuracy = mem(function({athlete}) {
+    var base = athletic_factor({athlete: athlete});
+    return gaussian(base * 0.6, 0.8);
+  });
+
+  // Intrinsic strength (dimensionless z-score).
+  var intrinsic_strength = mem(function({athlete}) {
+    var base = athletic_factor({athlete: athlete});
+    return gaussian(base * 0.8, 0.7);
+  });
+
+  // Overall lacrosse skill combining all four traits (dimensionless z-score).
+  var intrinsic_overall_lacrosse_skill = mem(function({athlete}) {
+    var speed = intrinsic_speed({athlete: athlete});
+    var coord = intrinsic_coordination({athlete: athlete});
+    var shoot = intrinsic_shooting_accuracy({athlete: athlete});
+    var strength = intrinsic_strength({athlete: athlete});
+    var raw_skill = 0.3 * speed + 0.3 * coord + 0.2 * shoot + 0.2 * strength;
+    return raw_skill;
+  });
+
+  // Stable effort tendency per athlete (proportion 0–1).
+  var effort_tendency = mem(function({athlete}) {
+    var skill = intrinsic_overall_lacrosse_skill({athlete: athlete});
+    // More skilled players may have slightly higher effort tendency on average.
+    var raw = gaussian(0.2 * skill, 1);
+    var logistic = 1 / (1 + Math.exp(-raw)); // Maps to [0,1].
+    return logistic;
+  });
+
+  // Game-specific effort (proportion 0–1) for an athlete in a given game.
+  var game_effort = mem(function({athlete, game}) {
+    // Game effort is centered on the athlete's effort tendency with some noise.
+    var base = effort_tendency({athlete: athlete});
+    var raw_effort = gaussian(base, 0.05); // Small variance game-to-game.
+    var clipped_low = Math.max(raw_effort, 0);
+    var clipped = Math.min(clipped_low, 1);
+    return clipped;
+  });
+
+  // Individual game performance (dimensionless performance score for this game).
+  var individual_game_performance = function({athlete, game}) {
+    var skill = intrinsic_overall_lacrosse_skill({athlete: athlete});
+    var effort = game_effort({athlete: athlete, game: game});
+    // Performance increases with both skill and effort.
+    var mean_performance = skill * (0.5 + 0.5 * effort);
+    return gaussian(mean_performance, 0.7);
+  };
+
+  // Team game performance: average of individual performances (dimensionless).
+  var team_game_performance = function({team, game}) {
+    var performances = map(function(athlete) {
+      return individual_game_performance({athlete: athlete, game: game});
+    }, team);
+    return listMean(performances);
+  };
+
+  // Goals scored by a team in a game.
+  // Units: integer number of goals (0, 1, 2, ...).
+  var team_goals_scored_in_game = function({team, game}) {
+    var perf = team_game_performance({team: team, game: game});
+    // Translate performance to expected goals: typical small-sided lacrosse scores.
+    var mean_goals = 3 + 2 * perf; // Around a few goals per side.
+    var raw_goals = gaussian(mean_goals, 1.5);
+    var nonneg = Math.max(raw_goals, 0);
+    return Math.round(nonneg);
+  };
+
+  // Team goal difference in a game: goals_team1 - goals_team2 (integer).
+  var team_goal_difference_in_game = function({team1, team2, game}) {
+    var goals1 = team_goals_scored_in_game({team: team1, game: game});
+    var goals2 = team_goals_scored_in_game({team: team2, game: game});
+    return goals1 - goals2;
+  };
+
+  // Team1 beats Team2 in a game if they score more goals.
+  var beat = function({team1, team2, game}) {
+    return team_goal_difference_in_game({team1: team1, team2: team2, game: game}) > 0;
+  };
+
+  // Team1 loses to Team2 in a game if they do not beat them (ties counted as not beating).
+  var lost = function({team1, team2, game}) {
+    return !beat({team1: team1, team2: team2, game: game});
+  };
+
+  // Intrinsic strength ranking out of N random athletes:
+  // number of random athletes this athlete is stronger than.
+  var intrinsic_strength_rank = function({athlete, out_of_n_athletes}) {
+    var random_athlete_ids = mapN(function(x) { return uniform(0, 1000); }, out_of_n_athletes - 1);
+
+    return sum(map(function(random_athlete_id) {
+      return intrinsic_strength({athlete: athlete}) > intrinsic_strength({athlete: random_athlete_id});
+    }, random_athlete_ids));
+  };
+
+  // Effort percentage in a specific game: 0–100%.
+  var effort_percentage_in_game = function({athlete, game}) {
+    return 100 * game_effort({athlete: athlete, game: game});
+  };
+
+  // Predictive function: simulate many hypothetical future games with same teams.
+  // Returns the probability (0–1) that Team 2 would win (or at least not lose).
+  var who_would_win_by_how_much = function({team1, team2, game}) {
+    var num_future_games_to_simulate = 100;
+    var random_future_game_ids = mapN(function(x) { return uniform(game + 1, 1000); }, num_future_games_to_simulate);
+
+    var simulated_games_won_by_team_2 = sum(map(function(random_game_id) {
+      return lost({team1: team1, team2: team2, game: random_game_id});
+    }, random_future_game_ids));
+
+    return simulated_games_won_by_team_2 / num_future_games_to_simulate;
+  };
+
+  // CONDITIONS
+  // In the first game, Casey beat Rowan.
+  condition(beat({team1:['casey'], team2:['rowan'], game: 1}))
+  // In the second game, Casey and Drew beat Rowan and Sky.
+  condition(beat({team1:['casey', 'drew'], team2:['rowan', 'sky'], game: 2}))
+  // In the third game, Drew and Sky beat Casey and Rowan.
+  condition(beat({team1:['drew', 'sky'], team2:['casey', 'rowan'], game: 3}))
+
+  // QUERIES
+  // Query 1: Out of 100 random lacrosse athletes, where do you think Casey ranks in terms of intrinsic strength?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Rowan put into the third game?
+  // Query 3: In a new game later this same day between Casey and Sky (Team 1) and Rowan and Drew (Team 2), who would win and by how much?
+  // Query 4: In a new game later this same day between Casey and Rowan (Team 1) and Drew and Taylor (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_strength_rank({athlete: 'casey', out_of_n_athletes: 100}),
+    query2: effort_percentage_in_game({athlete: 'rowan', game: 3}),
+    query3: who_would_win_by_how_much({team1:['casey', 'sky'], team2:['rowan', 'drew'], game: 4}),
+    query4: who_would_win_by_how_much({team1:['casey', 'rowan'], team2:['drew', 'taylor'], game: 5})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-14.json', posterior);

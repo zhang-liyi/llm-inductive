@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in Rugby Sevens matches. In each match, the team that wins depends on the combined physical power and sprinting speed of the athletes, based on their intrinsic strength modulated by other factors including how much effort they put into that match.
+Athletes compete in teams of 7.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Omar, Ali, Baz, Dax, Eli, Gus, and Hal beat Jon, Kai, Len, Mac, Nat, Oz, and Pax.
+In the second match, Omar, Ali, Baz, Dax, Eli, Gus, and Hal beat Jon, Kai, Len, Ray, Sal, Tim, and Van.
+In the third match, Omar, Ali, Baz, Dax, Eli, Gus, and Hal beat Mac, Nat, Oz, Ray, Sal, Tim, and Van.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Omar ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Van put into the third match?
+Query 3: In a new match later this same day between Omar, Ali, Baz, Dax, Eli, Gus, and Hal (Team 1) and Jon, Kai, Len, Mac, Nat, Oz, and Ray (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Jon, Kai, Len, Mac, Nat, Oz, and Pax (Team 1) and Ray, Sal, Tim, Van, and three new average players (Team 2), who would win and by how much?
+<END_SCENARIO>

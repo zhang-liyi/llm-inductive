@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the rowers are competing in a series of rowing races. Some races are in double sculls (two rowers per boat), and one is in single sculls (one rower per boat). Performance depends on each rower’s intrinsic rowing power and technique, combined with how much effort they apply in each race.  
+All races take place on the same day.
+
+CONDITIONS  
+In the first race, Hana and Mira lost to Jonas and Lea.  
+In the second race, Hana and Jonas beat Mira and Carlo.  
+In the third race, Hana and Carlo lost to Lea and Mira.  
+In the fourth race, Hana lost to Mira.
+
+QUERIES  
+Query 1: Out of 100 random rowers, where do you think Hana ranks in terms of intrinsic strength and technique?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mira put into the fourth race?  
+Query 3: In a new race later this same day between Hana and Lea (Team 1) and Jonas and Carlo (Team 2), who would win and by how much?  
+Query 4: In a new race later this same day between Hana and Mira (Team 1) and Jonas and Lea (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 7-a-side soccer matches. In each match, the winning team is determined by the players’ intrinsic soccer ability (ball control, passing, finishing, defending) along with how much effort they put into that match.  
+Players can also face off individually in 1-on-1 situations such as penalty-style duels.  
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Priya lost to Ella.  
+In the second match, Priya, Oscar, Rahul, Sana, Tara, Umar, and Varun lost to Adam, Ben, Chloe, Daniel, Ella, Felix, and Grace.  
+In the third match, Priya, Zara, Oscar, Sana, Varun, Rahul, and Tara lost to Henry, Iris, Jack, Kara, Liam, Maya, and Noah.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Priya ranks in terms of intrinsic soccer ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ella put into the first match?  
+Query 3: In a new 7-a-side match later this same day between Priya, Oscar, Rahul, Sana, Tara, Umar, and Zara (Team 1) and Adam, Ben, Chloe, Daniel, Ella, Felix, and Grace (Team 2), who would win and by how much?  
+Query 4: In a new 7-a-side match later this same day between Priya, Varun, Oscar, Sana, Tara, Rahul, and Zara (Team 1) and Henry, Iris, Jack, Kara, Liam, Maya, and Noah (Team 2), who would win and by how much?
+<END_SCENARIO>

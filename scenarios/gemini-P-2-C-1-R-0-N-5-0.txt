@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee matches. In each match, the team that wins depends on the collective scoring ability of the athletes, based on their intrinsic speed and handling skills modulated by other factors including how much effort they put into that match.
+Athletes compete in teams of 7.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Jaden, Kai, Leo, Mia, Noa, Oli, and Pat beat Quinn, Ray, Sam, Tom, Uma, Val, and Wes.
+In the second match, Jaden, Quinn, Ray, Sam, Tom, Uma, and Val beat Kai, Leo, Mia, Noa, Oli, Pat, and Wes.
+In the third match, Jaden, Kai, Quinn, Leo, Ray, Mia, and Sam lost to Noa, Tom, Oli, Uma, Pat, Val, and Wes.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jaden ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jaden put into the third match?
+Query 3: In a new match later this same day between Jaden, Kai, Leo, Mia, Noa, Oli, and Pat (Team 1) and Quinn, Ray, Sam, Tom, Uma, Val, and Wes (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Jaden, Quinn, Ray, Sam, Tom, Uma, and Val (Team 1) and Kai, Leo, Mia, Noa, Oli, Pat, and Wes (Team 2), who would win and by how much?
+<END_SCENARIO>

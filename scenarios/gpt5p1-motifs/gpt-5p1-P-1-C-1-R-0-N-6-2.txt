@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the rowers are competing in a series of rowing races. In each race, the boat that wins depends on how much power and technical efficiency the rowers generate, determined by their intrinsic rowing strength and technique together with the effort they apply in that race.
+Rowers compete either individually in single sculls or in eights.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Ethan lost to Marco.
+In the second race, Ethan, Alan, Ben, Chris, Daniel, Felix, George, and Henry lost to Marco, Ivan, Jack, Liam, Noah, Oliver, Peter, and Quinn.
+In the third race, Ethan, Ivan, Jack, Liam, Noah, Oliver, Sam, and Toby lost to Marco, Alan, Ben, Chris, Daniel, Felix, George, and Peter.
+
+QUERIES
+Query 1: Out of 100 random rowers, where do you think Ethan ranks in terms of intrinsic rowing strength and technique?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ethan put into the third race?
+Query 3: In a new race later this same day between Ethan, Alan, Chris, Felix, Henry, Ivan, Liam, and Noah (Boat 1) and Marco, Ben, Daniel, George, Jack, Oliver, Peter, and Quinn (Boat 2), who would win and by how much?
+Query 4: In a new race later this same day between Alan, Ben, Chris, Daniel, Felix, George, Ivan, and Jack (Boat 1) and Henry, Liam, Noah, Oliver, Peter, Quinn, Sam, and Toby (Boat 2), who would win and by how much?
+<END_SCENARIO>

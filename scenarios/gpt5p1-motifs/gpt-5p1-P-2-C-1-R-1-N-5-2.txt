@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this rugby sevens event, teams of 7 players compete in short, high-intensity matches, and some players also take part in 1v1 contact-and-speed drills. The result of each match depends on the players’ intrinsic strength, speed, and tackling ability, modulated by how much effort they put in for that particular match. Most players stay with their regular teams (the Hawks, Bulls, and Sharks), but one standout runner, Malik, is rotated among the teams. All matches and drills occur on the same day.
+
+CONDITIONS
+In the first match, Malik and the Hawks beat the Bulls.
+In the second match, Malik and the Bulls beat the Sharks.
+In the third contest, Malik beat Evan in a 1v1 sprint-and-tackle drill.
+In the fourth match, Malik and the Sharks lost to the Hawks.
+
+QUERIES
+Query 1: Out of 100 random rugby players, where do you think Malik ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Evan put into the third contest?
+Query 3: In a new 7-a-side match later this same day between Malik and the Hawks (Team 1) and the Sharks (Team 2), who would win and by how much?
+Query 4: In a new 7-a-side match later this same day between Malik and the Bulls (Team 1) and the Hawks (Team 2), who would win and by how much?
+<END_SCENARIO>

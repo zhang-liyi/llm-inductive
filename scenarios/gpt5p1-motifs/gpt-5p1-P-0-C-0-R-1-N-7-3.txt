@@ -1,0 +1,22 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, club volleyball squads play extended scrimmages with 9-player rotations on each side. Each team has a fixed roster of 9 players.  
+Match results depend on intrinsic volleyball skills (serving consistency, passing accuracy, setting precision, blocking timing, attacking power) combined with how much effort the players put into that match.  
+All scrimmages and individual skills contests happen on the same day.  
+Teams are fixed, and players always stay with their own 9-person team.
+
+Team Wave: Tariq, Elias, Jonah, Marco, Stefan, Luis, Nabil, Omar K., Victor P.  
+Team Blaze: Adrian, Colin, Derek, Ethan S., Finn, Gareth, Hayden, Isaac, Julien  
+Team Peak: Lucas R., Milo, Noah T., Patrick, Quinlan, Rowan, Sam, Theo L., Uri  
+
+CONDITIONS  
+In the first scrimmage, Wave beat Blaze.  
+In the second scrimmage, Wave beat Peak.  
+Later that day, in a serving accuracy contest, Tariq beat Adrian.
+
+QUERIES  
+Query 1: Out of 100 random volleyball players, where do you think Tariq ranks in terms of intrinsic volleyball ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Adrian put into the serving contest?  
+Query 3: In a new 9‑player rotation scrimmage later this same day between Wave and Blaze, who would win and by how much?  
+Query 4: In a new 9‑player rotation scrimmage later this same day between Blaze and Peak, who would win and by how much?  
+<END_SCENARIO>

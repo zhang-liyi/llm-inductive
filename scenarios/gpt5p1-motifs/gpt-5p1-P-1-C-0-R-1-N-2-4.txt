@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing 4-on-4 ultimate frisbee mini-games, with occasional 1-on-1 cutting and marking drills. Game outcomes depend on the athletes’ intrinsic ultimate skills (throwing, catching, cutting, marking) and how much effort they put into each point.
+Players either compete as fixed 4-player teams or individually.
+
+CONDITIONS
+Team East (Lara, Ben, Fiona, Craig) beat Team North (Trent, Caleb, Dylan, Shane) in the first game.
+Team West (Mira, Colin, Jas, Andre) beat Team North (Trent, Caleb, Dylan, Shane) in the second game.
+Team East (Lara, Ben, Fiona, Craig) beat Team West (Mira, Colin, Jas, Andre) in the third game.
+In a 1-on-1 cutting drill, Ben beat Andre.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Ben ranks in terms of intrinsic ultimate ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Caleb put into the second game?
+Query 3: In a new game later this same day between Team East (Lara, Ben, Fiona, Craig) and Team North (Trent, Caleb, Dylan, Shane), who would win and by how much?
+Query 4: In a new game later this same day between Team West (Mira, Colin, Jas, Andre) and Team North (Trent, Caleb, Dylan, Shane), who would win and by how much?
+<END_SCENARIO>

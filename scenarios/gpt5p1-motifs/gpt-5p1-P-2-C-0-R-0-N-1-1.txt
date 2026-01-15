@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in distance running, including both solo races and 3-runner team races.  
+In each race, the result depends on each runner’s intrinsic running speed and endurance, along with how much effort they put into that particular race.  
+For team races, three runners’ performances are combined by their average pace to determine which team is faster.  
+All races take place on the same day.
+
+CONDITIONS  
+In the first race, Diego beat Colin.  
+In the second race, Diego, Hana, and Leo beat Colin, Mira, and Yasmin.  
+In the third race, Diego, Hana, and Leo beat Pavel, Mira, and Colin.  
+In the fourth race, Mira, Yasmin, and Colin beat Diego, Hana, and Leo.
+
+QUERIES  
+Query 1: Out of 100 random distance runners, where do you think Diego ranks in terms of intrinsic running ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mira put into the fourth race?  
+Query 3: In a new team race later this same day between Diego, Hana, and Leo (Team 1) and Pavel, Yasmin, and Colin (Team 2), who would win and by how much?  
+Query 4: In a new team race later this same day between Mira, Pavel, and Yasmin (Team 1) and Hana, Colin, and Leo (Team 2), who would win and by how much?  
+<END_SCENARIO>

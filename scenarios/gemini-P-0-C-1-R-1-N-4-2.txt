@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in Lacrosse matches using the "Sixes" format (6 players per side). The winner is decided by the team's aggregate agility and stick-work precision, derived from intrinsic coordination modulated by the intensity of effort during the match.
+There are established clubs: The Nets, The Sticks, and The Goals. A standout player, Avery, is a "floater" who plays for whichever team draws the lottery card.
+All matches take place during a single tournament day.
+
+CONDITIONS
+In the first match, The Nets (featuring Avery) beat The Sticks (led by Morgan).
+In the second match, The Goals (featuring Avery) beat The Nets (led by Riley).
+In the third match, The Sticks (featuring Avery) beat The Goals (led by Jamie).
+
+QUERIES
+Query 1: Out of 100 random lacrosse players, where do you think Avery ranks in terms of intrinsic coordination?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jamie put into the third match?
+Query 3: In a new match later this same day between The Nets (featuring Avery) and The Goals (led by Jamie), who would win and by how much?
+Query 4: In a new match later this same day between The Sticks (led by Morgan) and The Nets (led by Riley), who would win and by how much?
+<END_SCENARIO>

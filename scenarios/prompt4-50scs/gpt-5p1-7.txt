@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of short baseball scrimmages. Each scrimmage is played with small mixed squads. The outcome of each game depends on the players’ intrinsic hitting, pitching, fielding, and base-running ability, along with how much effort they put into that particular scrimmage.
+All scrimmages take place on the same day.
+
+CONDITIONS
+In the first scrimmage, Diego, Marco, Luis, and Owen beat Caleb, Jonah, Eric, and Finn.
+In the second scrimmage, Diego, Caleb, and Eric beat Marco, Jonah, and Finn.
+In the third scrimmage, Luis and Owen lost to Caleb and Marco in a shortened game.
+In the fourth scrimmage, Jonah and Finn beat Diego and Luis.
+
+QUERIES
+Query 1: Out of 100 random baseball players, where do you think Diego ranks in terms of intrinsic baseball skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Marco put into the third scrimmage?
+Query 3: In a new game later this same day between Diego, Luis, and Jonah (Team 1) and Caleb, Eric, and Finn (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Marco and Owen (Team 1) and Diego and Caleb (Team 2), who would win and by how much?
+<END_SCENARIO>

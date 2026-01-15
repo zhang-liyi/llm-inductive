@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a series of cricket matches. Each side fields 9 players for this specific format. The winner of each match depends on the total runs scored and wickets taken, which is a function of the athletes' intrinsic cricketing ability modulated by factors including the effort they put into that match.
+The team rosters are fixed.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, The Titans (captained by Ravi) beat The Warriors.
+In the second match, The Titans (captained by Ravi) beat The Knights.
+In the third match, The Titans (captained by Ravi) beat The Royals.
+
+QUERIES
+Query 1: Out of 100 random cricket players, where do you think Ravi ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think The Royals put into the third match?
+Query 3: In a new match later this same day between The Titans (captained by Ravi) and The Warriors, who would win and by how much?
+Query 4: In a new match later this same day between The Warriors and The Knights, who would win and by how much?
+<END_SCENARIO>

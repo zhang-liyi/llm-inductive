@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+Athletes are competing in a 5-a-side soccer tournament. The team that wins is decided by the total goals scored, which is a function of the players' intrinsic ball control and tactical awareness, modulated by the physical running intensity they contribute to that specific match.
+Liam competes on a fixed team known as "United" with teammates Noah, Oliver, Elijah, and James.
+All matches occur consecutively on the same day.
+
+CONDITIONS
+In the first match, City beat United.
+In the second match, Rovers beat United.
+In the third match, United beat Athletic.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Liam ranks in terms of intrinsic ball control and tactical awareness?
+Query 2: On a percentage scale from 0 to 100%, how much running intensity do you think Liam put into the third match?
+Query 3: In a new match later this same day between United (Team 1) and City (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between a team consisting of Liam, Noah, and three players from Rovers (Team 1) and a team consisting of Oliver, Elijah, and three players from Athletic (Team 2), who would win and by how much?
+<END_SCENARIO>

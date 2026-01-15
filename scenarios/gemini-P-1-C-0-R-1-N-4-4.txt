@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of field hockey matches. In each match, the team that wins depends on the collective stamina and ball control of the athletes, based on their intrinsic skill modulated by other factors including how much effort they put into that match.
+Athletes compete in fixed teams of six.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Rex, Stu, Tim, Uli, Val, and Wes beat Lou, Mat, Nat, Opi, Phil, and Qad.
+In the second match, Xan, Yul, Ziv, Ali, Baz, and Caz beat Lou, Mat, Nat, Opi, Phil, and Qad.
+In the third match, Dax, Emo, Foz, Gus, Hoz, and Izo beat Lou, Mat, Nat, Opi, Phil, and Qad.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Lou ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Lou put into the third match?
+Query 3: In a new match later this same day between Lou, Mat, Nat, Opi, Phil, and Qad (Team 1) and Rex, Stu, Tim, Uli, Val, and Wes (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Lou, Mat, Nat, Opi, Phil, and Qad (Team 1) and Xan, Yul, Ziv, Ali, Baz, and Caz (Team 2), who would win and by how much?
+<END_SCENARIO>

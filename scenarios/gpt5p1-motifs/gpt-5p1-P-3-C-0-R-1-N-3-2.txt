@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of rowing races in five‑person boats, along with a few individual ergometer trials. Each race outcome depends only on the rowers’ intrinsic rowing power and technique together with how much effort they put into that specific race. Athletes can compete individually or as part of a fixed 5‑rower crew. All races take place on the same day.
+
+Crew Alpha is a fixed boat of Elena, Tom, Grace, Riley, and Jonah. Crew Beta is a fixed boat of Malik, Sara, Owen, Lila, and Henry.
+
+CONDITIONS
+In the first race, Crew Beta beat Crew Alpha.
+In the second race, Crew Beta beat Crew Alpha.
+In the third trial, Grace beat Sara in an individual ergometer test.
+In the fourth race, Crew Alpha beat Crew Beta.
+
+QUERIES
+Query 1: Out of 100 random rowers, where do you think Elena ranks in terms of intrinsic rowing strength and technique?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Malik put into the second race?
+Query 3: In a new race later this same day between Elena, Malik, Grace, Owen, and Jonah (Team 1) and Tom, Sara, Riley, Lila, and Henry (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Elena, Tom, Malik, Sara, and Riley (Team 1) and Grace, Owen, Jonah, Lila, and Henry (Team 2), who would win and by how much?
+<END_SCENARIO>

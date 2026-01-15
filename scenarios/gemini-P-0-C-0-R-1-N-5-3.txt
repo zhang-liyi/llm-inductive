@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this league, athletes compete in 7-a-side Soccer matches. Winning depends on the ball control and passing accuracy of the team members (intrinsic skill), modulated by their running work rate and the effort they put into the match.
+Teams are fixed, meaning the same 7 players always play together.
+All matches take place during a single tournament day.
+
+CONDITIONS
+In the first match, Elena's team beat the Red Stars.
+In the second match, Elena's team beat the Blue Stripes.
+In the third match, Elena's team beat the Green Hoops.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Elena ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think the Red Stars put into the first match?
+Query 3: In a new match later this same day between Elena's team and the Yellow Sash (a new team), who would win and by how much?
+Query 4: In a new match later this same day between the Red Stars and the Blue Stripes, who would win and by how much?
+<END_SCENARIO>

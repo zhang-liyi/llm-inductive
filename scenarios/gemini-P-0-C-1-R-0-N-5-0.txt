@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee matches. In each match, the team that wins depends on the average speed and throwing accuracy of the athletes, based on their intrinsic athleticism modulated by other factors including how much effort they put into that match.
+Athletes compete in teams of 7.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Skyler, Ben, Tom, Jerry, Mike, Dave, and Phil beat Greg, Ian, Jack, Karl, Leo, Matt, and Ned.
+In the second match, Skyler, Greg, Ian, Jack, Karl, Leo, and Matt beat Ben, Tom, Jerry, Mike, Dave, Phil, and Ned.
+In the third match, Skyler, Ben, Greg, Tom, Ian, Jerry, and Jack beat Mike, Dave, Phil, Karl, Leo, Matt, and Ned.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Skyler ranks in terms of intrinsic athleticism?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ned put into the third match?
+Query 3: In a new match later this same day between Skyler, Ben, Tom, Jerry, Mike, Dave, and Phil (Team 1) and Greg, Ian, Jack, Karl, Leo, Matt, and Ned (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Ben, Tom, Jerry, Mike, Dave, Phil, and Ned (Team 1) and Greg, Ian, Jack, Karl, Leo, Matt, and Skyler (Team 2), who would win and by how much?
+<END_SCENARIO>

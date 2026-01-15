@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Basketball games. In each game, the team that wins depends on the total baskets scored, based on the athletes' intrinsic shooting accuracy and defense modulated by other factors including how much effort they put into that game.
+Athletes compete in teams of 4.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, The Stars (Rick, Bob, Ted, and Al) beat The Nets (Jim, Hal, Guy) and Jordan.
+In the second game, The Suns (Don, Ed, Van, and Len) beat The Bulls (Ken, Jay, Moe) and Jordan.
+In the third game, The Nets (Jim, Hal, Guy, and Al) beat The Stars (Rick, Bob, Ted) and Jordan.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jordan ranks in terms of intrinsic shooting accuracy and defense?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jordan put into the third game?
+Query 3: In a new game later this same day between The Nets (Jim, Hal, Guy) and Al (Team 1) and The Stars (Rick, Bob, Ted) and Jordan (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between The Bulls (Ken, Jay, Moe) and Len (Team 1) and The Suns (Don, Ed, Van) and Jordan (Team 2), who would win and by how much?
+<END_SCENARIO>

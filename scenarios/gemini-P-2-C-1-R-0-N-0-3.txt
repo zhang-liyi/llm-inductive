@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Rowing races (double sculls). In each race, the team that wins depends on the average velocity of the boat, based on their intrinsic physical power modulated by other factors including how much effort they put in to that race.
+Athletes compete as a team of two.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Silas and Jude beat Arlo and Finn.
+In the second race, Silas and Arlo beat Jude and Finn.
+In the third race, Silas and Finn lost to Jude and Arlo.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Silas ranks in terms of intrinsic physical power?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Silas and Finn put into the third race?
+Query 3: In a new race later this same day between Silas and Jude (Team 1) and Arlo and Finn (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Jude and Arlo (Team 1) and Silas and Finn (Team 2), who would win and by how much?
+<END_SCENARIO>

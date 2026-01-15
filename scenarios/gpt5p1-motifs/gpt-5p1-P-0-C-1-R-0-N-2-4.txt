@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the rowers are competing in single sculls and 4-person boats. The outcome of each race depends on the rowers’ intrinsic rowing power and technique, combined with how much effort they put into that specific race.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Diego beat Harper.
+In the second race, Diego, Lila, Owen, and Grace beat Harper, Quinn, Miles, and Sara.
+In the third race, Diego, Miles, Sara, and Jonah beat Harper, Lila, Owen, and Quinn.
+
+QUERIES
+Query 1: Out of 100 random rowers, where do you think Diego ranks in terms of intrinsic rowing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Harper put into the third race?
+Query 3: In a new race later this same day between Diego, Lila, Miles, and Quinn (Team 1) and Harper, Owen, Sara, and Jonah (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Lila, Owen, Miles, and Grace (Team 1) and Harper, Quinn, Sara, and Jonah (Team 2), who would win and by how much?
+<END_SCENARIO>

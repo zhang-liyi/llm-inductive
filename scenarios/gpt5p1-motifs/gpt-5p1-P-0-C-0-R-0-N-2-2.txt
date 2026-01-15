@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of small-sided 2-on-2 soccer games on a short field, with one optional 1-on-1 game. The results depend on the players’ intrinsic soccer ability—such as ball control, passing, finishing, and defending—combined with how much effort they put into each game.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Diego and Mateo beat Luca and Omar.
+In the second game, Diego and Mateo beat Noah and Ethan.
+In the third game, Luca and Noah beat Omar and Ethan.
+In the fourth game, Diego beat Luca.
+
+QUERIES
+Query 1: Out of 100 random players, where do you think Diego ranks in terms of intrinsic soccer ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Luca put into the third game?
+Query 3: In a new game later this same day between Diego and Mateo (Team 1) and Luca and Noah (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Omar and Ethan (Team 1) and Luca and Noah (Team 2), who would win and by how much?
+<END_SCENARIO>

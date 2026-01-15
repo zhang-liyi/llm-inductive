@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this tournament, the athletes are competing in Badminton games. The winner of a game is decided by the speed and reflex accuracy of the players, based on their intrinsic skill level modulated by other factors including how much mental and physical effort they commit to that game.
+Athletes compete in fixed partnerships.
+All games occur consecutively on the same day.
+
+CONDITIONS
+In the first game, Elena and Sarah lost to Mia and Zoe.
+In the second game, Elena and Sarah lost to Mia and Zoe.
+In the third game, Elena and Sarah beat Mia and Zoe.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Elena ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mia put into the third game?
+Query 3: In a new game later this same day between Elena and Mia (Team 1) and Sarah and Zoe (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Sarah and Zoe (Team 1) and Elena and Mia (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee matches played on a smaller beach field. In each match, the team that wins depends on their scoring efficiency, based on their intrinsic speed and throwing accuracy modulated by other factors including how much effort they put into that match.
+Athletes compete either individually (in a specific drill) or as a fixed team of three.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Kai, Leo, and Ben beat Owen, Luke, and Jack.
+In the second match, Kai, Leo, and Ben beat Owen, Luke, and Jack.
+In the third match, Kai beat Owen.
+In the fourth match, Kai, Leo, and Ben lost to Owen, Luke, and Jack.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Kai ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Kai put into the fourth match?
+Query 3: In a new match later this same day between Kai and Owen (Team 1) and Leo and Luke (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Ben and Jack (Team 1) and Kai and Owen (Team 2), who would win and by how much?
+<END_SCENARIO>

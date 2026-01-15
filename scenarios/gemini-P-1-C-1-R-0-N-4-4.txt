@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Handball games. In each game, the team that wins depends on the throwing power and stamina of the athletes, based on their intrinsic physical capability modulated by other factors including how much effort they put into that game.
+Athletes compete in teams of 6.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the team of Owen, Wyatt, Dylan, Grayson, Levi, and Isaac beat the team of Gabriel, Julian, Mateo, Anthony, Jaxon, and Quinn.
+In the second game, the team of Gabriel, Julian, Mateo, Anthony, Jaxon, and Isaac beat the team of Owen, Wyatt, Dylan, Grayson, Levi, and Quinn.
+In the third game, the team of Owen, Gabriel, Wyatt, Julian, Dylan, and Mateo beat the team of Grayson, Anthony, Levi, Jaxon, Isaac, and Quinn.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Quinn ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Isaac put into the third race?
+Query 3: In a new game later this same day between Team 1 (Owen, Wyatt, Dylan, Grayson, Levi, Isaac) and Team 2 (Gabriel, Julian, Mateo, Anthony, Jaxon, Quinn), who would win and by how much?
+Query 4: In a new game later this same day between Team 1 (Owen, Gabriel, Dylan, Mateo, Levi, Jaxon) and Team 2 (Wyatt, Julian, Grayson, Anthony, Isaac, Quinn), who would win and by how much?
+<END_SCENARIO>

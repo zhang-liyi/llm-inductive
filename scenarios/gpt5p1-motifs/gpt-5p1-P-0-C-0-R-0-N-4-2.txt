@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of indoor volleyball games. In each game, the team that wins depends on the players’ intrinsic volleyball ability (serving, passing, attacking, blocking, reactions) along with how much effort they put in that game.
+Players compete either individually (for example in serving contests) or in teams of 6.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Keiko, Aria, Beth, Nina, Tara, and Yuki beat Liam, Chloe, Grant, Iris, Mark, and Olivia.
+In the second game, Keiko, Aria, Beth, Nina, Tara, and Yuki beat Peter, Quinn, Rose, Sean, Tom, and Uma.
+In the third game, Liam, Chloe, Peter, Quinn, Rose, and Sean beat Grant, Iris, Mark, Olivia, Tom, and Uma.
+Later that day, Keiko beat Liam.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Keiko ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the third game?
+Query 3: In a new game later this same day between Keiko, Aria, Beth, Nina, Tara, and Yuki (Team 1) and Liam, Chloe, Grant, Peter, Rose, and Sean (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Aria, Liam, Grant, Iris, Mark, and Tom (Team 1) and Chloe, Peter, Olivia, Quinn, Rose, and Uma (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,21 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, three team handball squads are playing a set of matches. Standard 7-on-7 lineups are used. The result of a match depends on the players’ intrinsic throwing power, accuracy, agility, and endurance, along with how much effort and focus they invest in that match.
+All matches take place on the same day.
+There are three fixed teams of seven whose rosters do not change:
+- Team North: Gregor, Emil, Lukas, Henrik, Arne, Jonas, Mads.
+- Team East: Pavel, Andrej, Milan, Igor, Tomas, Luka, Boris.
+- Team West: Sven, Johan, Nils, Erik, Oscar, Kai, Fredrik.
+
+CONDITIONS
+In the first match, North beat East.
+In the second match, West beat North.
+In the third match, North beat West.
+In the fourth match, West beat East.
+
+QUERIES
+Query 1: Out of 100 random team handball players, where do you think Gregor ranks in terms of intrinsic playing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Pavel put into the first match?
+Query 3: In a new match later this same day between North and East, who would win and by how much?
+Query 4: In a new match later this same day between North and West, who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of half-court basketball games. In each game, the team that wins depends on the players’ shooting accuracy, ball-handling, decision-making, and defensive skills, all driven by their intrinsic basketball ability and how much effort they put into that game.
+Players compete either individually or as teams of four.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Jordan beat Liam.
+In the second game, Jordan, Maya, Noah, and Riley beat Liam, Ava, Ethan, and Zoe.
+In the third game, Jordan, Maya, Noah, and Riley lost to Ava, Cole, Zoe, and Sara.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Jordan ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ethan put into the second game?
+Query 3: In a new game later this same day between Jordan, Maya, Noah, and Riley (Team 1) and Liam, Ava, Cole, and Zoe (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Liam, Ethan, Cole, and Sara (Team 1) and Ava, Zoe, Ben, and Taylor (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Rugby drills. In each drill, the team that wins depends on the collective physical strength and tackling technique of the athletes, based on their intrinsic power modulated by other factors including how much effort they put into that drill.
+Athletes compete as a team of three.
+All drills take place on the same day.
+
+CONDITIONS
+In the first drill, Javier, Tom, and Sam lost to Will, Harry, and George.
+In the second drill, Javier, Will, and Harry lost to Tom, Sam, and George.
+In the third drill, Javier, George, and Tom beat Will, Harry, and Sam.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think George ranks in terms of intrinsic power?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Javier put into the third drill?
+Query 3: In a new drill later this same day between George, Tom, and Sam (Team 1) and Javier, Will, and Harry (Team 2), who would win and by how much?
+Query 4: In a new drill later this same day between Javier, George, and Will (Team 1) and Tom, Sam, and Harry (Team 2), who would win and by how much?
+<END_SCENARIO>

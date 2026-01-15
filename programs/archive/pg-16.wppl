@@ -1,0 +1,300 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+
+  // BACKGROUND KNOWLEDGE
+  // Each athlete has a stable intrinsic swimming ability (stroke efficiency, power, endurance, race skills)
+  // that does not change over the session. Higher ability → faster potential speeds in all events.
+  var intrinsic_swimming_ability = mem(function({athlete}) {
+    // Three broad ability buckets for competitive swimmers.
+    var low_mean = 80;    // arbitrary ability units
+    var mid_mean = 100;
+    var high_mean = 120;
+    var p_low = 0.3;
+    var p_mid = 0.4;
+    var p_high = 0.3;
+    var sd_ability = 10;  // ability standard deviation within a bucket
+
+    var bucket_mean = categorical({
+      ps: [p_low, p_mid, p_high],
+      vs: [low_mean, mid_mean, high_mean]
+    });
+
+    return Math.max(gaussian(bucket_mean, sd_ability), 0);
+  });
+
+  // Helper: logistic squashing function
+  var logistic = function(x) {
+    return 1 / (1 + Math.exp(-x));
+  };
+
+  // Event-level properties (distance, stroke difficulty, relay structure, etc.).
+  // distance: meters for full race
+  // legDistance: meters per leg if relay
+  // strokeFactor: efficiency factor (freestyle easiest → higher factor)
+  // isRelay: boolean
+  // legs: number of swimmers/legs if relay
+  var race_event_properties = function({event}) {
+    // 200m freestyle individual
+    if (event == '200m_freestyle') {
+      return {
+        distance: 200,
+        legDistance: 200,
+        strokeFactor: 1.0,
+        isRelay: false,
+        legs: 1
+      };
+    } else {
+      // 4×100m freestyle relay
+      if (event == '4x100m_freestyle_relay') {
+        return {
+          distance: 400,
+          legDistance: 100,
+          strokeFactor: 1.0,
+          isRelay: true,
+          legs: 4
+        };
+      } else {
+        // 100m butterfly
+        if (event == '100m_butterfly') {
+          return {
+            distance: 100,
+            legDistance: 100,
+            strokeFactor: 0.9, // butterfly is harder/slower
+            isRelay: false,
+            legs: 1
+          };
+        } else {
+          // 4×100m medley relay (treated as slightly harder than freestyle)
+          if (event == '4x100m_medley_relay') {
+            return {
+              distance: 400,
+              legDistance: 100,
+              strokeFactor: 0.95,
+              isRelay: true,
+              legs: 4
+            };
+          } else {
+            // 200m freestyle relay (2×100m freestyle)
+            if (event == '200m_freestyle_relay') {
+              return {
+                distance: 200,
+                legDistance: 100,
+                strokeFactor: 1.0,
+                isRelay: true,
+                legs: 2
+              };
+            } else {
+              // 400m freestyle individual
+              if (event == '400m_freestyle') {
+                return {
+                  distance: 400,
+                  legDistance: 400,
+                  strokeFactor: 0.98, // a bit more endurance demand
+                  isRelay: false,
+                  legs: 1
+                };
+              } else {
+                // Default: 100m freestyle individual
+                return {
+                  distance: 100,
+                  legDistance: 100,
+                  strokeFactor: 1.0,
+                  isRelay: false,
+                  legs: 1
+                };
+              }
+            }
+          }
+        }
+      }
+    }
+  };
+
+  // Race importance (0–1), e.g., relays may be slightly more important.
+  var race_importance = function({race, event}) {
+    var props = race_event_properties({event: event});
+    // Base importance
+    var base_importance = 0.7;
+    // Relays slightly more important; longer races slightly more important.
+    var relay_bonus = props.isRelay ? 0.1 : 0.0;
+    var distance_bonus = Math.min(props.distance / 800, 0.1); // up to +0.1
+    var raw = base_importance + relay_bonus + distance_bonus;
+    // Add small noise
+    var noisy = gaussian(raw, 0.05);
+    return Math.min(Math.max(noisy, 0), 1);
+  };
+
+  // Fatigue level in a given race (0–1).
+  // Depends on when the race occurs and how taxing the event is, and on importance
+  // (more important races may be better managed, slightly reducing effective fatigue).
+  var fatigue_level_in_race = function({athlete, race, event}) {
+    var props = race_event_properties({event: event});
+    var importance = race_importance({race: race, event: event});
+    // Later races → more fatigue; longer distance → more fatigue.
+    var base = 0.1 * (race - 1) + props.distance / 2000; // rough scaling
+    // More important races might be better prepared for (slightly less felt fatigue).
+    var importance_effect = -0.2 * importance;
+    var mean_fatigue = base + importance_effect;
+    var noisy = gaussian(mean_fatigue, 0.1);
+    return Math.min(Math.max(noisy, 0), 1);
+  };
+
+  // Base speed for an athlete in a given event (m/s, relative units).
+  // Higher intrinsic ability, easier stroke, and shorter distance → higher base speed.
+  var base_speed_for_event = function({athlete, event}) {
+    var ability = intrinsic_swimming_ability({athlete: athlete});
+    var props = race_event_properties({event: event});
+    var distance_scale = 1 + props.distance / 400; // longer races slightly lower speed
+    var raw_speed = (ability / 100) * props.strokeFactor / distance_scale;
+    return Math.max(raw_speed, 0.1);
+  };
+
+  // Effort exerted by an athlete in a given race/event (0–1).
+  // Depends on intrinsic ability, event properties, importance, and fatigue.
+  var effort_in_race = mem(function({athlete, race, event}) {
+    var ability = intrinsic_swimming_ability({athlete: athlete});
+    var props = race_event_properties({event: event});
+    var importance = race_importance({race: race, event: event});
+    var fatigue = fatigue_level_in_race({athlete: athlete, race: race, event: event});
+
+    // Linear predictor for effort before logistic squashing.
+    // Stronger swimmers may be slightly more willing/able to push;
+    // more important races → higher effort; more fatigue → lower effort.
+    var ability_term = 0.003 * (ability - 100);
+    var importance_term = 1.0 * importance;
+    var fatigue_term = -0.8 * fatigue;
+    var sprint_bonus = props.distance <= 100 ? 0.2 : 0.0;
+
+    var mean_effort_latent = -0.2 + ability_term + importance_term + fatigue_term + sprint_bonus;
+    var noisy_latent = gaussian(mean_effort_latent, 0.4);
+    var e = logistic(noisy_latent);
+    return Math.min(Math.max(e, 0), 1);
+  });
+
+  // Effort as a percentage (0–100%).
+  var effort_percentage_in_race = function({athlete, race}) {
+    var event = race_index_to_event({race: race});
+    return 100 * effort_in_race({athlete: athlete, race: race, event: event});
+  };
+
+  // Map race index → canonical event (used where only race index is given).
+  var race_index_to_event = function({race}) {
+    if (race == 1) {
+      return '200m_freestyle';
+    } else {
+      if (race == 2) {
+        return '4x100m_freestyle_relay';
+      } else {
+        if (race == 3) {
+          return '100m_butterfly';
+        } else {
+          if (race == 4) {
+            return '4x100m_medley_relay';
+          } else {
+            if (race == 5) {
+              return '200m_freestyle_relay';
+            } else {
+              if (race == 6) {
+                return '400m_freestyle';
+              } else {
+                return '100m_freestyle';
+              }
+            }
+          }
+        }
+      }
+    }
+  };
+
+  // Performance time (seconds) for an athlete in a race.
+  // Derived from base speed, effort, and random noise.
+  var performance_time_in_race = mem(function({athlete, race, event}) {
+    var props = race_event_properties({event: event});
+    var base_speed = base_speed_for_event({athlete: athlete, event: event});
+    var effort = effort_in_race({athlete: athlete, race: race, event: event});
+    var effective_speed = base_speed * (0.5 + 0.5 * effort); // effort scales speed between 0.5× and 1×
+    var leg_distance = props.isRelay ? props.legDistance : props.distance; // meters
+    var ideal_time = leg_distance / effective_speed; // seconds (relative units)
+    var time_sd = 0.03 * ideal_time; // small performance noise
+    var t = gaussian(ideal_time, time_sd);
+    return Math.max(t, 0.1);
+  });
+
+  // Team race time in a given event (seconds) = sum of member performances.
+  var team_race_time = function({team, race, event}) {
+    return sum(map(function(athlete) {
+      return performance_time_in_race({athlete: athlete, race: race, event: event});
+    }, team));
+  };
+
+  // Team1 beats Team2 in a race if their total time is lower.
+  var beat = function({team1, team2, race, event}) {
+    return team_race_time({team: team1, race: race, event: event}) <
+           team_race_time({team: team2, race: race, event: event});
+  };
+
+  // Intrinsic ability rank: how many out of N random swimmers this athlete is better than.
+  var intrinsic_swimming_ability_rank = function({athlete, out_of_n_swimmers}) {
+    var num_others = out_of_n_swimmers - 1;
+    var random_ids = mapN(function(i) { return uniform(0, 10000); }, num_others);
+    var this_ability = intrinsic_swimming_ability({athlete: athlete});
+    return sum(map(function(other_id) {
+      return this_ability > intrinsic_swimming_ability({athlete: other_id});
+    }, random_ids));
+  };
+
+  // Predictive: who would win and by how much (as probability Team 2 wins).
+  // Returns a number in [0,1]; 0 = Team 1 almost surely wins, 1 = Team 2 almost surely wins.
+  var who_would_win_by_how_much = function({team1, team2, race, event}) {
+    var num_future_races_to_simulate = 100;
+    var random_future_race_ids = mapN(function(x) { return uniform(race + 1, 1000); },
+                                      num_future_races_to_simulate);
+
+    var wins_for_team2 = sum(map(function(fake_race_id) {
+      return beat({team1: team2, team2: team1, race: fake_race_id, event: event});
+    }, random_future_race_ids));
+
+    return wins_for_team2 / num_future_races_to_simulate;
+  };
+
+  // CONDITIONS  
+  // In the first race, a 200m freestyle, Alex beat Priya.  
+  condition(beat({team1: ['alex'], team2: ['priya'], race: 1, event: '200m_freestyle'}));
+
+  // In the second race, a 4×100m freestyle relay, Alex, Blake, Cara, and Priya beat Dana, Ethan, Finn, and Gia.  
+  condition(beat({team1: ['alex', 'blake', 'cara', 'priya'], team2: ['dana', 'ethan', 'finn', 'gia'], race: 2, event: '4x100m_freestyle_relay'}));
+
+  // In the third race, a 100m butterfly, Priya beat Alex.  
+  condition(beat({team1: ['priya'], team2: ['alex'], race: 3, event: '100m_butterfly'}));
+
+  // In the fourth race, a 4×100m medley relay, Alex, Dana, Finn, and Gia beat Priya, Blake, Cara, and Ethan.  
+  condition(beat({team1: ['alex', 'dana', 'finn', 'gia'], team2: ['priya', 'blake', 'cara', 'ethan'], race: 4, event: '4x100m_medley_relay'}));
+
+  // QUERIES  
+  // Query 1: Out of 100 random competitive swimmers, where do you think Alex ranks in terms of intrinsic swimming ability?  
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Priya put into the third race?  
+  // Query 3: In a new 200m freestyle relay later this same session between Alex and Cara (Team 1, each swimming 100m) and Priya and Blake (Team 2, each swimming 100m), who would win and by how much?  
+  // Query 4: In a new individual 400m freestyle later this same session between Alex and Priya, who would win and by how much?  
+
+  return {
+    query1: intrinsic_swimming_ability_rank({athlete: 'alex', out_of_n_swimmers: 100}),
+    query2: effort_percentage_in_race({athlete: 'priya', race: 3}),
+    query3: who_would_win_by_how_much({team1: ['alex', 'cara'], team2: ['priya', 'blake'], race: 5, event: '200m_freestyle_relay'}),
+    query4: who_would_win_by_how_much({team1: ['alex'], team2: ['priya'], race: 6, event: '400m_freestyle'})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-16.json', posterior);

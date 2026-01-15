@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Tennis matches. In each match, the team that wins depends on the precision and power with which the athletes hit the ball, based on their intrinsic technique modulated by other factors including how much effort they put into that match.
+Athletes compete as a team of two.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Elena and Mark beat Sarah and John.
+In the second match, Elena and Sarah beat Mark and John.
+In the third match, Elena and John beat Mark and Sarah.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Elena ranks in terms of intrinsic technique?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mark put into the second match?
+Query 3: In a new match later this same day between Elena and Mark (Team 1) and Sarah and John (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Mark and John (Team 1) and Sarah and a new player named Lisa (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in 7-player volleyball matches. The result of each match depends on the players’ intrinsic volleyball skills (serving, setting, spiking, blocking) together with how much effort they exert in that match.  
+Players may also take part in 1-on-1 serving and reception contests.  
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Mateo lost to Clara.  
+In the second match, Mateo, Omar, Paula, Quinn, Rosa, Stefan, and Tobias lost to Alan, Boris, Clara, Diego, Elena, Farid, and Gina.  
+In the third match, Mateo, Usha, Omar, Paula, Quinn, Rosa, and Stefan lost to Hanna, Ivan, Jonas, Kimi, Lara, Marco, and Nina.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Mateo ranks in terms of intrinsic volleyball skill?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Clara put into the first match?  
+Query 3: In a new 7-player volleyball match later this same day between Mateo, Omar, Paula, Quinn, Rosa, Stefan, and Usha (Team 1) and Alan, Boris, Clara, Diego, Elena, Farid, and Gina (Team 2), who would win and by how much?  
+Query 4: In a new 7-player volleyball match later this same day between Mateo, Tobias, Omar, Paula, Quinn, Rosa, and Stefan (Team 1) and Hanna, Ivan, Jonas, Kimi, Lara, Marco, and Nina (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of 3-on-3 small-sided soccer games on a reduced pitch. The winning team in each game is determined by the players’ intrinsic ball control, speed, and finishing ability, together with the intensity of effort they put into that game.  
+All games take place on the same day.  
+Teams always have 3 players.
+
+CONDITIONS
+In the first game, Diego, Marco, and Luis beat Ben, Omar, and Tariq.  
+In the second game, Diego, Marco, and Luis beat Jonas, Eli, and Ben.  
+In the third game, Diego, Marco, and Luis beat Karim, Omar, and Jonas.  
+In the fourth game, Diego, Marco, and Luis beat Tariq, Eli, and Karim.
+
+QUERIES
+Query 1: Out of 100 random small-sided soccer players, where do you think Diego ranks in terms of intrinsic soccer ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Omar put into the third game?  
+Query 3: In a new game later this same day between Diego, Marco, and Luis (Team 1) and Ben, Karim, and Jonas (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Ben, Omar, and Tariq (Team 1) and Jonas, Eli, and Karim (Team 2), who would win and by how much?
+<END_SCENARIO>

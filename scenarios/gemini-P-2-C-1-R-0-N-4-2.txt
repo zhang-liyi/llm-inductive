@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee games. In each game, the team that wins depends on their ability to advance the disc and score points, based on their intrinsic agility and throwing accuracy modulated by other factors including how much effort they put into that game.
+Athletes compete in teams of 6.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the team of Casey, Alex, Jordan, Taylor, Morgan, and Riley beat the team of Drew, Pat, Sam, Chris, Jessie, and Quinn.
+In the second game, the team of Casey, Drew, Pat, Sam, Chris, and Jessie beat the team of Alex, Jordan, Taylor, Morgan, Riley, and Quinn.
+In the third game, the team of Casey, Alex, Drew, Jordan, Pat, and Taylor lost to the team of Morgan, Riley, Sam, Chris, Jessie, and Quinn.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Casey ranks in terms of intrinsic agility and throwing accuracy?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Casey put into the third game?
+Query 3: In a new game later this same day between the team of Casey, Alex, Jordan, Taylor, Morgan, and Riley (Team 1) and the team of Drew, Pat, Sam, Chris, Jessie, and Quinn (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between the team of Casey, Drew, Pat, Sam, Chris, and Jessie (Team 1) and the team of Alex, Jordan, Taylor, Morgan, Riley, and Quinn (Team 2), who would win and by how much?
+<END_SCENARIO>

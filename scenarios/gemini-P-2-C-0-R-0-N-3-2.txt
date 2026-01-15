@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ice Hockey scrimmages. In each scrimmage, the team that wins depends on their offensive production, based on the athletes' intrinsic skating and puck-handling skills modulated by other factors including how much effort they put into that scrimmage.
+Athletes compete in teams of 5.
+All scrimmages take place on the same day.
+
+CONDITIONS
+In the first scrimmage, Sid, Gen, Mar, Nik, and Pat beat Ale, Con, Leo, Mat, and Joh.
+In the second scrimmage, Sid, Gen, Mar, Nik, and Pat beat Ale, Con, Pet, Vla, and Art.
+In the third scrimmage, Sid, Gen, Mar, Nik, and Pat lost to Leo, Mat, Pet, Vla, and Art.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Sid ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Sid put into the third scrimmage?
+Query 3: In a new scrimmage later this same day between Sid, Gen, Mar, Nik, and Pat (Team 1) and Ale, Con, Leo, Pet, and Vla (Team 2), who would win and by how much?
+Query 4: In a new scrimmage later this same day between Leo, Mat, Pet, Vla, and Art (Team 1) and Joh, Ale, Con, Gen, and Mar (Team 2), who would win and by how much?
+<END_SCENARIO>

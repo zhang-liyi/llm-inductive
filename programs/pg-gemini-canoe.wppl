@@ -1,0 +1,144 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+    // Helper function for mean of a list
+    var listMean = function(l) {
+        return sum(l) / l.length;
+    }
+
+    // BACKGROUND KNOWLEDGE
+    // Intrinsic strength is an attribute of a given athlete that varies from athlete to athlete. 
+    // We model this with three categories: weak, average, and strong.
+    var intrinsic_strength = mem(function ({athlete}) {
+      var parameter_weak_strength_prior = 0.33;
+      var parameter_average_strength_prior = 0.33;
+      var parameter_strong_strength_prior = 0.34;
+
+      // On an arbitrary scale centered around 100.
+      var weak_strength_mean = 80; 
+      var average_strength_mean = 100;
+      var strong_strength_mean = 120;
+      var parameter_intrinsic_strength_variance = 10;
+
+      var this_athlete_strength_average = categorical({ps: [parameter_weak_strength_prior, parameter_average_strength_prior, parameter_strong_strength_prior], 
+      vs: [weak_strength_mean, average_strength_mean, strong_strength_mean]});
+
+      return Math.max(gaussian(this_athlete_strength_average ,  parameter_intrinsic_strength_variance), 0);
+    })
+
+    // An athlete's intrinsic strength ranking out of n other athletes.
+    var intrinsic_strength_rank = function({athlete, out_of_n_athletes}) {
+        // Generate out_of_n_athletes - 1 other random athlete IDs
+        var random_athlete_ids = mapN(function(x) {return uniform(0, 1000)}, out_of_n_athletes - 1)
+        
+        // Total number of random other athletes this athlete is stronger than.
+        return sum(map(
+            function(random_athlete_id) {
+              return intrinsic_strength({athlete: athlete}) > intrinsic_strength({athlete: random_athlete_id})}, random_athlete_ids))
+    }
+
+    // Effort varies per athlete per race. It is a percentage (0-100%).
+    // We assume that effort depends on intrinsic strength: stronger athletes might be more competitive (higher effort),
+    // while weaker athletes might be discouraged (lower effort), though this varies.
+    var effort_percentage_in_race = mem(function({athlete, race}) {
+      var strength = intrinsic_strength({athlete: athlete});
+
+      // Prior that an athlete puts in low, medium, or high effort given their intrinsic strength.
+      var parameter_low_effort_prior = 
+          strength > 110 ? 0.05 : // Strong athletes rarely put in low effort.
+               strength < 90 ?  0.6 : // Weak athletes often put in low effort.
+                                0.2;  // Average athletes.
+      
+      var parameter_medium_effort_prior = 
+          strength > 110 ? 0.15 : 
+               strength < 90 ?  0.3 : 
+                                0.5; 
+      
+      var parameter_high_effort_prior = 
+          strength > 110 ? 0.8 :  // Strong athletes often put in high effort.
+               strength < 90 ?  0.1 : 
+                                0.3; 
+
+      // Effort on a 0-100% scale.
+      var low_effort_mean = 30; 
+      var medium_effort_mean = 60;
+      var high_effort_mean = 90;
+      var effort_variance = 10;
+      
+      var this_athlete_effort_average = categorical({ps: [parameter_low_effort_prior, parameter_medium_effort_prior, parameter_high_effort_prior], 
+      vs: [low_effort_mean, medium_effort_mean, high_effort_mean]});
+
+      return Math.min(Math.max(gaussian(this_athlete_effort_average, effort_variance), 0), 100)
+    })
+
+    // Individual speed depends on intrinsic strength modulated by effort.
+    // We model this as strength * (effort percentage).
+    var individual_speed_in_race = function({athlete, race}) {
+        var strength = intrinsic_strength({athlete: athlete});
+        var effort = effort_percentage_in_race({athlete: athlete, race: race});
+        return strength * (effort / 100.0);
+    }
+
+    // Team speed is the average speed of the athletes on the team.
+    var team_speed_in_race = function({team, race}) {
+        var speeds = map(function(athlete) { return individual_speed_in_race({athlete: athlete, race: race}) }, team);
+        return listMean(speeds);
+    }
+
+    // A team beats another team if their average speed is higher.
+    var beat = function({team1, team2, race}){
+      return team_speed_in_race({team: team1, race: race} ) > team_speed_in_race({team: team2, race: race})
+    }
+    
+    // A team loses if they do not beat the other team.
+    var lost = function({team1, team2, race}){ 
+      return !beat({team1: team1, team2: team2, race: race})
+    }
+
+    // Calculate the likelihood that Team 2 wins (Team 1 loses) in a future race.
+    var who_would_win_by_how_much = function({team1, team2, race}) {
+      // Simulate random possible future races.
+      var num_future_races_to_simulate = 100;
+      var random_future_race_ids = mapN(function(x) {return uniform(race+1, 1000)}, num_future_races_to_simulate);
+
+      // Calculate how many races Team 2 would have won.
+      var simulated_races_won_by_team_2 = sum(map(
+            function(random_future_race_id) {
+              return lost({team1: team1, team2: team2, race: random_future_race_id})}, random_future_race_ids))
+
+      // Return the likelihood that team 2 won.
+      return simulated_races_won_by_team_2 / num_future_races_to_simulate;
+    }
+
+  // CONDITIONS
+  // In the first race, Alice beat Casey.
+  condition(beat({team1:['alice'], team2:['casey'], race: 1}))
+  // In the second race, Alice and Ness beat Casey and Max.
+  condition(beat({team1:['alice', 'ness'], team2:['casey', 'max'], race: 2}))
+  // In the third race, Max and Alice lost to Casey and Ness.
+  condition(lost({team1:['max', 'alice'], team2:['casey', 'ness'], race: 3}))
+
+  // QUERIES
+  // Query 1: Out of 100 random athletes, where do you think Alice ranks in terms of intrinsic strength?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Max put into the third race?
+  // Query 3: In a new race later this same day between Alice and Ness (Team 1) and Max and Taylor (Team 2), who would win and by how much?
+  // Query 4: In a new race later this same day between Max and Casey (Team 1) and Ness and Willow (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_strength_rank({athlete: 'alice', out_of_n_athletes: 100}),
+    query2: effort_percentage_in_race({athlete: 'max', race: 3}),
+    query3: who_would_win_by_how_much({team1:['alice', 'ness'], team2:['max', 'taylor'], race: 4}),
+    query4: who_would_win_by_how_much({team1:['max', 'casey'], team2:['ness', 'willow'], race: 5})
+  }
+}
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "rejection", samples: 10000});

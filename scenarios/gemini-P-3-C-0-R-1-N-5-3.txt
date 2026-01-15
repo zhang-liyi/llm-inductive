@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in 7-a-side Soccer matches. The winning team is decided by the players' ball control and passing accuracy, modulated by the intensity and effort they bring to the pitch.
+Chloe is on the "United" squad, which is playing against the "City" squad. The teams remain fixed.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, City beat United.
+In the second match, City beat United.
+In the third match, City beat United.
+In the fourth match, United beat City.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Chloe ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Chloe put into the fourth match?
+Query 3: In a new match later this same day between United (Team 1) and City (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between City (Team 1) and United (Team 2), who would win and by how much?
+<END_SCENARIO>

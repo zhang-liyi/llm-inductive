@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in Field Hockey matches played with 7 players per side. The winner is determined by the team's stick skills and sprinting speed, based on their intrinsic ability modulated by the effort they exert during the game.
+Rohan plays for the "Lions," and they are facing the "Tigers."
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, the Tigers beat the Lions.
+In the second match, the Lions beat the Tigers.
+In the third match, the Tigers beat the Lions.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Rohan ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Rohan put into the second match?
+Query 3: In a new match later this same day between the Lions (Team 1) and the Tigers (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the Tigers (Team 1) and the Lions (Team 2), who would win and by how much?
+<END_SCENARIO>

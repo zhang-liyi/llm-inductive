@@ -1,0 +1,221 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  /////////////////////////////
+  // BACKGROUND KNOWLEDGE
+  /////////////////////////////
+
+  // Intrinsic riding ability is a stable attribute of each snowboarder for the entire day.
+  // It bundles board control, explosiveness, and decision-making.
+  // Units: "ability points" on an arbitrary scale centered around ~100.
+  var intrinsic_riding_ability = mem(function({snowboarder}) {
+    // Prior buckets for low / average / high ability in the overall population.
+    var parameter_low_ability_prior = 0.33;
+    var parameter_average_ability_prior = 0.33;
+    var parameter_high_ability_prior = 0.34;
+
+    // Mean ability for each bucket (ability points).
+    var low_ability_mean = 80;
+    var average_ability_mean = 100;
+    var high_ability_mean = 140;
+    var parameter_intrinsic_ability_variance = 10;
+
+    // Choose an ability bucket, then refine with Gaussian noise.
+    var this_rider_ability_average = categorical({
+      ps: [parameter_low_ability_prior,
+           parameter_average_ability_prior,
+           parameter_high_ability_prior],
+      vs: [low_ability_mean,
+           average_ability_mean,
+           high_ability_mean]
+    });
+
+    // Ability cannot be negative.
+    return Math.max(gaussian(this_rider_ability_average,
+                             parameter_intrinsic_ability_variance), 0);
+  });
+
+  // Each snowboarder chooses / exhibits an effort level per heat.
+  // Effort is how hard they push in that specific run.
+  // Units: percentage from 0 to 100 (% of max intensity).
+  // We allow the prior over effort to depend on intrinsic ability:
+  // weaker riders may be more likely to push all-out, very strong riders
+  // can sometimes win with more moderate effort, etc.
+  var effort_in_heat = mem(function({snowboarder, heat}) {
+    var ability = intrinsic_riding_ability({snowboarder: snowboarder});
+
+    // Prior probabilities over low / medium / high effort categories,
+    // conditioned on ability level.
+    var parameter_low_effort_prior =
+        ability > 120 ? 0.2 :         // strong riders sometimes conserve energy
+        ability < 80  ? 0.1 :         // weak riders rarely go low effort
+                        0.15;         // otherwise sometimes lower effort
+
+    var parameter_medium_effort_prior =
+        ability > 120 ? 0.6 :
+        ability < 80  ? 0.4 :
+                        0.5;
+
+    var parameter_high_effort_prior =
+        ability > 120 ? 0.2 :
+        ability < 80  ? 0.5 :
+                        0.35;
+
+    // Representative effort levels (% of max).
+    var low_effort_mean = 40;
+    var medium_effort_mean = 70;
+    var high_effort_mean = 95;
+    var effort_variance = 10;
+
+    var this_rider_effort_average = categorical({
+      ps: [parameter_low_effort_prior,
+           parameter_medium_effort_prior,
+           parameter_high_effort_prior],
+      vs: [low_effort_mean,
+           medium_effort_mean,
+           high_effort_mean]
+    });
+
+    // Actual effort in this heat, clipped to [0, 100]%.
+    return Math.min(Math.max(
+      gaussian(this_rider_effort_average, effort_variance), 0), 100);
+  });
+
+  // Individual performance in a given heat.
+  // Depends causally on intrinsic ability and that heat's effort, plus random noise.
+  // Units: "performance points" (higher = better / faster / cleaner).
+  var individual_performance_in_heat = mem(function({snowboarder, heat}) {
+    var ability = intrinsic_riding_ability({snowboarder: snowboarder});
+    var effort = effort_in_heat({snowboarder: snowboarder, heat: heat});
+
+    // Combine ability and effort. Ability is the main driver; effort modulates it.
+    var base_performance = ability + 0.8 * effort;
+
+    // Random factors: micro-mistakes, line choice variance, interactions, etc.
+    var performance_noise_sd = 15;
+
+    return gaussian(base_performance, performance_noise_sd);
+  });
+
+  // Team performance in a given heat.
+  // For solo heats, the "team" list has one rider.
+  // For team heats, we aggregate individual performances.
+  // Units: same "performance points" as individual_performance_in_heat.
+  var team_performance_in_heat = mem(function({team, heat}) {
+    // Mean performance of riders on the team.
+    var member_performances = map(function(snowboarder) {
+      return individual_performance_in_heat({snowboarder: snowboarder, heat: heat});
+    }, team);
+
+    var base_team_performance = listMean(member_performances);
+
+    // Small team-level noise / synergy term (drafting, coordination, etc.).
+    var team_synergy_sd = 5;
+    var synergy = gaussian(0, team_synergy_sd);
+
+    return base_team_performance + synergy;
+  });
+
+  // Team1 beats Team2 in a heat if its team performance is higher.
+  var beat = function({team1, team2, heat}) {
+    return team_performance_in_heat({team: team1, heat: heat}) >
+           team_performance_in_heat({team: team2, heat: heat});
+  };
+
+  // Convenience: Team1 loses to Team2 if it does not beat Team2.
+  var lost = function({team1, team2, heat}) {
+    return !beat({team1: team1, team2: team2, heat: heat});
+  };
+
+  // Rank a snowboarder out of N random snowboarders based on intrinsic ability.
+  // Returns: how many of the N-1 random others this snowboarder is more able than.
+  var intrinsic_riding_ability_rank = function({snowboarder, out_of_n_snowboarders}) {
+    // Generate out_of_n_snowboarders - 1 random IDs to represent other snowboarders.
+    var random_snowboarder_ids = mapN(function(x) {
+      return uniform(0, 1000);
+    }, out_of_n_snowboarders - 1);
+
+    // Count how many random others this snowboarder beats in intrinsic ability.
+    return sum(map(function(random_id) {
+      return intrinsic_riding_ability({snowboarder: snowboarder}) >
+             intrinsic_riding_ability({snowboarder: random_id});
+    }, random_snowboarder_ids));
+  };
+
+  // Effort percentage in a given heat: directly expose the inferred effort level
+  // on a 0–100% scale.
+  var effort_percentage_in_heat = function({snowboarder, heat}) {
+    return effort_in_heat({snowboarder: snowboarder, heat: heat});
+  };
+
+  // Predict who would win in a future heat and by how much,
+  // represented as the probability (0–1) that Team 2 would win.
+  // We simulate many hypothetical heats with distinct heat IDs to
+  // integrate over future noise in effort and performance.
+  var who_would_win_by_how_much = function({team1, team2, heat}) {
+    // Number of hypothetical future heats to simulate.
+    var num_future_heats_to_simulate = 100;
+
+    // Use random heat IDs larger than the current heat index, so that memoized
+    // per-heat variables (effort, performance) are freshly drawn and do not
+    // conflict with observed heats.
+    var random_future_heat_ids = mapN(function(x) {
+      return uniform(heat + 1, 1000);
+    }, num_future_heats_to_simulate);
+
+    // Count how many simulated heats are won by Team 2 (i.e., Team 1 loses).
+    var simulated_heats_won_by_team_2 = sum(map(function(random_future_heat_id) {
+      return lost({team1: team1, team2: team2, heat: random_future_heat_id});
+    }, random_future_heat_ids));
+
+    // Return probability Team 2 wins (0 = Team1 always wins, 1 = Team2 always wins).
+    return simulated_heats_won_by_team_2 / num_future_heats_to_simulate;
+  };
+
+
+  /////////////////////////////
+  // CONDITIONS
+  /////////////////////////////
+
+  // In the first heat, Kai beat Dylan.
+  condition(beat({team1: ['kai'], team2: ['dylan'], heat: 1}))
+
+  // In the second heat, Kai, Mira, and Zoe beat Dylan, Liam, and Harper.
+  condition(beat({team1: ['kai', 'mira', 'zoe'], team2: ['dylan', 'liam', 'harper'], heat: 2}))
+
+  // In the third heat, Harper beat Mira.
+  condition(beat({team1: ['harper'], team2: ['mira'], heat: 3}))
+
+  // In the fourth heat, Dylan and Harper beat Kai and Zoe.
+  condition(beat({team1: ['dylan', 'harper'], team2: ['kai', 'zoe'], heat: 4}))
+
+
+  /////////////////////////////
+  // QUERIES
+  /////////////////////////////
+
+  // Query 1: Out of 100 random snowboarders, where do you think Kai ranks in terms of intrinsic riding ability?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Harper put into the third heat?
+  // Query 3: In a new heat later this same day between Kai and Mira (Team 1) and Dylan and Harper (Team 2), who would win and by how much?
+  // Query 4: In a new heat later this same day between Zoe (Team 1) and Liam and Harper (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_riding_ability_rank({snowboarder: 'kai', out_of_n_snowboarders: 100}),
+    query2: effort_percentage_in_heat({snowboarder: 'harper', heat: 3}),
+    query3: who_would_win_by_how_much({team1: ['kai', 'mira'], team2: ['dylan', 'harper'], heat: 5}),
+    query4: who_would_win_by_how_much({team1: ['zoe'], team2: ['liam', 'harper'], heat: 6})
+  };
+};
+
+// Now we run the model and collect an estimate of the posterior over query answers.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-27.json', posterior);

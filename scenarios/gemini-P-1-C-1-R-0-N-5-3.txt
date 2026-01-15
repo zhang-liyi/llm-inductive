@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+Athletes are competing in a 7-a-side Soccer tournament. The outcome of each match depends on the average ball control and stamina of the team members, derived from their intrinsic skill and the effort they commit to the match.
+Teams are composed of 7 players.
+The tournament takes place over one day.
+
+CONDITIONS
+In the first match, the team of Jon, Kai, Leo, Max, Nic, Oli, and Pat beat the team of Axel, Ray, Sam, Ted, Uma, Vic, and Wes.
+In the second match, the team of Ray, Sam, Ted, Uma, Vic, Wes, and Pat beat the team of Axel, Jon, Kai, Leo, Max, Nic, and Oli.
+In the third match, the team of Jon, Ray, Kai, Sam, Leo, Ted, and Max lost to the team of Axel, Nic, Uma, Oli, Vic, Pat, and Wes.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Axel ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Pat put into the second match?
+Query 3: In a new match later this same day between the team of Jon, Kai, Leo, Max, Nic, Oli, and Ray (Team 1) and the team of Axel, Sam, Ted, Uma, Vic, Wes, and Pat (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the team of Axel, Jon, Ray, Kai, Sam, Leo, and Ted (Team 1) and the team of Max, Nic, Uma, Oli, Vic, Pat, and Wes (Team 2), who would win and by how much?
+<END_SCENARIO>

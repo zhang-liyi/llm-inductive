@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+The athletes are participating in 8-player Softball scrimmages. The winning team is determined by the average batting and fielding proficiency of the group, based on intrinsic coordination and strength, modulated by the effort exerted during the innings.
+One captain, Maria, keeps her team identical for every scrimmage, while the opposing teams rotate players from the dugout.
+All scrimmages happen on the same field on the same day.
+
+CONDITIONS
+In the first scrimmage, Maria, Ana, Beth, Cara, Dana, Erin, Fran, and Gail lost to Hope, Iris, June, Kara, Lana, Mona, Nina, and Opal.
+In the second scrimmage, Maria, Ana, Beth, Cara, Dana, Erin, Fran, and Gail lost to Hope, Iris, June, Kara, Pia, Quinn, Rose, and Sara.
+In the third scrimmage, Maria, Ana, Beth, Cara, Dana, Erin, Fran, and Gail beat Pia, Quinn, Rose, Sara, Tina, Uma, Vera, and Wendy.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Maria ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Hope put into the first scrimmage?
+Query 3: In a new scrimmage later this same day between Maria, Ana, Beth, Cara, Dana, Erin, Fran, and Gail (Team 1) and Hope, Iris, June, Kara, Lana, Mona, Nina, and Opal (Team 2), who would win and by how much?
+Query 4: In a new scrimmage later this same day between Pia, Quinn, Rose, Sara, Tina, Uma, Vera, and Wendy (Team 1) and Hope, Iris, June, Kara, Lana, Mona, Nina, and Opal (Team 2), who would win and by how much?
+<END_SCENARIO>

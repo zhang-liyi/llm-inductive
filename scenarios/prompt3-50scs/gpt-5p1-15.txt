@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a small handball tournament with mixed teams playing short-sided games. In each game, the team that wins depends on the players’ intrinsic handball skills (such as throwing power, agility, and game sense) and how much effort they decide to put in on that day.
+All matches are played on the same day. Players can appear in different team combinations across matches.
+
+CONDITIONS
+In the first match, Lina, Omar, and Priya beat Ben, Sara, and Leo.
+In the second match, Lina and Omar lost to Ben and Sara.
+In the third match, Priya and Leo beat Omar and Sara.
+
+QUERIES
+Query 1: Out of 100 random handball players, where do you think Lina ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Omar put into the second match?
+Query 3: In a new match later this same day between Lina and Priya (Team 1) and Ben and Leo (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Omar and Sara (Team 1) and Priya and a new player, Maya (Team 2), who would win and by how much?
+<END_SCENARIO>

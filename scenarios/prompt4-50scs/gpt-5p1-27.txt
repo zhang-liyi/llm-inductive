@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, snowboarders are competing in a series of snowboard cross heats. In each heat, the winner is the one or team that finishes ahead, based on intrinsic board control, explosiveness, and decision-making, plus the intensity of effort they bring to that run.  
+Some heats are solo, and some involve three-person teams riding together, with the team’s result based on the combined performance of its riders.  
+All heats occur on the same day.
+
+CONDITIONS  
+In the first heat, Kai beat Dylan.  
+In the second heat, Kai, Mira, and Zoe beat Dylan, Liam, and Harper.  
+In the third heat, Harper beat Mira.  
+In the fourth heat, Dylan and Harper beat Kai and Zoe.
+
+QUERIES  
+Query 1: Out of 100 random snowboarders, where do you think Kai ranks in terms of intrinsic riding ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Harper put into the third heat?  
+Query 3: In a new heat later this same day between Kai and Mira (Team 1) and Dylan and Harper (Team 2), who would win and by how much?  
+Query 4: In a new heat later this same day between Zoe (Team 1) and Liam and Harper (Team 2), who would win and by how much?
+<END_SCENARIO>

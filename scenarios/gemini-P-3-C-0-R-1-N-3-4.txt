@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this competition, athletes play in 5-person volleyball teams (a modified format). The team that wins depends on the effectiveness of their attacks and blocks, based on the athletes' intrinsic jumping ability and timing, modulated by the defensive hustle they put into the match.
+Mia plays on a fixed team called "The Spikers" with teammates Ava, Sophia, Isabella, and Charlotte.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, The Blockers beat The Spikers.
+In the second match, The Setters beat The Spikers.
+In the third match, The Spikers beat The Diggers.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Mia ranks in terms of intrinsic jumping ability and timing?
+Query 2: On a percentage scale from 0 to 100%, how much defensive hustle do you think Mia put into the third match?
+Query 3: In a new match later this same day between The Spikers (Team 1) and The Blockers (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between a team consisting of Mia, Ava, and three players from The Setters (Team 1) and a team consisting of Sophia, Isabella, and three players from The Diggers (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are involved in a series of small-ice hockey scrimmages with 5 skaters per side, along with 1-on-1 shootout duels. The outcome of each contest is determined by each player’s intrinsic hockey ability (skating, puck handling, shooting, goaltending) combined with the effort they put in during that contest.
+Players compete either in 1-on-1 shootouts or in 5-player teams.
+All scrimmages and shootouts take place on the same day.
+
+CONDITIONS
+In the first scrimmage, Omar, Jade, Nolan, Serena, and Victor beat Liam, Carter, Mila, Simon, and Zoe.
+In the second scrimmage, Omar, Jade, Nolan, Serena, and Victor beat Carter, Mila, Simon, Zoe, and Finn.
+In the third duel, Liam beat Carter.
+In the fourth scrimmage, Liam, Mila, Simon, Zoe, and Finn lost to Jade, Nolan, Serena, Victor, and Carter.
+
+QUERIES
+Query 1: Out of 100 random hockey players, where do you think Omar ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Carter put into the third duel?
+Query 3: In a new scrimmage later this same day between Omar, Jade, Nolan, Serena, and Victor (Team 1) and Liam, Carter, Mila, Simon, and Zoe (Team 2), who would win and by how much?
+Query 4: In a new scrimmage later this same day between Liam, Mila, Simon, Zoe, and Finn (Team 1) and Jade, Nolan, Serena, Victor, and Carter (Team 2), who would win and by how much?
+<END_SCENARIO>

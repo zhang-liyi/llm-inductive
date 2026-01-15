@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in Indoor Field Hockey matches. Each side fields 6 players. The outcome is determined by the team's collective tactical awareness and dribbling speed, based on intrinsic talent modulated by the mental and physical effort exerted.
+There are three fixed squads: Red Squad, Blue Squad, and Green Squad. A highly skilled player, Dakota, rotates into the lineups.
+All matches are held consecutively.
+
+CONDITIONS
+In the first match, Red Squad (featuring Dakota) beat Blue Squad (led by Pat).
+In the second match, Green Squad (featuring Dakota) beat Red Squad (led by Lou).
+In the third match, Blue Squad (featuring Dakota) beat Green Squad (led by Sam).
+
+QUERIES
+Query 1: Out of 100 random field hockey players, where do you think Dakota ranks in terms of intrinsic talent?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Sam put into the third match?
+Query 3: In a new match later this same day between Red Squad (featuring Dakota) and Green Squad (led by Sam), who would win and by how much?
+Query 4: In a new match later this same day between Blue Squad (led by Pat) and Red Squad (led by Lou), who would win and by how much?
+<END_SCENARIO>

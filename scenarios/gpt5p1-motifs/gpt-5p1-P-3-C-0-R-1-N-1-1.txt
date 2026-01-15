@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing small-sided 3-a-side soccer matches. The outcome of each match depends on the teams’ overall play, driven by each player’s intrinsic soccer ability (first touch, vision, finishing, defending) and the effort they put into that match.
+Players compete as part of fixed three-player teams, and occasionally in individual contests.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Lara, Hannah, and Brooke beat Priya, Nina, and Zoe.
+In the second match, Marta, Imani, and Chiara beat Priya, Nina, and Zoe.
+In the third match, Priya, Nina, and Zoe beat Marta, Imani, and Chiara.
+In the fourth match, Lara beat Marta.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Priya ranks in terms of intrinsic soccer ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Zoe put into the second match?
+Query 3: In a new match later this same day between Priya, Nina, and Zoe (Team 1) and Lara, Hannah, and Brooke (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Lara, Hannah, and Brooke (Team 1) and Marta, Imani, and Chiara (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,22 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in 8‑a‑side soccer matches and occasional 1‑on‑1 skill contests. The outcome of each contest depends on players’ intrinsic soccer abilities (touch, vision, speed, coordination) together with how much effort they put into that contest.
+Players compete either individually or as part of an 8‑player team.
+All matches take place on the same day.
+
+The Tigers usually consist of Alex, Brooke, Dylan, Erin, Gabe, Hannah, Isaac, and Jenna.
+The Falcons usually consist of Leo, Nora, Owen, Paige, Quinn, Rosa, Tyler, and Victor.
+The Sharks usually consist of Caleb, Dana, Elias, Freya, Grant, Lila, Marco, and Sienna.
+Mia is the only player who moves between teams.
+
+CONDITIONS
+In the first match, Mia joined the Tigers (replacing Jenna), and the Tigers beat the Falcons.
+In the second match, Mia joined the Falcons (replacing Victor), and the Falcons beat the Sharks.
+In a later 1‑on‑1 shooting and dribbling contest, Jenna beat Mia.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Mia ranks in terms of intrinsic soccer ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jenna put into the 1‑on‑1 contest?
+Query 3: In a new 8‑a‑side match later this same day between Mia, Alex, Brooke, Dylan, Erin, Gabe, Hannah, and Isaac (Team 1) and Leo, Nora, Owen, Paige, Quinn, Rosa, Tyler, and Victor (Team 2), who would win and by how much?
+Query 4: In a new 8‑a‑side match later this same day between Jenna, Alex, Brooke, Dylan, Erin, Gabe, Hannah, and Isaac (Team 1) and Mia, Caleb, Dana, Elias, Freya, Grant, Lila, and Marco (Team 2), who would win and by how much?
+<END_SCENARIO>

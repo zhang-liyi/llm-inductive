@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in 8-on-8 soccer matches. The winning team is decided by the total goals scored, which depends on the players' intrinsic skill and speed, modulated by the effort they put into the match.
+Players rotate teams between matches.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, the team of (Han, Jay, Kip, Lee, Max, Noa, Oz, Pax) beat the team of (Luca, Ash, Bax, Cole, Dom, Eli, Fox, Guy).
+In the second match, the team of (Luca, Han, Jay, Kip, Lee, Max, Noa, Oz) beat the team of (Ash, Bax, Cole, Dom, Eli, Fox, Guy, Pax).
+In the third match, the team of (Han, Jay, Kip, Lee, Max, Noa, Oz, Pax) beat the team of (Luca, Ash, Bax, Cole, Dom, Eli, Fox, Guy).
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Luca ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ash put into the second match?
+Query 3: In a new match later this same day between the team of (Luca, Han, Jay, Kip, Lee, Max, Noa, Oz) (Team 1) and the team of (Ash, Bax, Cole, Dom, Eli, Fox, Guy, Pax) (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the team of (Luca, Ash, Bax, Cole, Dom, Eli, Fox, Guy) (Team 1) and the team of (Han, Jay, Kip, Lee, Max, Noa, Oz, Pax) (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 3-on-3 ice hockey scrimmages. In each scrimmage, the team that wins depends on the average skating speed and puck handling of the athletes, based on their intrinsic ability modulated by other factors including how much effort they put in to that scrimmage.
+Athletes compete as a team of three.
+All scrimmages take place on the same day.
+
+CONDITIONS
+In the first scrimmage, Gordie, Mario, and Jaromir beat Wayne, Mark, and Brett.
+In the second scrimmage, Gordie, Wayne, and Mark beat Mario, Jaromir, and Brett.
+In the third scrimmage, Gordie, Brett, and Mark beat Mario, Jaromir, and Wayne.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Gordie ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mario put into the third race?
+Query 3: In a new race later this same day between Gordie and Mario (Team 1) and Wayne and Mark (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Wayne and Brett (Team 1) and Mario and Jaromir (Team 2), who would win and by how much?
+<END_SCENARIO>

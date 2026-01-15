@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of small-sided 4-on-4 soccer matches. In each match, the team that wins depends on their ability to control the ball, move quickly, and finish chances, based on their intrinsic soccer ability and stamina, modulated by how much effort they put in to that match.
+Athletes compete either individually (in 1-on-1 small-sided games) or as a team of four.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Andre, Liam, Noah, and Ava beat Ethan, Mia, Lucas, and Emma.
+In the second match, Andre, Zoe, Oliver, and Sophia beat Liam, Noah, Ava, and Zoe’s usual teammate Jack.
+In the third match, Andre beat Liam in a 1-on-1 game.
+In the fourth match, Ethan, Mia, Lucas, and Emma beat Oliver, Sophia, Jack, and Lily.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Andre ranks in terms of intrinsic soccer ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ethan put into the first match?
+Query 3: In a new match later this same day between Andre, Ethan, Mia, and Lucas (Team 1) and Liam, Noah, Ava, and Zoe (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Oliver, Sophia, Jack, and Lily (Team 1) and Emma, Ethan, Mia, and Lucas (Team 2), who would win and by how much?
+<END_SCENARIO>

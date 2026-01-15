@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in a series of Ultimate Frisbee matches. Each team consists of 7 players. The winning team is determined by the collective speed, throwing accuracy, and defensive agility of the players, modulated by the effort they exert during the match. The teams are fixed throughout the day.
+Liam plays for the "Falcons," and they are playing a series against the "Vipers."
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, the Vipers beat the Falcons.
+In the second match, the Vipers beat the Falcons.
+In the third match, the Falcons beat the Vipers.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Liam ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the third match?
+Query 3: In a new match later this same day between the Falcons (Team 1) and the Vipers (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the Vipers (Team 1) and the Falcons (Team 2), who would win and by how much?
+<END_SCENARIO>

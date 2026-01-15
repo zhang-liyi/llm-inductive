@@ -1,0 +1,127 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+    // BACKGROUND KNOWLEDGE
+    // Intrinsic skill is an attribute of a given player that varies widely from player to player. Let's imagine that players generally fall into unskilled, skilled, or particularly skilled buckets.
+    var intrinsic_skill = mem(function ({player}) {
+      var parameter_low_skill_prior = 0.33;
+      var parameter_average_prior = 0.33;
+      var parameter_high_skill_prior = 0.34;
+
+      // On an arbitrary scale centered around 100.
+      var low_skill_mean = 80; 
+      var average_skill_mean = 100;
+      var high_skill_mean = 140;
+      var parameter_intrinsic_skill_variance = 10;
+
+      var this_player_skill_average = categorical({ps: [parameter_low_skill_prior, parameter_average_prior, parameter_high_skill_prior], 
+      vs: [low_skill_mean, average_skill_mean, high_skill_mean]});
+
+      return Math.max(gaussian(this_player_skill_average ,  parameter_intrinsic_skill_variance), 0);
+    })
+
+    // An athlete's intrinsic skill ranking out of n other players is the number of other players we might expect them to be more skilled than out of N total random players.
+    var intrinsic_skill_rank = function({player, out_of_n_players}) {
+        // Generate out_of_n_players - 1 other random player IDs
+        var random_player_ids = mapN(function(x) {return uniform(0, 1000)}, out_of_n_players - 1)
+        
+        // Total number of random other players this player is more skilled than.
+        return sum(map(
+            function(random_player_id) {
+              return intrinsic_skill({player: player}) > intrinsic_skill({player: random_player_id})}, random_player_ids))
+    }
+    
+    // Effort a player puts into a match can vary. We'll assume that players who are more skilled on average tend to put in more effort, but this can vary.
+    var effort_in_match = mem(function({player, match}) {
+      var player_skill = intrinsic_skill({player: player})
+
+      // Prior that a player puts in low, medium, or high effort given their skill.
+      var parameter_low_effort_prior = 
+          player_skill > 120 ? 0.1 : // Skilled players rarely put in low effort.
+               player_skill < 80 ?  0.6 : // Less skilled players often put in low effort.
+                                                     0.3;  // Otherwise sometimes put in low effort.
+      var parameter_medium_effort_prior = player_skill > 120 ? 0.2 : // Skilled players sometimes put in medium effort.
+               player_skill < 80 ?  0.3 : // Less skilled players sometimes put in medium effort.
+                                                        0.5; // Otherwise usually put in medium effort.
+      var parameter_high_effort_prior = player_skill > 120 ? 0.7 :  // Skilled players often put in high effort.
+               player_skill < 80 ?  0.1 : // Less skilled players rarely put in high effort.
+                                                        0.2; // Otherwise sometimes put in high effort.
+
+      // Effort on a 0-100 scale.
+      var low_effort_average = 30; 
+      var medium_effort_average = 60;
+      var high_effort_average = 90;
+      var effort_variance = 10;
+      
+      // How much effort this player will put in on average, given their skill
+      var this_player_effort_average = categorical({ps: [parameter_low_effort_prior, parameter_medium_effort_prior, parameter_high_effort_prior], 
+      vs: [low_effort_average, medium_effort_average, high_effort_average]});
+
+      return Math.min(Math.max(gaussian(this_player_effort_average, effort_variance), 0), 100)
+    })
+
+    // A player's performance in a match is based on their intrinsic skill and the effort they put into the match.
+    var performance_in_match = function({player, match}) {
+      var player_skill = intrinsic_skill({player: player})
+      var player_effort = effort_in_match({player: player, match: match})
+
+      // Performance is a combination of skill and effort.
+      return player_skill + player_effort;
+    }
+    
+    // A team or player beats another team or player in a match if their overall performance is greater.
+    var beat = function({player1, player2, match}){
+      return performance_in_match({player: player1, match: match}) > performance_in_match({player: player2, match: match})
+    }
+    
+    var beatTeam = function({team1, team2, match}){
+      var team1_performance = sum(map(function(player) { return performance_in_match({player: player, match: match}) }, team1))
+      var team2_performance = sum(map(function(player) { return performance_in_match({player: player, match: match}) }, team2))
+      return team1_performance > team2_performance
+    }
+
+    // To calculate who would win and by how much, we will calculate the likelihood that a team would win over another. 
+    var who_would_win_by_how_much = function({team1, team2, match}) {
+      var num_future_matches_to_simulate = 100;
+      var random_future_match_ids = mapN(function(x) {return uniform(match+1, 1000)}, num_future_matches_to_simulate);
+
+      var simulated_matches_won_by_team_2 = sum(map(
+            function(random_future_match_id) {
+              return !beatTeam({team1: team1, team2: team2, match: random_future_match_id})}, random_future_match_ids))
+
+      return simulated_matches_won_by_team_2 / num_future_matches_to_simulate;
+    }
+
+  // CONDITIONS
+  // In the first match, Chen beat Priya.
+  condition(beat({player1: 'chen', player2: 'priya', match: 1}))
+  // In the second match, Chen and Luis beat Priya and Mei.
+  condition(beatTeam({team1: ['chen', 'luis'], team2: ['priya', 'mei'], match: 2}))
+  // In the third match, Priya and Luis beat Chen and Arjun.
+  condition(beatTeam({team1: ['priya', 'luis'], team2: ['chen', 'arjun'], match: 3}))
+
+  // QUERIES
+  // Query 1: Out of 100 random table tennis players, where do you think Chen ranks in terms of intrinsic table tennis ability?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Luis put into the third match?
+  // Query 3: In a new match later this same day between Chen and Priya (Team 1) and Luis and Mei (Team 2), who would win and by how much?
+  // Query 4: In a new match later this same day between Chen and Mei (Team 1) and Priya and Arjun (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_skill_rank({player: 'chen', out_of_n_players: 100}),
+    query2: effort_in_match({player: 'luis', match: 3}),
+    query3: who_would_win_by_how_much({team1: ['chen', 'priya'], team2: ['luis', 'mei'], match: 4}),
+    query4: who_would_win_by_how_much({team1: ['chen', 'mei'], team2: ['priya', 'arjun'], match: 5})
+  }
+}
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-sports-3.json', posterior);

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee matches played indoors. In each match, the team that wins depends on the score reached, based on the athletes' intrinsic throwing precision and catching speed, modulated by how much effort they put into cutting and defending during that match.
+Athletes compete in fixed teams of 5.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, the Huckers (Alex, Ben, Charlie, Dave, and Evan) beat the Floaters (Felix, George, Harry, Ian, and Jack).
+In the second match, the Cutters (Kyle, Liam, Mike, Noah, and Oliver) beat the Floaters (Felix, George, Harry, Ian, and Jack).
+In the third match, the Handlers (Paul, Quinn, Ryan, Sam, and Tom) beat the Floaters (Felix, George, Harry, Ian, and Jack).
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Felix ranks in terms of intrinsic throwing precision and catching speed?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Felix put into the third match?
+Query 3: In a new match later this same day between the Floaters (Team 1) and the Huckers (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the Floaters (Team 1) and the Cutters (Team 2), who would win and by how much?
+<END_SCENARIO>

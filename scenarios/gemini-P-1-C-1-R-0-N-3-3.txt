@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Soccer matches. In each match, the team that wins depends on the tactical coordination and ball control the athletes are able to execute, based on their intrinsic talent modulated by other factors including how much effort they put in to that match.
+Athletes compete as a team of 5.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Messi, Ronaldo, Neymar, Mbappe, and Salah beat Modric, Kroos, DeBruyne, Kane, and Ethan.
+In the second match, Lewandowski, Haaland, Benzema, Mane, and Son beat Sterling, Grealish, Foden, Mount, and Ethan.
+In the third match, Ethan, Rashford, Sancho, Saka, and Rice lost to Messi, Ronaldo, Lewandowski, Haaland, and Neymar.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Ethan ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ethan put into the third match?
+Query 3: In a new match later this same day between Messi, Ronaldo, Neymar, Lewandowski, and Haaland (Team 1) and Modric, Kroos, DeBruyne, Kane, and Sterling (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Ethan, Grealish, Foden, Mount, and Rashford (Team 1) and Mbappe, Salah, Benzema, Mane, and Son (Team 2), who would win and by how much?
+<END_SCENARIO>

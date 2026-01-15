@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of badminton matches, both doubles and singles. The winner of each match is determined by the players’ intrinsic badminton ability—such as their speed, shot accuracy, and anticipation—combined with how much effort they put into that match.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Arun and Mei beat Lin and Carla.
+In the second match, Arun and Mei beat Jonas and Eva.
+In the third match, Lin and Jonas beat Carla and Eva.
+In the fourth match, Arun beat Lin.
+
+QUERIES
+Query 1: Out of 100 random players, where do you think Arun ranks in terms of intrinsic badminton ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Lin put into the third match?
+Query 3: In a new match later this same day between Arun and Mei (Team 1) and Lin and Jonas (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Carla and Eva (Team 1) and Lin and Jonas (Team 2), who would win and by how much?
+<END_SCENARIO>

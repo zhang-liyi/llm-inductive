@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 4x100m sprint track relays. In each race, the team that wins depends on the average speed with which the athletes are able to run, based on their intrinsic speed modulated by other factors including how much effort they put in to that race.
+Athletes compete as a team of four.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Riley, Kai, Jay, and Leo beat Max, Ben, Ian, and Roy.
+In the second race, Riley, Max, Ben, and Ian beat Kai, Jay, Leo, and Roy.
+In the third race, Riley, Kai, Jay, and Max beat Roy, Ben, Ian, and Leo.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Riley ranks in terms of intrinsic speed?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Roy put into the second race?
+Query 3: In a new race later this same day between Riley, Kai, Jay, and Leo (Team 1) and Max, Ben, Ian, and Roy (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Riley, Max, Ben, and Ian (Team 1) and Kai, Jay, Leo, and Roy (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 5-on-5 ice hockey games (ignoring goalies for simplicity). Each game’s result depends on the skaters’ intrinsic hockey skills—such as skating speed, puck control, passing, and shooting—together with how much effort they put into that particular game.
+Teams are typically fixed groups of five skaters, except for one player, Priya, who joins different combinations of teammates.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Cole, Dylan, Ethan, Finn, and Priya lost to Grant, Hayden, Isaac, Jake, and Kyle.
+In the second game, Cole, Dylan, Ethan, Liam, and Priya lost to Grant, Hayden, Isaac, Jake, and Kyle.
+In the third game, Cole, Dylan, Finn, Liam, and Priya lost to Grant, Hayden, Isaac, Jake, and Kyle.
+
+QUERIES
+Query 1: Out of 100 random ice hockey players, where do you think Priya ranks in terms of intrinsic hockey ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Priya put into the third game?
+Query 3: In a new game later this same day between Cole, Dylan, Ethan, Finn, and Liam (Team 1) and Grant, Hayden, Isaac, Jake, and Kyle (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Dylan, Ethan, Finn, Liam, and Priya (Team 1) and Grant, Hayden, Isaac, Jake, and Mason (Team 2), who would win and by how much?
+<END_SCENARIO>

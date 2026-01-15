@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of field hockey matches played in a 6-a-side format. In each match, the team that wins depends on the tactical positioning and stick work of the athletes, based on their intrinsic skill modulated by other factors including how much effort they put into that match.
+Athletes compete as part of a team.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Avery and the Strikers lost to the Defenders.
+In the second match, Avery and the Defenders lost to the Strikers.
+In the third match, Avery and the Sweepers lost to the Keepers.
+In the fourth match, Avery and the Keepers beat the Sweepers.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Avery ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think the Keepers put into the fourth match?
+Query 3: In a new match later this same day between the Strikers (Team 1) and the Sweepers (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the Defenders (Team 1) and the Keepers (Team 2), who would win and by how much?
+<END_SCENARIO>

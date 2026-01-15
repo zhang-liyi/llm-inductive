@@ -1,0 +1,179 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+
+  //////////////////////////////
+  // BACKGROUND KNOWLEDGE
+  //////////////////////////////
+
+  // Each skier has a stable intrinsic "strength and skill" level for this day.
+  // Units: arbitrary skill points on roughly a 0–100 scale.
+  var intrinsic_strength_and_skill = mem(function({skier}) {
+    var low_skill_mean = 40;
+    var average_skill_mean = 60;
+    var high_skill_mean = 80;
+    var parameter_low_skill_prior = 0.3;
+    var parameter_average_prior = 0.4;
+    var parameter_high_skill_prior = 0.3;
+    var parameter_intrinsic_skill_variance = 10;
+
+    var bucket_mean = categorical({
+      ps: [parameter_low_skill_prior, parameter_average_prior, parameter_high_skill_prior],
+      vs: [low_skill_mean, average_skill_mean, high_skill_mean]
+    });
+
+    var raw_skill = gaussian(bucket_mean, parameter_intrinsic_skill_variance);
+    return Math.min(Math.max(raw_skill, 0), 100);
+  });
+
+  // Run conditions shared by all skiers in the same run.
+  // We summarize conditions as the base time (in seconds) an average skier
+  // at average effort would take on that run.
+  // Units: seconds.
+  var run_conditions = mem(function({run}) {
+    var base_time_mean = 50;      // typical slalom base time (seconds)
+    var base_time_sd = 3;         // variability in course difficulty
+    var raw_time = gaussian(base_time_mean, base_time_sd);
+    return Math.max(raw_time, 30); // avoid unrealistically short courses
+  });
+
+  // Effort and focus a skier puts into a specific run.
+  // Units: proportion from 0.0 (no effort) to 1.0 (maximal effort).
+  var effort_in_run = mem(function({skier, run}) {
+    var skill = intrinsic_strength_and_skill({skier: skier});
+    // More skilled skiers are slightly more likely to sustain higher effort.
+    var skill_centered = (skill - 60) / 40; // roughly in [-1, +1] for most
+    var base_effort_mean = 0.75;
+    var mean_effort = base_effort_mean + 0.05 * skill_centered;
+    var clipped_mean_effort = Math.min(Math.max(mean_effort, 0.4), 0.98);
+    var raw_effort = gaussian(clipped_mean_effort, 0.1);
+    return Math.min(Math.max(raw_effort, 0), 1);
+  });
+
+  // Time it takes a skier to complete the run.
+  // Depends on intrinsic strength and skill, effort in that run, and run conditions.
+  // Units: seconds (lower is better).
+  var slalom_time_in_run = function({skier, run}) {
+    var skill = intrinsic_strength_and_skill({skier: skier});
+    var effort = effort_in_run({skier: skier, run: run});
+    var base_time = run_conditions({run: run});
+
+    // Center skill around 60; each point above 60 reduces time a bit.
+    var skill_centered = skill - 60;
+    var alpha_skill = 0.06;  // seconds saved per skill point above 60
+    var beta_effort = 3.0;   // seconds saved per +1.0 effort above 0.75
+
+    var mean_time = base_time
+                    - alpha_skill * skill_centered
+                    - beta_effort * (effort - 0.75);
+
+    var raw_time = gaussian(mean_time, 0.4); // residual stochasticity in performance
+    return Math.max(raw_time, 10); // enforce a reasonable lower bound
+  };
+
+  //////////////////////////////
+  // OUTCOME PREDICATES
+  //////////////////////////////
+
+  // skier1 beats skier2 in a run if skier1's time is strictly less than skier2's time.
+  var beat = function({skier1, skier2, run}) {
+    return slalom_time_in_run({skier: skier1, run: run}) <
+           slalom_time_in_run({skier: skier2, run: run});
+  };
+
+  // skier1 loses to skier2 if they do not beat them (ties have ~0 probability).
+  var lost = function({skier1, skier2, run}) {
+    return !beat({skier1: skier1, skier2: skier2, run: run});
+  };
+
+  //////////////////////////////
+  // DERIVED QUANTITIES / QUERIES
+  //////////////////////////////
+
+  // Rank a skier's intrinsic strength and skill relative to a sample of other random skiers.
+  // Returns: number of other skiers (out of out_of_n_skiers - 1) this skier is more skilled than.
+  var intrinsic_strength_and_skill_rank = function({skier, out_of_n_skiers}) {
+    var this_skill = intrinsic_strength_and_skill({skier: skier});
+    var random_skier_ids = mapN(
+      function(i) { return uniform(0, 1000); },
+      out_of_n_skiers - 1
+    );
+    return sum(map(
+      function(random_id) {
+        return this_skill > intrinsic_strength_and_skill({skier: random_id});
+      },
+      random_skier_ids
+    ));
+  };
+
+  // Effort percentage in a given run: map effort proportion [0,1] to [0,100].
+  var effort_percentage_in_run = function({skier, run}) {
+    return 100 * effort_in_run({skier: skier, run: run});
+  };
+
+  // For a hypothetical new run, compute how likely skier2 is to win.
+  // We simulate many possible future runs (with new run IDs, hence new conditions and efforts),
+  // and return the fraction of simulations in which skier1 loses to skier2.
+  // Interpretation: 0 = skier1 almost certainly wins, 1 = skier2 almost certainly wins.
+  var who_would_win_by_how_much = function({skier1, skier2, run}) {
+    var num_future_runs_to_simulate = 100;
+    var random_future_run_ids = mapN(
+      function(i) { return uniform(run + 1, 1000); },
+      num_future_runs_to_simulate
+    );
+
+    var simulated_runs_won_by_skier2 = sum(map(
+      function(random_future_run_id) {
+        return lost({skier1: skier1, skier2: skier2, run: random_future_run_id});
+      },
+      random_future_run_ids
+    ));
+
+    return simulated_runs_won_by_skier2 / num_future_runs_to_simulate;
+  };
+
+  //////////////////////////////
+  // CONDITIONS
+  //////////////////////////////
+
+  // In the first run, Lara beat Mika.
+  condition(beat({skier1: 'lara', skier2: 'mika', run: 1}));
+
+  // In the second run, Jonas beat Lara.
+  condition(beat({skier1: 'jonas', skier2: 'lara', run: 2}));
+
+  // In the third run, Mika beat Petra.
+  condition(beat({skier1: 'mika', skier2: 'petra', run: 3}));
+
+  // In the fourth run, Jonas lost to Petra.
+  condition(lost({skier1: 'jonas', skier2: 'petra', run: 4}));
+
+  //////////////////////////////
+  // QUERIES (RETURN OBJECT)
+  //////////////////////////////
+
+  // Query 1: Out of 100 random alpine skiers, where do you think Lara ranks in terms of intrinsic strength and skill?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jonas put into the fourth run?
+  // Query 3: In a new run later this same day between Lara and Petra, who would win and by how much?
+  // Query 4: In a new run later this same day between Mika and Jonas, who would win and by how much?
+  return {
+    query1: intrinsic_strength_and_skill_rank({skier: 'lara', out_of_n_skiers: 100}),
+    query2: effort_percentage_in_run({skier: 'jonas', run: 4}),
+    query3: who_would_win_by_how_much({skier1: 'lara', skier2: 'petra', run: 5}),
+    query4: who_would_win_by_how_much({skier1: 'mika', skier2: 'jonas', run: 6})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-25.json', posterior);

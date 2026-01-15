@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a series of beach volleyball games. In each game, the result depends on each player’s intrinsic volleyball ability (such as serving, passing, setting, attacking, and reading the play) combined with how much effort they put into that specific game.
+All games are played as doubles on the same day.
+
+CONDITIONS
+In the first game, Lina and Sara beat Mia and Chloe.
+In the second game, Lina and Emma beat Mia and Chloe.
+In the third game, Lina and Nora beat Sara and Emma.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Lina ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Sara put into the third game?
+Query 3: In a new game later this same day between Lina and Chloe (Team 1) and Mia and Emma (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Sara and Emma (Team 1) and Mia and Nora (Team 2), who would win and by how much?
+<END_SCENARIO>

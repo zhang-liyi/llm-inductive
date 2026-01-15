@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 4-on-4 Ultimate Frisbee games. In each game, the team that wins depends on how well the players can run, cut, and throw accurately, based on their intrinsic Ultimate Frisbee ability and endurance, modulated by how much effort they put in to that game.
+Athletes compete either individually in 1-on-1 throwing and cutting games, or as a team of four.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Tariq, Alex, Jamie, and Rowan beat Blake, Devon, Morgan, and Quinn.
+In the second game, Tariq, Blake, Sasha, and Taylor beat Alex, Jamie, Rowan, and Casey.
+In the third game, Tariq beat Alex in a 1-on-1 game.
+In the fourth game, Blake, Devon, Morgan, and Quinn beat Sasha, Taylor, Jordan, and Reese.
+
+QUERIES
+Query 1: Out of 100 random Ultimate Frisbee players, where do you think Tariq ranks in terms of intrinsic Ultimate Frisbee ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Alex put into the second game?
+Query 3: In a new game later this same day between Tariq, Blake, Devon, and Morgan (Team 1) and Alex, Jamie, Rowan, and Casey (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Sasha, Taylor, Jordan, and Reese (Team 1) and Blake, Devon, Morgan, and Quinn (Team 2), who would win and by how much?
+<END_SCENARIO>

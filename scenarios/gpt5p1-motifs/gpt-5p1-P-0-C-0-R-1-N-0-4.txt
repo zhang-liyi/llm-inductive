@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in table tennis, playing both doubles and occasional singles matches. The outcome of each match depends on the players’ intrinsic table tennis ability (spin control, reaction speed, consistency) and the amount of effort and focus they bring to that match.  
+Doubles matches are 2-on-2, and each player keeps the same doubles partner throughout the event; some players also play 1-on-1 singles matches.  
+All matches occur on the same day, with intrinsic ability fixed and effort varying by match.
+
+CONDITIONS
+In the first doubles match, Hannah and Lucy beat Emma and Chloe.  
+In the second doubles match, Hannah and Lucy beat Mia and Zoe.  
+In the third match, a singles match, Hannah beat Emma.  
+In the fourth doubles match, Mia and Zoe beat Emma and Chloe.
+
+QUERIES
+Query 1: Out of 100 random table tennis players, where do you think Hannah ranks in terms of intrinsic skill?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Emma put into the third match?  
+Query 3: In a new doubles match later this same day between Hannah and Lucy (Team 1) and Mia and Zoe (Team 2), who would win and by how much?  
+Query 4: In a new doubles match later this same day between Emma and Chloe (Team 1) and Mia and Zoe (Team 2), who would win and by how much?
+<END_SCENARIO>

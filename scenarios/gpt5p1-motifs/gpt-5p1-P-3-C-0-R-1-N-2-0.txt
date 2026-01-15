@@ -1,0 +1,20 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 4-on-4 half-court basketball games. In each game, the team that wins depends on how well the players shoot, defend, and move, which is determined by their intrinsic basketball ability combined with how much effort they put into that particular game. All games take place on the same day. Teams are fixed and always use the same four players when they play together.
+
+CONDITIONS
+Team Orion consists of Lena, Priya, Carlos, and Ethan.
+Team Blaze consists of Mia, Jordan, Tyler, and Zoe.
+Team Storm consists of Noah, Ava, Lucas, and Grace.
+
+In the first game, Team Blaze beat Team Orion.
+In the second game, Team Storm beat Team Orion.
+In the third game, Team Orion beat Team Blaze.
+In the fourth game, Team Storm beat Team Blaze.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Lena ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mia put into the third game?
+Query 3: In a new game later this same day between Lena, Priya, Carlos, and Ethan (Team 1) and Noah, Ava, Lucas, and Grace (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Mia, Jordan, Tyler, and Zoe (Team 1) and a new team of four players, Harper, Quinn, Riley, and Cole (Team 2), who would win and by how much?
+<END_SCENARIO>

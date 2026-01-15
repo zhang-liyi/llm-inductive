@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of 4-on-4 half-court basketball games and occasional 1-on-1 games. In each game, the team that wins depends on the players’ intrinsic basketball ability (shooting, speed, decision-making), modulated by how much effort they put in on that day.  
+All games take place on the same day.  
+
+CONDITIONS  
+In the first game, Ava beat Lucas.  
+In the second game, Lucas, Marco, Nina, and Olivia lost to Ava, Ben, Cara, and Diego.  
+In the third game, Lucas, Marco, Nina, and Olivia lost to Ben, Cara, Diego, and Emma.  
+
+QUERIES  
+Query 1: Out of 100 random basketball players, where do you think Ava ranks in terms of intrinsic basketball ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Olivia put into the third game?  
+Query 3: In a new 4-on-4 game later this same day between Ava, Ben, Cara, and Emma (Team 1) and Lucas, Marco, Nina, and Olivia (Team 2), who would win and by how much?  
+Query 4: In a new 4-on-4 game later this same day between Diego, Emma, Nina, and Olivia (Team 1) and Ben, Cara, Marco, and Lucas (Team 2), who would win and by how much?  
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a local ultimate frisbee tournament. Each team plays with 9 athletes on the field. The outcome of each game depends on the players’ intrinsic throwing, catching, and running ability, as well as the effort they put in.
+Most players are on stable squads: Aurora, Blitz, and Cyclones. Marcus is a flexible player who sometimes joins different teams. Athletes can also compete in individual one‑on‑one cutting and marking drills.
+All contests occur on the same day.
+
+CONDITIONS
+In the first game, Aurora with Marcus in the lineup lost to Blitz.
+In the second game, Cyclones with Marcus in the lineup lost to Aurora’s regular lineup.
+In the third game, Blitz beat Cyclones using their regular squads without Marcus.
+In a one‑on‑one cutting drill, Marcus lost to Jonah from Aurora.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Marcus ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Marcus put into the first game?
+Query 3: In a new game later this same day between Blitz and Aurora with Marcus added to Aurora, who would win and by how much?
+Query 4: In a new game later this same day between Blitz and Cyclones with Marcus added to Cyclones, who would win and by how much?
+<END_SCENARIO>

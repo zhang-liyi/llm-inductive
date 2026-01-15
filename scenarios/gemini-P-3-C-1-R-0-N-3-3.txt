@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Soccer games (5-a-side). In each game, the team that wins depends on the average tactical awareness and ball control of the athletes, based on their intrinsic skill modulated by other factors including how much effort they put into that game.
+Athletes compete as a team of 5.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Mia, Ava, Zoe, Lily, and Ella beat Ruby, Grace, Chloe, Sophie, and Emily.
+In the second game, Ruby, Mia, Ava, Zoe, and Lily beat Grace, Chloe, Sophie, Emily, and Ella.
+In the third game, Grace, Chloe, Sophie, Emily, and Ella beat Ruby, Mia, Ava, Zoe, and Lily.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Ruby ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ruby put into the second game?
+Query 3: In a new game later this same day between Ruby, Mia, Ava, Zoe, and Grace (Team 1) and Lily, Ella, Chloe, Sophie, and Emily (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Ruby, Grace, Chloe, Sophie, and Emily (Team 1) and Mia, Ava, Zoe, Lily, and Ella (Team 2), who would win and by how much?
+<END_SCENARIO>

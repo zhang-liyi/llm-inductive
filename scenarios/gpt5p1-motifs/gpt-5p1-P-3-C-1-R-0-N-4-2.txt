@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of basketball games. Each game’s outcome depends on the players’ intrinsic basketball abilities (such as shooting accuracy, quickness, and ball-handling) along with the effort they put into that game.
+Athletes compete either individually or in teams of six.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Brooke beat Mateo.
+In the second game, Brooke, Grace, Hugo, Isla, Jack, and Kiara beat Mateo, Aiden, Chloe, Dylan, Elise, and Finn.
+In the third game, Brooke, Aiden, Chloe, Dylan, Elise, and Finn beat Mateo, Grace, Hugo, Liam, Maya, and Noah.
+In the fourth game, Mateo, Isla, Jack, Kiara, Owen, and Piper beat Brooke, Liam, Maya, Noah, Quinn, and Riley.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Mateo ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Brooke put into the first game?
+Query 3: In a new game later this same day between Mateo, Grace, Hugo, Quinn, Riley, and Sofia (Team 1) and Brooke, Aiden, Chloe, Dylan, Elise, and Finn (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Isla, Jack, Kiara, Liam, Maya, and Noah (Team 1) and Owen, Piper, Quinn, Riley, Aiden, and Chloe (Team 2), who would win and by how much?
+<END_SCENARIO>

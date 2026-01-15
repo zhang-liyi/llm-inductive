@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a 2-on-2 half-court basketball series. Each game’s outcome is determined by the players’ intrinsic basketball ability (such as shooting accuracy, ball handling, and defensive instincts) combined with how much effort they invest in that game. Teams with higher overall intrinsic ability and effort perform better.
+All games are played on the same day.
+Players always compete in fixed pairs: Zoe and Caleb form one team, Hannah and Miguel form another, and Iris and Tom form a third.
+
+CONDITIONS
+In the first game, Zoe and Caleb beat Hannah and Miguel.
+In the second game, Iris and Tom beat Hannah and Miguel.
+In the third game, Zoe and Caleb beat Iris and Tom.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Zoe ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Hannah put into the second game?
+Query 3: In a new 2-on-2 game later this same day between Zoe and Caleb versus Hannah and Miguel, who would win and by how much?
+Query 4: In a new 2-on-2 game later this same day between Iris and Tom versus Hannah and Miguel, who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of small-sided soccer matches. In each match, the team that wins depends on how effectively the players control the ball, move off the ball, and finish chances, based on their intrinsic soccer ability and how much effort they put in that match.
+Players compete either individually (in short skill duels) or in teams of eight.
+All matches take place on the same day.
+
+CONDITIONS
+In the first duel, Jordan lost to Alex.
+In the second match, Jordan, Blake, Casey, Erin, Felix, Grace, Hugo, and Isaac lost to Alex, Devon, Jamie, Kai, Luna, Maya, Noah, and Owen.
+In the third match, Jordan, Devon, Grace, Jamie, Kai, Luna, Priya, and Quinn lost to Alex, Blake, Casey, Erin, Felix, Hugo, Isaac, and Riley.
+
+QUERIES
+Query 1: Out of 100 random players, where do you think Jordan ranks in terms of intrinsic soccer ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jordan put into the third match?
+Query 3: In a new match later this same day between Jordan, Blake, Devon, Grace, Kai, Priya, Riley, and Taylor (Team 1) and Alex, Casey, Erin, Felix, Hugo, Isaac, Luna, and Owen (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Blake, Casey, Maya, Noah, Quinn, Sam, Taylor, and Willow (Team 1) and Devon, Erin, Felix, Grace, Hugo, Isaac, Jamie, and Zara (Team 2), who would win and by how much?
+<END_SCENARIO>

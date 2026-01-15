@@ -1,0 +1,20 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, three fixed teams of five players are competing in a series of volleyball matches. Results depend on each player’s intrinsic serving consistency, jumping ability, reflexes, and court awareness, as well as the level of effort they apply in each rally over the course of the match. The same five players always stay together on their team.
+Team Horizon: Luca, Aaron, Benji, Chen, Diego.
+Team Summit: Rafa, Silas, Tom, Victor, Wyatt.
+Team River: Felix, Gabe, Ian, Jonah, Kai.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Team Horizon beat Team Summit.
+In the second match, Team Horizon beat Team River.
+In the third match, Team Summit beat Team River.
+In the fourth match, Team Horizon beat Team Summit again.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Luca ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Victor put into the third match?
+Query 3: In a new match later this same day between Team Horizon (Luca, Aaron, Benji, Chen, Diego) and Team River (Felix, Gabe, Ian, Jonah, Kai), who would win and by how much?
+Query 4: In a new match later this same day between Team Summit (Rafa, Silas, Tom, Victor, Wyatt) and Team River (Felix, Gabe, Ian, Jonah, Kai), who would win and by how much?
+<END_SCENARIO>

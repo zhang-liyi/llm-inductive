@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of 5-on-5 ultimate frisbee games, with occasional individual throwing contests. Game outcomes depend on the players’ intrinsic sprint speed, catching reliability, throwing accuracy, endurance, and how much effort they put into that game.
+Athletes compete either individually or as a team of five.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Miles, Zoe, Arjun, Tessa, and Blake beat Keira, Quinn, Ravi, Sienna, and Logan.
+In the second game, Keira, Miles, Ravi, Harper, and Finn lost to Zoe, Arjun, Tessa, Blake, and Quinn.
+In the third game, Miles, Arjun, Tessa, Quinn, and Logan beat Keira, Zoe, Blake, Sienna, and Harper.
+In a throwing accuracy contest, Quinn beat Keira.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Miles ranks in terms of intrinsic playing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Keira put into the third game?
+Query 3: In a new game later this same day between Keira, Miles, Zoe, Quinn, and Harper (Team 1) and Arjun, Tessa, Blake, Ravi, and Logan (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Keira, Arjun, Sienna, Ravi, and Finn (Team 1) and Miles, Zoe, Tessa, Blake, and Quinn (Team 2), who would win and by how much?
+<END_SCENARIO>

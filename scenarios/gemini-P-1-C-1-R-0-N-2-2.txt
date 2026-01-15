@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of small-sided Soccer matches. In each match, the team that wins depends on the goal differential, based on the athletes' intrinsic ball control and tactical awareness modulated by other factors including how much effort they put into that match.
+Athletes compete either individually (in a 1v1 drill) or as a team of 4.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Kendall lost to Dakota.
+In the second match, Dakota, Rowan, Finley, and Emerson beat Kendall, Hayden, Sawyer, and Phoenix.
+In the third match, Kendall, Dakota, Finley, and Phoenix lost to Rowan, Emerson, Hayden, and Sawyer.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Kendall ranks in terms of intrinsic ball control and tactical awareness?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Dakota put into the third match?
+Query 3: In a new match later this same day between Kendall, Hayden, Sawyer, and Phoenix (Team 1) and Dakota, Rowan, Finley, and Emerson (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Kendall, Dakota, Rowan, and Finley (Team 1) and Emerson, Hayden, Sawyer, and Phoenix (Team 2), who would win and by how much?
+<END_SCENARIO>

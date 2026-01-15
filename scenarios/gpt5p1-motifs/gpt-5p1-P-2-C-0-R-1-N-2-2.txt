@@ -1,0 +1,21 @@
+<START_SCENARIO>
+BACKGROUND
+In this small‑sided soccer event, players compete in 4‑a‑side matches on a reduced field, as well as in individual shooting contests. The outcome in each contest depends on each player's intrinsic soccer ability, combined with how much effort they put into that contest.
+Players compete either individually or in fixed teams of four.
+Each player belongs to exactly one fixed 4‑player team, and team lineups do not change.
+All contests take place on the same day.
+Team Phoenix: Owen, Luka, Mateo, Ben.
+Team Titans: Arjun, Diego, Felix, Kai.
+Team Raptors: Sam, Julian, Marco, Theo.
+
+CONDITIONS
+In a shooting contest, Owen beat Arjun.
+In the first 4‑a‑side match, Phoenix beat Titans.
+In the second 4‑a‑side match, Phoenix lost to Raptors.
+
+QUERIES
+Query 1: Out of 100 random amateur soccer players, where do you think Owen ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Theo put into the second match?
+Query 3: In a new 4‑a‑side match later this same day between Phoenix and Raptors, who would win and by how much?
+Query 4: In a new 4‑a‑side match later this same day between Titans and Raptors, who would win and by how much?
+<END_SCENARIO>

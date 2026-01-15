@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of rowing races. In each race, the winning boat is determined by the rowers’ intrinsic rowing power and technique, modulated by how much effort they sustain over the course.
+Rowers compete either individually in single sculls or in crews of eight.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Aaron, Blake, Chris, Dylan, Evan, Felix, Gavin, and Hayden (Crew Alpha) beat Ian, Jacob, Kevin, Logan, Miles, Noah, Owen, and Parker (Crew Beta).
+In the second race, Priya, Aaron, Blake, Chris, Dylan, Evan, Felix, and Gavin lost to Ian, Jacob, Kevin, Logan, Miles, Noah, Owen, and Parker.
+In the third race, Priya, Ian, Jacob, Kevin, Logan, Miles, Noah, and Owen lost to Aaron, Blake, Chris, Dylan, Evan, Felix, Gavin, and Hayden.
+In a single‑scull race later that day, Priya lost to Logan.
+
+QUERIES
+Query 1: Out of 100 random rowers, where do you think Logan ranks in terms of intrinsic strength and technique?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Priya put into the third race?
+Query 3: In a new race later this same day between Priya, Aaron, Blake, Chris, Dylan, Evan, Felix, and Gavin (Crew 1) and Ian, Jacob, Kevin, Logan, Miles, Noah, Owen, and Parker (Crew 2), who would win and by how much?
+Query 4: In a new race later this same day between Priya, Ian, Jacob, Kevin, Logan, Miles, Noah, and Owen (Crew 1) and Aaron, Blake, Chris, Dylan, Evan, Felix, Gavin, and Hayden (Crew 2), who would win and by how much?
+<END_SCENARIO>

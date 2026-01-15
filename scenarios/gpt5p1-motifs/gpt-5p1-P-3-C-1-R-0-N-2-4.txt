@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the swimmers are competing in individual races and four-person relays. Each race is decided by the swimmers’ intrinsic speed and endurance in the water, together with how much effort they put into that race.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Chloe lost to Hannah.
+In the second race, Chloe, Maya, Lila, and Erin lost to Hannah, Zoe, Nina, and Kate.
+In the third race, Chloe, Zoe, Lila, and Tom lost to Hannah, Maya, Nina, and Erin.
+In the fourth race, Chloe, Nina, Kate, and Tom beat Hannah, Zoe, Maya, and Lila.
+
+QUERIES
+Query 1: Out of 100 random swimmers, where do you think Chloe ranks in terms of intrinsic swimming ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Hannah put into the fourth race?
+Query 3: In a new race later this same day between Chloe, Hannah, Maya, and Tom (Team 1) and Zoe, Nina, Lila, and Erin (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Chloe, Zoe, Nina, and Erin (Team 1) and Hannah, Maya, Lila, and Kate (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this tournament, teams are playing 4-on-4 ultimate frisbee games. In each game, the winning team is determined by the players’ intrinsic ultimate skills (such as throwing accuracy, catching ability, and speed) together with how much effort they put in during that game.
+All games occur on the same day.
+Each player is assigned to a fixed team of four.
+
+CONDITIONS
+In the first game, Malik’s team (Malik, Jonah, Felix, and Aaron) beat Devon’s team (Devon, Lucas, Reid, and Shane).
+In the second game, Malik’s team beat Rowan’s team (Rowan, Cole, Miles, and Parker).
+In the third game, Devon’s team beat Rowan’s team.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Malik ranks in terms of intrinsic ultimate ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Devon put into the third game?
+Query 3: In a new game later this same day between Malik’s team and Devon’s team, who would win and by how much?
+Query 4: In a new game later this same day between Devon’s team and Rowan’s team, who would win and by how much?
+<END_SCENARIO>

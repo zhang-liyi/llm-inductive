@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are playing a series of 7-player basketball scrimmages. The result of each game depends on the players’ intrinsic basketball ability (including shooting accuracy, decision-making, and athleticism) and the amount of effort they put into that game.  
+Players compete either one-on-one or as part of a 7-player team.  
+All games take place on the same day.
+
+CONDITIONS  
+In the first game, Marco, Julian, Nate, Eli, Carter, Damon, and Theo beat Ryan, Malik, Jorge, Sam, Andre, Felix, and Colin.  
+In the second game, Marco, Ryan, Felix, Owen, Tyler, Grant, and Leo beat Julian, Malik, Jorge, Sam, Andre, Damon, and Theo.  
+In the third game, Marco beat Julian in a one-on-one game.  
+In the fourth game, Marco, Malik, Andre, Colin, Damon, Owen, and Carter beat Ryan, Julian, Jorge, Sam, Felix, Grant, and Theo.
+
+QUERIES  
+Query 1: Out of 100 random basketball players, where do you think Marco ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Julian put into the third game?  
+Query 3: In a new 7-player game later this same day between Marco, Julian, Sam, Felix, Theo, Tyler, and Nate (Team 1) and Ryan, Malik, Jorge, Andre, Damon, Grant, and Colin (Team 2), who would win and by how much?  
+Query 4: In a new 7-player game later this same day between Marco, Ryan, Jorge, Carter, Owen, Leo, and Theo (Team 1) and Julian, Malik, Sam, Andre, Damon, Grant, and Nate (Team 2), who would win and by how much?  
+<END_SCENARIO>

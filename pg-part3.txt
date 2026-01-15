@@ -213,7 +213,7 @@ var model = function() {
   }
 }
 // Now we run the model and collect an estimate.
-var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+var posterior = Infer({model: model, method: "rejection", samples: 10000});
 <END_WEBPPL_MODEL>
 
 Now, let's consider a new example. Write code to model the following scenario.
@@ -231,7 +231,7 @@ Make sure that any function that is referenced is also defined.
 Functions should relate to each other -- think about the CAUSAL STRUCTURE of the scenario and make sure the code reflects the dependencies between variables appropriately. 
 Consider the concept trace provided when definining functions, and which functions should depend on other functions.
 
-Follow the format in the prompts.
+Follow the format in the prompts. Follow the designs of the example program as much as possible, although you may change aspects of the code if the scenario is different enough. In particular, pay attention to the part of the example program where it uses 3 categories for effort in match prior and how each category depends on intrinsic strengths.
 
 Be sure to copy each already translated condition and query into your model, with the original scenario text as a comment, like in the examples.
 The comments should have the exact text of each sentence, followed by a single condition.

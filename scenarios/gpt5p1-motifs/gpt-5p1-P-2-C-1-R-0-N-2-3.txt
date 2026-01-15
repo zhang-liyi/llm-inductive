@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of half‑court basketball games. The result of each game depends on the players’ intrinsic basketball ability (shooting, ball handling, defense) and on how much effort they put into that game.  
+Players compete either in 1‑on‑1 duels or in 4‑player teams.  
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Darius, Malik, Owen, and Kai beat Jonah, Reed, Tyler, and Andre.  
+In the second game, Darius beat Reed.  
+In the third game, Jonah, Malik, Tyler, and Ava beat Darius, Owen, Reed, and Chloe.  
+In the fourth game, Darius, Andre, Ava, and Kai beat Jonah, Malik, Tyler, and Chloe.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Darius ranks in terms of intrinsic basketball ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jonah put into the third game?  
+Query 3: In a new game later this same day between Darius, Malik, Chloe, and Tyler (Team 1) and Jonah, Owen, Andre, and Ava (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Darius, Reed, Kai, and Andre (Team 1) and Malik, Jonah, Owen, and Tyler (Team 2), who would win and by how much?
+<END_SCENARIO>

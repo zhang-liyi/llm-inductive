@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ice Hockey games played without goalies (pond hockey style). In each game, the team that wins depends on the goals scored, based on the athletes' intrinsic skating speed and puck handling, modulated by how much effort they put into checking and positioning during that game.
+Athletes compete in fixed teams of 5.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the Maple Leafs (Auston, Mitch, John, William, and Morgan) beat the Pylons (Gordon, Ed, Edd, Eddy, and Frank).
+In the second game, the Oilers (Connor, Leon, Zach, Ryan, and Evan) beat the Pylons (Gordon, Ed, Edd, Eddy, and Frank).
+In the third game, the Bruins (David, Brad, Charlie, Hampus, and Jeremy) beat the Pylons (Gordon, Ed, Edd, Eddy, and Frank).
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Gordon ranks in terms of intrinsic skating speed and puck handling?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Gordon put into the third game?
+Query 3: In a new game later this same day between the Pylons (Team 1) and the Maple Leafs (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between the Pylons (Team 1) and the Oilers (Team 2), who would win and by how much?
+<END_SCENARIO>

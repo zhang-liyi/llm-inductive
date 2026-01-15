@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of seven-a-side handball matches. The winning team in each match is determined by the combination of the players’ intrinsic handball ability and the effort they invest in that particular match.
+All matches occur on the same day, with players rotating across different lineups.
+
+CONDITIONS
+In the first match, Anja, Lena, Mia, Jonas, Erik, Pavel, and Rohan beat Priya, Arun, Kavya, Leon, Mira, Stefan, and Yuki.
+In the second match, Arun, Kavya, Leon, Mira, Stefan, Yuki, and Tobias beat Priya, Anja, Lena, Mia, Jonas, Erik, and Farid.
+In the third match, Priya, Arun, Anja, Jonas, Rohan, Stefan, and Farid beat Lena, Mia, Leon, Mira, Pavel, Yuki, and Tobias.
+
+QUERIES
+Query 1: Out of 100 random handball players, where do you think Priya ranks in terms of intrinsic handball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Arun put into the third match?
+Query 3: In a new match later this same day between Priya, Lena, Mia, Pavel, Rohan, Yuki, and Farid (Team 1) and Arun, Kavya, Leon, Mira, Jonas, Erik, and Tobias (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Anja, Jonas, Stefan, and four other similarly skilled players (Team 1) and Lena, Mia, Pavel, and four other similarly skilled players (Team 2), who would win and by how much?
+<END_SCENARIO>

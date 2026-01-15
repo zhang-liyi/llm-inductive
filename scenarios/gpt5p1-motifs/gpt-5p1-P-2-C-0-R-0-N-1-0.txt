@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of 3-on-3 volleyball games.  
+In each game, the team that wins depends on the average level of volleyball skill of the players on the court, combined with how much effort they put into that specific game.  
+Athletes compete either individually (in serving and passing drills counted as solo contests) or as a team of three.  
+All games take place on the same day.
+
+CONDITIONS  
+In the first game, Lena, Marco, and Nia beat Toby, Sara, and Quinn.  
+In the second game, Lena, Marco, and Nia beat Jae, Iris, and Ben.  
+In the third game, Toby, Iris, and Quinn beat Lena, Marco, and Nia.
+
+QUERIES  
+Query 1: Out of 100 random volleyball players, where do you think Lena ranks in terms of intrinsic volleyball skill?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Toby put into the third game?  
+Query 3: In a new game later this same day between Lena, Marco, and Nia (Team 1) and Sara, Jae, and Ben (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Quinn, Iris, and Ben (Team 1) and Toby, Sara, and Jae (Team 2), who would win and by how much?  
+<END_SCENARIO>

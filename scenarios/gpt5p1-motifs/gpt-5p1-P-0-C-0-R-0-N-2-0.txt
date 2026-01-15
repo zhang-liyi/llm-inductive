@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 2-on-2 half-court basketball games, with occasional 1-on-1 games. In each game, the team that wins depends on how well the players shoot, move, and defend, based on their intrinsic basketball ability combined with how much effort they put in for that game.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Riley and Sam beat Casey and Jordan.
+In the second game, Riley and Sam beat Taylor and Alex.
+In the third game, Jordan and Taylor beat Casey and Alex.
+In the fourth game, Riley beat Jordan.
+
+QUERIES
+Query 1: Out of 100 random players, where do you think Riley ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jordan put into the third game?
+Query 3: In a new game later this same day between Riley and Sam (Team 1) and Casey and Taylor (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Jordan and Alex (Team 1) and Casey and Taylor (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are playing a series of small-sided soccer matches. In each match, the result depends on players’ intrinsic soccer skill—such as ball control, speed, and positioning—combined with how much effort they put into that match.  
+Players compete either individually in skill contests or on teams.  
+When teams play, each side fields 9 players. All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Mila, Jonas, and Farah lost to Lucas, Hana, and Tariq.  
+In the second match, Mila, Hana, and Rosa lost to Jonas, Tariq, and Eli.  
+In the third match, Mila beat Rosa in a one-on-one skills contest.  
+In the fourth match, Hana, Eli, and Rosa beat Lucas, Jonas, and Farah.
+
+QUERIES  
+Query 1: Out of 100 random soccer players, where do you think Mila ranks in terms of intrinsic soccer ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jonas put into the second match?  
+Query 3: In a new match later this same day between Mila, Lucas, and Eli (Team 1) and Hana, Jonas, and Rosa (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Mila, Farah, and Tariq (Team 1) and Lucas, Hana, and Eli (Team 2), who would win and by how much?  
+<END_SCENARIO>

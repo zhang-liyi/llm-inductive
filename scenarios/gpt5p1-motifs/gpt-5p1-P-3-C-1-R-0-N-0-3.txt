@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of badminton doubles matches. Each match’s outcome is determined by the players’ intrinsic badminton skills (footwork, racquet control, tactical sense) together with the intensity of effort they bring to that match.  
+Matches are 2-on-2. All matches occur on the same day.
+
+CONDITIONS  
+In the first match, Matteo and Jin lost to Aria and Leo.  
+In the second match, Matteo and Aria lost to Jin and Niko.  
+In the third match, Matteo and Leo beat Niko and Aria.
+
+QUERIES  
+Query 1: Out of 100 random badminton players, where do you think Matteo ranks in terms of intrinsic skill?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Aria put into the third match?  
+Query 3: In a new match later this same day between Matteo and Jin (Team 1) and Leo and Niko (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Matteo and Niko (Team 1) and Aria and Jin (Team 2), who would win and by how much?
+<END_SCENARIO>

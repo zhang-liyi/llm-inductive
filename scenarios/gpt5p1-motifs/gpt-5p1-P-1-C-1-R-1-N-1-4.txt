@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in team archery matches using 3-person teams. In each match, the team that wins is determined by the archers’ intrinsic accuracy and steadiness, combined with how much concentration and effort they apply to each shot during the match.
+All matches are held on the same day at the same distance.
+
+CONDITIONS
+In the first match, Team Alpha (Priya, Quinn, and Rosa) beat Team Beta (Elena, Farah, and Grace).  
+In the second match, Priya, Quinn, and Rosa beat Dylan, Elena, and Farah.  
+In the third match, Elena, Farah, and Grace beat Dylan, Priya, and Quinn.  
+In the fourth match, Elena, Farah, and Grace beat Dylan, Rosa, and Hannah.
+
+QUERIES
+Query 1: Out of 100 random archers, where do you think Dylan ranks in terms of intrinsic archery ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Priya put into the third match?  
+Query 3: In a new team match later this same day between Priya, Quinn, and Rosa (Team 1) and Elena, Farah, and Grace (Team 2), who would win and by how much?  
+Query 4: In a new team match later this same day between Dylan, Hannah, and Isaac (Team 1) and Elena, Farah, and Grace (Team 2), who would win and by how much?
+<END_SCENARIO>

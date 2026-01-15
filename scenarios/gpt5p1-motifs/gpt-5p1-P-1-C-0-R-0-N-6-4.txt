@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of indoor volleyball matches and individual skill contests. Team matches are played 8-on-8. Outcomes are driven by players’ intrinsic jumping ability, coordination, timing, and ball control, together with how much effort they invest in each match or contest. All matches take place on the same day.
+
+CONDITIONS
+In the first match, Team Sapphire (Caleb, Anna, Bella, Chloe, Dahlia, Erica, Freya, Gina) lost to Team Ruby (Holly, Iris, Jade, Kara, Leah, Maya, Nina, Olivia).  
+In the second match, Bella beat Holly.  
+In the third match, Team Ruby lost to Team Emerald (Anna, Chloe, Dahlia, Erica, Freya, Gina, Paige, Quinn).  
+In the fourth match, Team Sapphire (Caleb, Anna, Bella, Chloe, Dahlia, Erica, Freya, Gina) lost to Team Topaz (Holly, Iris, Jade, Kara, Leah, Maya, Nina, Rosa).
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Caleb ranks in terms of intrinsic volleyball ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Nina put into the third match?  
+Query 3: In a new match later this same day between Team Sapphire (Caleb, Anna, Bella, Chloe, Dahlia, Erica, Freya, Gina) and a mixed team (Holly, Iris, Jade, Kara, Leah, Maya, Nina, Paige), who would win and by how much?  
+Query 4: In a new match later this same day between Team Emerald (Anna, Chloe, Dahlia, Erica, Freya, Gina, Paige, Quinn) and Team Ruby (Holly, Iris, Jade, Kara, Leah, Maya, Nina, Olivia), who would win and by how much?
+<END_SCENARIO>

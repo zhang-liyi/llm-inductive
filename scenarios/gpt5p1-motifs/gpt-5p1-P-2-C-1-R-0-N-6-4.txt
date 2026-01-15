@@ -1,0 +1,15 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of baseball games using 8-player sides. There are also occasional one-on-one hitting and pitching contests. The result of each contest depends on the players’ intrinsic baseball ability and the effort they apply in that contest. All contests occur on the same day.
+
+CONDITIONS
+In the first contest, Andre beat Caleb.
+In the second game, Andre, Brianna, Dani, and five other teammates beat Caleb, Eli, Fiona, and five other teammates.
+In the third game, Andre, Eli, Gabe, and five other teammates lost to Caleb, Brianna, Dani, and five other teammates.
+
+QUERIES
+Query 1: Out of 100 random baseball players, where do you think Andre ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Eli put into the third game?
+Query 3: In a new game later this same day between Andre, Brianna, Gabe, and five other teammates (Team 1) and Caleb, Dani, Eli, and five other teammates (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Fiona, Hannah, and six other teammates (Team 1) and Gabe, Isaac, and six other teammates (Team 2), who would win and by how much?
+<END_SCENARIO>

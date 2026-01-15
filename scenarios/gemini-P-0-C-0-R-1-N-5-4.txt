@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in Field Hockey matches adapted for 7 players per side. The winner is determined by the stick-handling speed and tactical vision of the athletes (intrinsic talent), modulated by how much physical effort they exert to control the field.
+Athletes compete in fixed teams of 7 and do not swap teammates.
+All matches occur on the same turf.
+
+CONDITIONS
+In the first match, Raj's team beat the Eagles.
+In the second match, Raj's team beat the Hawks.
+In the third match, Raj's team beat the Owls.
+
+QUERIES
+Query 1: Out of 100 random Field Hockey athletes, where do you think Raj ranks in terms of intrinsic talent?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think the Eagles put into the first match?
+Query 3: In a new match later this same day between Raj's team and the Falcons, who would win and by how much?
+Query 4: In a new match later this same day between the Eagles and the Hawks, who would win and by how much?
+<END_SCENARIO>

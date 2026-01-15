@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 5-on-5 basketball games. In each game, the team that wins depends on the players’ intrinsic basketball ability (such as shooting accuracy, ball-handling, and defensive skill) combined with how much effort they put in during that specific game.
+Teams are usually fixed groups of five players, except for one player, Liam, who rotates between different lineups.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Aaron, Blake, Chris, Devon, and Liam lost to Felix, Grant, Henry, Isaac, and Jason.
+In the second game, Aaron, Blake, Chris, Ethan, and Liam lost to Felix, Grant, Henry, Isaac, and Jason.
+In the third game, Blake, Chris, Devon, Ethan, and Liam lost to Felix, Grant, Henry, Isaac, and Jason.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Liam ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the third game?
+Query 3: In a new game later this same day between Aaron, Blake, Chris, Devon, and Ethan (Team 1) and Felix, Grant, Henry, Isaac, and Jason (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Blake, Chris, Devon, Ethan, and Liam (Team 1) and Felix, Grant, Henry, Isaac, and Taylor (Team 2), who would win and by how much?
+<END_SCENARIO>

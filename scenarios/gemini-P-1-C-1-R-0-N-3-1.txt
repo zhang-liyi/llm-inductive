@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ice Hockey matches. In each match, the team that wins depends on the average skating speed and puck control the athletes are able to demonstrate, based on their intrinsic agility modulated by other factors including how much effort they put in to that match.
+Athletes compete as a team of 5.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Crosby, Ovechkin, McDavid, Kane, and Matthews beat Bergeron, Marchand, Pastrnak, Hedman, and Liam.
+In the second match, MacKinnon, Kucherov, Draisaitl, Panarin, and Eichel beat Stamkos, Tavares, Point, Marner, and Liam.
+In the third match, Liam, Gaudreau, Barkov, Stone, and Carlson lost to Crosby, Ovechkin, MacKinnon, Kucherov, and McDavid.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Liam ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the third match?
+Query 3: In a new match later this same day between Crosby, Ovechkin, McDavid, MacKinnon, and Kucherov (Team 1) and Bergeron, Marchand, Pastrnak, Hedman, and Stamkos (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Liam, Tavares, Point, Marner, and Gaudreau (Team 1) and Kane, Matthews, Draisaitl, Panarin, and Eichel (Team 2), who would win and by how much?
+<END_SCENARIO>

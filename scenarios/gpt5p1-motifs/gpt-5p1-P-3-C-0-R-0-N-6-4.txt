@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, athletes are competing in a series of Ultimate Frisbee games. The outcome of each game depends on each player’s intrinsic throwing accuracy, speed, and cutting ability, together with how much effort they put in during that game.  
+Athletes compete either individually in throwing challenges or in 8‑player teams.  
+All games take place on the same day.
+
+CONDITIONS  
+In the first game, Priya, Anika, Becca, Charu, Deepa, Esha, Farah, and Gita lost to Hannah, Imani, Jenna, Kara, Lacey, Mira, Nia, and Olive.  
+In the second game, Priya, Anika, Becca, Charu, Deepa, Esha, Farah, and Gita lost to Hannah, Iris, Joy, Kara, Leah, Mina, Nova, and Paige.  
+In the third game, Priya, Anika, Becca, Charu, Deepa, Esha, Farah, and Gita beat Quinn, Rhea, Saanvi, Tara, Uma, Veena, Wendy, and Zara.  
+In the fourth game, Hannah, Anika, Becca, Charu, Deepa, Esha, Farah, and Gita beat Quinn, Imani, Jenna, Kara, Lacey, Mira, Nia, and Olive.
+
+QUERIES  
+Query 1: Out of 100 random Ultimate Frisbee players, where do you think Priya ranks in terms of intrinsic skill?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Hannah put into the second game?  
+Query 3: In a new game later this same day between Priya, Anika, Becca, Charu, Deepa, Esha, Farah, and Gita (Team 1) and Hannah, Imani, Jenna, Kara, Lacey, Mira, Nia, and Olive (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Hannah, Iris, Joy, Kara, Leah, Mina, Nova, and Paige (Team 1) and Quinn, Rhea, Saanvi, Tara, Uma, Veena, Wendy, and Zara (Team 2), who would win and by how much?
+<END_SCENARIO>

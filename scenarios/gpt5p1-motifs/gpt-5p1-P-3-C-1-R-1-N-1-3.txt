@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of 3‑on‑3 volleyball games. The outcome of each game is determined by the players’ intrinsic serving, setting, and attacking skills, along with how much effort they put into that game. Most players stay on their standard trios, but Leah is placed on different teams throughout the event. All games are played on the same day.
+
+CONDITIONS
+In the first game, Anna, Brooke, and Cara beat Leah, Dana, and Emma.
+In the second game, Dana, Emma, and Fiona beat Leah, Anna, and Brooke.
+In the third game, Anna, Brooke, and Cara beat Leah, Emma, and Fiona.
+In the fourth game, Leah, Cara, and Fiona beat Dana, Emma, and Grace.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Leah ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Emma put into the third game?
+Query 3: In a new game later this same day between Leah, Anna, and Fiona (Team 1) and Brooke, Cara, and Dana (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Leah, Brooke, and Emma (Team 1) and Cara, Dana, and Grace (Team 2), who would win and by how much?
+<END_SCENARIO>

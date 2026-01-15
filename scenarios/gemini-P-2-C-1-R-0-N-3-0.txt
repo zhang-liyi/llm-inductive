@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Basketball games. In each game, the team that wins depends on the total points scored, which is a result of the athletes' shooting accuracy and defensive skills, based on their intrinsic talent modulated by other factors including how much effort they put into that game.
+Athletes compete in teams of 5.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Jordan, Liam, Noah, Olivia, and Emma beat Mason, Ethan, Sophia, Ava, and Isabella.
+In the second game, Jordan, Mason, Ethan, Sophia, and Ava beat Liam, Noah, Olivia, Emma, and Isabella.
+In the third game, Jordan, Liam, Mason, Sophia, and Emma lost to Noah, Olivia, Ethan, Ava, and Isabella.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jordan ranks in terms of intrinsic talent?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jordan put into the third game?
+Query 3: In a new game later this same day between Jordan, Liam, Noah, Mason, and Ethan (Team 1) and Olivia, Emma, Sophia, Ava, and Isabella (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Noah, Olivia, Ethan, Ava, and Isabella (Team 1) and Liam, Mason, Sophia, Emma, and Jordan (Team 2), who would win and by how much?
+<END_SCENARIO>

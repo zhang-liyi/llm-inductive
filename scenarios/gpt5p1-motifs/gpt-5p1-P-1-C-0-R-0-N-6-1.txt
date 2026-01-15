@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are taking part in a series of basketball scrimmages and occasional individual shooting contests. Team scrimmages are played 8-on-8. Outcomes depend on each player’s intrinsic shooting, ball-handling, defensive instincts, and court awareness, combined with how much effort they put into that particular game or contest. All games take place on the same day.
+
+CONDITIONS
+In the first game, Team Iron (Nate, Aaron, Bella, Devin, Eli, Fiona, Gabe, Harper) lost to Team Gold (Ivan, Jenna, Kyle, Lena, Max, Olivia, Parker, Quinn).  
+In the second game, Devin beat Max.  
+In the third game, Team Silver (Aaron, Bella, Cara, Devin, Eli, Fiona, Gabe, Ivan) beat Team Bronze (Harper, Jenna, Kyle, Lena, Max, Olivia, Parker, Quinn).  
+In the fourth game, Team Iron (Nate, Aaron, Bella, Devin, Eli, Fiona, Gabe, Harper) lost to Team Platinum (Cara, Ivan, Jenna, Kyle, Lena, Max, Olivia, Quinn).
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Nate ranks in terms of intrinsic basketball ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Max put into the third game?  
+Query 3: In a new game later this same day between Team Iron (Nate, Aaron, Bella, Devin, Eli, Fiona, Gabe, Harper) and Team Teal (Cara, Ivan, Jenna, Kyle, Lena, Max, Olivia, Quinn), who would win and by how much?  
+Query 4: In a new game later this same day between Team Silver (Aaron, Bella, Cara, Devin, Eli, Fiona, Gabe, Ivan) and Team Bronze (Harper, Jenna, Kyle, Lena, Max, Olivia, Parker, Quinn), who would win and by how much?
+<END_SCENARIO>

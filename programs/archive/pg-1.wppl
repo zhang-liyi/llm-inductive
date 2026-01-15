@@ -1,0 +1,255 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  // BACKGROUND KNOWLEDGE
+  // This is a one-day small-sided (7-a-side) soccer tournament.
+  // Each player has a stable intrinsic soccer ability (0–100 ability points).
+  // In each match, a player chooses a match-specific effort level (0–1, later reported as 0–100%).
+  // A player’s effective contribution in a match depends on both intrinsic ability and effort.
+  // Team match strength is the sum of players’ effective skills in that match.
+  // Match outcome (who beats whom) is determined by the difference in team match strength plus some random match-level noise.
+
+  // All players mentioned in the scenario
+  var allPlayers = [
+    'alex', 'bruno', 'carlos', 'diego', 'elias', 'fabio', 'hugo',
+    'ivan', 'jonas', 'karim', 'leo', 'marco', 'noah', 'omar'
+  ];
+
+  // Helper: mean of a list of numbers
+  var listMean = function(xs) {
+    return sum(xs) / xs.length;
+  };
+
+  // Helper: sample without replacement (returns a random subset/permutation of size n from xs)
+  var sampleWithoutReplacement = function(n, xs) {
+    if (n === 0) {
+      return [];
+    } else {
+      // uniformDraw selects a random element from a list
+      var choice = uniformDraw(xs);
+      var remaining = filter(function(x) { return x !== choice; }, xs);
+      return [choice].concat(sampleWithoutReplacement(n - 1, remaining));
+    }
+  };
+
+  // INTRINSIC SOCCER ABILITY (0–100 ability points)
+  // Intrinsic ability is stable across all matches on this day.
+  var intrinsic_soccer_ability = mem(function({player}) {
+    // Three broad ability buckets for amateur players
+    var p_low = 0.3;
+    var p_avg = 0.4;
+    var p_high = 0.3;
+
+    // Ability bucket means (0–100 scale)
+    var low_mean = 40;
+    var avg_mean = 55;
+    var high_mean = 75;
+
+    var ability_bucket_mean = categorical({
+      ps: [p_low, p_avg, p_high],
+      vs: [low_mean, avg_mean, high_mean]
+    });
+
+    // Individual around-bucket variability
+    var ability = gaussian(ability_bucket_mean, 10);
+    return Math.min(Math.max(ability, 0), 100);
+  });
+
+  // RANKING INTRINSIC ABILITY OUT OF N RANDOM PLAYERS
+  var intrinsic_soccer_ability_rank = function({player, out_of_n_players}) {
+    // Generate out_of_n_players - 1 random comparison players from the same population
+    var random_ids = mapN(function(i) { return uniform(0, 10000); }, out_of_n_players - 1);
+
+    var better_than_count = sum(map(
+      function(random_id) {
+        return intrinsic_soccer_ability({player: player}) >
+               intrinsic_soccer_ability({player: random_id});
+      },
+      random_ids));
+
+    return better_than_count;
+  };
+
+  // EFFORT IN A GIVEN MATCH (0–1; later scaled to 0–100%)
+  // Effort depends weakly on intrinsic ability but is match-specific.
+  var effort_in_match = mem(function({player, match}) {
+    var ability = intrinsic_soccer_ability({player: player});
+
+    // Ability-dependent priors for low/medium/high effort tendency
+    var p_low_effort =
+      ability > 70 ? 0.1 :
+      ability < 45 ? 0.4 :
+                     0.2;
+
+    var p_med_effort =
+      ability > 70 ? 0.3 :
+      ability < 45 ? 0.4 :
+                     0.5;
+
+    var p_high_effort = 1 - p_low_effort - p_med_effort;
+
+    var low_effort_mean = 0.4;   // 40%
+    var med_effort_mean = 0.65;  // 65%
+    var high_effort_mean = 0.9;  // 90%
+
+    var effort_mean = categorical({
+      ps: [p_low_effort, p_med_effort, p_high_effort],
+      vs: [low_effort_mean, med_effort_mean, high_effort_mean]
+    });
+
+    var raw_effort = gaussian(effort_mean, 0.05);
+    return Math.min(Math.max(raw_effort, 0), 1);
+  });
+
+  // Effort as a percentage (0–100%)
+  var effort_percentage_in_match = function({player, match}) {
+    return 100 * effort_in_match({player: player, match: match});
+  };
+
+  // PLAYER EFFECTIVE SKILL IN A MATCH (effective ability points)
+  // Depends on intrinsic ability and match-specific effort, plus individual performance noise.
+  var player_effective_skill_in_match = function({player, match}) {
+    var ability = intrinsic_soccer_ability({player: player});
+    var eff = effort_in_match({player: player, match: match});
+
+    // Effective skill: higher effort boosts contribution; include small noise.
+    // Scaling: base factor ranges roughly 0.5–1.0.
+    var base_factor = 0.5 + 0.5 * eff;
+    var performance_noise = gaussian(0, 5); // performance variability
+
+    var effective_skill = ability * base_factor + performance_noise;
+    return Math.max(effective_skill, 0);
+  };
+
+  // TEAM MATCH STRENGTH (sum of players’ effective skills in that match)
+  var team_match_strength = function({team, match}) {
+    return sum(map(
+      function(player) {
+        return player_effective_skill_in_match({player: player, match: match});
+      },
+      team));
+  };
+
+  // MATCH SCORE DIFFERENCE (Team1 strength − Team2 strength + match noise)
+  // Units: abstract "performance points", roughly proportional to goal difference.
+  var match_score_difference = function({team1, team2, match}) {
+    var s1 = team_match_strength({team: team1, match: match});
+    var s2 = team_match_strength({team: team2, match: match});
+
+    var match_noise = gaussian(0, 10); // luck, refereeing, etc.
+
+    return (s1 - s2) + match_noise;
+  };
+
+  // TEAM1 BEATS TEAM2 IF SCORE DIFFERENCE > 0
+  var beat = function({team1, team2, match}) {
+    return match_score_difference({team1: team1, team2: team2, match: match}) > 0;
+  };
+
+  // LOST RELATION
+  // Two cases:
+  // 1) Explicit team1/team2 arrays: team1 loses if it does not beat team2.
+  // 2) Partially specified teams via team1_has / team2_has: "Alex’s team lost to Karim’s team".
+  var lost = function(args) {
+    // Case 1: explicit team lists
+    if (args.team1 !== undefined) {
+      return !beat({team1: args.team1, team2: args.team2, match: args.match});
+    } else {
+      // Case 2: only know that team1_has is on the losing team, team2_has on the winning team
+      var p1 = args.team1_has;
+      var p2 = args.team2_has;
+
+      // Remaining players not including p1 or p2
+      var remaining = filter(
+        function(p) { return (p !== p1) && (p !== p2); },
+        allPlayers);
+
+      // Randomly partition remaining players into two sets of 6, to form 7-a-side teams
+      var shuffled = sampleWithoutReplacement(remaining.length, remaining);
+      var teammates1 = shuffled.slice(0, 6);
+      var teammates2 = shuffled.slice(6);
+
+      var team1 = [p1].concat(teammates1);
+      var team2 = [p2].concat(teammates2);
+
+      // "Alex’s team lost to Karim’s team" => team1 did not beat team2
+      return !beat({team1: team1, team2: team2, match: args.match});
+    }
+  };
+
+  // PREDICTIVE: WHO WOULD WIN AND BY HOW MUCH (as probability Team 2 wins)
+  // Returns a number between 0 and 1:
+  // 0   => Team 1 almost surely wins
+  // 1   => Team 2 almost surely wins
+  var who_would_win_by_how_much = function({team1, team2, match}) {
+    var num_future_matches_to_simulate = 100;
+    // Simulate many hypothetical future matches with distinct match IDs
+    var random_future_match_ids = mapN(
+      function(i) { return uniform(match + 1, 1000); },
+      num_future_matches_to_simulate);
+
+    var matches_won_by_team2 = sum(map(
+      function(mId) {
+        // team2 wins iff team1 loses
+        return lost({team1: team1, team2: team2, match: mId});
+      },
+      random_future_match_ids));
+
+    return matches_won_by_team2 / num_future_matches_to_simulate;
+  };
+
+  // CONDITIONS
+  // In the first match, Alex, Bruno, Carlos, Diego, Elias, Fabio, and Hugo beat Ivan, Jonas, Karim, Leo, Marco, Noah, and Omar.
+  condition(beat({team1:['alex', 'bruno', 'carlos', 'diego', 'elias', 'fabio', 'hugo'],
+                  team2:['ivan', 'jonas', 'karim', 'leo', 'marco', 'noah', 'omar'],
+                  match: 1}))
+
+  // In the second match, Ivan, Jonas, Karim, Leo, Marco, Noah, and Alex beat Bruno, Carlos, Diego, Elias, Fabio, and Hugo.
+  condition(beat({team1:['ivan', 'jonas', 'karim', 'leo', 'marco', 'noah', 'alex'],
+                  team2:['bruno', 'carlos', 'diego', 'elias', 'fabio', 'hugo'],
+                  match: 2}))
+
+  // In the third match, Karim, Leo, Marco, Noah, Omar, Diego, and Fabio beat Alex, Bruno, Carlos, Elias, Hugo, Ivan, and Jonas.
+  condition(beat({team1:['karim', 'leo', 'marco', 'noah', 'omar', 'diego', 'fabio'],
+                  team2:['alex', 'bruno', 'carlos', 'elias', 'hugo', 'ivan', 'jonas'],
+                  match: 3}))
+
+  // In the fourth match, Alex’s team lost to Karim’s team.
+  condition(lost({team1_has: 'alex',
+                  team2_has: 'karim',
+                  match: 4}))
+
+  // QUERIES
+  // Query 1: Out of 100 random soccer players, where do you think Karim ranks in terms of intrinsic soccer ability?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Alex put into the third match?
+  // Query 3: In a new match later this same day between Alex, Bruno, Carlos, Diego, Elias, Fabio, and Hugo (Team 1) and Karim, Leo, Marco, Noah, Omar, Ivan, and Jonas (Team 2), who would win and by how much?
+  // Query 4: In a new match later this same day between Alex, Karim, Leo, Noah, Marco, and Omar (Team 1) and Bruno, Carlos, Diego, Elias, Fabio, and Hugo (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_soccer_ability_rank({player: 'karim', out_of_n_players: 100}),
+    query2: effort_percentage_in_match({player: 'alex', match: 3}),
+    query3: who_would_win_by_how_much({
+      team1:['alex', 'bruno', 'carlos', 'diego', 'elias', 'fabio', 'hugo'],
+      team2:['karim', 'leo', 'marco', 'noah', 'omar', 'ivan', 'jonas'],
+      match: 5
+    }),
+    query4: who_would_win_by_how_much({
+      team1:['alex', 'karim', 'leo', 'noah', 'marco', 'omar'],
+      team2:['bruno', 'carlos', 'diego', 'elias', 'fabio', 'hugo'],
+      match: 6
+    })
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-1.json', posterior);

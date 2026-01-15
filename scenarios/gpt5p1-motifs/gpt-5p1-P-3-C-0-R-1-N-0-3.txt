@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this small-sided soccer event, the players compete in 2-on-2 matches on a reduced-size field. The outcome of each match depends on the players’ intrinsic soccer ability (ball control, passing, shooting, and defending) and how much effort they put into that match.
+All matches take place on the same day.
+Teams are fixed pairs of two players.
+
+CONDITIONS
+In the first match, Nadia and Elena lost to Omar and Tariq.
+In the second match, Nadia and Elena beat Julia and Sven.
+In the third match, Nadia and Elena lost to Julia and Sven.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Nadia ranks in terms of intrinsic playing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Julia put into the third match?
+Query 3: In a new match later this same day between Nadia and Elena (Team 1) and Julia and Sven (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Omar and Tariq (Team 1) and Julia and Sven (Team 2), who would win and by how much?
+<END_SCENARIO>

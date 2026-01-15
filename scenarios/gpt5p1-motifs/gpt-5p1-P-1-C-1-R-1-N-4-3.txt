@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 6‑a‑side field hockey games. The winning team in each game is the one that can maintain better ball control, passing, and shooting, determined by each player's intrinsic stick skills and movement ability combined with how much effort they put into that game.
+Players also sometimes do 1‑on‑1 attacking and defending drills.
+All games and drills take place on the same day.
+
+CONDITIONS
+In the first game, Priya, Alice, Brandon, Chloe, Devon, and Ethan lost to Mariah, Noah, Oliver, Paige, Quentin, and Rosa.
+In the second game, Mariah, Noah, Oliver, Paige, Priya, and Rosa lost to Alice, Brandon, Chloe, Devon, Ethan, and Felix.
+In the third game, Priya, Alice, Noah, Chloe, Oliver, and Felix lost to Mariah, Brandon, Paige, Devon, Quentin, and Rosa.
+In a later 1‑on‑1 drill, Priya lost to Mariah.
+
+QUERIES
+Query 1: Out of 100 random field hockey players, where do you think Mariah ranks in terms of intrinsic field hockey ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Priya put into the third game?
+Query 3: In a new 6‑a‑side game later this same day between Alice, Brandon, Chloe, Devon, Ethan, and Felix (Team 1) and Mariah, Noah, Oliver, Paige, Quentin, and Rosa (Team 2), who would win and by how much?
+Query 4: In a new 6‑a‑side game later this same day between Priya, Alice, Brandon, Chloe, Devon, and Noah (Team 1) and Mariah, Oliver, Paige, Quentin, Rosa, and Ethan (Team 2), who would win and by how much?
+<END_SCENARIO>

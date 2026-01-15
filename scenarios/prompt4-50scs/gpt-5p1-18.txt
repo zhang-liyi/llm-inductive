@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+This is a sprint track meet with races between 100m and 400m. The finishing order in each race depends on the sprinters’ intrinsic speed and acceleration, as well as how much effort they decide to expend in that race.  
+All events are individual races.  
+All races occur over the course of the same evening.
+
+CONDITIONS  
+In the first race, a 100m dash, Liam beat Noah.  
+In the second race, a 200m sprint, Noah beat Emma.  
+In the third race, a 400m race, Emma beat Liam.  
+In the fourth race, a 100m dash, Emma beat Noah.
+
+QUERIES  
+Query 1: Out of 100 random sprinters, where do you think Emma ranks in terms of intrinsic sprinting ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the third race?  
+Query 3: In a new 200m sprint later this same evening between Emma and Liam, who would win and by how much?  
+Query 4: In a new 100m dash later this same evening between Noah and Emma, who would win and by how much?  
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are playing a one-day 6-on-6 basketball tournament. The result of each game depends on the players’ intrinsic basketball ability and the effort they choose to exert in that game. Athletes can compete either individually in shooting contests or as part of 6-player teams.
+
+The Storm are a fixed team made up of Alicia, Brandon, Corey, Darius, Elena, and Felix. The Blaze are a fixed team made up of Hannah, Isaiah, Jordan, Keira, Marcus, and Nathan. Kendra plays in multiple games but does not belong to a fixed team, instead joining different combinations of players.
+
+CONDITIONS
+In the first game, the Storm beat the Blaze.  
+In the second game, Kendra, Olivia, Priya, Quentin, Riley, and Samir lost to the Storm.  
+In the third game, Kendra, Talia, Umar, Victor, Olivia, and Priya lost to the Blaze.  
+In an individual three-point shooting contest, Kendra beat Jordan.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Kendra ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Marcus put into the first game?  
+Query 3: In a new game later this same day between Kendra, Olivia, Priya, Quentin, Riley, and Samir (Team 1) and Hannah, Isaiah, Jordan, Keira, Marcus, and Nathan (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Alicia, Brandon, Corey, Darius, Elena, and Felix (Team 1) and Kendra, Talia, Umar, Victor, Hannah, and Nathan (Team 2), who would win and by how much?
+<END_SCENARIO>

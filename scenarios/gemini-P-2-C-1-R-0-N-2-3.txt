@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of half-court basketball games. In each game, the team that wins depends on the total points scored, based on their intrinsic shooting and defensive skills modulated by other factors including how much effort they put in to that game.
+Athletes compete as a team of 4.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Tariq, Andre, Ben, and Chris beat David, Eric, Frank, and Greg.
+In the second game, Tariq, David, Eric, and Frank beat Andre, Ben, Chris, and Greg.
+In the third game, David, Eric, Frank, and Chris beat Tariq, Greg, Andre, and Ben.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Tariq ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Tariq put into the third game?
+Query 3: In a new game later this same day between Tariq, Andre, Ben, and Chris (Team 1) and David, Eric, Frank, and Greg (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between David, Eric, Frank, and Chris (Team 1) and Tariq, Greg, Andre, and Ben (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Sprint Track (4x100m relay) races. In each race, the team that wins depends on the combined top speed and baton handling of the runners, based on their intrinsic explosiveness modulated by other factors including how much effort they put into that race.
+Athletes compete as a team of four.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Malik, Jamal, Tyrell, and Dante beat Kevin, Brian, Jason, and Eric.
+In the second race, Malik, Jamal, Tyrell, and Dante beat Kevin, Brian, Scott, and Adam.
+In the third race, Malik, Jamal, Tyrell, and Dante beat Jason, Eric, Scott, and Adam.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Malik ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Kevin put into the second race?
+Query 3: In a new race later this same day between Malik, Jamal, Tyrell, and Dante (Team 1) and Kevin, Jason, Scott, and Adam (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Brian, Eric, Scott, and Adam (Team 1) and Jason, Kevin, Chris, and Mike (Team 2), who would win and by how much?
+<END_SCENARIO>

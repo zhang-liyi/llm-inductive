@@ -1,0 +1,21 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a 7-player-per-side Volleyball tournament (with 6 on the court and 1 rotating substitute). Outcomes depend on players’ intrinsic jumping ability, arm swing speed, reaction time, and how much effort they put into each rally.
+Each athlete is part of a fixed 7-player squad for the day, and there is also a 1v1 serving accuracy challenge.
+All matches and challenges are held on the same day.
+
+Team Wavecrest (Elias’s team): Elias, Harper, Sunil, Dana, Miguel, Brooke, Yara  
+Team Sandstone: Lucia, Aaron, Nia, Theo, Petra, Jason, Amara  
+Team Skyline: Raj, Elise, Bruno, Kat, Simone, Andre, Felicity
+
+CONDITIONS
+In the first challenge, Lucia beat Elias.
+In the second match, Team Sandstone beat Team Wavecrest.
+In the third match, Team Skyline beat Team Wavecrest.
+
+QUERIES
+Query 1: Out of 100 random Volleyball players, where do you think Elias ranks in terms of intrinsic power and timing on attacks?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Elias put into the third match?
+Query 3: In a new match later this same day between Team Sandstone and Team Skyline, who would win and by how much?
+Query 4: In a new match later this same day between Team Wavecrest and Team Sandstone, who would win and by how much?
+<END_SCENARIO>

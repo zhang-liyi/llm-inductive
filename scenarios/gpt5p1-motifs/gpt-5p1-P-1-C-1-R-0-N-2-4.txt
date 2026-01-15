@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of volleyball games. The winning team in each game is determined by players’ intrinsic jumping ability, ball control, timing, and coordination, combined with how much effort they put into that game.
+Players compete either individually in serving contests or as a team.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Riley beat Omar.
+In the second game, Riley, Jasmine, Colin, and Ava beat Omar, Mateo, Harper, and Quinn.
+In the third game, Jasmine, Mateo, Quinn, and Riley beat Omar, Colin, Harper, and Ava.
+In the fourth game, Harper beat Omar.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Omar ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mateo put into the third game?
+Query 3: In a new game later this same day between Riley, Harper, Colin, and Quinn (Team 1) and Omar, Jasmine, Mateo, and Ava (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Jasmine and Riley (Team 1) and Omar and Harper (Team 2), who would win and by how much?
+<END_SCENARIO>

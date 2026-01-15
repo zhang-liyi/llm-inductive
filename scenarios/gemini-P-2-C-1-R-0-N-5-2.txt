@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Rugby Sevens matches. In each match, the team that wins depends on the points scored from tries and conversions, based on the athletes' intrinsic physicality and speed modulated by other factors including how much effort they put into that match.
+Athletes compete in teams of 7.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Rory, Finn, Jack, Harry, Jacob, Charlie, and Thomas beat George, Oscar, James, William, Henry, Alfie, and Archie.
+In the second match, Rory, George, Oscar, James, William, Henry, and Alfie beat Finn, Jack, Harry, Jacob, Charlie, Thomas, and Archie.
+In the third match, Rory, Finn, George, Jack, Oscar, Harry, and James lost to Jacob, William, Charlie, Henry, Thomas, Alfie, and Archie.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Rory ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Rory put into the third match?
+Query 3: In a new match later this same day between Rory, Finn, Jack, Harry, Jacob, Charlie, and Thomas (Team 1) and George, Oscar, James, William, Henry, Alfie, and Archie (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Rory, George, Oscar, James, William, Henry, and Alfie (Team 1) and Finn, Jack, Harry, Jacob, Charlie, Thomas, and Archie (Team 2), who would win and by how much?
+<END_SCENARIO>

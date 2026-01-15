@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in 8-v-8 small-sided Soccer matches. The winner is determined by the team's collective speed and ball control, which relies on intrinsic talent modulated by the amount of effort the players put into the match.
+One player, Omar, refuses to change his lineup and plays with the same seven teammates all day, while the opposing teams shuffle their rosters.
+All matches are played consecutively.
+
+CONDITIONS
+In the first match, Omar, Ali, Bas, Cid, Dan, Emo, Fox, and Gus lost to Hal, Ian, Jay, Kai, Leo, Max, Ned, and Oz.
+In the second match, Omar, Ali, Bas, Cid, Dan, Emo, Fox, and Gus lost to Hal, Ian, Jay, Kai, Pat, Quin, Roy, and Sam.
+In the third match, Omar, Ali, Bas, Cid, Dan, Emo, Fox, and Gus beat Pat, Quin, Roy, Sam, Ted, Ugo, Vin, and Wes.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Omar ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Hal put into the second match?
+Query 3: In a new match later this same day between Omar, Ali, Bas, Cid, Dan, Emo, Fox, and Gus (Team 1) and Hal, Ian, Jay, Kai, Leo, Max, Ned, and Oz (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Pat, Quin, Roy, Sam, Ted, Ugo, Vin, and Wes (Team 1) and Hal, Ian, Jay, Kai, Leo, Max, Ned, and Oz (Team 2), who would win and by how much?
+<END_SCENARIO>

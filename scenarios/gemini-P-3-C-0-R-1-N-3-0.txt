@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this tournament, athletes compete in 5-on-5 basketball games. The winning team is determined by the collective scoring efficiency and defensive stops of the five players, which depends on their intrinsic shooting and handling skills modulated by the defensive effort they exert during the game.
+Caleb always plays on a fixed team called the "Raptors" alongside teammates Jay, Ty, Dom, and Ben.
+All games take place on the same weekend.
+
+CONDITIONS
+In the first game, the Celtics beat the Raptors.
+In the second game, the Lakers beat the Raptors.
+In the third game, the Raptors beat the Heat.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Caleb ranks in terms of intrinsic shooting and handling skills?
+Query 2: On a percentage scale from 0 to 100%, how much defensive effort do you think Caleb put into the third game?
+Query 3: In a new game later this same weekend between the Raptors (Team 1) and a new team consisting of the Celtics' starting five (Team 2), who would win and by how much?
+Query 4: In a new game later this same weekend between a team formed by Caleb, Jay, and three Lakers players (Team 1) and a team formed by Ty, Dom, and three Heat players (Team 2), who would win and by how much?
+<END_SCENARIO>

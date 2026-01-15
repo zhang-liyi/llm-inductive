@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in small-sided 4-on-4 soccer games and occasional 1-on-1 contests. The outcome of each game depends on the players’ intrinsic soccer abilities (ball control, speed, finishing, defending) and on how much effort they put forth in that game.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Diego lost to Malik.
+In the second game, Diego, Omar, Leo, and Finn lost to Malik, Aaron, Hugo, and Kai.
+In the third game, Diego, Aaron, Kai, and Noah beat Malik, Omar, Hugo, and Leo.
+In the fourth game, Diego, Hugo, Noah, and Eli lost to Malik, Aaron, Finn, and Kai.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Diego ranks in terms of intrinsic soccer ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Malik put into the third game?
+Query 3: In a new game later this same day between Diego, Malik, Kai, and Eli (Team 1) and Aaron, Omar, Hugo, and Noah (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Diego, Aaron, Leo, and Finn (Team 1) and Malik, Kai, Hugo, and Noah (Team 2), who would win and by how much?
+<END_SCENARIO>

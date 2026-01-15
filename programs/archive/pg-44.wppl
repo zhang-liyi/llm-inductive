@@ -1,0 +1,168 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  // BACKGROUND KNOWLEDGE
+  // Intrinsic disc golf skill is a stable property of each player (same-day, no learning/fatigue drift).
+  // Units: arbitrary "disc golf skill units" where higher is better (roughly capturing accuracy, power, and short game).
+  var intrinsic_disc_golf_skill = mem(function({disc_golfer}) {
+    // Three rough skill tiers: low, medium, high.
+    var parameter_low_skill_prior = 0.3;
+    var parameter_average_prior = 0.4;
+    var parameter_high_skill_prior = 0.3;
+
+    // Means for each skill tier (arbitrary units, centered around 100).
+    var low_skill_mean = 80;
+    var average_skill_mean = 100;
+    var high_skill_mean = 130;
+    var parameter_intrinsic_skill_sd = 10;
+
+    var tier_mean = categorical({
+      ps: [parameter_low_skill_prior, parameter_average_prior, parameter_high_skill_prior],
+      vs: [low_skill_mean, average_skill_mean, high_skill_mean]
+    });
+
+    // Intrinsic skill is non-negative.
+    return Math.max(gaussian(tier_mean, parameter_intrinsic_skill_sd), 0);
+  });
+
+  // Typical effort tendency per player (proportion from 0 to 1).
+  // Units: fraction of maximum possible focus/effort.
+  var typical_effort = mem(function({disc_golfer}) {
+    // Most players usually try reasonably hard: mean ~0.7, some variation.
+    return beta(7, 3);
+  });
+
+  // Effort actually exerted by a player in a particular round (0 to 1).
+  var effort_in_round = mem(function({disc_golfer, round}) {
+    var base = typical_effort({disc_golfer: disc_golfer});
+    // Round-specific effort around that base, with moderate concentration.
+    var concentration = 12;
+    var alpha = base * concentration;
+    var beta_param = (1 - base) * concentration;
+    return beta(alpha, beta_param);
+  });
+
+  // Effort percentage in round on a 0–100% scale.
+  var effort_percentage_in_round = function({disc_golfer, round}) {
+    return 100 * effort_in_round({disc_golfer: disc_golfer, round: round});
+  };
+
+  // Individual round performance for a disc golfer.
+  // Units: same arbitrary "performance units" as intrinsic skill; higher is better.
+  // Causal parents: intrinsic_disc_golf_skill, effort_in_round, plus random noise.
+  var individual_round_performance = mem(function({disc_golfer, round}) {
+    var skill = intrinsic_disc_golf_skill({disc_golfer: disc_golfer});
+    var effort = effort_in_round({disc_golfer: disc_golfer, round: round});
+
+    // Effort effect: going from 0% to 100% can change effective performance by ~20 units.
+    // Centered so that "typical" effort (~0.7) is near zero additional boost on average.
+    var max_effort_boost = 20;
+    var effort_boost = max_effort_boost * (effort - 0.7);
+
+    // Random round-to-round noise: wind, lies, day-to-day form, etc.
+    var performance_noise_sd = 5;
+
+    var mean_performance = skill + effort_boost;
+    return gaussian(mean_performance, performance_noise_sd);
+  });
+
+  // Team performance in a round is the average of members' individual performances.
+  // Units: same performance units.
+  var team_round_performance = function({team, round}) {
+    var member_performances = map(
+      function(disc_golfer) {
+        return individual_round_performance({disc_golfer: disc_golfer, round: round});
+      },
+      team
+    );
+    return listMean(member_performances);
+  };
+
+  // Team1 beats Team2 in a given round if its team_round_performance is higher.
+  var beat = function({team1, team2, round}) {
+    return team_round_performance({team: team1, round: round}) >
+           team_round_performance({team: team2, round: round});
+  };
+
+  // Intrinsic disc golf skill ranking out of N random disc golfers:
+  // how many of N-1 random others this golfer is better than, in expectation.
+  var intrinsic_disc_golf_skill_rank = function({disc_golfer, out_of_n_disc_golfers}) {
+    // Generate out_of_n_disc_golfers - 1 other random golfer IDs (unobserved).
+    var random_ids = mapN(
+      function(x) { return uniform(0, 1000); },
+      out_of_n_disc_golfers - 1
+    );
+
+    // Count how many random golfers this golfer is more skilled than.
+    return sum(map(
+      function(other_id) {
+        return intrinsic_disc_golf_skill({disc_golfer: disc_golfer}) >
+               intrinsic_disc_golf_skill({disc_golfer: other_id});
+      },
+      random_ids
+    ));
+  };
+
+  // Predictive function: who would win and by how much (as a probability).
+  // Returns a number between 0 and 1:
+  // 0   -> Team 1 almost surely wins
+  // 1   -> Team 2 almost surely wins
+  // This is the fraction of simulated future rounds in which Team 2 beats Team 1.
+  var who_would_win_by_how_much = function({team1, team2, round}) {
+    var num_future_rounds_to_simulate = 100;
+    // Simulate new hypothetical round IDs after this round index to avoid clashes.
+    var random_future_round_ids = mapN(
+      function(x) { return uniform(round + 1, 1000); },
+      num_future_rounds_to_simulate
+    );
+
+    var team2_wins_count = sum(map(
+      function(future_round_id) {
+        // Check if original Team 2 beats original Team 1 in that hypothetical round.
+        return beat({team1: team2, team2: team1, round: future_round_id});
+      },
+      random_future_round_ids
+    ));
+
+    return team2_wins_count / num_future_rounds_to_simulate;
+  };
+
+  // CONDITIONS
+  // In the first round, Tessa beat Marco.
+  condition(beat({team1: ['tessa'], team2: ['marco'], round: 1}));
+
+  // In the second round, Marco beat Lina.
+  condition(beat({team1: ['marco'], team2: ['lina'], round: 2}));
+
+  // In the third round, Tessa, Lina, and Quinn beat Marco, Noah, and Riley.
+  condition(beat({team1: ['tessa', 'lina', 'quinn'], team2: ['marco', 'noah', 'riley'], round: 3}));
+
+  // In the fourth round, Marco, Lina, and Riley beat Tessa, Noah, and Quinn.
+  condition(beat({team1: ['marco', 'lina', 'riley'], team2: ['tessa', 'noah', 'quinn'], round: 4}));
+
+  // QUERIES
+  // Query 1: Out of 100 random disc golfers, where do you think Tessa ranks in terms of intrinsic disc golf skill?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Lina put into the fourth round?
+  // Query 3: In a new team round later this same day between Tessa, Lina, and Quinn (Team 1) and Marco, Noah, and Riley (Team 2), who would win and by how much?
+  // Query 4: In a new team round later this same day between Tessa and Marco (Team 1) and Lina and Quinn (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_disc_golf_skill_rank({disc_golfer: 'tessa', out_of_n_disc_golfers: 100}),
+    query2: effort_percentage_in_round({disc_golfer: 'lina', round: 4}),
+    query3: who_would_win_by_how_much({team1: ['tessa', 'lina', 'quinn'], team2: ['marco', 'noah', 'riley'], round: 5}),
+    query4: who_would_win_by_how_much({team1: ['tessa', 'marco'], team2: ['lina', 'quinn'], round: 6})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-44.json', posterior);

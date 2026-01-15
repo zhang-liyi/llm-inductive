@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of Ultimate Frisbee games. Each game is decided mainly by the players’ intrinsic Ultimate ability—such as throwing accuracy, speed, and endurance—together with how much effort they put into cutting, sprinting, and staying focused on each point. All games are 6‑on‑6 and take place on the same day.
+
+CONDITIONS
+In the first game, Marcus, Aiden, Briar, Cole, Daphne, and Ezra beat Faith, Gavin, Holly, Ivan, Jae, and Kira.  
+In the second game, Marcus, Aiden, Briar, Cole, Daphne, and Ezra beat Faith, Holly, Leo, Mila, Nora, and Owen.  
+In the third game, Marcus, Aiden, Briar, Cole, Daphne, and Ezra beat Gavin, Ivan, Jae, Leo, Priya, and Quinn.  
+In the fourth game, Marcus, Aiden, Briar, Cole, Daphne, and Ezra lost to Faith, Gavin, Mila, Nora, Rafi, and Sienna.
+
+QUERIES
+Query 1: Out of 100 random Ultimate Frisbee players, where do you think Marcus ranks in terms of intrinsic Ultimate ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Faith put into the fourth game?  
+Query 3: In a new game later this same day between Marcus, Aiden, Briar, Cole, Daphne, and Ezra (Team 1) and Faith, Holly, Leo, Mila, Nora, and Owen (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Gavin, Ivan, Jae, Rafi, Sienna, and Quinn (Team 1) and Faith, Holly, Leo, Mila, Nora, and Owen (Team 2), who would win and by how much?
+<END_SCENARIO>

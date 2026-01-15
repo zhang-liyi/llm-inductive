@@ -1,0 +1,20 @@
+<START_SCENARIO>
+BACKGROUND  
+This event is a mixed‑gender Ultimate Frisbee meetup. Game results depend on each player’s intrinsic Ultimate ability (throwing accuracy, catching, cutting speed, and defensive reactions) and the effort they expend in that game.  
+Players compete either in 1v1 throwing/defense drills or in 6‑player teams. All games occur on the same day.  
+Two 5‑player cores typically stay together:  
+- Sky core: Jenna, Chloe, Tori, Helen, Brooke  
+- Earth core: Adrian, Paul, Victor, Sean, Dylan  
+Maya is not tied to either core and often switches teams.
+
+CONDITIONS  
+In the first game, Maya, Jenna, Chloe, Tori, Helen, and Brooke beat Adrian, Paul, Victor, Sean, Dylan, and Iris.  
+In the second game, Adrian, Paul, Victor, Sean, Dylan, and Maya beat Jenna, Chloe, Tori, Helen, Brooke, and Iris.  
+Later that day, in a 1v1 throwing and marking drill, Maya beat Iris.
+
+QUERIES  
+Query 1: Out of 100 random Ultimate Frisbee players, where do you think Maya ranks in terms of intrinsic Ultimate ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Iris put into the first game?  
+Query 3: In a new 6‑player game later this same day between Maya, Jenna, Chloe, Victor, Sean, and Brooke (Team 1) and Adrian, Paul, Dylan, Tori, Helen, and Iris (Team 2), who would win and by how much?  
+Query 4: In a new 1v1 cutting and throwing contest later this same day between Maya (Team 1) and Adrian (Team 2), who would win and by how much?  
+<END_SCENARIO>

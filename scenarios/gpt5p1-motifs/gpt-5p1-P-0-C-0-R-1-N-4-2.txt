@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of volleyball matches. The winner of each match is the team that can serve, pass, set, and attack more effectively, based on intrinsic volleyball skills and how much effort they apply in that match.
+Athletes compete either individually in skill contests or as part of fixed 6-player teams that do not change across matches.
+All matches take place on the same day.
+
+CONDITIONS
+Team Blaze (Darius, Ivan, Kyle, Marco, Nate, Victor) beat Team Wave (Aaron, Blake, Cody, Dylan, Evan, Grant) in the first match.
+In a serving accuracy contest, Darius beat Aaron.
+Team Blaze beat Team Peak (Henry, Isaac, Joel, Leo, Mason, Noah) in the next match.
+Later that day, Team Blaze beat Team Wave again.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Darius ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Aaron put into the serving accuracy contest?
+Query 3: In a new match later this same day between Team Blaze and Team Peak, who would win and by how much?
+Query 4: In a new match later this same day between Team Wave and Team Peak, who would win and by how much?
+<END_SCENARIO>

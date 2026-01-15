@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of small‑sided soccer games. Each team fields 9 players. The result of each game depends on the combined intrinsic soccer ability of the players on the field and how much effort they put into that particular game.
+Players usually stay with their regular team squads: the Hawks, the Tigers, and the Wolves. One player, Diego, is a floating substitute who sometimes joins different teams. Players can also compete in individual penalty shootout duels.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the Hawks with Diego in the lineup lost to the Tigers.
+In the second game, the Wolves with Diego in the lineup lost to the Hawks.
+In the third game, the Tigers beat the Wolves using their regular squads without Diego.
+In a penalty shootout later that day, Diego lost to Maya from the Hawks.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Diego ranks in terms of intrinsic soccer ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Diego put into the second game?
+Query 3: In a new game later this same day between the Tigers and the Hawks with Diego in the Hawks’ lineup again, who would win and by how much?
+Query 4: In a new game later this same day between the Wolves with Diego in their lineup and the Tigers, who would win and by how much?
+<END_SCENARIO>

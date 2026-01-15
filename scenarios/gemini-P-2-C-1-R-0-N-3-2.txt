@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ice Hockey scrimmages. In each scrimmage, the team that wins depends on the number of goals scored, based on the athletes' intrinsic skating and puck-handling ability modulated by other factors including how much effort they put into that scrimmage.
+Athletes compete in teams of 5 skaters.
+All scrimmages take place on the same day.
+
+CONDITIONS
+In the first scrimmage, Sven, Lars, Erik, Nils, and Bjorn beat Hans, Otto, Karl, Fritz, and Jens.
+In the second scrimmage, Sven, Hans, Otto, Karl, and Fritz beat Lars, Erik, Nils, Bjorn, and Jens.
+In the third scrimmage, Sven, Lars, Hans, Erik, and Otto lost to Nils, Bjorn, Karl, Fritz, and Jens.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Sven ranks in terms of intrinsic skating and puck-handling ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Sven put into the third scrimmage?
+Query 3: In a new scrimmage later this same day between Sven, Lars, Erik, Hans, and Otto (Team 1) and Nils, Bjorn, Karl, Fritz, and Jens (Team 2), who would win and by how much?
+Query 4: In a new scrimmage later this same day between Lars, Erik, Nils, Bjorn, and Jens (Team 1) and Sven, Hans, Otto, Karl, and Fritz (Team 2), who would win and by how much?
+<END_SCENARIO>

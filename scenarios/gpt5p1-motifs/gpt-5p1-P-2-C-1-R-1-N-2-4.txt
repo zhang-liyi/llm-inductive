@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 4‑on‑4 volleyball matches, with the option of occasional 1‑on‑1 serving and passing duels. In each match, the result depends on intrinsic volleyball ability (spiking, passing, and reactions) modulated by how much effort they put into that match.
+Athletes compete either individually or in teams of four.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Sofia, Ethan, Finn, and Grace beat Alex, Bella, Chloe, and Diana.
+In the second match, Sofia, Hannah, Isaac, and James beat Alex, Bella, Chloe, and Diana.
+In the third match, Sofia, Ethan, Hannah, and Kevin lost to Alex, Bella, Chloe, and Diana.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Sofia ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Alex put into the third match?
+Query 3: In a new 4‑on‑4 match later this same day between Sofia, Finn, Grace, and Isaac (Team 1) and Alex, Bella, Chloe, and Diana (Team 2), who would win and by how much?
+Query 4: In a new 4‑on‑4 match later this same day between Ethan, Hannah, James, and Kevin (Team 1) and Alex, Bella, Chloe, and Diana (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Badminton matches. In each match, the winner is determined by their ability to return the shuttlecock and place shots effectively, based on their intrinsic wrist strength and agility modulated by other factors including how much effort they put into that match.
+Athletes compete either individually or as a team of two.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Rohan lost to Arjun.
+In the second match, Rohan and Vikram lost to Arjun and Kabir.
+In the third match, Rohan and Vikram beat Kabir and Neil.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Rohan ranks in terms of intrinsic wrist strength and agility?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Rohan put into the third match?
+Query 3: In a new match later this same day between Rohan and Vikram (Team 1) and Arjun and Dev (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Arjun and Kabir (Team 1) and Vikram and Neil (Team 2), who would win and by how much?
+<END_SCENARIO>

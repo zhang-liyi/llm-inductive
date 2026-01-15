@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the riders are competing in a series of short mountain biking races on a technical loop. In each race, the winner is decided by how quickly riders complete the course, which depends on their intrinsic power, bike-handling skill, and the level of effort they put into that race.
+Riders compete either individually or in small teams.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Theo beat Riley.
+In the second race, Riley and Uma beat Theo and Victor.
+In the third race, Victor beat Uma.
+
+QUERIES
+Query 1: Out of 100 random mountain bikers, where do you think Theo ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Victor put into the third race?
+Query 3: In a new race later this same day between Theo and Uma (Team 1) and Riley and Victor (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Theo and Riley (Team 1) and Uma and Will (Team 2), who would win and by how much?
+<END_SCENARIO>

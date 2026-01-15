@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of badminton doubles and singles matches. In each match, the team that wins depends on the players’ intrinsic skill, coordination, and quickness, combined with how much effort they put into that match.
+Athletes compete either individually or as a doubles team.
+All matches take place on the same day.
+
+CONDITIONS
+In the first doubles match, Priya and Noah beat Lena and Omar.
+In the second doubles match, Jake and Priya beat Lena and Omar.
+In a singles match, Noah beat Jake.
+In the third doubles match, Noah and Sara beat Lena and Omar.
+
+QUERIES
+Query 1: Out of 100 random badminton players, where do you think Priya ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Lena put into the third doubles match?
+Query 3: In a new doubles match later this same day between Priya and Sara (Team 1) and Noah and Jake (Team 2), who would win and by how much?
+Query 4: In a new doubles match later this same day between Lena and Omar (Team 1) and Priya and Noah (Team 2), who would win and by how much?
+<END_SCENARIO>

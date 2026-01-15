@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee matches. In each match, the team that wins depends on the throwing accuracy and sprinting speed of the athletes, based on their intrinsic agility modulated by other factors including how much effort they put into that match.
+Athletes compete as a team of 6.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Leo, Max, Ben, Cal, Dan, and Eli beat Fay, Gus, Hal, Ian, Jay, and Kay.
+In the second match, Leo, Max, Fay, Gus, Hal, and Ian beat Ben, Cal, Dan, Eli, Jay, and Kay.
+In the third match, Leo, Max, Jay, Kay, Ben, and Cal beat Fay, Gus, Hal, Ian, Dan, and Eli.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Leo ranks in terms of intrinsic agility?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Fay put into the third match?
+Query 3: In a new match later this same day between Leo, Max, Dan, Eli, Jay, and Kay (Team 1) and Ben, Cal, Fay, Gus, Hal, and Ian (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Ben, Cal, Fay, Gus, Hal, and Ian (Team 1) and Dan, Eli, Jay, Kay, Leo, and Max (Team 2), who would win and by how much?
+<END_SCENARIO>

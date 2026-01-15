@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the rowers are competing in a series of rowing races in pairs. The team that wins each race depends on the rowers’ intrinsic rowing ability, such as their natural strength and rhythm, and how much effort they put into that race.
+Athletes compete mainly in boats of two, with an occasional solo time trial.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Diego and Carla beat Finn and Nora.
+In the second race, Diego and Finn beat Carla and Luis.
+In the third race, Diego and Nora beat Luis and Mia.
+In the fourth race, Diego beat Mia.
+
+QUERIES
+Query 1: Out of 100 random rowers, where do you think Diego ranks in terms of intrinsic strength and endurance?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Luis put into the third race?
+Query 3: In a new race later this same day between Diego and Luis (Team 1) and Carla and Mia (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Finn and Nora (Team 1) and Luis and Mia (Team 2), who would win and by how much?
+<END_SCENARIO>

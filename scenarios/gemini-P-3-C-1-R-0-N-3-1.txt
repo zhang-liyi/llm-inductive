@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ice Hockey matches. In each match, the team that wins depends on the average skating speed and puck handling of the athletes, based on their intrinsic agility modulated by other factors including how much effort they put into that match.
+Athletes compete as a team of 5.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Oliver, Jack, Harry, George, and Charlie beat Thomas, Oscar, James, William, and Henry.
+In the second match, Thomas, Oliver, Jack, Harry, and George beat Oscar, James, William, Henry, and Charlie.
+In the third match, Oscar, James, William, Henry, and Charlie beat Thomas, Oliver, Jack, Harry, and George.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Thomas ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Thomas put into the second match?
+Query 3: In a new match later this same day between Thomas, Oliver, Jack, Harry, and Oscar (Team 1) and George, Charlie, James, William, and Henry (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Thomas, James, William, Henry, and Charlie (Team 1) and Oliver, Jack, Harry, George, and Oscar (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the players are competing in a series of 3-on-3 beach volleyball matches. In each match, the team that wins depends on the players’ intrinsic volleyball ability (serving, passing, setting, attacking, blocking) and the amount of effort they put in during that match.  
+All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Hana, Aiko, and Bella lost to Carla, Diego, and Emil.  
+In the second match, Hana, Carla, and Felix lost to Bella, Emil, and Gabi.  
+In the third match, Hana, Diego, and Gabi lost to Aiko, Felix, and Ivan.  
+In the fourth match, Hana, Emil, and Ivan lost to Carla, Bella, and Felix.
+
+QUERIES  
+Query 1: Out of 100 random volleyball players, where do you think Bella ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Hana put into the third match?  
+Query 3: In a new match later this same day between Aiko, Carla, and Emil (Team 1) and Bella, Diego, and Felix (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Hana, Bella, and Gabi (Team 1) and Carla, Diego, and Ivan (Team 2), who would win and by how much?  
+<END_SCENARIO>

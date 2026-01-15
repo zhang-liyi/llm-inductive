@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 3-on-3 basketball games. In each game, the team that wins depends on the total points scored, which is determined by the athletes' intrinsic shooting accuracy and defensive skills, modulated by how much effort they put into that specific game.
+Athletes compete either individually (1-on-1) or as a fixed team of three.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Kobe beat Paul.
+In the second game, Kobe, Pau, and Lamar beat Paul, Ray, and Kevin.
+In the third game, Kobe, Pau, and Lamar beat Paul, Ray, and Kevin.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Kobe ranks in terms of intrinsic shooting accuracy and defensive skills?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Paul put into the third game?
+Query 3: In a new game later this same day between Kobe, Pau, and Lamar (Team 1) and Paul, Ray, and Kevin (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Pau and Lamar (Team 1) and Ray and Kevin (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,22 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 8‑a‑side basketball games and occasional 1‑on‑1 contests. In each game, the team that wins depends on the players’ intrinsic basketball ability (shooting, ball-handling, coordination) combined with how much effort they put into that game.
+Players compete either individually or as part of an 8‑player team.
+All games take place on the same day.
+
+The Red team usually consists of Kai, Liam, Noah, Ava, Maya, Zoe, Ethan, and Lucas.
+The Blue team usually consists of Ben, Ivy, Chloe, Aria, Finn, Omar, Luis, and Nora.
+The Green team usually consists of Theo, Riley, Sam, Tessa, Hugo, Isla, Quinn, and Derek.
+Jordan is the only player who moves between teams.
+
+CONDITIONS
+In the first game, Jordan joined the Red team (replacing Lucas), and the Red team beat the Blue team.
+In the second game, Jordan joined the Blue team (replacing Nora), and the Blue team beat the Green team.
+In the third game, Finn beat Jordan in a 1‑on‑1 game.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Jordan ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Finn put into the third game?
+Query 3: In a new 8‑a‑side game later this same day between Jordan, Kai, Liam, Noah, Ava, Maya, Zoe, and Ethan (Team 1) and Ben, Ivy, Chloe, Aria, Finn, Omar, Luis, and Nora (Team 2), who would win and by how much?
+Query 4: In a new 8‑a‑side game later this same day between Kai, Liam, Noah, Ava, Maya, Zoe, Ethan, and Lucas (Team 1) and Jordan, Theo, Riley, Sam, Tessa, Hugo, Isla, and Quinn (Team 2), who would win and by how much?
+<END_SCENARIO>

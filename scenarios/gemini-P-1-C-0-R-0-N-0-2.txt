@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Table Tennis matches. In each match, the team that wins depends on the speed and spin they generate, based on their intrinsic reflexes and hand speed modulated by other factors including how much effort they put in to that match.
+Athletes compete either individually or as a team of two.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Wei beat Elara.
+In the second match, Wei and Tina beat Elara and Jace.
+In the third match, Tina and Paul beat Elara and Jace.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Wei ranks in terms of intrinsic reflexes and hand speed?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Elara put into the third match?
+Query 3: In a new match later this same day between Wei and Tina (Team 1) and Elara and a new player named Hugo (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Elara and Jace (Team 1) and Paul and a new player named Ivy (Team 2), who would win and by how much?
+<END_SCENARIO>

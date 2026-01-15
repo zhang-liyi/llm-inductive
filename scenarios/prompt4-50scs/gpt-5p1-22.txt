@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of mountain bike cross‑country runs on the same course. Performance in each run depends on the riders’ intrinsic technical skill and climbing power, together with how much effort they decide to put into that run.  
+Riders compete either individually or in relay-style pairs.  
+All runs take place on the same day.
+
+CONDITIONS  
+In the first run, Harper beat Diego.  
+In the second run, Diego and Lina beat Harper and Quinn.  
+In the third run, Harper beat Lina.  
+
+QUERIES  
+Query 1: Out of 100 random mountain bikers, where do you think Harper ranks in terms of intrinsic strength?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Quinn put into the second run?  
+Query 3: In a new run later this same day between Harper and Quinn (Team 1) and Diego and Lina (Team 2), who would win and by how much?  
+Query 4: In a new run later this same day between Diego (Team 1) and Harper and Lina (Team 2, taking turns on the course), who would win and by how much?  
+<END_SCENARIO>

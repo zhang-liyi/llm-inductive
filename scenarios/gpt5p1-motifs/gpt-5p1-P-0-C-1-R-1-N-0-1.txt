@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of table tennis doubles matches. In each match, the team that wins depends on the players’ intrinsic table tennis skills (speed, spin control, placement, reactions) and how much effort they put into that particular match.
+All matches are played as doubles on the same day.
+
+CONDITIONS
+In the first match, Kenji and Victor beat Liam and Noah.
+In the second match, Kenji and Mark beat Ava and Zoe.
+In the third match, Victor and Mark lost to Liam and Noah.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Kenji ranks in terms of intrinsic table tennis ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Victor put into the third match?
+Query 3: In a new match later this same day between Kenji and Ava (Team 1) and Liam and Noah (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Victor and Mark (Team 1) and Ava and Zoe (Team 2), who would win and by how much?
+<END_SCENARIO>

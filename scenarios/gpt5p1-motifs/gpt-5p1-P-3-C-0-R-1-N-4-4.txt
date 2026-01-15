@@ -1,0 +1,22 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a small 3-team ice hockey showcase played on the same day with 6 skaters per side on the ice (no goalies for simplicity). Game outcomes depend on each player’s intrinsic hockey ability (skating speed, puck control, passing, shooting, and defensive awareness) and how much effort they put into skating, forechecking, and backchecking in that game. Teams with higher combined skill and effort spend more time in the offensive zone and generate more quality shots.
+All games are 6-on-6.
+Players have fixed teams and always play with the same teammates.
+
+Team 1 (Elena’s team): Elena, Sofia, Kat, Nina, Lauren, Britt  
+Team 2: Jake, Connor, Alex, Mason, Tyler, Scott  
+Team 3: Mia, Harper, Quinn, Riley, Zoey, Paige  
+
+CONDITIONS
+In the first game, Elena, Sofia, Kat, Nina, Lauren, and Britt lost to Jake, Connor, Alex, Mason, Tyler, and Scott.  
+In the second game, Elena, Sofia, Kat, Nina, Lauren, and Britt lost to Mia, Harper, Quinn, Riley, Zoey, and Paige.  
+In the third game, Elena, Sofia, Kat, Nina, Lauren, and Britt beat Jake, Connor, Alex, Mason, Tyler, and Scott.  
+In the fourth game, Elena, Sofia, Kat, Nina, Lauren, and Britt lost to Mia, Harper, Quinn, Riley, Zoey, and Paige.
+
+QUERIES
+Query 1: Out of 100 random ice hockey players, where do you think Elena ranks in terms of intrinsic hockey ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mia put into the fourth game?  
+Query 3: In a new game later this same day between Elena, Sofia, Kat, Nina, Lauren, and Britt (Team 1) and Jake, Connor, Alex, Mason, Tyler, and Scott (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Jake, Connor, Alex, Mason, Tyler, and Scott (Team 1) and Mia, Harper, Quinn, Riley, Zoey, and Paige (Team 2), who would win and by how much?
+<END_SCENARIO>

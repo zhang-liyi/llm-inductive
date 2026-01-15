@@ -1,0 +1,247 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  ////////////////////////////////
+  // BACKGROUND KNOWLEDGE
+  ////////////////////////////////
+
+  // Intrinsic beach volleyball ability is a stable attribute of each player (doesn't change over matches).
+  // Units: arbitrary "ability index" (population roughly centered around ~100).
+  var intrinsic_beach_volleyball_ability = mem(function({player}) {
+    // Three broad ability buckets: low / average / high.
+    var parameter_low_ability_prior = 0.33;
+    var parameter_average_ability_prior = 0.33;
+    var parameter_high_ability_prior = 0.34;
+
+    var low_ability_mean = 80;
+    var average_ability_mean = 100;
+    var high_ability_mean = 130;
+    var ability_variance = 15; // variance in ability index within bucket
+
+    var bucket_mean = categorical({
+      ps: [parameter_low_ability_prior, parameter_average_ability_prior, parameter_high_ability_prior],
+      vs: [low_ability_mean, average_ability_mean, high_ability_mean]
+    });
+
+    // Ability cannot be negative.
+    return Math.max(gaussian(bucket_mean, ability_variance), 0);
+  });
+
+  // Component skills are noisy manifestations of intrinsic ability.
+  // Units: same ability index scale.
+  var serving_skill = mem(function({player}) {
+    var base = intrinsic_beach_volleyball_ability({player: player});
+    return Math.max(gaussian(base, 20), 0);
+  });
+
+  var passing_skill = mem(function({player}) {
+    var base = intrinsic_beach_volleyball_ability({player: player});
+    return Math.max(gaussian(base, 15), 0);
+  });
+
+  var setting_skill = mem(function({player}) {
+    var base = intrinsic_beach_volleyball_ability({player: player});
+    return Math.max(gaussian(base, 15), 0);
+  });
+
+  var attacking_skill = mem(function({player}) {
+    var base = intrinsic_beach_volleyball_ability({player: player});
+    return Math.max(gaussian(base, 20), 0);
+  });
+
+  var game_reading_skill = mem(function({player}) {
+    var base = intrinsic_beach_volleyball_ability({player: player});
+    return Math.max(gaussian(base, 10), 0);
+  });
+
+  // Rank a player's intrinsic ability among a reference population of out_of_n_players.
+  // Output: integer count of how many other players this player is better than (0..out_of_n_players-1).
+  var intrinsic_beach_volleyball_ability_rank = function({player, out_of_n_players}) {
+    // Generate out_of_n_players - 1 random "other" player IDs.
+    var random_player_ids = mapN(
+      function(x) { return uniform(0, 1000); },
+      out_of_n_players - 1
+    );
+
+    return sum(map(
+      function(random_player_id) {
+        return intrinsic_beach_volleyball_ability({player: player}) >
+               intrinsic_beach_volleyball_ability({player: random_player_id});
+      },
+      random_player_ids
+    ));
+  };
+
+  ////////////////////////////////
+  // EFFORT AND PERFORMANCE
+  ////////////////////////////////
+
+  // Effort in a given match for each player.
+  // Units: percentage from 0 to 100 (% effort).
+  var effort_in_match = mem(function({player, match}) {
+    var ability = intrinsic_beach_volleyball_ability({player: player});
+
+    // Slight dependence of effort category priors on intrinsic ability:
+    // Higher-ability players a bit more likely to put in high effort.
+    var parameter_low_effort_prior =
+      ability > 120 ? 0.15 :
+      ability < 80  ? 0.4  :
+                      0.25;
+
+    var parameter_medium_effort_prior =
+      ability > 120 ? 0.35 :
+      ability < 80  ? 0.4  :
+                      0.5;
+
+    var parameter_high_effort_prior =
+      1 - parameter_low_effort_prior - parameter_medium_effort_prior;
+
+    // Typical effort levels (in %).
+    var low_effort_mean = 40;
+    var medium_effort_mean = 70;
+    var high_effort_mean = 90;
+    var effort_variance = 10;
+
+    var effort_center = categorical({
+      ps: [parameter_low_effort_prior, parameter_medium_effort_prior, parameter_high_effort_prior],
+      vs: [low_effort_mean, medium_effort_mean, high_effort_mean]
+    });
+
+    // Truncate to [0, 100]%.
+    return Math.min(Math.max(gaussian(effort_center, effort_variance), 0), 100);
+  });
+
+  // Directly expose effort percentage in a given match.
+  var effort_percentage_in_match = function({player, match}) {
+    return effort_in_match({player: player, match: match});
+  };
+
+  // Player performance in a specific match.
+  // Units: performance index (higher = better in that match).
+  var player_match_performance = mem(function({player, match}) {
+    var s  = serving_skill({player: player});
+    var p  = passing_skill({player: player});
+    var se = setting_skill({player: player});
+    var a  = attacking_skill({player: player});
+    var g  = game_reading_skill({player: player});
+
+    var base_skill_index = listMean([s, p, se, a, g]);
+
+    var effort = effort_in_match({player: player, match: match}); // 0..100
+    // Convert effort to a multiplier: from ~0.5x at very low effort to ~1.5x at max.
+    var effort_multiplier = 0.5 + effort / 100;
+
+    var performance_mean = base_skill_index * effort_multiplier;
+
+    // Situational noise (wind, bounces, etc.).
+    var performance_variance = 50;
+
+    return Math.max(gaussian(performance_mean, performance_variance), 0);
+  });
+
+  // Team performance is the mean of the two players' performances plus small synergy noise.
+  var team_match_performance = function({team, match}) {
+    var player_performances = map(
+      function(player) {
+        return player_match_performance({player: player, match: match});
+      },
+      team
+    );
+
+    var base_team_perf = listMean(player_performances);
+
+    // Team-level coordination noise.
+    var team_noise_variance = 30;
+
+    return Math.max(gaussian(base_team_perf, team_noise_variance), 0);
+  };
+
+  // Match score difference: team1 performance minus team2 performance plus match randomness.
+  // Units: latent "points difference" scale (positive => team1 favored / likely winner).
+  var match_score_difference = function({team1, team2, match}) {
+    var team1_perf = team_match_performance({team: team1, match: match});
+    var team2_perf = team_match_performance({team: team2, match: match});
+
+    var mean_diff = team1_perf - team2_perf;
+    var diff_variance = 80; // match-level luck / randomness
+
+    return gaussian(mean_diff, diff_variance);
+  };
+
+  // Team1 beats team2 in a match if their score difference is positive.
+  var beat = function({team1, team2, match}) {
+    return match_score_difference({team1: team1, team2: team2, match: match}) > 0;
+  };
+
+  // Convenience: team1 loses to team2 if they do not beat them.
+  var lost = function({team1, team2, match}) {
+    return !beat({team1: team1, team2: team2, match: match});
+  };
+
+  // For a hypothetical future match, estimate how likely Team 2 is to win.
+  // Return value: between 0 and 1, interpreted as probability that Team 2 would win.
+  var who_would_win_by_how_much = function({team1, team2, match}) {
+    var num_future_matches_to_simulate = 100;
+
+    // Use new match IDs so they are independent of observed matches.
+    var random_future_match_ids = mapN(
+      function(x) { return uniform(match + 1, 1000); },
+      num_future_matches_to_simulate
+    );
+
+    // Count how many of these simulated matches Team 2 wins.
+    var simulated_wins_by_team2 = sum(map(
+      function(random_future_match_id) {
+        return lost({team1: team1, team2: team2, match: random_future_match_id});
+      },
+      random_future_match_ids
+    ));
+
+    return simulated_wins_by_team2 / num_future_matches_to_simulate;
+  };
+
+  ////////////////////////////////
+  // CONDITIONS
+  ////////////////////////////////
+
+  // In the first match, Ava and Nico beat Blake and Harper.
+  condition(beat({team1: ['ava', 'nico'], team2: ['blake', 'harper'], match: 1}))
+
+  // In the second match, Blake and Quinn beat Ava and Eli.
+  condition(beat({team1: ['blake', 'quinn'], team2: ['ava', 'eli'], match: 2}))
+
+  // In the third match, Harper and Eli beat Nico and Quinn.
+  condition(beat({team1: ['harper', 'eli'], team2: ['nico', 'quinn'], match: 3}))
+
+  // In the fourth match, Ava and Harper beat Blake and Quinn.
+  condition(beat({team1: ['ava', 'harper'], team2: ['blake', 'quinn'], match: 4}))
+
+  ////////////////////////////////
+  // QUERIES
+  ////////////////////////////////
+
+  // Query 1: Out of 100 random beach volleyball players, where do you think Ava ranks in terms of intrinsic beach volleyball ability?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Quinn put into the third match?
+  // Query 3: In a new match later this same day between Ava and Quinn (Team 1) and Blake and Nico (Team 2), who would win and by how much?
+  // Query 4: In a new match later this same day between Harper and Eli (Team 1) and Ava and Blake (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_beach_volleyball_ability_rank({player: 'ava', out_of_n_players: 100}),
+    query2: effort_percentage_in_match({player: 'quinn', match: 3}),
+    query3: who_would_win_by_how_much({team1: ['ava', 'quinn'], team2: ['blake', 'nico'], match: 5}),
+    query4: who_would_win_by_how_much({team1: ['harper', 'eli'], team2: ['ava', 'blake'], match: 6})
+  };
+};
+
+// Run inference to approximate the posterior over query answers.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-6.json', posterior);

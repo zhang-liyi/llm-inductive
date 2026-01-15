@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of small‑sided rugby games. The outcome of each game depends mainly on the players’ intrinsic rugby ability—such as their strength, speed, and tackling and ball‑handling skill—combined with how much effort they put into running, supporting, and contesting each play. All games are 6‑on‑6 and take place on the same day.
+
+CONDITIONS
+In the first game, Ruby, Caleb, Dylan, Ethan, Finn, and Grace beat Harriet, Idris, Jade, Kade, Liam, and Maya.  
+In the second game, Ruby, Caleb, Dylan, Ethan, Finn, and Grace beat Harriet, Jade, Liam, Nikhil, Olivia, and Priya.  
+In the third game, Ruby, Caleb, Dylan, Ethan, Finn, and Grace beat Idris, Kade, Maya, Nikhil, Quinn, and Riley.  
+In the fourth game, Ruby, Caleb, Dylan, Ethan, Finn, and Grace lost to Harriet, Idris, Olivia, Priya, Soren, and Tariq.
+
+QUERIES
+Query 1: Out of 100 random rugby players, where do you think Ruby ranks in terms of intrinsic rugby ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Harriet put into the fourth game?  
+Query 3: In a new game later this same day between Ruby, Caleb, Dylan, Ethan, Finn, and Grace (Team 1) and Harriet, Idris, Jade, Kade, Liam, and Uma (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Nikhil, Olivia, Priya, Quinn, Riley, and Uma (Team 1) and Harriet, Idris, Jade, Kade, Liam, and Maya (Team 2), who would win and by how much?
+<END_SCENARIO>

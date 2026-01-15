@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in 5-on-5 volleyball matches and a few 1-on-1 serve–receive contests. Match results depend on intrinsic volleyball abilities such as serving, passing, blocking, and hitting, as well as on how much effort each player invests in that particular game.  
+All matches and contests take place on the same day.
+
+CONDITIONS  
+In the first match, Diego, Lucas, Bruno, Carlos, and Mateo lost to Rafael, Thiago, Joao, Pedro, and Paulo.  
+In the second contest, Rafael beat Mateo in a 1-on-1 serving and passing challenge.  
+In the third match, Mateo, Rafael, Thiago, Joao, and Pedro beat Diego, Lucas, Bruno, Carlos, and Andre.  
+In the fourth match, Mateo, Andre, Bruno, Carlos, and Lucas lost to Rafael, Thiago, Joao, Pedro, and Paulo.
+
+QUERIES  
+Query 1: Out of 100 random volleyball players, where do you think Mateo ranks in terms of intrinsic volleyball skill?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Rafael put into the third match?  
+Query 3: In a new 5-on-5 match later this same day between Mateo, Diego, Lucas, Bruno, and Carlos (Team 1) and Rafael, Thiago, Joao, Pedro, and Paulo (Team 2), who would win and by how much in terms of points?  
+Query 4: In a new 1-on-1 serving and passing challenge later this same day between Mateo and Thiago, who would win and by how much in terms of points won in the drill?
+<END_SCENARIO>

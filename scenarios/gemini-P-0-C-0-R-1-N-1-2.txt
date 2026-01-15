@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee drills. In each drill, the team that wins depends on the completion rate of passes, based on the athletes' intrinsic agility and throwing precision, modulated by how much effort they put into that drill.
+Athletes compete as a fixed team of three.
+All drills take place on the same day.
+
+CONDITIONS
+In the first drill, Brodie, Kurt, and Matt beat Marques, Beau, and Jimmy.
+In the second drill, Brodie, Kurt, and Matt beat Marques, Beau, and Jimmy.
+In the third drill, Brodie, Kurt, and Matt beat Marques, Beau, and Jimmy.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Brodie ranks in terms of intrinsic agility and throwing precision?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Marques put into the third drill?
+Query 3: In a new drill later this same day between Brodie, Kurt, and Matt (Team 1) and Marques, Beau, and Jimmy (Team 2), who would win and by how much?
+Query 4: In a new drill later this same day between Kurt and Matt (Team 1) and Beau and Jimmy (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+This event is a tennis meet involving both singles and doubles matches. Who wins each match depends on the players’ intrinsic tennis abilities (serve, groundstrokes, anticipation) and the effort they invest in that particular match.  
+Players sometimes play singles and sometimes pair up for doubles.  
+All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Serena beat Lila.  
+In the second match, Serena and Max beat Lila and Tom.  
+In the third match, Tom beat Max.  
+In the fourth match, Lila and Nora beat Serena and Tom.  
+
+QUERIES  
+Query 1: Out of 100 random tennis players, where do you think Serena ranks in terms of intrinsic tennis ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Tom put into the third match?  
+Query 3: In a new match later this same day between Serena and Tom (Team 1) and Lila and Max (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Serena and Nora (Team 1) and Max and Tom (Team 2), who would win and by how much?  
+<END_SCENARIO>

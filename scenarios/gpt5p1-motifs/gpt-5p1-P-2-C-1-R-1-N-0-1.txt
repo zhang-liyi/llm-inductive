@@ -1,0 +1,15 @@
+<START_SCENARIO>
+BACKGROUND
+In this badminton event, players are mainly competing in doubles games. The result of each game is determined by the players’ intrinsic racket skill, agility, and coordination, combined with the effort they choose to exert in that game. Most players keep the same partner throughout, but Priya switches partners between games. All games occur on the same day.
+
+CONDITIONS
+In the first game, Priya and Sam beat Eric and Lila.  
+In the second game, Priya and Tom beat Eric and Lila.  
+In the third game, Priya and Nina lost to Eric and Lila.
+
+QUERIES
+Query 1: Out of 100 random badminton players, where do you think Priya ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Eric put into the third game?  
+Query 3: In a new game later this same day between Priya and Lila (Team 1) and Eric and Sam (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Tom and Nina (Team 1) and Sam and Lila (Team 2), who would win and by how much?
+<END_SCENARIO>

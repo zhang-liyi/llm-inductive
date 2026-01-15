@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of ice hockey scrimmages. In each scrimmage, the result is determined by the players’ intrinsic skating ability, stick handling, and reaction speed, together with the intensity of effort they put into that scrimmage.  
+Athletes play in 1-on-1 situations and in small lines on the ice.  
+All scrimmages take place on the same day.
+
+CONDITIONS  
+In the first scrimmage, Riley beat Sam.  
+In the second scrimmage, Riley and Alex beat Sam and Jamie.  
+In the third scrimmage, Jamie and Riley lost to Sam and Casey.
+
+QUERIES  
+Query 1: Out of 100 random ice hockey athletes, where do you think Riley ranks in terms of intrinsic strength?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jamie put into the third scrimmage?  
+Query 3: In a new scrimmage later this same day between Riley and Casey (Team 1) and Sam and Alex (Team 2), who would win and by how much?  
+Query 4: In a new scrimmage later this same day between Jamie and Taylor (Team 1) and Sam and Casey (Team 2), who would win and by how much?
+<END_SCENARIO>

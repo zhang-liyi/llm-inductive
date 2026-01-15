@@ -1,0 +1,15 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in a **Basketball** tournament (4v4 format). The winning team is determined by the average scoring ability and defensive prowess of the players, based on their intrinsic skill level modulated by the hustle and effort they display in that game. Athletes compete either in 1-on-1 matchups or in fixed teams of four. All games take place on the same day.
+
+CONDITIONS
+In the first game, Darius beat Kobe.
+In the second game, Team Kobe (Kobe, Shaq, Pau, Lamar) beat Team Darius (Darius, Kyrie, Kevin, James).
+In the third game, Team Darius (Darius, Kyrie, Kevin, James) beat Team Draymond (Draymond, Klay, Steph, Andre).
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Darius ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Kyrie put into the third game?
+Query 3: In a new game later this same day between Team Kobe and Team Draymond, who would win and by how much?
+Query 4: In a new game later this same day between Darius and Shaq (Team 1) and Kobe and Kyrie (Team 2), who would win and by how much?
+<END_SCENARIO>

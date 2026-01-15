@@ -1,0 +1,172 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  // BACKGROUND KNOWLEDGE
+  // Intrinsic strength is a stable attribute of each athlete that does not change over the meet.
+  // We'll model it as "potential total" across the two lifts in kg.
+  var intrinsic_strength = mem(function({athlete}) {
+    // Three broad strength buckets for competitive lifters.
+    var low_strength_mean = 150;   // kg total (weaker competitors)
+    var medium_strength_mean = 220; // kg total (typical)
+    var high_strength_mean = 300;   // kg total (very strong)
+    
+    var parameter_low_strength_prior = 0.3;
+    var parameter_medium_strength_prior = 0.4;
+    var parameter_high_strength_prior = 0.3;
+    
+    var strength_bucket_mean = categorical({
+      ps: [parameter_low_strength_prior, parameter_medium_strength_prior, parameter_high_strength_prior],
+      vs: [low_strength_mean, medium_strength_mean, high_strength_mean]
+    });
+    
+    var strength_sd = 20; // kg
+    return Math.max(gaussian(strength_bucket_mean, strength_sd), 0);
+  });
+  
+  // Lifting technique is a stable multiplier converting potential strength into realized lifting performance.
+  // Values >1 mean the athlete expresses their strength very efficiently.
+  var technique = mem(function({athlete}) {
+    var technique_mean = 1.0;   // dimensionless multiplier
+    var technique_sd = 0.1;
+    return Math.max(gaussian(technique_mean, technique_sd), 0.6); // avoid extremely bad technique
+  });
+  
+  // Baseline effort tendency: how hard the athlete usually tries across sessions (0–100%).
+  var baseline_effort_tendency = mem(function({athlete}) {
+    // Bias towards reasonably high but not perfect effort.
+    // Sample from a Beta and scale to 0–100.
+    var effort_raw = beta(5, 2); // mean ~0.71
+    return effort_raw * 100;
+  });
+  
+  // Session-specific effort (0–100%): varies around baseline for each session.
+  var session_effort = mem(function({athlete, session}) {
+    var base = baseline_effort_tendency({athlete: athlete});
+    var effort_sd = 15; // percentage points
+    var raw_effort = gaussian(base, effort_sd);
+    return Math.min(Math.max(raw_effort, 0), 100);
+  });
+  
+  // Effort percentage as queried.
+  var effort_percentage_in_session = function({athlete, session}) {
+    return session_effort({athlete: athlete, session: session});
+  };
+  
+  // Individual session total in kg for an athlete in a given session.
+  // Determined by intrinsic strength, technique, that session's effort, and performance noise.
+  var individual_session_total = function({athlete, session}) {
+    var strength = intrinsic_strength({athlete: athlete}); // kg potential
+    var tech = technique({athlete: athlete});              // multiplier
+    var effort = session_effort({athlete: athlete, session: session}) / 100; // 0–1
+    
+    // Potential total if trying all-out with good execution.
+    var potential_total = strength * tech; // kg
+    
+    // Effort scales you towards potential. With effort=0 you might still lift something,
+    // but much less than potential.
+    var effort_factor = 0.3 + 0.7 * effort; // between 0.3 and 1.0
+    var mean_total = potential_total * effort_factor;
+    
+    var performance_sd = 10; // kg random variability
+    return Math.max(gaussian(mean_total, performance_sd), 0);
+  };
+  
+  // Team total is the sum of individual totals of all team members in that session (kg).
+  var team_total_in_session = function({team, session}) {
+    return sum(map(function(athlete) {
+      return individual_session_total({athlete: athlete, session: session});
+    }, team));
+  };
+  
+  // A team beats another team in a session if its team total is greater.
+  var beat = function({team1, team2, session}) {
+    return team_total_in_session({team: team1, session: session}) >
+           team_total_in_session({team: team2, session: session});
+  };
+  
+  // Margin of victory in kg: positive means Team 1 is ahead, negative means Team 2 is ahead.
+  var win_margin = function({team1, team2, session}) {
+    var t1_total = team_total_in_session({team: team1, session: session});
+    var t2_total = team_total_in_session({team: team2, session: session});
+    var raw_diff = t1_total - t2_total; // kg
+    
+    // Use beat() to ensure the sign is consistent with the winner.
+    var team1_wins = beat({team1: team1, team2: team2, session: session});
+    var corrected_diff = team1_wins ? Math.abs(raw_diff) : -Math.abs(raw_diff);
+    return corrected_diff;
+  };
+  
+  // Intrinsic strength rank: how many out of N-1 random athletes this athlete is stronger than.
+  var intrinsic_strength_rank = function({athlete, out_of_n_athletes}) {
+    var random_athlete_ids = mapN(function(x) { return uniform(0, 1000); },
+                                  out_of_n_athletes - 1);
+    
+    return sum(map(function(random_athlete_id) {
+      return intrinsic_strength({athlete: athlete}) >
+             intrinsic_strength({athlete: random_athlete_id});
+    }, random_athlete_ids));
+  };
+  
+  // Predict who would win and by how much by simulating many hypothetical future sessions.
+  // We return the probability that Team 2 would win, between 0 and 1.
+  // 0 => Team 1 would almost certainly win; 1 => Team 2 would almost certainly win.
+  var who_would_win_by_how_much = function({team1, team2, session}) {
+    var num_future_sessions_to_simulate = 100;
+    var random_future_session_ids = mapN(function(x) {
+      return uniform(session + 1, 1000);
+    }, num_future_sessions_to_simulate);
+    
+    // Count how many simulations have Team 2's total > Team 1's total
+    // using the sign of the win margin.
+    var simulated_rounds_won_by_team_2 = sum(map(function(random_future_session_id) {
+      var margin = win_margin({
+        team1: team1,
+        team2: team2,
+        session: random_future_session_id
+      });
+      // Team 2 wins when margin < 0 (Team 1 behind).
+      return margin < 0;
+    }, random_future_session_ids));
+    
+    return simulated_rounds_won_by_team_2 / num_future_sessions_to_simulate;
+  };
+  
+  // CONDITIONS
+  // In the first session, Nora beat Felix.
+  condition(beat({team1:['nora'], team2:['felix'], session: 1}));
+  
+  // In the second session, Nora and Liam beat Felix and Dana.
+  condition(beat({team1:['nora', 'liam'], team2:['felix', 'dana'], session: 2}));
+  
+  // In the third session, Dana beat Liam.
+  condition(beat({team1:['dana'], team2:['liam'], session: 3}));
+  
+  // In the fourth session, Felix beat Liam.
+  condition(beat({team1:['felix'], team2:['liam'], session: 4}));
+  
+  // QUERIES
+  // Query 1: Out of 100 random weightlifters, where do you think Nora ranks in terms of intrinsic strength?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the third session?
+  // Query 3: In a new session later this same day between Nora and Dana (Team 1) and Felix and Liam (Team 2), who would win and by how much?
+  // Query 4: In a new session later this same day between Dana (Team 1) and Felix (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_strength_rank({athlete: 'nora', out_of_n_athletes: 100}),
+    query2: effort_percentage_in_session({athlete: 'liam', session: 3}),
+    query3: who_would_win_by_how_much({team1:['nora', 'dana'], team2:['felix', 'liam'], session: 5}),
+    query4: who_would_win_by_how_much({team1:['dana'], team2:['felix'], session: 6})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-33.json', posterior);

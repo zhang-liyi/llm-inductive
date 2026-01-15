@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this powerlifting meet, results are based on the combined best squat, bench press, and deadlift. The winner of each contest is the athlete or team with the higher total, determined by their intrinsic overall strength and technique together with how much effort they put into their attempts in that event.
+Athletes compete individually and in two-person team totals.
+All events take place on the same day.
+
+CONDITIONS
+In the squat-focused event, Nate beat Pavel.
+In the bench-focused event, Olena and Pavel beat Nate and Quinn on combined total.
+In the overall total event, Quinn and Rhea beat Olena and Sam on combined total.
+
+QUERIES
+Query 1: Out of 100 random powerlifters, where do you think Nate ranks in terms of intrinsic overall power?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Pavel put into the bench-focused event?
+Query 3: In a new overall total event later this same day between Nate and Rhea (Team 1) and Olena and Pavel (Team 2), who would win and by how much in total weight?
+Query 4: In a new overall total event later this same day between Quinn and Sam (Team 1) and Nate and Olena (Team 2), who would win and by how much in total weight?
+<END_SCENARIO>

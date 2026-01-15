@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 7-a-side Soccer matches. In each match, the team that wins depends on the number of goals scored, based on the athletes' intrinsic ball control and speed modulated by other factors including how much effort they put into that match.
+Athletes compete as a team of 7.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, the team of Alex, Brad, Chad, Dave, Eric, Fred, and Greg beat the team of Hans, Ivan, Jack, Karl, Luis, Mark, and **Noah**.
+In the second match, the team of Hans, Ivan, Jack, Karl, Luis, Mark, and Greg beat the team of Alex, Brad, Chad, Dave, Eric, Fred, and **Noah**.
+In the third match, the team of Paul, Quinn, Ross, Sean, Tony, Vince, and Greg beat the team of Hans, Ivan, Jack, Karl, Luis, Mark, and **Noah**.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think **Noah** ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think **Jack** put into the third match?
+Query 3: In a new match later this same day between the team of Alex, Brad, Chad, Dave, Eric, Fred, and Greg (Team 1) and the team of Hans, Ivan, Jack, Karl, Luis, Mark, and **Noah** (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the team of Paul, Quinn, Ross, Sean, Tony, Vince, and **Noah** (Team 1) and the team of Hans, Ivan, Jack, Karl, Luis, Mark, and Greg (Team 2), who would win and by how much?
+<END_SCENARIO>

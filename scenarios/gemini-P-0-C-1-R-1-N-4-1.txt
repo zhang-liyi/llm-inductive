@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in Ice Hockey games. Each team fields 6 skaters (including the goalie) at a time. The winning team is determined by the average skating speed and puck handling of the lineup, based on intrinsic skill modulated by the physical effort put into the periods.
+The league has fixed teams: The Frost, The Blades, and The Glaciers. An elite player, Quinn, plays as a substitute for different teams throughout the day.
+All games are played back-to-back.
+
+CONDITIONS
+In the first game, The Frost (featuring Quinn) beat The Blades (led by Alex).
+In the second game, The Glaciers (featuring Quinn) beat The Frost (led by Jordan).
+In the third game, The Blades (featuring Quinn) beat The Glaciers (led by Casey).
+
+QUERIES
+Query 1: Out of 100 random hockey players, where do you think Quinn ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Casey put into the third game?
+Query 3: In a new game later this same day between The Frost (featuring Quinn) and The Blades (led by Alex), who would win and by how much?
+Query 4: In a new game later this same day between The Glaciers (led by Casey) and The Frost (led by Jordan), who would win and by how much?
+<END_SCENARIO>

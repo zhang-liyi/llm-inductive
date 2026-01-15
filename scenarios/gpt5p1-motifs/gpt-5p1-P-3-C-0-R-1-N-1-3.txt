@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing 3-on-3 ice hockey on a small rink. The outcome of each game depends on the teams’ overall performance, driven by each player’s intrinsic skating, stick-handling, and shooting ability and the effort they put into that game.
+Players compete as part of fixed three-player lines, and occasionally in individual contests.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Mia, Rachel, and Tessa beat Lena, Sofia, and Kat.
+In the second game, Erin, Julia, and Harper beat Lena, Sofia, and Kat.
+In the third game, Lena, Sofia, and Kat beat Erin, Julia, and Harper.
+In the fourth game, Tessa beat Harper.
+
+QUERIES
+Query 1: Out of 100 random ice hockey players, where do you think Lena ranks in terms of intrinsic ice hockey ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Lena put into the second game?
+Query 3: In a new game later this same day between Lena, Sofia, and Kat (Line 1) and Mia, Rachel, and Tessa (Line 2), who would win and by how much?
+Query 4: In a new game later this same day between Mia, Rachel, and Tessa (Line 1) and Erin, Julia, and Harper (Line 2), who would win and by how much?
+<END_SCENARIO>

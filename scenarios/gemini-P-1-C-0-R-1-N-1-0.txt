@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 3-on-3 basketball games. In each game, the team that wins depends on the total points scored, which is determined by the athletes' shooting accuracy and defensive skills, modulated by other factors including how much effort they put into that game.
+Athletes compete either individually (1-on-1) or as a fixed team of three.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, The Vipers (Marcus, Andre, and Tyrell) beat The Cobras (Jared, Malik, and Trey).
+In the second game, The Pythons (Kobe, Shaq, and Pau) beat The Cobras (Jared, Malik, and Trey).
+In the third game, Marcus beat Jared.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jared ranks in terms of intrinsic shooting accuracy and defensive skills?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jared put into the third game?
+Query 3: In a new game later this same day between Marcus and Andre (Team 1) and Jared and Malik (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Tyrell and Kobe (Team 1) and Trey and Shaq (Team 2), who would win and by how much?
+<END_SCENARIO>

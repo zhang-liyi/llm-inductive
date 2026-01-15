@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, teams are playing a series of 8‑a‑side ultimate frisbee games. Game results depend on each player’s intrinsic speed, throwing accuracy, catching ability, and their effort level in that game. All games occur over the course of one day.
+
+CONDITIONS
+In the first game, Priya, Ethan, Sarah, Malik, Nora, Felix, Hannah, and Jonah beat Caleb, Iris, Leo, Quinn, Dylan, Paige, Victor, and Zoe.
+
+In the second game, Priya, Ethan, Sarah, Malik, Nora, Felix, Hannah, and Jonah beat Caleb, Iris, Leo, Quinn, Dylan, Paige, Marco, and Zoe.
+
+In the third game, Priya, Ethan, Sarah, Malik, Nora, Felix, Hannah, and Jonah lost to Caleb, Iris, Leo, Quinn, Dylan, Paige, Victor, and Marco.
+
+In the fourth game, Priya, Ethan, Sarah, Malik, Nora, Felix, Hannah, and Jonah beat Victor, Iris, Leo, Quinn, Dylan, Paige, Marco, and Zoe.
+
+QUERIES
+Query 1: Out of 100 random players, where do you think Priya ranks in terms of intrinsic ultimate frisbee ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Caleb put into the third game?
+Query 3: In a new game later this same day between Priya, Ethan, Sarah, Malik, Nora, Felix, Hannah, and Jonah (Team 1) and Caleb, Iris, Leo, Quinn, Dylan, Paige, Victor, and Marco (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Victor, Zoe, Caleb, Iris, Leo, Quinn, Dylan, and Paige (Team 1) and Malik, Nora, Felix, Hannah, Jonah, Marco, Sarah, and Ethan (Team 2), who would win and by how much?
+<END_SCENARIO>

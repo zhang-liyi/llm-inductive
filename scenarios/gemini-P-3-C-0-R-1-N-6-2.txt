@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in an Ultimate Frisbee tournament. Each team consists of 8 players on the field. In each game, the team that wins depends on the speed and throwing accuracy of the athletes, based on their intrinsic agility modulated by other factors including how much effort they put into that game.
+Players compete in fixed teams.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Skyler's Squad lost to the Disc Jockeys.
+In the second game, Skyler's Squad beat the Wind Chasers.
+In the third game, Skyler's Squad lost to the Sky Walkers.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Skyler ranks in terms of intrinsic agility?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think the Disc Jockeys put into the first game?
+Query 3: In a new game later this same day between Skyler's Squad (Team 1) and the Sky Walkers (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between the Disc Jockeys (Team 1) and the Wind Chasers (Team 2), who would win and by how much?
+<END_SCENARIO>

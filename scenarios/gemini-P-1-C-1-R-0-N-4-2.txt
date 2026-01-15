@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee games. In each game, the team that wins depends on the sprinting speed and throwing precision of the athletes, based on their intrinsic agility modulated by other factors including how much effort they put into that game.
+Athletes compete in teams of 6.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the team of Ethan, Michael, Daniel, Matthew, Aiden, and Joseph beat the team of Samuel, David, John, Carter, Luke, and Alex.
+In the second game, the team of Samuel, David, John, Carter, Luke, and Joseph beat the team of Ethan, Michael, Daniel, Matthew, Aiden, and Alex.
+In the third game, the team of Ethan, Samuel, Michael, David, Daniel, and John beat the team of Matthew, Carter, Aiden, Luke, Joseph, and Alex.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Alex ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Joseph put into the third race?
+Query 3: In a new game later this same day between Team 1 (Ethan, Michael, Daniel, Matthew, Aiden, Joseph) and Team 2 (Samuel, David, John, Carter, Luke, Alex), who would win and by how much?
+Query 4: In a new game later this same day between Team 1 (Ethan, Samuel, Daniel, Carter, Aiden, Luke) and Team 2 (Michael, David, Matthew, John, Joseph, Alex), who would win and by how much?
+<END_SCENARIO>

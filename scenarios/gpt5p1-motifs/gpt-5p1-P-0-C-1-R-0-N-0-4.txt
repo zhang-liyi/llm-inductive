@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of badminton matches. The result of each match depends on the players’ intrinsic badminton ability, such as their natural reflexes and touch, combined with how much effort they put into that match.
+Athletes compete mainly in doubles (teams of two), with an occasional singles game.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Mei and Arun beat Lila and Jonas.
+In the second match, Mei and Lila beat Arun and Kai.
+In the third match, Mei and Jonas beat Kai and Rina.
+
+QUERIES
+Query 1: Out of 100 random badminton players, where do you think Mei ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Kai put into the third match?
+Query 3: In a new match later this same day between Mei and Kai (Team 1) and Arun and Rina (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Lila and Jonas (Team 1) and Kai and Rina (Team 2), who would win and by how much?
+<END_SCENARIO>

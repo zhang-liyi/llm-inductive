@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in Lacrosse games. Each side fields 8 players. The winning team is determined by the average agility and shooting accuracy of the athletes, based on their intrinsic abilities modulated by factors such as fatigue and the effort they put into the game.
+There are fixed regional squads (North Squad, South Squad, and East Squad), but a standout player, Morgan, rotates to play with different squads.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Morgan and the North Squad beat the South Squad.
+In the second game, Morgan and the South Squad beat the North Squad.
+In the third game, the East Squad lost to Morgan and the South Squad.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Morgan ranks in terms of intrinsic agility?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think the East Squad put into the third game?
+Query 3: In a new game later this same day between Morgan and the East Squad (Team 1) and the North Squad (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between the North Squad (Team 1) and the South Squad (Team 2), who would win and by how much?
+<END_SCENARIO>

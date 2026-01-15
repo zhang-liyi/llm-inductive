@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of pickleball matches. In each match, the winner is determined by shot consistency, reaction speed, control, and positioning, which depend on the players’ intrinsic ability and the effort they put into that match.  
+Players compete in both singles and doubles.  
+All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Avery beat Blake.  
+In the second match, Avery and Harper beat Blake and Jordan.  
+In the third match, Blake and Casey beat Harper and Jordan.  
+In the fourth match, Casey beat Harper.
+
+QUERIES  
+Query 1: Out of 100 random pickleball players, where do you think Avery ranks in terms of intrinsic playing ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Blake put into the second match?  
+Query 3: In a new match later this same day between Avery and Casey (Team 1) and Blake and Harper (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Jordan and Harper (Team 1) and Blake and a strong substitute (Team 2), who would win and by how much?
+<END_SCENARIO>

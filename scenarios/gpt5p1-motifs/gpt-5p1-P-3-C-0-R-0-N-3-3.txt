@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a series of small‑sided ultimate frisbee games and distance‑throwing contests. Outcomes depend on each player’s intrinsic ultimate skills (throwing precision, speed, endurance, and catching reliability) in combination with how much effort they put into that particular game.
+Players compete either individually or in 5‑player teams.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Darius, Hank, Jonas, Malik, and Theo lost to Riley, Casey, Nora, Finn, and Zoe.
+In the second game, Darius, Hank, Jonas, Malik, and Theo lost to Casey, Nora, Liam, Zoe, and Harper.
+In a separate throwing accuracy contest, Zoe beat Hank.
+In the third game, Darius, Hank, Jonas, Malik, and Theo beat Riley, Finn, Liam, Harper, and Quinn.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Darius ranks in terms of intrinsic ultimate ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Zoe put into the throwing accuracy contest?
+Query 3: In a new game later this same day between Darius, Hank, Jonas, Malik, and Theo (Team 1) and Riley, Casey, Liam, Zoe, and Quinn (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Nora, Finn, Harper, Quinn, and Casey (Team 1) and Hank, Malik, Riley, Liam, and Harper (Team 2), who would win and by how much?
+<END_SCENARIO>

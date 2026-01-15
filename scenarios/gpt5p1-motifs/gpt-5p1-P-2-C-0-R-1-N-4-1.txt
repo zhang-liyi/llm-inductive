@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of small-sided soccer matches and individual dribbling duels. Each result depends on the players’ intrinsic soccer ability (such as speed, ball control, and accuracy) together with the amount of effort they put into that particular match or duel.
+Athletes compete either individually or in teams of 6.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Team Crimson (Leo, Marco, Ahmed, Jonas, Felix, Hugo) beat Team Navy (Samir, Dylan, Oscar, Victor, Ian, Lucas).
+In the second match, Team Crimson beat Team Gold (Noah, Ethan, Paolo, Toby, Ryan, Caleb).
+In the third match, Team Navy beat Team Crimson.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Leo ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Marco put into the third match?
+Query 3: In a new 6-on-6 soccer match later this same day between Team Crimson and Team Navy, who would win and by how much?
+Query 4: In a new 6-on-6 soccer match later this same day between Team Crimson and Team Gold, who would win and by how much?
+<END_SCENARIO>

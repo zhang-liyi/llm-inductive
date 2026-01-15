@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in table tennis matches. The winner of each match is determined by the players’ intrinsic touch, reaction speed, and spin control, modulated by how much effort and focus they devote to that particular match.  
+They play doubles (teams of two), with all matches occurring on the same day.
+
+CONDITIONS  
+In the first match, Omar and Ben lost to Victor and Hugo.  
+In the second match, Omar and Liam lost to Victor and Hugo.  
+In the third match, Omar and Noah lost to Eric and Jason.
+
+QUERIES  
+Query 1: Out of 100 random table tennis players, where do you think Victor ranks in terms of intrinsic table tennis ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Omar put into the second match?  
+Query 3: In a new doubles match later this same day between Omar and Hugo (Team 1) and Victor and Ben (Team 2), who would win and by how much?  
+Query 4: In a new doubles match later this same day between Liam and Noah (Team 1) and Eric and Jason (Team 2), who would win and by how much?
+<END_SCENARIO>

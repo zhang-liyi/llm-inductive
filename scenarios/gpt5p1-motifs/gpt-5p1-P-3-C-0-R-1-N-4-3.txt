@@ -1,0 +1,22 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a one-day Ultimate Frisbee mini-tournament using 6-on-6 lineups. Game outcomes depend on each player’s intrinsic Ultimate skills (throwing accuracy, catching reliability, cutting, field awareness, and defensive positioning) combined with how much effort they put into running hard, making cuts, and staying focused on each point.
+All games are 6-on-6.
+Players have fixed teams and always play with the same teammates.
+
+Team 1 (Ravi’s team): Ravi, Ben, Colin, Mateo, Liam, Oscar  
+Team 2: Justin, Eric, Milo, Shane, Viktor, Damian  
+Team 3: Isaac, Adrian, Leo, Marcus, Finn, Cole  
+
+CONDITIONS
+In the first game, Ravi, Ben, Colin, Mateo, Liam, and Oscar lost to Justin, Eric, Milo, Shane, Viktor, and Damian.  
+In the second game, Ravi, Ben, Colin, Mateo, Liam, and Oscar lost to Isaac, Adrian, Leo, Marcus, Finn, and Cole.  
+In the third game, Ravi, Ben, Colin, Mateo, Liam, and Oscar beat Justin, Eric, Milo, Shane, Viktor, and Damian.  
+In the fourth game, Ravi, Ben, Colin, Mateo, Liam, and Oscar lost to Isaac, Adrian, Leo, Marcus, Finn, and Cole.
+
+QUERIES
+Query 1: Out of 100 random Ultimate Frisbee players, where do you think Ravi ranks in terms of intrinsic Ultimate ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Isaac put into the fourth game?  
+Query 3: In a new game later this same day between Ravi, Ben, Colin, Mateo, Liam, and Oscar (Team 1) and Justin, Eric, Milo, Shane, Viktor, and Damian (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Justin, Eric, Milo, Shane, Viktor, and Damian (Team 1) and Isaac, Adrian, Leo, Marcus, Finn, and Cole (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of seven-a-side ultimate frisbee games. Each game’s result depends on players’ intrinsic ultimate skills (throwing, cutting, marking) combined with how much effort they put into that specific game.
+All games are played on the same day, and players frequently change teams.
+
+CONDITIONS
+In the first game, Riley, Jonah, Keisha, Leo, Nadia, Felix, and Sara beat Marcus, Ava, Blake, Devon, Finn, Holly, and Isaac.
+In the second game, Ava, Blake, Devon, Finn, Holly, Isaac, and Tessa beat Marcus, Riley, Jonah, Keisha, Leo, Nadia, and Omar.
+In the third game, Marcus, Riley, Nadia, Felix, Sara, Tessa, and Omar beat Ava, Blake, Devon, Finn, Holly, Isaac, and Leo.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Marcus ranks in terms of intrinsic ultimate ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ava put into the second game?
+Query 3: In a new game later this same day between Marcus, Riley, Jonah, Keisha, Felix, Sara, and Omar (Team 1) and Ava, Blake, Devon, Finn, Holly, Isaac, and Leo (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Nadia, Tessa, Omar, and four other similarly skilled players (Team 1) and Riley, Jonah, Felix, and four other similarly skilled players (Team 2), who would win and by how much?
+<END_SCENARIO>

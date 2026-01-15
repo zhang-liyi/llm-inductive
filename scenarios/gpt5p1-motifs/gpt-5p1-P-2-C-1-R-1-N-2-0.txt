@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 4-on-4 half‑court basketball games and a few potential 1-on-1 matchups. In each game, the team that wins depends on the players’ intrinsic basketball ability (such as shooting, quickness, and coordination) modulated by how much effort they put into that game.
+Athletes compete either individually or in teams of four.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Leo, Amir, Ben, and Carlos beat Devon, Eli, Faisal, and Gabe.
+In the second game, Leo, Henry, Ivan, and Jake beat Devon, Eli, Faisal, and Gabe.
+In the third game, Leo, Amir, Henry, and Ben lost to Devon, Eli, Faisal, and Gabe.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Leo ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Gabe put into the third game?
+Query 3: In a new 4-on-4 game later this same day between Leo, Carlos, Henry, and Ivan (Team 1) and Devon, Eli, Faisal, and Gabe (Team 2), who would win and by how much?
+Query 4: In a new 4-on-4 game later this same day between Amir, Ben, Jake, and Kyle (Team 1) and Devon, Eli, Faisal, and Gabe (Team 2), who would win and by how much?
+<END_SCENARIO>

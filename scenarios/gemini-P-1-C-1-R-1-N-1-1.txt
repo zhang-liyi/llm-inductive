@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in a series of mini-rink ice hockey matches. The team that wins depends on the average skating speed and puck-handling accuracy of the athletes, based on their intrinsic coordination modulated by other factors including how much effort they put in to that match.
+Athletes compete either individually or as a team of three.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Jack, Ryan, and Leo beat Finn, Cole, and Sasha.
+In the second match, Finn, Cole, and Leo beat Jack, Ryan, and Sasha.
+In the third match, Sasha lost to Jack.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Sasha ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Finn put into the third race?
+Query 3: In a new race later this same day between Sasha and Ryan (Team 1) and Leo and Cole (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Leo and Finn (Team 1) and Ryan and Jack (Team 2), who would win and by how much?
+<END_SCENARIO>

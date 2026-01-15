@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of table tennis contests. In each contest, the winning side is determined by players’ speed, spin control, placement, and reflexes, which stem from their intrinsic table tennis ability and how much effort they put into that contest.
+Players compete either individually or as teams of four.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Yuki beat Oliver.
+In the second match, Yuki, Lin, Marta, and Greg beat Oliver, James, Noor, and Pavel.
+In the third match, Yuki, Lin, Marta, and Greg beat Noor, Pavel, Asha, and James.
+In the fourth match, Yuki, Lin, Marta, and Greg lost to Asha, James, Lila, and Oliver.
+
+QUERIES
+Query 1: Out of 100 random table tennis players, where do you think Yuki ranks in terms of intrinsic table tennis ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Noor put into the second match?
+Query 3: In a new match later this same day between Yuki, Lin, Marta, and Greg (Team 1) and Oliver, Asha, Lila, and Pavel (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between James, Noor, Pavel, and Lila (Team 1) and Oliver, Asha, Tom, and Emma (Team 2), who would win and by how much?
+<END_SCENARIO>

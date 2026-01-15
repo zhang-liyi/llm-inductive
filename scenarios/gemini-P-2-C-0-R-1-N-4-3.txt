@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a Lacrosse (Sixes format) tournament. Each team fields 6 players at a time. The winning team is determined by the running endurance and stick-handling capability of the group, based on their intrinsic coordination modulated by the intensity of effort they put into the game.
+Teams are fixed and play together consistently.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Sophie and her 5 teammates beat The Nets.
+In the second game, Sophie and her 5 teammates lost to The Sticks.
+In the third game, Sophie and her 5 teammates beat The Goals.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Sophie ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think the defender from The Sticks put into the second game?
+Query 3: In a new game later this same day between Sophie’s team (Team 1) and The Nets (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between The Sticks (Team 1) and The Goals (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+Athletes are competing in a series of 5-on-5 ice hockey scrimmages (excluding goalies for this metric). The winning team is determined by puck possession and shots on goal, derived from the athletes' intrinsic skating speed and stick-handling, modulated by the physical grit and checking effort they apply in that scrimmage.
+Ethan is part of a fixed unit called "The Blades" along with teammates Mason, Logan, Aiden, and Lucas.
+All scrimmages take place during the same training camp session.
+
+CONDITIONS
+In the first scrimmage, The Enforcers beat The Blades.
+In the second scrimmage, The Icemen beat The Blades.
+In the third scrimmage, The Blades beat The Pucks.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Ethan ranks in terms of intrinsic skating speed and stick-handling?
+Query 2: On a percentage scale from 0 to 100%, how much physical grit do you think Ethan put into the third scrimmage?
+Query 3: In a new scrimmage later this same session between The Blades (Team 1) and The Enforcers (Team 2), who would win and by how much?
+Query 4: In a new scrimmage later this same session between a team formed by Ethan, Mason, and three players from The Icemen (Team 1) and a team formed by Logan, Aiden, and three players from The Pucks (Team 2), who would win and by how much?
+<END_SCENARIO>

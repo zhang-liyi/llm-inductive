@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in Field Hockey matches. Each team consists of 8 players. In each match, the team that wins depends on the coordination and stick-handling speed of the athletes, based on their intrinsic talent modulated by the intensity of effort they put into that match.
+The league has fixed teams (The Strikers, The Defenders, and The Midfielders), but a top-tier player, Riley, joins different teams for specific matches.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Riley and The Strikers beat The Defenders.
+In the second match, Riley and The Defenders beat The Strikers.
+In the third match, The Midfielders lost to Riley and The Defenders.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Riley ranks in terms of intrinsic talent?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think The Midfielders put into the third match?
+Query 3: In a new match later this same day between Riley and The Midfielders (Team 1) and The Strikers (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between The Strikers (Team 1) and The Defenders (Team 2), who would win and by how much?
+<END_SCENARIO>

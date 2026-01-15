@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of ice hockey games and individual shootout contests. Results depend on intrinsic skating, puck-handling, and shooting ability, along with how much effort the players put in during each game.
+Athletes compete either individually in shootouts or as part of fixed 6-player teams (including goalies) that remain the same in every game.
+All games take place on the same day.
+
+CONDITIONS
+Team Glaciers (Omar, Boris, Carl, Denis, Emir, Farid) beat Team Wolves (Gabe, Hugo, Ilya, Jonas, Karl, Liam) in the first game.
+In a shootout contest, Omar beat Gabe.
+Team Glaciers beat Team Falcons (Milan, Nico, Oliver, Pavel, Quinn, Roman) in the next game.
+Later that day, Team Glaciers beat Team Wolves again.
+
+QUERIES
+Query 1: Out of 100 random ice hockey players, where do you think Omar ranks in terms of intrinsic ice hockey ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Gabe put into the shootout contest against Omar?
+Query 3: In a new game later this same day between Team Glaciers and Team Falcons, who would win and by how much?
+Query 4: In a new game later this same day between Team Wolves and Team Falcons, who would win and by how much?
+<END_SCENARIO>

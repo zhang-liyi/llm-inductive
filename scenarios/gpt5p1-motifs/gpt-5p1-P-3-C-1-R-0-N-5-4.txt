@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of informal seven-a-side basketball scrimmages. In each scrimmage, the result depends on the players’ intrinsic basketball ability together with how much effort they choose to put into that scrimmage.
+All scrimmages happen on the same day, with players frequently changing teams.
+
+CONDITIONS
+In the first scrimmage, Kayla, Jordan, Malik, Serena, Andre, Cole, and Nina beat Dylan, Bryce, Chloe, Evan, Harper, Isaiah, and Logan.
+In the second scrimmage, Bryce, Chloe, Evan, Harper, Isaiah, Logan, and Maya beat Dylan, Kayla, Jordan, Malik, Serena, Andre, and Quinn.
+In the third scrimmage, Dylan, Kayla, Serena, Cole, Nina, Quinn, and Maya beat Bryce, Chloe, Evan, Harper, Isaiah, Logan, and Malik.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Dylan ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Bryce put into the second scrimmage?
+Query 3: In a new scrimmage later this same day between Dylan, Jordan, Malik, Serena, Andre, Cole, and Quinn (Team 1) and Bryce, Chloe, Evan, Harper, Isaiah, Logan, and Maya (Team 2), who would win and by how much?
+Query 4: In a new scrimmage later this same day between Kayla, Nina, Quinn, and four other similarly skilled players (Team 1) and Jordan, Malik, Cole, and four other similarly skilled players (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this basketball event, three squads of 8 players each play shortened full-court games. The result of each game depends on the players’ intrinsic shooting, ball-handling, and defensive ability, modulated by how much effort they put in during that game.
+Players remain on the same squad for all games, using substitutions only within their own 8-player roster.
+Maya plays for Team Phoenix in every game with the same seven teammates.
+
+CONDITIONS
+In the first game, Team Phoenix beat Team Titan.
+In the second game, Team Phoenix beat Team Horizon.
+In the third game, Team Titan beat Team Phoenix.
+
+QUERIES
+Query 1: Out of 100 random basketball players in this event, where do you think Maya ranks in terms of intrinsic playing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jordan (on Team Titan) put into the third game?
+Query 3: In a new game later this same day between Team Phoenix and Team Horizon, who would win and by how much?
+Query 4: In a new game later this same day between Team Titan and Team Horizon, who would win and by how much?
+<END_SCENARIO>

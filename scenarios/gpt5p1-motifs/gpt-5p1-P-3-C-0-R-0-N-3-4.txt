@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a series of small‑sided ice hockey games and shootout contests played without goalies, using 5 skaters per side. The result of each game depends on players’ intrinsic hockey abilities (skating speed, puck control, shooting accuracy, and physical strength) combined with how much effort they put in during that game.
+Players compete either individually or in 5‑player teams.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Sophie, Caleb, Drew, Mason, and Tyler lost to Owen, Liam, Brett, Shane, and Colin.
+In a separate shootout contest, Mason beat Owen.
+In the second game, Sophie, Caleb, Drew, Mason, and Tyler lost to Liam, Brett, Colin, Jared, and Miles.
+In the third game, Sophie, Caleb, Drew, Mason, and Tyler beat Owen, Shane, Jared, Miles, and Victor.
+
+QUERIES
+Query 1: Out of 100 random ice hockey players, where do you think Sophie ranks in terms of intrinsic hockey ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mason put into the shootout contest?
+Query 3: In a new game later this same day between Sophie, Caleb, Drew, Mason, and Tyler (Team 1) and Owen, Liam, Brett, Shane, and Miles (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Colin, Jared, Victor, Liam, and Brett (Team 1) and Caleb, Drew, Owen, Shane, and Jared (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are playing a series of Rugby Sevens matches, with 7 players per team on the field. The winning team in each match is determined by the players’ intrinsic rugby ability (speed, strength, tackling, and decision-making) together with how much effort they put into that match.  
+Players compete either individually in sprint-tackle tests or as part of a 7-player team.  
+All matches and tests take place on the same day.
+
+CONDITIONS  
+In the first match, Sofia, Liam, Connor, Ethan, Jack, Mason, and Riley beat Oliver, Henry, Noah, Lucas, Aiden, Caleb, and Finn.  
+In the second match, Sofia, Oliver, Noah, Lucas, Ben, Caleb, and Finn beat Liam, Henry, Connor, Ethan, Jack, Mason, and Riley.  
+In the third match, Sofia, Henry, Aiden, Mason, Finn, Liam, and Oliver beat Noah, Lucas, Connor, Ethan, Jack, Caleb, and Ben.  
+In the fourth event, Sofia beat Connor in a one-on-one sprint-tackle test.
+
+QUERIES  
+Query 1: Out of 100 random rugby players, where do you think Sofia ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Connor put into the fourth event?  
+Query 3: In a new Rugby Sevens match later this same day between Sofia, Liam, Noah, Jack, Mason, Ben, and Riley (Team 1) and Oliver, Henry, Connor, Ethan, Lucas, Caleb, and Finn (Team 2), who would win and by how much?  
+Query 4: In a new Rugby Sevens match later this same day between Sofia, Oliver, Henry, Ethan, Aiden, Caleb, and Finn (Team 1) and Liam, Noah, Connor, Jack, Mason, Lucas, and Riley (Team 2), who would win and by how much?  
+<END_SCENARIO>

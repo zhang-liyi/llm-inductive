@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Handball games. In each game, the team that wins depends on the total goals scored, based on the athletes' intrinsic throwing power and agility modulated by other factors including how much effort they put into that game.
+Athletes compete as a team of 7.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the team of Ari, Ben, Cal, Dan, Eli, Fay, and Gil beat the team of Jon, Ken, Len, Mat, Ned, Pat, and **Rory**.
+In the second game, the team of Jon, Ken, Len, Mat, Ned, Pat, and Gil beat the team of Ari, Ben, Cal, Dan, Eli, Fay, and **Rory**.
+In the third game, the team of Sue, Tom, Una, Vic, Will, Xena, and Gil beat the team of Jon, Ken, Len, Mat, Ned, Pat, and **Rory**.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think **Rory** ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think **Ned** put into the third game?
+Query 3: In a new game later this same day between the team of Ari, Ben, Cal, Dan, Eli, Fay, and Gil (Team 1) and the team of Jon, Ken, Len, Mat, Ned, Pat, and **Rory** (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between the team of Sue, Tom, Una, Vic, Will, Xena, and **Rory** (Team 1) and the team of Jon, Ken, Len, Mat, Ned, Pat, and Gil (Team 2), who would win and by how much?
+<END_SCENARIO>

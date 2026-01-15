@@ -1,0 +1,207 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  // BACKGROUND KNOWLEDGE
+  // Wrestlers compete in individual or tag-team matches that all take place on the same day.
+  // Match outcomes depend on grappling skill, strength, balance (summarized as intrinsic strength and skill),
+  // plus how much focused effort each wrestler puts into that specific match.
+
+  // ============================
+  // Wrestler-level latent traits
+  // ============================
+
+  // intrinsic_strength_and_skill
+  // Units: arbitrary "performance points" (higher = better).
+  // Assumption: there are broadly three levels of wrestlers in the population:
+  //   - lower tier, mid tier, and higher tier, with different typical strengths.
+  var intrinsic_strength_and_skill = mem(function({wrestler}) {
+    var parameter_low_prior = 0.33;
+    var parameter_mid_prior = 0.33;
+    var parameter_high_prior = 0.34;
+
+    // Means in performance points.
+    var low_mean = 80;
+    var mid_mean = 100;
+    var high_mean = 130;
+    var strength_sd = 10;
+
+    var tier_mean = categorical({
+      ps: [parameter_low_prior, parameter_mid_prior, parameter_high_prior],
+      vs: [low_mean, mid_mean, high_mean]
+    });
+
+    // Strength is non-negative.
+    return Math.max(gaussian(tier_mean, strength_sd), 0);
+  });
+
+  // baseline_effort_tendency
+  // Units: fraction of max effort in [0,1].
+  // More capable wrestlers may, on average, bring slightly more focused effort.
+  var baseline_effort_tendency = mem(function({wrestler}) {
+    var strength = intrinsic_strength_and_skill({wrestler: wrestler});
+
+    // Set a mean baseline effort depending on intrinsic strength and skill.
+    var mean_effort =
+      strength > 120 ? 0.75 :
+      strength < 80  ? 0.6  :
+                       0.7;
+
+    var raw = gaussian(mean_effort, 0.1);
+    return Math.min(Math.max(raw, 0), 1);
+  });
+
+  // ============================
+  // Match-specific effort
+  // ============================
+
+  // effort_in_match
+  // Units: fraction of max effort in [0,1] for a given wrestler and match.
+  // Varies around that wrestler's baseline tendency across matches.
+  var effort_in_match = mem(function({wrestler, match}) {
+    var base = baseline_effort_tendency({wrestler: wrestler});
+    var raw = gaussian(base, 0.15);
+    return Math.min(Math.max(raw, 0), 1);
+  });
+
+  // effort_percentage_in_match
+  // Units: percent of max effort in [0,100].
+  var effort_percentage_in_match = function({wrestler, match}) {
+    return 100 * effort_in_match({wrestler: wrestler, match: match});
+  };
+
+  // ============================
+  // Team-level quantities
+  // ============================
+
+  // team_intrinsic_strength_and_skill_in_match
+  // Units: performance points (same scale as intrinsic_strength_and_skill).
+  // Defined as average intrinsic strength and skill of the wrestlers on the team.
+  var team_intrinsic_strength_and_skill_in_match = function({team, match}) {
+    return listMean(map(function(w) {
+      return intrinsic_strength_and_skill({wrestler: w});
+    }, team));
+  };
+
+  // team_effort_in_match
+  // Units: fraction of max effort in [0,1].
+  // Defined as the average of the team members' efforts in that match.
+  var team_effort_in_match = function({team, match}) {
+    return listMean(map(function(w) {
+      return effort_in_match({wrestler: w, match: match});
+    }, team));
+  };
+
+  // team_effective_performance_in_match
+  // Units: performance points.
+  // Combines intrinsic ability, effort, and random noise for that team in that match.
+  var team_effective_performance_in_match = function({team, match}) {
+    var team_strength = team_intrinsic_strength_and_skill_in_match({team: team, match: match});
+    var team_effort = team_effort_in_match({team: team, match: match});
+
+    // Effort weight in performance points: how much shifting from 0% to 100% effort moves performance.
+    var effort_weight = 40;
+    var noise_sd = 15;
+
+    // Center effort around 0.5 so that "typical" 50% effort doesn't systematically change strength.
+    var mean_performance = team_strength + effort_weight * (team_effort - 0.5);
+
+    return gaussian(mean_performance, noise_sd);
+  };
+
+  // ============================
+  // Rank in population
+  // ============================
+
+  // intrinsic_strength_and_skill_rank
+  // Returns: number of random wrestlers (out of out_of_n_wrestlers - 1) that this wrestler is stronger than.
+  var intrinsic_strength_and_skill_rank = function({wrestler, out_of_n_wrestlers}) {
+    // Generate out_of_n_wrestlers - 1 other random wrestler IDs.
+    var random_wrestler_ids = mapN(function(i) { return uniform(0, 100000); },
+                                   out_of_n_wrestlers - 1);
+
+    // Count how many of these random wrestlers have lower intrinsic strength and skill.
+    return sum(map(function(random_id) {
+      return intrinsic_strength_and_skill({wrestler: wrestler}) >
+             intrinsic_strength_and_skill({wrestler: random_id});
+    }, random_wrestler_ids));
+  };
+
+  // ============================
+  // Match outcome predicates
+  // ============================
+
+  // beat
+  // team1 beats team2 in a given match if its realized performance is higher.
+  var beat = function({team1, team2, match}) {
+    var perf1 = team_effective_performance_in_match({team: team1, match: match});
+    var perf2 = team_effective_performance_in_match({team: team2, match: match});
+    return perf1 > perf2;
+  };
+
+  // lost: convenience helper (used in simulation).
+  var lost = function({team1, team2, match}) {
+    return !beat({team1: team1, team2: team2, match: match});
+  };
+
+  // who_would_win_by_how_much
+  // We return the probability (0 to 1) that Team 2 would win this matchup.
+  // 0   = Team 1 would definitely win
+  // 0.5 = evenly matched
+  // 1   = Team 2 would definitely win
+  var who_would_win_by_how_much = function({team1, team2, match}) {
+    var num_future_matches_to_simulate = 100;
+
+    // Simulate hypothetical matches later this same day with fresh effort and noise.
+    var random_future_match_ids = mapN(function(i) {
+      return uniform(match + 1, 1000);
+    }, num_future_matches_to_simulate);
+
+    var simulated_wins_by_team2 = sum(map(function(fake_match_id) {
+      return lost({team1: team1, team2: team2, match: fake_match_id});
+    }, random_future_match_ids));
+
+    return simulated_wins_by_team2 / num_future_matches_to_simulate;
+  };
+
+  // ============================
+  // CONDITIONS (observed matches)
+  // ============================
+
+  // In the first match, Liam beat Noah.  
+  condition(beat({team1: ['liam'], team2: ['noah'], match: 1}));
+
+  // In the second match, Liam and Ava beat Noah and Emma.  
+  condition(beat({team1: ['liam', 'ava'], team2: ['noah', 'emma'], match: 2}));
+
+  // In the third match, Noah and Emma beat Ava and Mia.
+  condition(beat({team1: ['noah', 'emma'], team2: ['ava', 'mia'], match: 3}));
+
+  // ============================
+  // QUERIES
+  // ============================
+
+  // Query 1: Out of 100 random wrestlers, where do you think Liam ranks in terms of intrinsic strength and skill?  
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Noah put into the first match?  
+  // Query 3: In a new match later this same day between Liam and Mia (Team 1) and Noah and Ava (Team 2), who would win and by how much?  
+  // Query 4: In a new match later this same day between Emma (Team 1) and Ava (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_strength_and_skill_rank({wrestler: 'liam', out_of_n_wrestlers: 100}),
+    query2: effort_percentage_in_match({wrestler: 'noah', match: 1}),
+    query3: who_would_win_by_how_much({team1: ['liam', 'mia'], team2: ['noah', 'ava'], match: 4}),
+    query4: who_would_win_by_how_much({team1: ['emma'], team2: ['ava'], match: 5})
+  };
+};
+
+// Run the model and collect an approximate posterior over the queries.
+var posterior = Infer({model: model, method: 'MCMC', samples: 10000});
+json.write('inference_results/result-35.json', posterior);

@@ -1,0 +1,361 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  // BACKGROUND KNOWLEDGE
+  // Intrinsic endurance and running ability is a stable attribute of each runner (same all morning).
+  // It bundles aerobic capacity, lactate threshold, running economy, etc. Units: arbitrary ability units.
+  var intrinsic_endurance_and_running_ability = mem(function({runner}) {
+    // Three coarse ability buckets: low, average, high.
+    var p_low = 0.3;
+    var p_avg = 0.4;
+    var p_high = 0.3;
+
+    // Means in arbitrary ability units.
+    var low_mean = -0.7;
+    var avg_mean = 0.0;
+    var high_mean = 0.7;
+    var sd_within_bucket = 0.3;
+
+    var bucket_mean = categorical({
+      ps: [p_low, p_avg, p_high],
+      vs: [low_mean, avg_mean, high_mean]
+    });
+
+    return gaussian(bucket_mean, sd_within_bucket);
+  });
+
+  // Pacing skill: how well a runner converts ability and effort into sustainable pace (0–1).
+  var pacing_skill = mem(function({runner}) {
+    var ability = intrinsic_endurance_and_running_ability({runner: runner});
+
+    // Better runners tend to have slightly better pacing.
+    var mean_skill = 0.5 + 0.15 * ability; // typically in [~0.3, ~0.8]
+    var bounded_mean = Math.max(0.2, Math.min(0.9, mean_skill));
+    var concentration = 10; // higher → less variance around mean
+    var a = bounded_mean * concentration;
+    var b = (1 - bounded_mean) * concentration;
+
+    return beta({a: a, b: b});
+  });
+
+  // Surface speed modifier: dimensionless multiplier on speed.
+  // Track is a bit faster than road.
+  var surface_speed_modifier = function({surface}) {
+    return surface === 'track' ? 1.0 : 0.98;
+  };
+
+  // Distance fatigue effect: longer races slightly reduce sustainable speed at high effort.
+  // Input: distance_m (meters). Output: dimensionless multiplier on speed.
+  var distance_fatigue_effect = function({distance_m}) {
+    var base_distance = 5000; // meters
+    var ratio = distance_m / base_distance;
+    var exponent = -0.04; // modest slowdown for longer distances
+    return Math.pow(ratio, exponent);
+  };
+
+  // For earlier *observed* races, we hard-code per-runner distance and context for fatigue.
+  var event_info_for_race = function(race) {
+    // Only needed for races 1–4 when computing residual fatigue.
+    return race === 1 ? {per_runner_distance_m: 5000, surface: 'track', event_type: 'individual'} :
+           race === 2 ? {per_runner_distance_m: 10000, surface: 'road', event_type: 'individual'} :
+           race === 3 ? {per_runner_distance_m: 5000, surface: 'track', event_type: 'individual'} :
+                        {per_runner_distance_m: 5000, surface: 'road', event_type: 'team_combined_time'}; // race 4
+  };
+
+  // Residual fatigue before a given race.
+  // Depends on earlier *real* races this morning (1–4). Units: "fatigue units" ~ km * effort.
+  var residual_fatigue_before_race = mem(function({runner, race}) {
+    // Any race after 4 just sees accumulated fatigue from races 1–4 (we treat later races as hypothetical).
+    var prior_ids =
+      race <= 1 ? [] :
+      race === 2 ? [1] :
+      race === 3 ? [1, 2] :
+      race === 4 ? [1, 2, 3] :
+                   [1, 2, 3, 4];
+
+    var loads = map(function(prev_race) {
+      var info = event_info_for_race(prev_race);
+      var prev_effort = race_effort_level({
+        runner: runner,
+        race: prev_race,
+        distance_m: info.per_runner_distance_m,
+        surface: info.surface,
+        event_type: info.event_type
+      });
+      var distance_km = info.per_runner_distance_m / 1000.0;
+      return distance_km * prev_effort;
+    }, prior_ids);
+
+    return sum(loads);
+  });
+
+  // Effort level in a given race: fraction of max sustainable effort (0–1).
+  // Depends on ability, pacing, residual fatigue, distance, and event type.
+  var race_effort_level = mem(function({runner, race, distance_m, surface, event_type}) {
+    var ability = intrinsic_endurance_and_running_ability({runner: runner});
+    var pace = pacing_skill({runner: runner});
+    var fatigue = residual_fatigue_before_race({runner: runner, race: race});
+
+    var is_long = distance_m >= 10000;
+    var is_team = (event_type === 'team_combined_time');
+
+    var base_mean = 0.85;                         // typical hard effort
+    var distance_adjust = is_long ? -0.05 : 0.0;  // slightly easier for longer race
+    var team_adjust = is_team ? 0.03 : 0.0;       // small boost to help team
+    var ability_adjust = 0.03 * ability;          // fitter runners push a bit harder
+    var pacing_adjust = 0.05 * (pace - 0.5);      // better pacers can safely run closer to limit
+    var fatigue_penalty = 0.15 * fatigue;         // more tired → lower sustainable effort
+
+    var mean_effort =
+      base_mean +
+      distance_adjust +
+      team_adjust +
+      ability_adjust +
+      pacing_adjust -
+      fatigue_penalty;
+
+    var bounded_mean = Math.max(0.5, Math.min(0.99, mean_effort)); // between 50% and ~100%
+    var concentration = 20;
+    var a = bounded_mean * concentration;
+    var b = (1 - bounded_mean) * concentration;
+
+    return beta({a: a, b: b});
+  });
+
+  // Effective running speed in a given race (m/s).
+  // Depends on base speed (ability, pacing, surface), effort, distance fatigue, and residual fatigue.
+  var effective_running_speed = function({runner, race, distance_m, surface, event_type}) {
+    var ability = intrinsic_endurance_and_running_ability({runner: runner});
+    var pace = pacing_skill({runner: runner});
+    var base_speed =
+      surface_speed_modifier({surface: surface}) *
+      (4.0 + 0.8 * ability + 0.5 * (pace - 0.5)); // typical strong runners ~4–6 m/s
+
+    var effort = race_effort_level({
+      runner: runner,
+      race: race,
+      distance_m: distance_m,
+      surface: surface,
+      event_type: event_type
+    });
+
+    var fatigue = residual_fatigue_before_race({runner: runner, race: race});
+    var dist_factor = distance_fatigue_effect({distance_m: distance_m});
+    var fatigue_factor = Math.max(0.7, 1.0 - 0.25 * fatigue); // caps slowdown
+    var effort_factor = 0.6 + 0.5 * effort;                   // more effort → faster
+
+    var mean_speed = base_speed * dist_factor * fatigue_factor * effort_factor;
+    // Add stochastic variation; ensure positive, realistic speeds.
+    var speed = Math.max(2.0, gaussian(mean_speed, 0.3)); // m/s
+    return speed;
+  };
+
+  // Race time for an individual runner in a given race.
+  // distance_m / speed → time in seconds.
+  // For team_combined_time, per-runner distance is leg_distance_m if provided.
+  var race_time = function({runner, race, distance_m, surface, event_type, leg_distance_m}) {
+    var per_runner_distance =
+      (event_type === 'team_combined_time' && (leg_distance_m !== undefined)) ?
+        leg_distance_m :
+        distance_m;
+
+    var speed = effective_running_speed({
+      runner: runner,
+      race: race,
+      distance_m: per_runner_distance,
+      surface: surface,
+      event_type: event_type
+    });
+
+    var mean_time = per_runner_distance / speed; // seconds
+    var noise_sd = mean_time * 0.02;            // ~2% noise
+    return Math.max(0.9 * mean_time, gaussian(mean_time, noise_sd));
+  };
+
+  // Team combined time for 2-person team events (sum of individual times, seconds).
+  var team_combined_time = function({team, race, distance_m, leg_distance_m, surface, event_type}) {
+    var per_runner_distance =
+      (leg_distance_m !== undefined) ?
+        leg_distance_m :
+        distance_m / team.length;
+
+    var times = map(function(runner) {
+      return race_time({
+        runner: runner,
+        race: race,
+        distance_m: distance_m,
+        surface: surface,
+        event_type: event_type,
+        leg_distance_m: per_runner_distance
+      });
+    }, team);
+
+    return sum(times);
+  };
+
+  // A team beats another team in a race if their time (individual or combined) is lower (faster).
+  var beat = function({team1, team2, race, distance_m, surface, event_type, leg_distance_m, total_distance_m}) {
+    if (event_type === 'individual') {
+      var t1 = race_time({
+        runner: team1[0],
+        race: race,
+        distance_m: distance_m,
+        surface: surface,
+        event_type: event_type
+      });
+      var t2 = race_time({
+        runner: team2[0],
+        race: race,
+        distance_m: distance_m,
+        surface: surface,
+        event_type: event_type
+      });
+      return t1 < t2;
+    } else { // 'team_combined_time'
+      var total_dist =
+        (total_distance_m !== undefined) ? total_distance_m : distance_m;
+
+      var team1_time = team_combined_time({
+        team: team1,
+        race: race,
+        distance_m: total_dist,
+        leg_distance_m: leg_distance_m,
+        surface: surface,
+        event_type: event_type
+      });
+
+      var team2_time = team_combined_time({
+        team: team2,
+        race: race,
+        distance_m: total_dist,
+        leg_distance_m: leg_distance_m,
+        surface: surface,
+        event_type: event_type
+      });
+
+      return team1_time < team2_time;
+    }
+  };
+
+  // Rank of a runner's intrinsic ability among N random distance runners.
+  // Returns the number of other runners they are more capable than (0..N-1).
+  var intrinsic_endurance_and_running_ability_rank = function({runner, out_of_n_runners}) {
+    var random_ids = mapN(function(i) { return uniform(0, 1000); }, out_of_n_runners - 1);
+    var focal = intrinsic_endurance_and_running_ability({runner: runner});
+
+    return sum(map(function(other_id) {
+      return focal > intrinsic_endurance_and_running_ability({runner: other_id});
+    }, random_ids));
+  };
+
+  // Effort percentage (0–100%) in a specific race.
+  var effort_percentage_in_race = function({runner, race}) {
+    // Map known race IDs to distance and context for effort.
+    var info =
+      race === 1 ? {distance_m: 5000, surface: 'track', event_type: 'individual'} :
+      race === 2 ? {distance_m: 10000, surface: 'road', event_type: 'individual'} :
+      race === 3 ? {distance_m: 5000, surface: 'track', event_type: 'individual'} :
+      race === 4 ? {distance_m: 10000, surface: 'road', event_type: 'team_combined_time'} :
+      race === 5 ? {distance_m: 10000, surface: 'road', event_type: 'individual'} :
+                   {distance_m: 5000, surface: 'track', event_type: 'team_combined_time'};
+
+    var eff = race_effort_level({
+      runner: runner,
+      race: race,
+      distance_m: info.distance_m,
+      surface: info.surface,
+      event_type: info.event_type
+    });
+
+    return 100 * eff;
+  };
+
+  // For a hypothetical future race with given specs, estimate how often Team 2 would win.
+  // Returns probability in [0,1] that Team 2 wins (0% Team1 always wins, 100% Team2 always wins).
+  var who_would_win_by_how_much = function({team1, team2, race, distance_m, surface, event_type, leg_distance_m, total_distance_m}) {
+    var num_future_races = 100;
+    // Use distinct, large "race IDs" so each simulated race has its own effort draw etc.
+    var sim_race_ids = mapN(function(i) { return uniform(race + 1, race + 10000); }, num_future_races);
+
+    var wins_team2 = sum(map(function(sim_race_id) {
+      if (event_type === 'individual') {
+        var t1 = race_time({
+          runner: team1[0],
+          race: sim_race_id,
+          distance_m: distance_m,
+          surface: surface,
+          event_type: event_type
+        });
+        var t2 = race_time({
+          runner: team2[0],
+          race: sim_race_id,
+          distance_m: distance_m,
+          surface: surface,
+          event_type: event_type
+        });
+        return t2 < t1;
+      } else { // team_combined_time
+        var total_dist =
+          (total_distance_m !== undefined) ? total_distance_m : distance_m;
+
+        var team1_time = team_combined_time({
+          team: team1,
+          race: sim_race_id,
+          distance_m: total_dist,
+          leg_distance_m: leg_distance_m,
+          surface: surface,
+          event_type: event_type
+        });
+
+        var team2_time = team_combined_time({
+          team: team2,
+          race: sim_race_id,
+          distance_m: total_dist,
+          leg_distance_m: leg_distance_m,
+          surface: surface,
+          event_type: event_type
+        });
+
+        return team2_time < team1_time;
+      }
+    }, sim_race_ids));
+
+    return wins_team2 / num_future_races;
+  };
+
+  // CONDITIONS
+  // In the first race, a 5000m track race, Sofia beat Kai.
+  condition(beat({team1: ['sofia'], team2: ['kai'], race: 1, distance_m: 5000, surface: 'track', event_type: 'individual'}));
+  // In the second race, a 10km road race, Kai beat Liam.
+  condition(beat({team1: ['kai'], team2: ['liam'], race: 2, distance_m: 10000, surface: 'road', event_type: 'individual'}));
+  // In the third race, a 5000m track race, Liam beat Sofia.
+  condition(beat({team1: ['liam'], team2: ['sofia'], race: 3, distance_m: 5000, surface: 'track', event_type: 'individual'}));
+  // In the fourth race, a combined 2-person 10km team event (each runner completes 5km and their times are added), Sofia and Liam beat Kai and Maya.
+  condition(beat({team1: ['sofia', 'liam'], team2: ['kai', 'maya'], race: 4, distance_m: 10000, leg_distance_m: 5000, surface: 'road', event_type: 'team_combined_time'}));
+
+  // QUERIES
+  // Query 1: Out of 100 random distance runners, where do you think Sofia ranks in terms of intrinsic endurance and running ability?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Kai put into the second race?
+  // Query 3: In a new 10km road race later this same morning between Sofia and Kai, who would win and by how much?
+  // Query 4: In a new 2-person combined 5000m team event later this same morning between Sofia and Maya (Team 1) and Kai and Liam (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_endurance_and_running_ability_rank({runner: 'sofia', out_of_n_runners: 100}),
+    query2: effort_percentage_in_race({runner: 'kai', race: 2}),
+    query3: who_would_win_by_how_much({team1: ['sofia'], team2: ['kai'], race: 5, distance_m: 10000, surface: 'road', event_type: 'individual'}),
+    query4: who_would_win_by_how_much({team1: ['sofia', 'maya'], team2: ['kai', 'liam'], race: 6, distance_m: 5000, leg_distance_m: 5000, total_distance_m: 10000, surface: 'track', event_type: 'team_combined_time'})
+  };
+};
+
+// Run inference.
+var posterior = Infer({model: model, method: 'MCMC', samples: 10000});
+json.write('inference_results/result-19.json', posterior);

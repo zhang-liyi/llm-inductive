@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of indoor volleyball matches. Each match is decided by how well the players execute their skills, determined by their intrinsic volleyball ability (such as jumping, coordination, and ball control) combined with how much effort they put into that match.
+Matches are either 1 on 1 skill duels (such as serve‑receive drills) or full matches between two squads of 9 players rotating on and off the court.
+All matches take place on the same day.
+Most players stay with one squad, but Ravi is invited to play for different squads.
+
+CONDITIONS
+In the first match, Squad Spikers (Ravi, Arun, Dev, Karan, Neel, Priya, Riya, Tanvi, and Varun) beat Squad Blockers (Mohan, Sita, Ajay, Leena, Rohit, Meera, Jai, Pooja, and Vikram).
+In the second match, Squad Servers (Nikhil, Anya, Farah, Imran, Kabir, Laila, Omar, Zara, and Ravi) beat Squad Blockers (Mohan, Sita, Ajay, Leena, Rohit, Meera, Jai, Pooja, and Vikram).
+In the third match, Ravi beat Mohan.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Ravi ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mohan put into the third match?
+Query 3: In a new 9‑player‑per‑side match later this same day between Ravi, Arun, Dev, Karan, Neel, Priya, Riya, Tanvi, and Varun (Team 1) and Mohan, Sita, Ajay, Leena, Rohit, Meera, Jai, Pooja, and Vikram (Team 2), who would win and by how much?
+Query 4: In a new 9‑player‑per‑side match later this same day between Nikhil, Anya, Farah, Imran, Kabir, Laila, Omar, Zara, and Pooja (Team 1, without Ravi) and Ravi, Sita, Ajay, Leena, Rohit, Meera, Jai, Vikram, and Tanvi (Team 2), who would win and by how much?
+<END_SCENARIO>

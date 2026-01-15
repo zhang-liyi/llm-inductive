@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of Ultimate Frisbee games. In each game, the winning side is determined by the players’ intrinsic ultimate skills (such as speed, jumping, and throwing accuracy), modulated by how much effort they put in that game.
+Players compete either 1‑on‑1 in marking drills or in full teams of 9.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Priya beat Aaron.
+In the second game, Priya, Bella, Chris, Deepa, Ethan, Farid, Gina, Henry, and Isha beat Aaron, Jason, Kara, Luis, Maria, Naveen, Olivia, Pablo, and Qing.
+In the third game, Priya, Jason, Kara, Luis, Maria, Naveen, Olivia, Pablo, and Qing lost to Aaron, Bella, Chris, Deepa, Ethan, Farid, Gina, Henry, and Rosa.
+
+QUERIES
+Query 1: Out of 100 random Ultimate Frisbee players, where do you think Priya ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Aaron put into the third game?
+Query 3: In a new game later this same day between Priya, Bella, Chris, Deepa, Ethan, Farid, Gina, Henry, and Isha (Team 1) and Aaron, Jason, Kara, Luis, Maria, Naveen, Olivia, Pablo, and Qing (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Priya, Jason, Kara, Luis, Maria, Naveen, Olivia, Pablo, and Qing (Team 1) and Aaron, Bella, Chris, Deepa, Ethan, Farid, Gina, Henry, and Rosa (Team 2), who would win and by how much?
+<END_SCENARIO>

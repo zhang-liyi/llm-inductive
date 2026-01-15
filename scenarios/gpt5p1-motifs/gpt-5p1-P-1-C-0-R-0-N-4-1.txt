@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of small-sided soccer matches. In each match, the team that wins depends on players’ intrinsic abilities in ball control, passing, positioning, and finishing, combined with how much effort they put into that match.
+Athletes compete either individually or in teams.
+When competing as a team, each team consists of six players.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Naomi lost to Hugo.
+In the second match, Naomi, Leo, Sofia, Amir, Dana, and Colin lost to Petra, Hugo, Iris, Malik, Nora, and Owen.
+In the third match, Naomi, Leo, Sofia, Amir, Dana, and Colin lost to Petra, Pablo, Quinn, Raya, Sam, and Tessa.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Petra ranks in terms of intrinsic soccer ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Naomi put into the third match?
+Query 3: In a new match later this same day between Naomi, Leo, Sofia, Amir, Dana, and Colin (Team 1) and Petra, Hugo, Malik, Nora, Pablo, and Sam (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Iris, Owen, Quinn, Raya, Tessa, and Victor (Team 1) and Hugo, Malik, Nora, Pablo, Sam, and Uma (Team 2), who would win and by how much?
+<END_SCENARIO>

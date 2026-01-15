@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 5-on-5 basketball games and occasional 1-on-1 contests. In each game, the team that wins depends on how effectively the players can execute offense and defense, based on their intrinsic basketball ability and how much effort they put in for that game.
+Athletes compete either individually or as a 5-player team.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Jordan, Sam, Leo, Ben, and Omar beat Noah, Liam, Kai, Hugo, and Theo.
+In the second game, Noah, Liam, Kai, Hugo, and Theo beat Sam, Leo, Ben, Omar, and Ravi.
+In the third game, Jordan, Noah, Liam, Kai, and Hugo beat Sam, Leo, Ben, Omar, and Ravi.
+In the fourth contest, a 1-on-1 game, Sam beat Jordan.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Jordan ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Noah put into the second game?
+Query 3: In a new 5-on-5 game later this same day between Jordan, Sam, Leo, Ben, and Omar (Team 1) and Noah, Liam, Kai, Hugo, and Theo (Team 2), who would win and by how much?
+Query 4: In a new 5-on-5 game later this same day between Sam, Leo, Ben, Omar, and Ravi (Team 1) and Noah, Liam, Kai, Hugo, and Theo (Team 2), who would win and by how much?
+<END_SCENARIO>

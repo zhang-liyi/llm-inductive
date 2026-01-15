@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are playing a series of five-on-five ice hockey scrimmages. In each scrimmage, the result depends on the players’ intrinsic skating speed, puck control, shooting, checking, positional sense, and how much effort they exert during the game.  
+Matches are either 1-on-1 shootouts or 5-on-5 scrimmages.  
+All games take place on the same day.
+
+CONDITIONS  
+In the first game, Ethan beat Lucas in a 1-on-1 shootout.  
+In the second game, Ethan, Lucas, Owen, Mia, and Harper beat Quinn, Riley, Drew, Ava, and Felix.  
+In the third game, Ethan, Quinn, Riley, Ava, and Felix beat Lucas, Owen, Mia, Harper, and Drew.  
+In the fourth game, Ethan, Owen, Riley, Harper, and Drew lost to Lucas, Quinn, Mia, Ava, and Felix.
+
+QUERIES  
+Query 1: Out of 100 random ice hockey players, where do you think Ethan ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Lucas put into the fourth game?  
+Query 3: In a new game later this same day between Ethan, Mia, Quinn, Harper, and Felix (Team 1) and Lucas, Owen, Riley, Ava, and Drew (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Quinn, Owen, Mia, Ava, and Blake (Team 1) and Lucas, Riley, Harper, Drew, and Felix (Team 2), who would win and by how much?  
+<END_SCENARIO>

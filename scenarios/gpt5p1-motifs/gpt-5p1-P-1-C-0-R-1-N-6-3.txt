@@ -1,0 +1,23 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of 8‑a‑side ultimate frisbee games. In each game, the winning team is determined by the players’ intrinsic throwing accuracy, speed, cutting ability, and field awareness, along with how much effort they put into that game.
+All games take place on the same day.
+Each player is assigned to a fixed team and always plays with the same teammates.
+
+Comets: Adam, Ben, Cody, Dylan, Evan, Finn, Gabe, Hayden  
+Raptors: Isaac, Jonah, Kyle, Logan, Mason, Nolan, Owen, Parker  
+Owls: Omar, Amir, Bilal, Farid, Hamza, Imran, Kareem, Zayd  
+
+CONDITIONS
+In the first game, Comets beat Owls.  
+In the second game, Raptors beat Owls.  
+In the third game, Comets beat Raptors.
+
+(Omar, on Owls, loses every game he plays.)
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Logan ranks in terms of intrinsic ultimate ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Omar put into the second game?  
+Query 3: In a new game later this same day between Comets and Owls, who would win and by how much?  
+Query 4: In a new game later this same day between Raptors and Owls, who would win and by how much?
+<END_SCENARIO>

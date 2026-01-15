@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in Handball games. In each game, the team that wins depends on the average throwing velocity and defensive agility of the players, based on their intrinsic skill modulated by other factors including how much effort they put into that game.
+Athletes compete in teams of 7.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Mila, Eva, Zoe, Pia, Ana, Liv, and Fay beat Kim, Jen, Liz, Meg, Sue, Deb, and Val.
+In the second game, Mila, Eva, Zoe, Pia, Ana, Liv, and Fay beat Kim, Jen, Liz, Joy, Dot, Cat, and Bea.
+In the third game, Mila, Eva, Zoe, Pia, Ana, Liv, and Fay beat Meg, Sue, Deb, Joy, Dot, Cat, and Bea.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Mila ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Bea put into the third game?
+Query 3: In a new game later this same day between Mila, Eva, Zoe, Pia, Ana, Liv, and Fay (Team 1) and Kim, Jen, Liz, Meg, Sue, Deb, and Joy (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Kim, Jen, Liz, Meg, Sue, Deb, and Val (Team 1) and Joy, Dot, Cat, Bea, and three new average players (Team 2), who would win and by how much?
+<END_SCENARIO>

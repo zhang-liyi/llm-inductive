@@ -1,0 +1,21 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of 5‑on‑5 basketball games. The outcome of each game depends on the players’ intrinsic basketball ability (such as shooting accuracy, ball-handling, speed, and coordination) combined with how much effort they put into that specific game.  
+Players are organized into fixed teams of five that stay together for all games; no player switches teams.  
+All games take place on the same day.
+
+Team Orion: Maya, Jordan, Eli, Priya, Noah  
+Team Comet: Lucas, Hana, Omar, Riley, Sienna  
+Team Nova: Liam, Zoe, Carlos, Nina, Tariq  
+
+CONDITIONS  
+In the first game, Orion beat Comet.  
+In the second game, Orion beat Nova.  
+In the third game, Nova beat Orion.  
+
+QUERIES  
+Query 1: Out of 100 random basketball players, where do you think Maya ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the third game?  
+Query 3: In a new game later this same day between Orion (Team 1) and Comet (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Comet (Team 1) and Nova (Team 2), who would win and by how much?  
+<END_SCENARIO>

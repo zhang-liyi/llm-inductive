@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Beach Volleyball games. In each game, the team that wins depends on the average court coverage and jumping height of the athletes, based on their intrinsic athleticism modulated by other factors including how much effort they put into that game.
+Athletes compete as a team of two.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Mia and Zoe beat Elara and Sarah.
+In the second game, Mia and Zoe beat Elara and Hannah.
+In the third game, Elara and Zoe beat Mia and Sarah.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Elara ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Elara put into the third game?
+Query 3: In a new game later this same day between Elara and Sarah (Team 1) and Mia and Grace (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Mia and Zoe (Team 1) and Sarah and Hannah (Team 2), who would win and by how much?
+<END_SCENARIO>

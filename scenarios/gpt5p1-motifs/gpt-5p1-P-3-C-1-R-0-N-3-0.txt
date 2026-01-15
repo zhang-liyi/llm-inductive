@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of short half-court basketball games. The team that wins each game depends on the players’ intrinsic basketball ability (shooting, ball-handling, defense, and overall coordination) combined with how much effort they put into that particular game.
+Athletes compete either individually (in isolated 1-on-1 drills) or in teams of 5.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Jordan, Alex, Ben, Chris, and Dylan lost to Ethan, Finn, Gabe, Hayden, and Isaac.
+In the second game, Jordan, Ethan, Liam, Noah, and Owen lost to Alex, Finn, Gabe, Chris, and Isaac.
+In the third game, Jordan, Alex, Finn, Liam, and Noah beat Ben, Chris, Dylan, Ethan, and Gabe.
+In the fourth game, Jordan, Ben, Hayden, Isaac, and Owen lost to Alex, Dylan, Finn, Gabe, and Liam.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Jordan ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Gabe put into the third game?
+Query 3: In a new game later this same day between Jordan, Alex, Finn, Liam, and Noah (Team 1) and Ethan, Gabe, Hayden, Isaac, and Owen (Team 2), who would win and by how much?
+Query 4: In a new 1-on-1 game later this same day between Jordan and Alex, who would win and by how much?
+<END_SCENARIO>

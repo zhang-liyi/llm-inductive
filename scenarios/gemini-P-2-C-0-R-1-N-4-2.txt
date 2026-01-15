@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in Ultimate Frisbee matches. Each line consists of 6 players. The team that wins depends on the running speed and throwing precision of the athletes, based on their intrinsic agility modulated by how much effort they put into chasing the disc during that match.
+The rosters are fixed for every match.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Kai and his 5 teammates beat The Huckers.
+In the second match, Kai and his 5 teammates beat The Cutters.
+In the third match, Kai and his 5 teammates lost to The Handlers.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Kai ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think the captain of The Handlers put into the third match?
+Query 3: In a new match later this same day between Kai’s team (Team 1) and The Huckers (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between The Cutters (Team 1) and The Handlers (Team 2), who would win and by how much?
+<END_SCENARIO>

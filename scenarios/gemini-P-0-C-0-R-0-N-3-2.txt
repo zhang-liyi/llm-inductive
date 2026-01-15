@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee matches. In each match, the team that wins depends on the average speed and catching ability of the athletes, based on their intrinsic athleticism modulated by other factors including how much effort they put into that match.
+Athletes compete as a team of 5.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Brodie, Kurt, Jimmy, Dylan, and Matt beat Marques, Beau, Ashlin, George, and Nick.
+In the second match, Brodie, Kurt, Jimmy, Dylan, and Matt beat Marques, Beau, Ashlin, Pawel, and Goose.
+In the third match, Brodie, Kurt, Jimmy, Dylan, and Matt beat Pawel, Goose, George, Nick, and Marques.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Brodie ranks in terms of intrinsic athleticism?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Marques put into the third match?
+Query 3: In a new match later this same day between Brodie, Kurt, Jimmy, Dylan, and Matt (Team 1) and Marques, Beau, Ashlin, George, and Nick (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Brodie, Marques, Pawel, Dylan, and Nick (Team 1) and Kurt, Beau, Jimmy, Ashlin, and Matt (Team 2), who would win and by how much?
+<END_SCENARIO>

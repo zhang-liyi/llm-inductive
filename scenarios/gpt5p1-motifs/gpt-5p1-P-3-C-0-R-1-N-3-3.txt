@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of volleyball matches and simple serving‑accuracy contests. Each result depends only on each player's intrinsic volleyball skill and how much effort they put into that specific match. Athletes can compete individually or as part of a fixed 5‑player team. All matches take place on the same day.
+
+The Waves are a fixed team of Tyler, Mia, Connor, Jade, and Luis. The Peaks are a fixed team of Brianna, Derek, Holly, Isaac, and Quinn.
+
+CONDITIONS
+In the first match, the Peaks beat the Waves.
+In the second match, the Peaks beat the Waves.
+In the third contest, Mia beat Brianna in a serving‑accuracy contest.
+In the fourth match, the Waves beat the Peaks.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Tyler ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Quinn put into the second match?
+Query 3: In a new match later this same day between Tyler, Brianna, Connor, Holly, and Luis (Team 1) and Mia, Derek, Jade, Isaac, and Quinn (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Tyler, Mia, Derek, Jade, and Quinn (Team 1) and Brianna, Connor, Holly, Isaac, and Luis (Team 2), who would win and by how much?
+<END_SCENARIO>

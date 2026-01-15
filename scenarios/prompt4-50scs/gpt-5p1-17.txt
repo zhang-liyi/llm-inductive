@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this rowing regatta, the competitors race in small boats. Race outcomes depend on the rowers’ intrinsic strength, endurance, and technical skill, as well as how much effort they put into each race.  
+Boats are either singles (1 rower) or doubles (2 rowers).  
+All races are held on the same day.
+
+CONDITIONS  
+In the first race, a singles race, Harper beat Quinn.  
+In the second race, a doubles race, Harper and Riley beat Quinn and Taylor.  
+In the third race, a doubles race, Quinn and Riley beat Harper and Morgan.  
+In the fourth race, a singles race, Morgan beat Quinn.
+
+QUERIES  
+Query 1: Out of 100 random rowers, where do you think Harper ranks in terms of intrinsic rowing strength and skill?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Riley put into the third race?  
+Query 3: In a new doubles race later this same day between Harper and Riley (Team 1) and Quinn and Morgan (Team 2), who would win and by how much?  
+Query 4: In a new singles race later this same day between Harper and Morgan, who would win and by how much?  
+<END_SCENARIO>

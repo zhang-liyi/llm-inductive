@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Pickleball matches. In each match, the team that wins depends on the accuracy of their dinks and volleys, based on their intrinsic hand-eye coordination modulated by other factors including how much effort they put in to that match.
+Athletes compete as a team of two.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Quinn and Avery beat Reese and Logan.
+In the second match, Quinn and Reese beat Avery and Logan.
+In the third match, Quinn and Logan beat Avery and Reese.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Quinn ranks in terms of intrinsic hand-eye coordination?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Avery put into the third match?
+Query 3: In a new match later this same day between Quinn and Avery (Team 1) and Reese and Logan (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Avery and Reese (Team 1) and Logan and a new player, Parker (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in a series of Rugby Sevens matches. In each match, the team that wins depends on the combined strength and speed of the athletes, based on their intrinsic physical capability modulated by other factors including how much effort they put into that match.
+Athletes compete in teams of 7.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Koa, Loi, Moe, Nuu, Pia, Qen, and Roy beat Sal, Tia, Uva, Wes, Xia, Yoz, and Zed.
+In the second match, Koa, Loi, Sal, Tia, Uva, Wes, and Xia beat Ali, Baz, Caz, Dax, Emi, Fox, and Gil.
+In the third match, Koa, Loi, Ali, Baz, Caz, Dax, and Emi lost to Moe, Nuu, Pia, Qen, Roy, Yoz, and Zed.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Koa ranks in terms of intrinsic physical capability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Koa put into the third match?
+Query 3: In a new match later this same day between Team 1 (Koa, Loi, Moe, Nuu, Pia, Qen, Roy) and Team 2 (Ali, Baz, Caz, Dax, Emi, Fox, Gil), who would win and by how much?
+Query 4: In a new match later this same day between Team 1 (Sal, Tia, Uva, Wes, Xia, Yoz, Zed) and Team 2 (Ali, Baz, Caz, Dax, Emi, Fox, Gil), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 3-on-3 basketball scrimmages. In each game, the team that wins depends on the total points scored, which is determined by the players' intrinsic shooting accuracy and defensive skills, modulated by the amount of effort they put into that specific game.
+Athletes compete either individually or as a team of three.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Ace, Kai, and Jay beat Ray, Ty, and Lee.
+In the second game, Ace, Ray, and Ty beat Kai, Jay, and Lee.
+In the third game, Ace, Lee, and Kai lost to Ray, Ty, and Jay.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Ace ranks in terms of intrinsic shooting accuracy?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ace put into the third game?
+Query 3: In a new game later this same day between Ace, Kai, and Jay (Team 1) and Ray, Ty, and Lee (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Ray, Ty, and Kai (Team 1) and Ace, Jay, and Lee (Team 2), who would win and by how much?
+<END_SCENARIO>

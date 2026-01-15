@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of softball games and hitting contests. In each game, the winning team is the one that can hit, field, and run more effectively, based on the players’ intrinsic batting power, throwing accuracy, speed, and how much effort they put into that game.
+Athletes compete either individually or as a team of 9 players.
+All games and contests take place on the same day. Most players stay with the same 9‑player squad, but one player, Jordan, is rotated between different lineups throughout the day.
+
+CONDITIONS
+In the first game, Jordan, Riley, and seven other Raptors lost to Morgan, Casey, and six other Falcons.
+In the second game, Jordan, Morgan, and seven other Falcons lost to Quinn, Alex, and six other Titans.
+In a later home‑run hitting contest, Jordan beat Riley.
+In the final game, Jordan, Quinn, and seven other Titans lost to Riley, Taylor, and seven other Raptors.
+
+QUERIES
+Query 1: Out of 100 random softball players, where do you think Jordan ranks in terms of intrinsic softball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Morgan put into the second game?
+Query 3: In a new softball game later this same day between Jordan, Riley, and seven other Raptors (Team 1) and Morgan, Casey, and seven other Falcons (Team 2), who would win and by how much?
+Query 4: In a new softball game later this same day between Jordan, Quinn, and seven other Titans (Team 1) and Alex, Taylor, and seven other Raptors (Team 2), who would win and by how much?
+<END_SCENARIO>

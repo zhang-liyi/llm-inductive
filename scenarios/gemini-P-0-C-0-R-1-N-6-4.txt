@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a series of Lacrosse games. In each game, the team that wins depends on the shooting accuracy and defensive agility of the players, based on their intrinsic skill modulated by the effort they put into the game.
+Athletes compete in fixed teams of eight.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Raj, Bill, Carl, Dave, Earl, Frank, Gil, and Hank beat Ivan, Jack, Kyle, Liam, Mark, Nick, Owen, and Paul.
+In the second game, Raj, Bill, Carl, Dave, Earl, Frank, Gil, and Hank beat Quent, Rick, Steve, Tom, Uri, Vince, Walt, and Xander.
+In the third game, Ivan, Jack, Kyle, Liam, Mark, Nick, Owen, and Paul lost to Raj, Bill, Carl, Dave, Earl, Frank, Gil, and Hank.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Raj ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ivan put into the third game?
+Query 3: In a new game later this same day between the team of Raj, Bill, Carl, Dave, Earl, Frank, Gil, and Hank (Team 1) and the team of Quent, Rick, Steve, Tom, Uri, Vince, Walt, and Xander (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between the team of Ivan, Jack, Kyle, Liam, Mark, Nick, Owen, and Paul (Team 1) and the team of Quent, Rick, Steve, Tom, Uri, Vince, Walt, and Xander (Team 2), who would win and by how much?
+<END_SCENARIO>

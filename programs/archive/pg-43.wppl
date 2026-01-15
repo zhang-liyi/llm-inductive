@@ -1,0 +1,196 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  // BACKGROUND KNOWLEDGE
+  // Intrinsic ball-striking ability is a stable golfer-specific trait (units: arbitrary performance index, roughly 0–200).
+  var intrinsic_ball_striking_ability = mem(function({golfer}) {
+    // Three rough ability buckets in the population.
+    var parameter_low_ability_prior = 0.33;
+    var parameter_average_ability_prior = 0.33;
+    var parameter_high_ability_prior = 0.34;
+
+    // Ability means for each bucket.
+    var low_ability_mean = 80;    // weaker players
+    var average_ability_mean = 100; // average competitors
+    var high_ability_mean = 130;   // strong competitors
+
+    // Standard deviation within a bucket.
+    var ability_std = 10;
+
+    var bucket_mean = categorical({
+      ps: [parameter_low_ability_prior, parameter_average_ability_prior, parameter_high_ability_prior],
+      vs: [low_ability_mean, average_ability_mean, high_ability_mean]
+    });
+
+    // Ability is non-negative.
+    return Math.max(gaussian(bucket_mean, ability_std), 0);
+  });
+
+  // A golfer's intrinsic ability ranking out of N other random golfers:
+  // number of random golfers they are more skilled than (0..N-1).
+  var intrinsic_ball_striking_ability_rank = function({golfer, out_of_n_golfers}) {
+    // Generate out_of_n_golfers - 1 random golfer IDs.
+    var random_golfer_ids = mapN(
+      function(x) { return uniform(0, 1000); },
+      out_of_n_golfers - 1
+    );
+
+    // Count how many of these random golfers this golfer is better than.
+    return sum(map(
+      function(random_id) {
+        return intrinsic_ball_striking_ability({golfer: golfer}) >
+               intrinsic_ball_striking_ability({golfer: random_id});
+      },
+      random_golfer_ids
+    ));
+  };
+
+  // Baseline effort tendency: how hard a golfer typically tries (units: fraction 0–1).
+  // We allow a weak dependence on intrinsic ability: stronger golfers tend to try a bit harder.
+  var baseline_effort_tendency = mem(function({golfer}) {
+    var ability = intrinsic_ball_striking_ability({golfer: golfer});
+
+    var mean_effort =
+      ability > 120 ? 0.75 :      // strong players often apply high effort
+      ability < 85  ? 0.55 :      // weaker players sometimes under-try
+                     0.65;        // average players
+
+    var effort_std = 0.05;
+    return Math.min(Math.max(gaussian(mean_effort, effort_std), 0), 1);
+  });
+
+  // Round-specific effort (0–1) for a given golfer in a given round.
+  // Fluctuates around baseline effort.
+  var effort_in_round = mem(function({golfer, round}) {
+    var baseline = baseline_effort_tendency({golfer: golfer});
+    var round_effort_std = 0.15;
+    return Math.min(Math.max(gaussian(baseline, round_effort_std), 0), 1);
+  });
+
+  // Effort expressed on a 0–100% scale for a given round.
+  var effort_percentage_in_round = function({golfer, round}) {
+    return 100 * effort_in_round({golfer: golfer, round: round});
+  };
+
+  // Concentration in a round (0–1), driven by effort with some noise.
+  var concentration_in_round = function({golfer, round}) {
+    var eff = effort_in_round({golfer: golfer, round: round});
+    var concentration_std = 0.1;
+    return Math.min(Math.max(gaussian(eff, concentration_std), 0), 1);
+  };
+
+  // Round-level ball-striking quality (units: same performance index scale as ability).
+  // Depends on intrinsic ability and concentration in that round.
+  var golfer_round_ball_striking_quality = function({golfer, round}) {
+    var ability = intrinsic_ball_striking_ability({golfer: golfer});
+    var concentration = concentration_in_round({golfer: golfer, round: round});
+
+    // Combine ability and concentration.
+    // Ability is main driver; concentration modulates realized quality.
+    var base_quality = 0.7 * ability + 40 * concentration;
+
+    // Additional round-to-round randomness (luck, bounces, etc.).
+    var quality_std = 8;
+    return base_quality + gaussian(0, quality_std);
+  };
+
+  // Golfer's numerical performance score in a round.
+  // Higher score means better performance (abstract "strokes gained"-like index).
+  var golfer_score_in_round = function({golfer, round}) {
+    // Add a small extra noise term at the scoring stage.
+    var scoring_std = 3;
+    return golfer_round_ball_striking_quality({golfer: golfer, round: round}) +
+           gaussian(0, scoring_std);
+  };
+
+  // Team score in a round: average of members' individual scores.
+  var team_score_in_round = function({team, round}) {
+    var scores = map(
+      function(golfer) {
+        return golfer_score_in_round({golfer: golfer, round: round});
+      },
+      team
+    );
+    return listMean(scores);
+  };
+
+  // Margin of victory (units: performance index points).
+  // Positive means Team 1 outperformed Team 2.
+  var margin_of_victory_in_round = function({team1, team2, round}) {
+    var team1_score = team_score_in_round({team: team1, round: round});
+    var team2_score = team_score_in_round({team: team2, round: round});
+    return team1_score - team2_score;
+  };
+
+  // Team 1 beats Team 2 if their margin is positive.
+  var beat = function({team1, team2, round}) {
+    return margin_of_victory_in_round({team1: team1, team2: team2, round: round}) > 0;
+  };
+
+  // Team 1 loses to Team 2 if they do not beat them.
+  var lost = function({team1, team2, round}) {
+    return !beat({team1: team1, team2: team2, round: round});
+  };
+
+  // Predictive function: "who would win and by how much?"
+  // Here we return the probability (0–1) that Team 2 would win a future round
+  // given current posterior beliefs about abilities and tendencies.
+  var who_would_win_by_how_much = function({team1, team2, round}) {
+    // Simulate a number of independent future rounds with new round IDs.
+    var num_future_rounds_to_simulate = 100;
+    var random_future_round_ids = mapN(
+      function(x) { return uniform(round + 1, 1000); },
+      num_future_rounds_to_simulate
+    );
+
+    // Count how many simulated future rounds Team 2 wins.
+    var simulated_rounds_won_by_team2 = sum(map(
+      function(random_round_id) {
+        return lost({team1: team1, team2: team2, round: random_round_id});
+      },
+      random_future_round_ids
+    ));
+
+    // Return probability Team 2 wins (0 = Team 1 surely wins, 1 = Team 2 surely wins).
+    return simulated_rounds_won_by_team2 / num_future_rounds_to_simulate;
+  };
+
+  // CONDITIONS
+  // In the first round, Oliver beat Priya.
+  condition(beat({team1: ['oliver'], team2: ['priya'], round: 1}));
+
+  // In the second round, Oliver and James beat Priya and Sofia.
+  condition(beat({team1: ['oliver', 'james'], team2: ['priya', 'sofia'], round: 2}));
+
+  // In the third round, Priya and James beat Oliver and Sofia.
+  condition(beat({team1: ['priya', 'james'], team2: ['oliver', 'sofia'], round: 3}));
+
+  // In the fourth round, Sofia beat James.
+  condition(beat({team1: ['sofia'], team2: ['james'], round: 4}));
+
+  // QUERIES
+  // Query 1: Out of 100 random golfers, where do you think Priya ranks in terms of intrinsic ball-striking ability?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Oliver put into the second round?
+  // Query 3: In a new round later this same day between Oliver and Sofia (Team 1) and Priya and James (Team 2), who would win and by how much?
+  // Query 4: In a new round later this same day between Oliver and Priya (Team 1) and James and Sofia (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_ball_striking_ability_rank({golfer: 'priya', out_of_n_golfers: 100}),
+    query2: effort_percentage_in_round({golfer: 'oliver', round: 2}),
+    query3: who_would_win_by_how_much({team1: ['oliver', 'sofia'], team2: ['priya', 'james'], round: 5}),
+    query4: who_would_win_by_how_much({team1: ['oliver', 'priya'], team2: ['james', 'sofia'], round: 6})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-43.json', posterior);

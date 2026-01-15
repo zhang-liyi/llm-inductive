@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Swimming (4x100m Relay) races. In each race, the team that wins depends on the average speed with which the athletes are able to swim, based on their intrinsic speed modulated by other factors including how much effort they put in to that race.
+Athletes compete as a team of 4.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Diana, Beth, Amy, and Jo beat Meg, Sue, Pat, and Liz.
+In the second race, Diana, Meg, Sue, and Pat beat Beth, Amy, Jo, and Liz.
+In the third race, Diana, Beth, Amy, and Jo lost to Meg, Sue, Pat, and Liz.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Diana ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Beth put into the third race?
+Query 3: In a new race later this same day between Diana, Meg, Beth, and Amy (Team 1) and Sue, Pat, Jo, and Liz (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Beth, Amy, Meg, and Sue (Team 1) and Diana, Jo, Pat, and Liz (Team 2), who would win and by how much?
+<END_SCENARIO>

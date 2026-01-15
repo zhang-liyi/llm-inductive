@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 6‑a‑side indoor volleyball matches. In each match, the winning team is the one that can execute more effective serves, passes, sets, and spikes, determined by each player's intrinsic volleyball skill combined with how much focused effort they put in during that match.
+Athletes sometimes also play short 1‑on‑1 serving and passing drills.
+All matches and drills take place on the same day.
+
+CONDITIONS
+In the first match, Logan, Ava, Ben, Cara, Diego, and Emma lost to Mia, Noah, Owen, Priya, Quinn, and Riley.
+In the second match, Mia, Noah, Owen, Priya, Logan, and Riley lost to Ava, Ben, Cara, Diego, Emma, and Felix.
+In the third match, Logan, Ava, Noah, Cara, Owen, and Emma lost to Mia, Ben, Priya, Diego, Quinn, and Felix.
+In a later serving drill, Logan lost to Ava.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Ava ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Logan put into the third match?
+Query 3: In a new 6‑a‑side match later this same day between Ava, Ben, Cara, Diego, Emma, and Felix (Team 1) and Mia, Noah, Owen, Priya, Quinn, and Riley (Team 2), who would win and by how much?
+Query 4: In a new 6‑a‑side match later this same day between Logan, Ben, Cara, Diego, Emma, and Riley (Team 1) and Mia, Noah, Owen, Priya, Quinn, and Felix (Team 2), who would win and by how much?
+<END_SCENARIO>

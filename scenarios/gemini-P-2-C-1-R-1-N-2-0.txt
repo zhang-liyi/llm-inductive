@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Rowing (Coxless Four) races. In each race, the team that wins depends on the average power and synchronization with which the athletes are able to row, based on their intrinsic strength modulated by other factors including how much effort they put in to that race.
+Athletes compete as a team of 4.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Arthur, Ben, Chris, and David beat Eric, Frank, Greg, and Henry.
+In the second race, Arthur, Eric, Frank, and Greg beat Ben, Chris, David, and Henry.
+In the third race, Arthur, Ben, Chris, and David lost to Eric, Frank, Greg, and Henry.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Arthur ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Arthur put into the third race?
+Query 3: In a new race later this same day between Arthur, Ben, Eric, and Frank (Team 1) and Chris, David, Greg, and Henry (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Ben, Chris, Eric, and Frank (Team 1) and Arthur, David, Greg, and Henry (Team 2), who would win and by how much?
+<END_SCENARIO>

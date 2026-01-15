@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Volleyball matches. In each match, the team that wins depends on the average vertical leap and coordination of the athletes, based on their intrinsic athleticism modulated by other factors including how much effort they put in to that match.
+Athletes compete in teams of 8.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, the team of Isaiah, Charles, Josiah, Hudson, Christian, Hunter, Connor, and Eli lost to the team of Ezra, Aaron, Landon, Adrian, Jonathan, Nolan, Jeremiah, and Easton.
+In the second match, the team of Isaiah, Charles, Ezra, Aaron, Landon, Adrian, Jonathan, and Nolan lost to the team of Josiah, Hudson, Christian, Hunter, Connor, Eli, Jeremiah, and Easton.
+In the third match, the team of Isaiah, Charles, Jeremiah, Easton, Josiah, Hudson, Christian, and Hunter lost to the team of Ezra, Aaron, Landon, Adrian, Jonathan, Nolan, Connor, and Eli.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Isaiah ranks in terms of intrinsic athleticism?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ezra put into the third match?
+Query 3: In a new match later this same day between Isaiah and Charles (Team 1) and Ezra and Aaron (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Ezra and Josiah (Team 1) and Charles and Jeremiah (Team 2), who would win and by how much?
+<END_SCENARIO>

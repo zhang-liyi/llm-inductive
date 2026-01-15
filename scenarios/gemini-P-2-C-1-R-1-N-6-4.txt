@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in Lacrosse games with a team size of 8. The winning team is determined by the goal count, which depends on the athletes' intrinsic coordination and shooting accuracy, modulated by the effort they exert during the game.
+The teams (Warriors, Knights, Spartans, Vikings) have fixed rosters, but Julian is an exhibition player who joins different teams for each match.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the Warriors (with Julian) beat the Knights.
+In the second game, the Spartans (with Julian) beat the Knights.
+In the third game, the Spartans (with Julian) beat the Vikings.
+In the fourth game, the Spartans (with Julian) lost to the Warriors.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Julian ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think the Warriors put into the fourth game?
+Query 3: In a new game later this same day between the Warriors (with Julian) and the Spartans (without Julian), who would win and by how much?
+Query 4: In a new game later this same day between the Knights (with Julian) and the Vikings (without Julian), who would win and by how much?
+<END_SCENARIO>

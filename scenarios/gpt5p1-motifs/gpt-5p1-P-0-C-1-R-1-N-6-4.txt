@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND  
+This is a road cycling meet with team time trials and individual sprints. In the team events, each team has 8 riders. A team wins a time trial if its riders, working together, ride the course in less time, determined only by their intrinsic cycling ability (power, endurance, handling) and the effort they put into that race.  
+There are also 1‑on‑1 sprint races between individual cyclists.  
+All races are held on the same day.  
+Most riders stay on fixed 8‑rider teams, but one standout rider, Priya, is allowed to ride with different teams in different races.
+
+CONDITIONS  
+In the first team time trial, Priya with Arun, Ben, Chen, Diego, Emir, Faisal, and Gita (Team Alpha) beat Hana, Ivan, Jorge, Kara, Liam, Maya, Noah, and Omar (Team Beta).  
+In the second team time trial, Team Beta beat Pavel, Quinn, Rosa, Saanvi, Tomas, Ursula, Victor, and Wei (Team Gamma).  
+In the third team time trial, Priya with Pavel, Quinn, Rosa, Saanvi, Tomas, Ursula, and Victor (the Gamma core) beat Team Beta.  
+In an individual sprint later that day, Priya beat Hana.
+
+QUERIES  
+Query 1: Out of 100 random road cyclists, where do you think Priya ranks in terms of intrinsic cycling ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Omar put into the second team time trial?  
+Query 3: In a new 8‑rider team time trial later this same day between Priya, Pavel, Quinn, Rosa, Saanvi, Tomas, Ursula, and Victor (Team 1) and Hana, Ivan, Jorge, Kara, Liam, Maya, Noah, and Omar (Team 2), who would win and by how much?  
+Query 4: In a new 8‑rider team time trial later this same day between Arun, Ben, Chen, Diego, Emir, Faisal, Gita, and Wei (Team 1, without Priya) and Hana, Ivan, Jorge, Kara, Liam, Maya, Noah, and Omar (Team 2), who would win and by how much?
+<END_SCENARIO>

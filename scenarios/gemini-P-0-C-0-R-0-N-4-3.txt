@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Lacrosse (Sixes format) matches. In each match, the team that wins depends on the stick skills and defensive coordination of the athletes, based on their intrinsic talent modulated by other factors including how much effort they put into that match.
+Athletes compete as a team of 6.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Austin, Tyler, Brad, Chad, Dave, and Eric beat Fred, Greg, Hank, Ike, John, and Kyle.
+In the second match, Austin, Tyler, Fred, Greg, Hank, and Ike beat Brad, Chad, Dave, Eric, John, and Kyle.
+In the third match, Austin, Tyler, John, Kyle, Brad, and Chad beat Fred, Greg, Hank, Ike, Dave, and Eric.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Austin ranks in terms of intrinsic talent?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Fred put into the third match?
+Query 3: In a new match later this same day between Austin, Tyler, Dave, Eric, John, and Kyle (Team 1) and Brad, Chad, Fred, Greg, Hank, and Ike (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Brad, Chad, Fred, Greg, Hank, and Ike (Team 1) and Dave, Eric, John, Kyle, Austin, and Tyler (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, 8‑person rowing crews race against each other over the same distance. The winning boat in each race is determined by the rowers’ intrinsic power and endurance, combined with how much effort they put into that particular race. All races take place on the same day.
+
+CONDITIONS
+In the first race, Elena, Brooke, Carla, Dana, Fiona, Grace, Holly, and Iris beat Jack, Liam, Noah, Owen, Paul, Quinn, Ryan, and Seth.
+
+In the second race, Elena, Brooke, Carla, Dana, Fiona, Grace, Holly, and Iris beat Jack, Liam, Noah, Owen, Paul, Quinn, Toby, and Seth.
+
+In the third race, Elena, Brooke, Carla, Dana, Fiona, Grace, Holly, and Iris lost to Jack, Liam, Noah, Owen, Paul, Quinn, Ryan, and Toby.
+
+In the fourth race, Elena, Brooke, Carla, Dana, Fiona, Grace, Holly, and Iris beat Ryan, Liam, Noah, Owen, Paul, Quinn, Toby, and Seth.
+
+QUERIES
+Query 1: Out of 100 random rowers, where do you think Elena ranks in terms of intrinsic rowing strength and endurance?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jack put into the third race?
+Query 3: In a new race later this same day between Elena, Brooke, Carla, Dana, Fiona, Grace, Holly, and Iris (Crew 1) and Jack, Liam, Noah, Owen, Paul, Quinn, Ryan, and Toby (Crew 2), who would win and by how much?
+Query 4: In a new race later this same day between Ryan, Liam, Noah, Owen, Paul, Quinn, Toby, and Seth (Crew 1) and Carla, Dana, Fiona, Grace, Holly, Iris, Jack, and Noah (Crew 2), who would win and by how much?
+<END_SCENARIO>

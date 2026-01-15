@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are taking part in a series of full‑court basketball scrimmages. In each game, the result depends on the players’ intrinsic shooting skill, quickness, height, and decision‑making, together with how much energy and concentration they choose to invest in that game.
+Athletes compete in teams of six.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Liam, Maya, Zoe, Ian, Chloe, and Felix beat Dylan, Nate, Oliver, Patrick, Quinn, and Rosa.
+In the second game, Dylan, Nate, Oliver, Patrick, Quinn, and Rosa lost to Liam, Grace, Henry, Isabel, Jake, and Kara.
+In the third game, Dylan, Nate, Oliver, Patrick, Quinn, and Rosa beat Maya, Zoe, Ian, Chloe, Felix, and Lucas.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Dylan ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the second game?
+Query 3: In a new game later this same day between Dylan, Nate, Oliver, Patrick, Quinn, and Rosa (Team 1) and Liam, Maya, Zoe, Ian, Chloe, and Felix (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Grace, Henry, Isabel, Jake, Kara, and Lucas (Team 1) and Liam, Maya, Zoe, Ian, Chloe, and Felix (Team 2), who would win and by how much?
+<END_SCENARIO>

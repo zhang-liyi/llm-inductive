@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of baseball scrimmages and home-run contests. The outcome of each contest depends on the players’ intrinsic batting, pitching, and fielding ability, combined with how much effort they put in that day.
+Players compete either in 1v1 home-run contests or in games between teams of 9 players.
+All contests take place on the same day.
+
+CONDITIONS
+In the first event, Diego beat Malik.
+In the second game, Diego, Alex, Bella, Chris, Dana, Ethan, Farah, Gabe, and Hazel beat Malik, Nora, Owen, Priya, Quinn, Rosa, Sean, Tara, and Umar.
+In the third game, Diego, Alex, Bella, Chris, Dana, Ethan, Farah, Gabe, and Hazel beat Victor, Nora, Owen, Priya, Quinn, Rosa, Sean, Tara, and Malik.
+
+QUERIES
+Query 1: Out of 100 random baseball players, where do you think Diego ranks in terms of intrinsic playing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Malik put into the third game?
+Query 3: In a new game later this same day between Diego, Alex, Bella, Chris, Dana, Ethan, Farah, Gabe, and Hazel (Team 1) and Victor, Nora, Owen, Priya, Quinn, Rosa, Sean, Tara, and Umar (Team 2), who would win and by how much?
+Query 4: In a new 1v1 home-run contest later this same day between Malik and Victor, who would win and by how much?
+<END_SCENARIO>

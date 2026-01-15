@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of volleyball games and individual serving contests. In each contest, the result is determined by the players’ intrinsic volleyball ability (such as power, coordination, and agility) and how much effort they put into that specific contest.
+Athletes compete either individually or in teams of 6.
+All contests take place on the same day.
+
+CONDITIONS
+In the first game, Team Red (Maya, Nina, Olivia, Priya, Quinn, Rosa) beat Team Blue (Tara, Uma, Val, Wren, Xi, Yara).
+In the second game, Team Red beat Team Green (Zoe, Ben, Callum, Dani, Eli, Farah).
+In the third contest, an individual serving duel, Maya lost to Tara.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Maya ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Tara put into the third contest?
+Query 3: In a new 6-on-6 volleyball game later this same day between Team Red and Team Blue, who would win and by how much?
+Query 4: In a new 6-on-6 volleyball game later this same day between Team Red and Team Green, who would win and by how much?
+<END_SCENARIO>

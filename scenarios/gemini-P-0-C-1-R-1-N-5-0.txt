@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in an Ultimate Frisbee tournament. Teams consist of 7 players. The winning team is determined by the collective speed and throwing accuracy of the players, based on their intrinsic agility modulated by the effort they exert during the match.
+Most players belong to fixed squads (The Flyers, The Divers, The Huckers, The Hammers), but one player, Jordan, rotates between teams.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, The Flyers (with Jordan) beat The Divers.
+In the second match, The Huckers (with Jordan) beat The Hammers.
+In the third match, The Divers (with Jordan) beat The Flyers.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jordan ranks in terms of intrinsic agility?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think The Flyers put into the third match?
+Query 3: In a new match later this same day between The Huckers (with Jordan) and The Divers, who would win and by how much?
+Query 4: In a new match later this same day between The Flyers and The Hammers, who would win and by how much?
+<END_SCENARIO>

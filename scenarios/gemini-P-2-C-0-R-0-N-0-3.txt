@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Pickleball games. In each game, the team that wins depends on the reaction time and strategic placement the athletes are able to utilize, based on their intrinsic coordination modulated by other factors including how much effort they put into that game.
+Athletes compete either individually or as a team of two.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Gary and Linda beat Bob and Sue.
+In the second game, Gary and Linda beat Sue and Tom.
+In the third game, Gary and Linda lost to Bob and Tom.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Gary ranks in terms of intrinsic coordination?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Linda put into the third game?
+Query 3: In a new game later this same day between Gary and Linda (Team 1) and Bob and Karen (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Bob and Sue (Team 1) and Linda and Mike (Team 2), who would win and by how much?
+<END_SCENARIO>

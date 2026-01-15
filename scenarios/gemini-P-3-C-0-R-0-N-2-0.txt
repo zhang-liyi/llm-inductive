@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of rowing races (Coxless Four). In each race, the team that wins depends on the average power and synchronization with which the athletes are able to row, based on their intrinsic strength modulated by other factors including how much effort they put into that race.
+Athletes compete as a team of four.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Liam, Noah, Oliver, and Elijah beat James, Lucas, Henry, and Alexander.
+In the second race, Liam, Noah, Oliver, and Elijah lost to James, Lucas, Mason, and Logan.
+In the third race, Liam, Noah, Oliver, and Elijah lost to Henry, Alexander, Mason, and Logan.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Liam ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mason put into the third race?
+Query 3: In a new race later this same day between Liam, Noah, Oliver, and Elijah (Team 1) and James, Lucas, Mason, and Logan (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Henry, Alexander, Mason, and Logan (Team 1) and James, Lucas, Henry, and Alexander (Team 2), who would win and by how much?
+<END_SCENARIO>

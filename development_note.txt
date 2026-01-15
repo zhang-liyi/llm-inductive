@@ -7,10 +7,12 @@ Need to change their GitHub example with function `mean` to `listMean`
 If needed, add `json.write('result.json', posterior);` However, this can be done outside of the in-context program, 
 and you instead just add it at the end of LLM program generation
 
+
 Meeting 2025-12-15
 
 Check inference results from MSA
 Plan for large-scale (10,000?) data generation; look at current prompt for scenario generaton
+
 
 Generation Prompts:
 
@@ -22,6 +24,103 @@ Generation Prompts:
 * the first program looks good so far
 
 
+MCMC setup:
+
+tried iterations: 12000, 2000, 300 num match; 3000, 1000, 300 num match; 3000, 1000, 100 num match
 
 
 
+
+Meeting 2025-12-22
+
+* Pick 3 benchmark scenarios, do the same MCMC runs, compare results (like Figure 6)
+
+* For new scenarios, pick a subset, 1) curate results as humans, 2) devise LLM as a judge. See how they match. If well, can scale by using LLM as a judge.
+
+* Different types of queries
+
+
+
+Meeting 2026-01-05
+
+* Add Gemini to compare
+
+* Motif-based generation; variables: Motifs (maybe 16) x Team subsamples x Team-size x Noise patterns
+- Name of sport is just a 'decoration'
+- 16 * 10 * 10 = 1600
+- 1600 * 4 = 6400 queries
+
+
+
+
+
+
+
+
+Forward Sampling
+
+For i in range(num_scenarios):
+* Randomly sample individuals with different inherent strengths and fix that
+* Sample the joint distribution, i.e., effort-in-match and match results
+* Save the last sample of the match result as the 'Conditions', and eventually ask LLM to infer the same queries: 
+original individual strengths, effort-in-match (of the last match), and some future match results
+
+How does this save time if we want to generate N scenarios? 
+How do we compute queries
+
+
+Input-output pairs for finetuning
+* output: 
+
+
+
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of canoe races. In each race, the team that wins depends on the average speed with which the athletes are able to row, based on their intrinsic strength modulated by other factors including how much effort they put in to that race.
+Athletes compete either individually or as a team.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Alice beat Casey.
+In the second race, Alice and Ness beat Casey and Max.
+In the third race, Max and Alice lost to Casey and Ness.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Alice ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Max put into the third race?
+Query 3: In a new race later this same day between Alice and Ness (Team 1) and Max and Taylor (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Max and Casey (Team 1) and Ness and Willow (Team 2), who would win and by how much?
+<END_SCENARIO>
+
+* Ask LLMs to generate background with team-size and number of athletes in mind
+* Specify in a program the relationship between variables
+* For i in range(N):
+    * Sample attributes (e.g. intrinsic skill) for all athletes
+    * Run forward sampling: each iteration -> a match result, also how much effort each athlete put in that match
+    * Reconstruct queries from forward sampling (???)
+    * These iterations are used as answers to queries (i.e. finetuning output)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4 queries = 4 random variables we need to get posteriors over. MCMC gets the posteriors.
+
+rv 1: intrinsic ability (0.8)
+rv 2: effort in match (0.5)
+how the person does in a match = rv1 + rv2
+query generted from how the person does in the match
+
+rv 2 = N(0.5, 0.2**2)
+rv 1 = N(mu_c, 0.1**2)
+mu_c = {0.8, 1, 1.4}
+cateogry generated uniformly (1/3, 1/3, 1/3)

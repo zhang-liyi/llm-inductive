@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a rowing regatta on flat water. Crews compete in different boat classes, and the outcome of each race depends on the rowers’ intrinsic rowing strength and technique, as well as the level of effort they choose to apply over the course.
+All races happen on the same day. Rowers may compete in singles and in multi-person boats.
+
+CONDITIONS
+In the first race, a double sculls event, Ava and Noah beat Liam and Zoe.
+In the second race, a single sculls event, Liam beat Noah.
+In the third race, a coxless four event, Ava, Noah, Mia, and Ray lost to Liam, Zoe, Kai, and June.
+
+QUERIES
+Query 1: Out of 100 random rowers, where do you think Ava ranks in terms of intrinsic rowing strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the second race?
+Query 3: In a new race later this same day, a double sculls between Ava and Noah (Crew 1) and Liam and Zoe (Crew 2), who would win and by how much?
+Query 4: In a new race later this same day, a coxless four between Ava, Mia, Kai, and June (Crew 1) and Noah, Liam, Zoe, and Ray (Crew 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of 5-on-5 ultimate frisbee games and a 1-on-1 throwing challenge. In each game, the winning team is determined by how effectively the players cut, throw, and defend, based on their intrinsic ultimate ability and the effort they put in for that game.
+Athletes compete either individually or as a 5-player line.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Hana, Yuki, Mei, Sora, and Lina beat Omar, Pavel, Nina, Luca, and Jake.
+In the second game, Omar, Pavel, Nina, Luca, and Jake beat Yuki, Mei, Sora, Lina, and Tom.
+In the third game, Hana, Omar, Pavel, Nina, and Luca beat Yuki, Mei, Sora, Lina, and Tom.
+In the fourth contest, a single-throw accuracy challenge, Tom beat Hana.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Hana ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Omar put into the second game?
+Query 3: In a new 5-on-5 game later this same day between Hana, Yuki, Mei, Sora, and Lina (Team 1) and Omar, Pavel, Nina, Luca, and Jake (Team 2), who would win and by how much?
+Query 4: In a new 5-on-5 game later this same day between Yuki, Mei, Sora, Lina, and Tom (Team 1) and Omar, Pavel, Nina, Luca, and Jake (Team 2), who would win and by how much?
+<END_SCENARIO>

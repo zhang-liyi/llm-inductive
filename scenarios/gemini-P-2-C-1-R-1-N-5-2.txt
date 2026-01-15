@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a series of Rugby Sevens matches. As the name implies, each team has 7 players. The winning team depends on the points scored through tries and conversions, based on the athletes' intrinsic strength and speed, modulated by how much effort they put into that specific match.
+A standout player named Tane plays for different sides, while the opposing squads (The Highlanders and The Islanders) maintain fixed lineups.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Tane and The Highlanders beat The Islanders.
+In the second match, Tane and The Islanders beat The Highlanders.
+In the third match, Tane and The Highlanders lost to The Islanders.
+
+QUERIES
+Query 1: Out of 100 random rugby players, where do you think Tane ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think The Islanders put into the third match?
+Query 3: In a new match later this same day between Tane and The Highlanders (Team 1) and The Islanders (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between The Highlanders (Team 1) and Tane and The Islanders (Team 2), who would win and by how much?
+<END_SCENARIO>

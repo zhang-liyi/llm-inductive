@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of tennis matches, sometimes in singles and sometimes in a format where four players share one side of the court as a team. Match outcomes depend on each player’s intrinsic tennis skill (serving, strokes, movement) and the effort they put into that match.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Nora lost to Felix.
+In the second match, Nora, Liam, Grace, and Omar lost to Felix, Ruby, Caleb, and Dana.
+In the third match, Nora, Ruby, Omar, and Theo lost to Felix, Grace, Caleb, and Liam.
+In the fourth match, Nora, Caleb, Dana, and Liam beat Felix, Ruby, Omar, and Theo.
+
+QUERIES
+Query 1: Out of 100 random tennis players, where do you think Nora ranks in terms of intrinsic tennis ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Felix put into the fourth match?
+Query 3: In a new match later this same day between Nora, Felix, Grace, and Theo (Team 1) and Ruby, Liam, Caleb, and Omar (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Nora, Dana, Ruby, and Liam (Team 1) and Felix, Grace, Caleb, and Theo (Team 2), who would win and by how much?
+<END_SCENARIO>

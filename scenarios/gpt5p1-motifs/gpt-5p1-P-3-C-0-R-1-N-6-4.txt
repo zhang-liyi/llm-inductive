@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a series of ice hockey games and a skills showdown. Each hockey team has a fixed lineup of 8 players, and these lineups remain constant throughout the event.
+The outcome of each game or contest depends on the players’ intrinsic hockey skill and how much effort and focus they put into that specific performance.
+All games and contests take place on the same day.
+Anya is on Team Polar in every event she participates in.
+
+CONDITIONS
+In the first game, Team Ember beat Team Polar.
+In the second game, Team Glacier beat Team Polar.
+In the third game, Team Polar beat Team Ember.
+In a separate breakaway shootout contest, Kai from Team Glacier beat Anya from Team Polar.
+
+QUERIES
+Query 1: Out of 100 random ice hockey players, where do you think Anya ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Kai put into the breakaway shootout contest?
+Query 3: In a new full game later this same day between Team Polar and Team Glacier, who would win and by how much?
+Query 4: In a new full game later this same day between Team Ember and Team Glacier, who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of badminton matches. The outcome of each match depends on their intrinsic speed, racket control, and tactical awareness, along with how much effort they put into that match.  
+Players compete either individually or in doubles teams of two.  
+All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Mina and Sara beat Kenji and Luke.  
+In the second match, Mina beat Priya.  
+In the third match, Mina and Sara beat Priya and Kenji.  
+In the fourth match, Mina and Sara beat Luke and Priya.
+
+QUERIES  
+Query 1: Out of 100 random badminton players, where do you think Mina ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Priya put into the third match?  
+Query 3: In a new match later this same day between Mina and Sara (Team 1) and Luke and Kenji (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Priya and Luke (Team 1) and Sara and Kenji (Team 2), who would win and by how much?  
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of baseball scrimmages. Each scrimmage is played between two teams of 9 players. The team that wins depends on the players’ intrinsic batting, pitching, and fielding abilities, combined with how much effort they put into that game.
+Athletes sometimes face off individually in pitcher-versus-batter duels, or play full 9‑on‑9 games.
+All games take place on the same day.
+
+CONDITIONS
+In the first scrimmage, Dylan and eight others lost to Harper and eight others.
+In the second scrimmage, Dylan, Noah and seven others lost to Harper, Sofia and seven others.
+In a later pitcher–batter duel, Dylan lost to Harper.
+
+QUERIES
+Query 1: Out of 100 random baseball players, where do you think Harper ranks in terms of intrinsic playing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Dylan put into the second scrimmage?
+Query 3: In a new scrimmage later this same day between Dylan, Sofia and seven others (Team 1) and Harper, Noah and seven others (Team 2), who would win and by how much?
+Query 4: In a new pitcher–batter duel later this same day between Dylan (batter) and Noah (pitcher), who would win and by how much?
+<END_SCENARIO>

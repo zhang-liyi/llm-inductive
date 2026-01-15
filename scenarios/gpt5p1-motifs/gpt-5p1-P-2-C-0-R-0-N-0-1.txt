@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are playing a series of 2-on-2 half-court basketball games. In each game, the winning team is determined by the players’ intrinsic shooting, ball-handling, and defensive ability, combined with how much effort they put into that particular game.  
+All games take place on the same day.
+
+CONDITIONS  
+In the first game, Diego and Malik beat Tara and Zoe.  
+In the second game, Diego and Malik beat Ben and Owen.  
+In the third game, Tara and Ben beat Diego and Malik.
+
+QUERIES  
+Query 1: Out of 100 random basketball players, where do you think Diego ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Tara put into the third game?  
+Query 3: In a new game later this same day between Diego and Malik (Team 1) and Ben and Zoe (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Tara and Owen (Team 1) and Ben and Zoe (Team 2), who would win and by how much?  
+<END_SCENARIO>

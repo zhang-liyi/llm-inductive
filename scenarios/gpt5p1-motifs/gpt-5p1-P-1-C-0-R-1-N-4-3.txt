@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of ice hockey games between fixed six-player teams. Each team always plays with the same six skaters. The winner of each game is determined by the players’ intrinsic ice hockey ability and how much effort they put into that game. All games take place on the same day.
+
+Team Glacier: Erik, Jonas, Pavel, Mark, Colin, Bryce.  
+Team Thunder: Tyler, Cody, Sean, Brian, Jared, Logan.  
+Team Lynx: Jonah, Eli, Mason, Curtis, Drew, Hayden.
+
+CONDITIONS
+In the first game, Team Glacier beat Team Lynx.  
+In the second game, Team Thunder beat Team Lynx.  
+In the third game, Team Glacier beat Team Lynx again.
+
+QUERIES
+Query 1: Out of 100 random ice hockey players, where do you think Jonah ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Erik put into the first game?  
+Query 3: In a new game later this same day between Team Glacier and Team Thunder, who would win and by how much?  
+Query 4: In a new game later this same day between Team Lynx and Team Thunder, who would win and by how much?
+<END_SCENARIO>

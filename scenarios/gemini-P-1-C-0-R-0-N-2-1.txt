@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this tournament, athletes participate in 4-player Volleyball games. The team that wins is decided by the average defensive and offensive capability of the players, derived from their intrinsic agility and power, modulated by the intensity of effort they put into the game.
+Athletes compete in teams of 4.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the team of Oscar, Paul, Quinn, and Ray beat the team of Kevin, Leo, Mike, and Nick.
+In the second game, the team of Oscar, Paul, Steve, and Tim beat the team of Kevin, Leo, Mike, and Nick.
+In the third game, the team of Quinn, Ray, Steve, and Tim beat the team of Kevin, Leo, Mike, and Nick.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Kevin ranks in terms of intrinsic agility and power?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Quinn put into the third game?
+Query 3: In a new game later this same day between Kevin, Leo, Mike, and Nick (Team 1) and Oscar, Quinn, Steve, and Victor (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Oscar, Paul, Quinn, and Ray (Team 1) and Steve, Tim, Victor, and Will (Team 2), who would win and by how much?
+<END_SCENARIO>

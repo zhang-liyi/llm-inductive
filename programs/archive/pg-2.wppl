@@ -1,0 +1,199 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  ////////////////////////////////////////////////////////////////////////////
+  // BACKGROUND KNOWLEDGE
+  ////////////////////////////////////////////////////////////////////////////
+
+  // Intrinsic tennis ability is a stable trait for each player over the day.
+  // Units: arbitrary "ability" units on roughly a normal scale (higher = better).
+  var intrinsic_tennis_ability = mem(function({player}) {
+    // Three rough buckets of ability: low, average, high.
+    var low_mean = -0.5;
+    var avg_mean = 0.0;
+    var high_mean = 1.0;
+    var bucket_mean = categorical({
+      ps: [0.3, 0.4, 0.3],
+      vs: [low_mean, avg_mean, high_mean]
+    });
+    var ability_sd = 0.5;
+    return gaussian(bucket_mean, ability_sd);
+  });
+
+  // Effort invested by a player in a particular match.
+  // Units: proportion between 0 and 1 (later converted to 0–100%).
+  var effort_in_match = mem(function({player, match}) {
+    // Base effort distribution: moderately high on average.
+    var base_a = 4.0;
+    var base_b = 2.0;
+
+    // Mild fatigue: slightly lower expected effort in later matches.
+    var fatigue_factor = match > 2 ? 0.9 : 1.0;
+    var a = base_a * fatigue_factor;
+    var b = base_b / fatigue_factor;
+
+    // Draw effort as a Beta(a, b) on [0,1].
+    var e = beta({a: a, b: b});
+    return Math.min(Math.max(e, 0), 1);
+  });
+
+  // Effective skill of a player in a specific match, combining intrinsic ability
+  // and match-specific effort.
+  // Units: same arbitrary "ability" units as intrinsic_tennis_ability.
+  var player_effective_skill_in_match = function({player, match}) {
+    var ability = intrinsic_tennis_ability({player: player});
+    var effort = effort_in_match({player: player, match: match}); // 0–1
+    var effort_scale = 1.0; // how strongly effort moves performance
+    var noise_sd = 0.3;     // small idiosyncratic noise per player-match
+    return ability + effort_scale * (effort - 0.5) + gaussian(0, noise_sd);
+  };
+
+  // Singles performance score for a player in a match.
+  // Units: same arbitrary "performance" units; only differences matter.
+  var singles_performance_in_match = function({player, match}) {
+    var perf_noise_sd = 0.2;
+    return player_effective_skill_in_match({player: player, match: match}) +
+           gaussian(0, perf_noise_sd);
+  };
+
+  // Doubles team performance score in a match, based on both players'
+  // effective skills plus team-level synergy and match noise.
+  // 'team' is a list of players (e.g., ['serena','max']).
+  var doubles_team_performance_in_match = function({team, match}) {
+    var skills = map(function(p) {
+      return player_effective_skill_in_match({player: p, match: match});
+    }, team);
+    var base = listMean(skills);
+    var synergy_sd = 0.2;
+    var match_noise_sd = 0.2;
+    return base + gaussian(0, synergy_sd) + gaussian(0, match_noise_sd);
+  };
+
+  // Match performance difference: side1 performance minus side2 performance.
+  // Handles both singles (player1/player2) and doubles (team1/team2).
+  var match_performance_difference = function(o) {
+    var match = o.match;
+    var isSingles = o.player1 !== undefined;
+
+    var team1 = isSingles ? [o.player1] : o.team1;
+    var team2 = isSingles ? [o.player2] : o.team2;
+
+    var teamPerformance = function(team) {
+      return team.length === 1 ?
+        singles_performance_in_match({player: team[0], match: match}) :
+        doubles_team_performance_in_match({team: team, match: match});
+    };
+
+    return teamPerformance(team1) - teamPerformance(team2);
+  };
+
+  // A side beats the other in a match if its performance difference is > 0.
+  // For singles: beat({player1, player2, match})
+  // For doubles: beat({team1, team2, match})
+  var beat = function(o) {
+    return match_performance_difference(o) > 0;
+  };
+
+  // Convenience: team1 loses to team2 in a match if they do not beat them.
+  var lost = function({team1, team2, match}) {
+    return !beat({team1: team1, team2: team2, match: match});
+  };
+
+  // Intrinsic ability ranking of a player among N random players.
+  // Returns the number of other players they are more skilled than.
+  var intrinsic_tennis_ability_rank = function({player, out_of_n_players}) {
+    var this_skill = intrinsic_tennis_ability({player: player});
+    var n_others = out_of_n_players - 1;
+
+    // Generate random "other players" from the population.
+    var other_ids = mapN(function(i) { return uniform(0, 1000); }, n_others);
+
+    // Count how many of them the focal player is better than.
+    return sum(map(function(other_id) {
+      return this_skill > intrinsic_tennis_ability({player: other_id});
+    }, other_ids));
+  };
+
+  // Convert effort for a player in a match to a 0–100% scale.
+  var effort_percentage_in_match = function({player, match}) {
+    return 100 * effort_in_match({player: player, match: match});
+  };
+
+  // For a hypothetical future doubles match, compute how likely Team 2 is to win.
+  // Returns a probability between 0 and 1:
+  //   0   = Team 1 almost surely wins,
+  //   1   = Team 2 almost surely wins.
+  var who_would_win_by_how_much = function({team1, team2, match}) {
+    var num_future_matches = 100;
+    // Simulate future matches with new match IDs (to get new effort draws, etc.).
+    var future_match_ids = mapN(function(i) { return uniform(match + 1, 1000); },
+                                num_future_matches);
+
+    var team2_wins = sum(map(function(fm) {
+      return lost({team1: team1, team2: team2, match: fm}) ? 1 : 0;
+    }, future_match_ids));
+
+    return team2_wins / num_future_matches;
+  };
+
+  ////////////////////////////////////////////////////////////////////////////
+  // CONDITIONS (OBSERVED MATCH RESULTS)
+  ////////////////////////////////////////////////////////////////////////////
+
+  // In the first match, Serena beat Lila.
+  condition(beat({player1: 'serena', player2: 'lila', match: 1}))
+  // In the second match, Serena and Max beat Lila and Tom.
+  condition(beat({team1: ['serena', 'max'], team2: ['lila', 'tom'], match: 2}))
+  // In the third match, Tom beat Max.
+  condition(beat({player1: 'tom', player2: 'max', match: 3}))
+  // In the fourth match, Lila and Nora beat Serena and Tom.
+  condition(beat({team1: ['lila', 'nora'], team2: ['serena', 'tom'], match: 4}))
+
+  ////////////////////////////////////////////////////////////////////////////
+  // QUERIES
+  ////////////////////////////////////////////////////////////////////////////
+
+  // Query 1: Out of 100 random tennis players, where do you think Serena
+  // ranks in terms of intrinsic tennis ability?
+  // Returns: integer in [0, 99], number of random players she is better than.
+  var q1 = intrinsic_tennis_ability_rank({player: 'serena', out_of_n_players: 100});
+
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you
+  // think Tom put into the third match?
+  var q2 = effort_percentage_in_match({player: 'tom', match: 3});
+
+  // Query 3: In a new match later this same day between Serena and Tom
+  // (Team 1) and Lila and Max (Team 2), who would win and by how much?
+  // Returns: probability in [0,1] that Team 2 (Lila & Max) wins.
+  var q3 = who_would_win_by_how_much({team1: ['serena', 'tom'],
+                                      team2: ['lila', 'max'],
+                                      match: 5});
+
+  // Query 4: In a new match later this same day between Serena and Nora
+  // (Team 1) and Max and Tom (Team 2), who would win and by how much?
+  // Returns: probability in [0,1] that Team 2 (Max & Tom) wins.
+  var q4 = who_would_win_by_how_much({team1: ['serena', 'nora'],
+                                      team2: ['max', 'tom'],
+                                      match: 6});
+
+  return {
+    query1: q1,
+    query2: q2,
+    query3: q3,
+    query4: q4
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-2.json', posterior);

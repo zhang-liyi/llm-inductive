@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of full‑court basketball games and shooting contests. In each game, the winning side is the one that can shoot, rebound, and defend more effectively, based on the players’ intrinsic shooting touch, quickness, jumping ability, and how much effort they put into that game.
+Athletes compete either individually or as a team of 9 players.
+All games and contests take place on the same day. Most players stay with the same 9‑player squad, but one player, Mateo, is placed on different teams throughout the event.
+
+CONDITIONS
+In the first game, Mateo, Jalen, and seven other Comets lost to Ava, Ben, and six other Sparks.
+In the second game, Mateo, Ava, and seven other Sparks lost to Zoe, Malik, and six other Titans.
+In a three‑point shooting contest later that day, Mateo beat Ben.
+In the final game, Mateo, Zoe, and seven other Titans lost to Jalen, Malik, and seven other Comets.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Mateo ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ava put into the second game?
+Query 3: In a new basketball game later this same day between Mateo, Jalen, and seven other Comets (Team 1) and Ava, Ben, and seven other Sparks (Team 2), who would win and by how much?
+Query 4: In a new basketball game later this same day between Mateo, Zoe, and seven other Titans (Team 1) and Malik, Jalen, and seven other Comets (Team 2), who would win and by how much?
+<END_SCENARIO>

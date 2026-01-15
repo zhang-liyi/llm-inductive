@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+This event features distance running races on the track and road. The order of finish depends on runners’ intrinsic aerobic capacity and running efficiency, combined with how much effort and pacing they choose in each race.  
+Races include both individual events and 2-person combined-time teams.  
+All races take place over the same morning.
+
+CONDITIONS  
+In the first race, a 5000m track race, Sofia beat Kai.  
+In the second race, a 10km road race, Kai beat Liam.  
+In the third race, a 5000m track race, Liam beat Sofia.  
+In the fourth race, a combined 2-person 10km team event (each runner completes 5km and their times are added), Sofia and Liam beat Kai and Maya.
+
+QUERIES  
+Query 1: Out of 100 random distance runners, where do you think Sofia ranks in terms of intrinsic endurance and running ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Kai put into the second race?  
+Query 3: In a new 10km road race later this same morning between Sofia and Kai, who would win and by how much?  
+Query 4: In a new 2-person combined 5000m team event later this same morning between Sofia and Maya (Team 1) and Kai and Liam (Team 2), who would win and by how much?  
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Pickleball matches. In each match, the team that wins depends on the combined hand speed and placement accuracy of the athletes, based on their intrinsic skill modulated by other factors including how much effort they put into that match.
+Athletes compete as a team of two.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Sam and Bill beat Gary and Tom.
+In the second match, Tom and Bill beat Gary and Sam.
+In the third match, Gary and Bill beat Tom and Sam.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Gary ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Gary put into the third match?
+Query 3: In a new match later this same day between Gary and Tom (Team 1) and Sam and Mike (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Sam and Bill (Team 1) and Tom and John (Team 2), who would win and by how much?
+<END_SCENARIO>

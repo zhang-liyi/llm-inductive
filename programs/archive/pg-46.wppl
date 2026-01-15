@@ -1,0 +1,246 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  // BACKGROUND KNOWLEDGE
+  // Each player has an intrinsic playing ability that is constant across all matches on this day.
+  // Units: intrinsic playing ability is on an arbitrary latent skill scale, roughly centered around 100.
+  var intrinsic_playing_ability = mem(function({player}) {
+    // Give the strong substitute a higher prior ability.
+    if (player === 'strong_substitute') {
+      // Strong substitute: clearly above-average player.
+      var strong_mean = 140;
+      var strong_sd = 10;
+      return Math.max(gaussian(strong_mean, strong_sd), 0);
+    }
+
+    // For regular players, use a 3-level mixture prior (low / average / high).
+    var parameter_low_skill_prior = 0.3;
+    var parameter_average_skill_prior = 0.4;
+    var parameter_high_skill_prior = 0.3;
+
+    var low_skill_mean = 80;
+    var average_skill_mean = 100;
+    var high_skill_mean = 130;
+    var intrinsic_ability_variance = 10;
+
+    var mean_for_this_player = categorical({
+      ps: [parameter_low_skill_prior, parameter_average_skill_prior, parameter_high_skill_prior],
+      vs: [low_skill_mean, average_skill_mean, high_skill_mean]
+    });
+
+    return Math.max(gaussian(mean_for_this_player, intrinsic_ability_variance), 0);
+  });
+
+  // Each player exerts effort specific to a given match.
+  // Units: effort is a percentage from 0 to 100 (% of maximum possible effort).
+  var effort_in_match = mem(function({player, match}) {
+    var ability = intrinsic_playing_ability({player: player});
+
+    // Prior over low / medium / high effort, depending (weakly) on intrinsic ability.
+    var low_effort_mean = 30;   // 30% effort
+    var med_effort_mean = 60;   // 60% effort
+    var high_effort_mean = 90;  // 90% effort
+    var effort_variance = 10;
+
+    var p_low;
+    var p_med;
+    var p_high;
+
+    if (ability > 120) {
+      // Strong players somewhat more likely to put in high effort in important competitive play.
+      p_low = 0.1;
+      p_med = 0.3;
+      p_high = 0.6;
+    } else if (ability < 80) {
+      // Weaker players more often around low–medium effort, less often at highest level.
+      p_low = 0.4;
+      p_med = 0.4;
+      p_high = 0.2;
+    } else {
+      // Average players: mostly medium or high effort.
+      p_low = 0.2;
+      p_med = 0.5;
+      p_high = 0.3;
+    }
+
+    var mean_effort = categorical({
+      ps: [p_low, p_med, p_high],
+      vs: [low_effort_mean, med_effort_mean, high_effort_mean]
+    });
+
+    return Math.min(Math.max(gaussian(mean_effort, effort_variance), 0), 100);
+  });
+
+  // Performance dimensions in a given match.
+  // Units: each component is on a 0–100 performance scale for that match.
+
+  var shot_consistency_in_match = function({player, match}) {
+    var ability = intrinsic_playing_ability({player: player});
+    var effort = effort_in_match({player: player, match: match});
+    // Consistency strongly depends on ability, somewhat on effort.
+    var mean_score = 0.7 * ability + 0.4 * effort - 50; // shift to roughly 0–100 range
+    return Math.min(Math.max(gaussian(mean_score, 10), 0), 100);
+  };
+
+  var reaction_speed_in_match = function({player, match}) {
+    var ability = intrinsic_playing_ability({player: player});
+    var effort = effort_in_match({player: player, match: match});
+    // Reaction speed depends on both, with a bit more weight on ability.
+    var mean_score = 0.6 * ability + 0.5 * effort - 40;
+    return Math.min(Math.max(gaussian(mean_score, 10), 0), 100);
+  };
+
+  var control_in_match = function({player, match}) {
+    var ability = intrinsic_playing_ability({player: player});
+    var effort = effort_in_match({player: player, match: match});
+    // Control is quite technique/skill driven.
+    var mean_score = 0.8 * ability + 0.3 * effort - 60;
+    return Math.min(Math.max(gaussian(mean_score, 10), 0), 100);
+  };
+
+  var positioning_in_match = function({player, match}) {
+    var ability = intrinsic_playing_ability({player: player});
+    var effort = effort_in_match({player: player, match: match});
+    // Positioning uses reading of the game (ability) and hustle (effort).
+    var mean_score = 0.6 * ability + 0.6 * effort - 60;
+    return Math.min(Math.max(gaussian(mean_score, 10), 0), 100);
+  };
+
+  // Overall match performance for a single player is built from the four dimensions.
+  // Units: overall performance points on the same 0–100-ish scale.
+  var overall_match_performance = mem(function({player, match}) {
+    var sc = shot_consistency_in_match({player: player, match: match});
+    var rs = reaction_speed_in_match({player: player, match: match});
+    var co = control_in_match({player: player, match: match});
+    var pos = positioning_in_match({player: player, match: match});
+
+    // Roughly equal weighting of components.
+    return (sc + rs + co + pos) / 4;
+  });
+
+  // Team match performance: aggregate the performances of players on the team.
+  // Units: team performance points on similar scale (0–100+).
+  var team_match_performance = mem(function({team, match}) {
+    // team is a list of player identifiers (1 for singles, 2 for doubles).
+    var individual_performances = map(
+      function(player) {
+        return overall_match_performance({player: player, match: match});
+      },
+      team
+    );
+
+    var base_team_perf = listMean(individual_performances);
+
+    // Small team-level noise for coordination and match-specific randomness.
+    var team_noise = gaussian(0, 5);
+
+    return base_team_perf + team_noise;
+  });
+
+  // A beat relation between two sides.
+  // Supports both singles (player1 vs player2) and doubles (team1 vs team2).
+  // Returns true if the first side (player1/team1) has strictly higher performance.
+  var beat = function(args) {
+    var match = args.match;
+
+    // Singles case: player1 and player2 fields are provided.
+    if (args.player1) {
+      var team1 = [args.player1];
+      var team2 = [args.player2];
+      return team_match_performance({team: team1, match: match}) >
+             team_match_performance({team: team2, match: match});
+    }
+
+    // Doubles (or generic team) case: team1 and team2 fields are provided.
+    return team_match_performance({team: args.team1, match: match}) >
+           team_match_performance({team: args.team2, match: match});
+  };
+
+  // Helper: losing relation (for team-level queries).
+  var lost = function({team1, team2, match}) {
+    return !beat({team1: team1, team2: team2, match: match});
+  };
+
+  // Intrinsic playing ability rank out of N players.
+  // Returns how many out of (N-1) random players this player is better than.
+  var intrinsic_playing_ability_rank = function({player, out_of_n_players}) {
+    // Generate out_of_n_players - 1 other random player IDs.
+    var random_player_ids = mapN(
+      function(x) { return uniform(0, 1000); },
+      out_of_n_players - 1
+    );
+
+    return sum(map(
+      function(random_id) {
+        return intrinsic_playing_ability({player: player}) >
+               intrinsic_playing_ability({player: random_id});
+      },
+      random_player_ids
+    ));
+  };
+
+  // Report effort for a given player in a given match on a 0–100% scale.
+  var effort_percentage_in_match = function({player, match}) {
+    return effort_in_match({player: player, match: match});
+  };
+
+  // For a hypothetical future match, compute how likely team2 is to beat team1.
+  // Return value: fraction between 0 and 1, where
+  //   0   = Team 1 would definitely win,
+  //   1   = Team 2 would definitely win.
+  var who_would_win_by_how_much = function({team1, team2, match}) {
+    var num_future_matches_to_simulate = 100;
+    var random_future_match_ids = mapN(
+      function(x) { return uniform(match + 1, 1000); },
+      num_future_matches_to_simulate
+    );
+
+    var simulated_matches_won_by_team2 = sum(map(
+      function(random_future_match_id) {
+        return lost({team1: team1, team2: team2, match: random_future_match_id});
+      },
+      random_future_match_ids
+    ));
+
+    return simulated_matches_won_by_team2 / num_future_matches_to_simulate;
+  };
+
+  // CONDITIONS
+  // In the first match, Avery beat Blake.
+  condition(beat({player1: 'avery', player2: 'blake', match: 1}))
+
+  // In the second match, Avery and Harper beat Blake and Jordan.
+  condition(beat({team1: ['avery', 'harper'], team2: ['blake', 'jordan'], match: 2}))
+
+  // In the third match, Blake and Casey beat Harper and Jordan.
+  condition(beat({team1: ['blake', 'casey'], team2: ['harper', 'jordan'], match: 3}))
+
+  // In the fourth match, Casey beat Harper.
+  condition(beat({player1: 'casey', player2: 'harper', match: 4}))
+
+  // QUERIES
+  // Query 1: Out of 100 random pickleball players, where do you think Avery ranks in terms of intrinsic playing ability?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Blake put into the second match?
+  // Query 3: In a new match later this same day between Avery and Casey (Team 1) and Blake and Harper (Team 2), who would win and by how much?
+  // Query 4: In a new match later this same day between Jordan and Harper (Team 1) and Blake and a strong substitute (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_playing_ability_rank({player: 'avery', out_of_n_players: 100}),
+    query2: effort_percentage_in_match({player: 'blake', match: 2}),
+    query3: who_would_win_by_how_much({team1: ['avery', 'casey'], team2: ['blake', 'harper'], match: 5}),
+    query4: who_would_win_by_how_much({team1: ['jordan', 'harper'], team2: ['blake', 'strong_substitute'], match: 6})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-46.json', posterior);

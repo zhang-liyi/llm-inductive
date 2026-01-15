@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of badminton games. In each game, the team that wins depends on the average reaction speed and racket control of the athletes, based on their intrinsic skill level modulated by other factors including how much effort they put into that game.
+Athletes compete either individually or as a team.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Mia beat Zoe.
+In the second game, Mia and Ben lost to Zoe and Ian.
+In the third game, Mia and Ian lost to Zoe and Ben.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Mia ranks in terms of intrinsic skill level?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ben put into the third game?
+Query 3: In a new game later this same day between Mia and Zoe (Team 1) and Ben and Ian (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Mia and Ian (Team 1) and Zoe and Ben (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in Lacrosse Sixes matches. The winning team is decided by the collective goal-scoring ability and defensive maneuvering of the six players, based on their intrinsic athleticism modulated by the effort they commit to the match.
+Athletes compete in teams of six.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, the North Squad beat the South Squad (consisting of Arthur, Luke, Han, Chewy, Lando, and Wedge).
+In the second match, the East Squad beat the South Squad (consisting of Arthur, Luke, Han, Chewy, Lando, and Wedge).
+In the third match, the South Squad (consisting of Arthur, Luke, Han, Chewy, Lando, and Wedge) lost to the West Squad.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Arthur ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think the West Squad put into the third match?
+Query 3: In a new match later this same day between the North Squad (Team 1) and the South Squad (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the East Squad (Team 1) and the West Squad (Team 2), who would win and by how much?
+<END_SCENARIO>

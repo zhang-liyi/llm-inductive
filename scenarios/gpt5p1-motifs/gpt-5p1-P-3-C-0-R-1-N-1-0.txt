@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing 3-on-3 half-court basketball games. The outcome of each game depends on the teams’ average on-court performance, which is determined by each player’s intrinsic basketball ability (shooting, ball-handling, defense) and how much effort they put into that game.
+Players compete as part of fixed three-player teams, and occasionally in individual contests.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Eric, Samir, and Kyle beat Malik, Jordan, and Theo.
+In the second game, Dante, Omar, and Felix beat Malik, Jordan, and Theo.
+In the third game, Malik, Jordan, and Theo beat Eric, Samir, and Kyle.
+In the fourth game, Dante beat Eric.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Malik ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Malik put into the second game?
+Query 3: In a new game later this same day between Malik, Jordan, and Theo (Team 1) and Dante, Omar, and Felix (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Eric, Samir, and Kyle (Team 1) and Dante, Omar, and Felix (Team 2), who would win and by how much?
+<END_SCENARIO>

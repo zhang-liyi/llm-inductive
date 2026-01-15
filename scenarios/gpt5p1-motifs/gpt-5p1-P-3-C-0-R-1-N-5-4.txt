@@ -1,0 +1,24 @@
+<START_SCENARIO>
+BACKGROUND  
+This is a one-day 7-on-7 basketball tournament played on a full court, with frequent substitutions but fixed team rosters of seven players.  
+Game outcomes are driven by players’ intrinsic shooting accuracy, height and jumping ability, quickness, and the level of effort they put into each game.  
+No player switches teams during the event.
+
+Team Rockets: Jordan, Malik, Andre, Chris, Devin, Trey, Eric.  
+Team Titans: Marcus, Jalen, Darius, Omar, Khalil, Steph, Bryce.  
+Team Phoenix: Isaiah, Leon, Terrence, Cody, Jamal, Reggie, Damian.
+
+CONDITIONS  
+In the first game, Team Titans beat Team Rockets.  
+In the second game, Team Phoenix beat Team Rockets.  
+In the third game, Team Rockets beat Team Titans.  
+In the fourth game, Team Phoenix beat Team Rockets.  
+
+(Jordan is on Team Rockets and loses all but the third game.)
+
+QUERIES  
+Query 1: Out of 100 random basketball players in this format, where do you think Jordan ranks in terms of intrinsic ability for this sport?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Malik put into the second game?  
+Query 3: In a new game later this same day between Team Rockets and Team Phoenix, who would win and by how much?  
+Query 4: In a new game later this same day between Team Titans and Team Phoenix, who would win and by how much?  
+<END_SCENARIO>

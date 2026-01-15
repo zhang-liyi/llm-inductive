@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in a series of 4x100m relay races on a sprint track. The winning team is determined by the collective speed of the four runners, which depends on their intrinsic sprinting speed and baton-passing technique, modulated by the effort they exert during the specific race.
+Athletes compete in teams of four.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Elias, Ben, Chris, and David lost to Frank, Greg, Hank, and Ian.
+In the second race, Elias, Jack, Ken, and Leo lost to Mike, Nick, Oscar, and Paul.
+In the third race, Elias, Quinn, Ray, and Sam beat Tom, Uri, Vic, and Will.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Elias ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Frank put into the first race?
+Query 3: In a new race later this same day between Elias, Ben, Chris, and David (Team 1) and Mike, Nick, Oscar, and Paul (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Frank, Greg, Hank, and Ian (Team 1) and Tom, Uri, Vic, and Will (Team 2), who would win and by how much?
+<END_SCENARIO>

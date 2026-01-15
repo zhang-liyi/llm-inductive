@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of ice hockey games. In each game, the team that wins depends on the average effectiveness with which the athletes play, based on their intrinsic skating speed and stick handling modulated by other factors including how much effort they put into that game.
+Athletes compete in fixed teams of six.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Pia, Qad, Rex, Sol, Tad, and Uli beat Jeb, Kip, Lee, Mel, Nat, and Obe.
+In the second game, Val, Wyn, Xis, Yem, Zed, and Ash beat Jeb, Kip, Lee, Mel, Nat, and Obe.
+In the third game, Bob, Cal, Dot, Ema, Fin, and Gil beat Jeb, Kip, Lee, Mel, Nat, and Obe.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jeb ranks in terms of intrinsic skating speed and stick handling?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jeb put into the third game?
+Query 3: In a new game later this same day between Jeb, Kip, Lee, Mel, Nat, and Obe (Team 1) and Pia, Qad, Rex, Sol, Tad, and Uli (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Jeb, Kip, Lee, Mel, Nat, and Obe (Team 1) and Val, Wyn, Xis, Yem, Zed, and Ash (Team 2), who would win and by how much?
+<END_SCENARIO>

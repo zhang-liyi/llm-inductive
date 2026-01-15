@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Beach Volleyball matches. In each match, the team that wins depends on the combined agility and coordination of the pair, based on their intrinsic skill level modulated by other factors including how much effort they put in to that match.
+Athletes compete as a team of two.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Rohan and Liam beat Ethan and Mason.
+In the second match, Rohan and Ethan beat Liam and Noah.
+In the third match, Rohan and Noah lost to Ethan and Mason.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Rohan ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Rohan put into the third match?
+Query 3: In a new match later this same day between Rohan and Liam (Team 1) and Ethan and Noah (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Ethan and Mason (Team 1) and Liam and Noah (Team 2), who would win and by how much?
+<END_SCENARIO>

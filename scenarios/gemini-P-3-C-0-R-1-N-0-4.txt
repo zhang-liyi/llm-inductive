@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this series, athletes are competing in Pickleball games. The team that wins depends on the shot placement and court coverage the athletes provide, based on their intrinsic capability modulated by factors such as the level of effort they exert during the game.
+Athletes compete in fixed pairs.
+All games are played on the same day.
+
+CONDITIONS
+In the first game, Dana and Kelly lost to Barb and Sue.
+In the second game, Dana and Kelly beat Barb and Sue.
+In the third game, Dana and Kelly lost to Barb and Sue.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Dana ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Barb put into the second game?
+Query 3: In a new game later this same day between Dana and Barb (Team 1) and Kelly and Sue (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Kelly and Sue (Team 1) and Dana and Barb (Team 2), who would win and by how much?
+<END_SCENARIO>

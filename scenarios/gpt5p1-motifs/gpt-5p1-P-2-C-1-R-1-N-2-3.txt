@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of small‑sided soccer matches played 4‑a‑side, with the possibility of some 1‑on‑1 challenges. In each match, the winning team depends on the players’ intrinsic soccer ability (ball control, speed, and finishing) modulated by how much effort they put into that match.
+Athletes compete either individually or in teams of four.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Jonah, Quinn, Raul, and Sergio beat Marco, Nico, Oscar, and Pablo.
+In the second match, Jonah, Tomas, Uriel, and Victor beat Marco, Nico, Oscar, and Pablo.
+In the third match, Jonah, Quinn, Tomas, and Will lost to Marco, Nico, Oscar, and Pablo.
+
+QUERIES
+Query 1: Out of 100 random small‑sided soccer players, where do you think Jonah ranks in terms of intrinsic soccer ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Pablo put into the third match?
+Query 3: In a new 4‑a‑side match later this same day between Jonah, Raul, Uriel, and Victor (Team 1) and Marco, Nico, Oscar, and Pablo (Team 2), who would win and by how much?
+Query 4: In a new 4‑a‑side match later this same day between Quinn, Sergio, Tomas, and Will (Team 1) and Marco, Nico, Oscar, and Pablo (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,20 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, rugby players are competing in a series of rugby sevens games. The team that wins each game is determined by the players’ intrinsic rugby ability (pace, power, handling, tackling) together with the intensity of effort they put into that game.
+Games are played either as 1v1 tackling/evasion drills or as seven‑a‑side sevens matches.
+All games take place on the same day.
+
+CONDITIONS
+Define Team T (Tevita’s team) as: Tevita, Jonah, Malakai, Sione, Manu, Loni, Ratu.
+
+1. In the first sevens game, Aiden, Brody, Carter, Declan, Ethan, Finn, Hayden beat Tevita, Jonah, Malakai, Sione, Manu, Loni, Ratu.
+2. In the second sevens game, Carter, Declan, Isaac, Jayden, Kieran, Leo, Aiden beat Tevita, Jonah, Malakai, Sione, Manu, Loni, Ratu.
+3. In the third sevens game, Finn, Hayden, Isaac, Jayden, Kieran, Leo, Brody beat Tevita, Jonah, Malakai, Sione, Manu, Loni, Ratu.
+4. In a 1v1 tackling drill, Carter beat Manu.
+
+QUERIES
+Query 1: Out of 100 random rugby players, where do you think Tevita ranks in terms of intrinsic rugby ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Carter put into the second sevens game?
+Query 3: In a new seven‑a‑side sevens game later this same day between Tevita, Jonah, Malakai, Sione, Manu, Loni, Ratu (Team 1) and Aiden, Brody, Carter, Declan, Isaac, Jayden, Kieran (Team 2), who would win and by how much?
+Query 4: In a new seven‑a‑side sevens game later this same day between Aiden, Finn, Hayden, Isaac, Jayden, Leo, Brody (Team 1) and Jonah, Malakai, Sione, Manu, Loni, Ratu, Declan (Team 2), who would win and by how much?
+<END_SCENARIO>

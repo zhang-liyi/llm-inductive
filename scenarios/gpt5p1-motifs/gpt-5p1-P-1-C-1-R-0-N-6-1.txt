@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of indoor volleyball scrimmages. In each contest, the outcome depends on the players’ intrinsic serving, passing, setting, hitting, and blocking ability, combined with how much effort and focus they put into that contest.
+Athletes compete either individually (in serve-and-receive duels) or in teams of eight.
+All contests take place on the same day.
+
+CONDITIONS
+In the first duel, Nina lost to Harper.
+In the second scrimmage, Nina, Avery, Brianna, Chloe, Dylan, Emma, Faith, and Grant lost to Harper, Isaac, Jenna, Leo, Mia, Noah, Owen, and Paige.
+In the third scrimmage, Nina, Isaac, Leo, Mia, Owen, Quinn, Riley, and Sienna lost to Harper, Avery, Brianna, Chloe, Dylan, Emma, Faith, and Tyler.
+In the fourth scrimmage, Nina, Avery, Jenna, Leo, Noah, Paige, Quinn, and Tyler lost to Harper, Brianna, Chloe, Dylan, Emma, Grant, Owen, and Riley.
+
+QUERIES
+Query 1: Out of 100 random volleyball athletes, where do you think Nina ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Nina put into the fourth scrimmage?
+Query 3: In a new scrimmage later this same day between Nina, Avery, Dylan, Emma, Isaac, Noah, Quinn, and Sienna (Team 1) and Harper, Brianna, Chloe, Grant, Jenna, Leo, Owen, and Paige (Team 2), who would win and by how much?
+Query 4: In a new scrimmage later this same day between Avery, Brianna, Dylan, Emma, Isaac, Jenna, Leo, and Riley (Team 1) and Chloe, Grant, Mia, Noah, Owen, Paige, Sienna, and Tyler (Team 2), who would win and by how much?
+<END_SCENARIO>

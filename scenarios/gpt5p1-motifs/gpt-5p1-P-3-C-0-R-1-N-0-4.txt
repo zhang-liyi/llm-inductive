@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this table tennis event, players compete mainly in doubles, with some singles matches. The result of each match depends on the athletes’ intrinsic table tennis ability (speed, spin control, placement, and reactions) along with how much effort they put into that particular match.
+All matches take place on the same day.
+Doubles teams are fixed pairs of two players.
+
+CONDITIONS
+In the first match, Victor and Lin lost to Emma and Noah.
+In the second match, Victor and Lin lost to Sarah and Tom.
+In the third match, Victor and Lin beat Emma and Noah.
+In the fourth match, Emma beat Sarah.
+
+QUERIES
+Query 1: Out of 100 random table tennis players, where do you think Victor ranks in terms of intrinsic playing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Emma put into the fourth match?
+Query 3: In a new doubles match later this same day between Victor and Lin (Team 1) and Sarah and Tom (Team 2), who would win and by how much?
+Query 4: In a new doubles match later this same day between Emma and Noah (Team 1) and Sarah and Tom (Team 2), who would win and by how much?
+<END_SCENARIO>

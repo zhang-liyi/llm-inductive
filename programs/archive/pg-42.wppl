@@ -1,0 +1,270 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+
+  ////////////////////////////////////////
+  // BACKGROUND KNOWLEDGE / LATENTS
+  ////////////////////////////////////////
+
+  // Intrinsic shooting precision is a stable trait of each shooter across the day.
+  // Scale: 0–1 (dimensionless precision ability; higher = more precise).
+  var intrinsic_shooting_precision = mem(function({shooter}) {
+    // Three broad ability buckets in the population.
+    var low_mean = 0.4;
+    var mid_mean = 0.6;
+    var high_mean = 0.8;
+    var var_prec = 0.03;
+
+    var bucket_mean = categorical({
+      ps: [0.3, 0.4, 0.3],
+      vs: [low_mean, mid_mean, high_mean]
+    });
+
+    var raw = gaussian(bucket_mean, var_prec);
+    return Math.min(1, Math.max(0, raw));
+  });
+
+  // Intrinsic reaction speed is also stable across the day.
+  // Scale: 0–1 (higher = faster/better reaction/timing).
+  var intrinsic_reaction_speed = mem(function({shooter}) {
+    var slow_mean = 0.4;
+    var avg_mean = 0.6;
+    var fast_mean = 0.8;
+    var var_speed = 0.03;
+
+    var bucket_mean = categorical({
+      ps: [0.3, 0.4, 0.3],
+      vs: [slow_mean, avg_mean, fast_mean]
+    });
+
+    var raw = gaussian(bucket_mean, var_speed);
+    return Math.min(1, Math.max(0, raw));
+  });
+
+  // Baseline motivation: tendency to invest effort across contests.
+  // Scale: 0–1 (dimensionless motivation).
+  var baseline_motivation = mem(function({shooter}) {
+    var mean = 0.6;
+    var var_m = 0.1;
+    var raw = gaussian(mean, var_m);
+    return Math.min(1, Math.max(0, raw));
+  });
+
+  // Baseline mental focus capacity: how well effort converts into focus.
+  // Scale: 0–1 (dimensionless focus capacity).
+  var baseline_focus = mem(function({shooter}) {
+    var mean = 0.6;
+    var var_f = 0.1;
+    var raw = gaussian(mean, var_f);
+    return Math.min(1, Math.max(0, raw));
+  });
+
+  // Contest difficulty: how hard targets are in that contest.
+  // Scale: 0–1 (0 = very easy, 1 = extremely hard).
+  var contest_difficulty = mem(function({contest}) {
+    // Later contests tend to be slightly harder on average (e.g., conditions, pressure).
+    var base = 0.4 + 0.02 * contest;
+    var raw = gaussian(base, 0.05);
+    return Math.min(1, Math.max(0, raw));
+  });
+
+  // Fatigue level for a shooter in a contest.
+  // Scale: 0–1 (0 = completely fresh, 1 = extremely fatigued).
+  var fatigue_level_in_contest = mem(function({shooter, contest}) {
+    var base_fatigue = 0.05 * contest; // grows over the day
+    var motiv = baseline_motivation({shooter: shooter});
+    // More motivated shooters can push themselves more and accumulate slightly more fatigue.
+    var mean_fatigue = base_fatigue + 0.1 * motiv;
+    var raw = gaussian(mean_fatigue, 0.05);
+    return Math.min(1, Math.max(0, raw));
+  });
+
+  // Effort level that a shooter chooses in a contest.
+  // Scale: 0–1 (0 = no effort, 1 = maximum effort).
+  var effort_in_contest = mem(function({shooter, contest}) {
+    var base_m = baseline_motivation({shooter: shooter});
+    var fatigue = fatigue_level_in_contest({shooter: shooter, contest: contest});
+
+    // On average, shooters put in substantial effort, tempered by fatigue.
+    var mean_effort = base_m + 0.3 - 0.5 * fatigue;
+    var raw = gaussian(mean_effort, 0.15);
+    return Math.min(1, Math.max(0, raw));
+  });
+
+  // Mental focus achieved in a contest.
+  // Scale: 0–1 (0 = totally distracted, 1 = maximally focused).
+  var mental_focus_in_contest = mem(function({shooter, contest}) {
+    var base_f = baseline_focus({shooter: shooter});
+    var effort = effort_in_contest({shooter: shooter, contest: contest});
+    var fatigue = fatigue_level_in_contest({shooter: shooter, contest: contest});
+
+    var mean_focus = 0.3 * base_f + 0.5 * effort - 0.3 * fatigue + 0.3;
+    var raw = gaussian(mean_focus, 0.15);
+    return Math.min(1, Math.max(0, raw));
+  });
+
+  // Effective precision realized in a contest, given intrinsic ability,
+  // effort, focus, and fatigue.
+  // Scale: 0–1 (0 = very poor precision, 1 = perfect precision).
+  var effective_precision_in_contest = mem(function({shooter, contest}) {
+    var intrinsic = intrinsic_shooting_precision({shooter: shooter});
+    var effort = effort_in_contest({shooter: shooter, contest: contest});
+    var focus = mental_focus_in_contest({shooter: shooter, contest: contest});
+    var fatigue = fatigue_level_in_contest({shooter: shooter, contest: contest});
+
+    var multiplier = (0.7 + 0.3 * effort) * (0.6 + 0.4 * focus) * (1 - 0.2 * fatigue);
+    var mean_eff_prec = intrinsic * multiplier;
+    var raw = gaussian(mean_eff_prec, 0.05);
+    return Math.min(1, Math.max(0, raw));
+  });
+
+  // Effective reaction speed realized in a contest.
+  // Scale: 0–1 (higher = faster/better).
+  var effective_reaction_speed_in_contest = mem(function({shooter, contest}) {
+    var intrinsic = intrinsic_reaction_speed({shooter: shooter});
+    var effort = effort_in_contest({shooter: shooter, contest: contest});
+    var fatigue = fatigue_level_in_contest({shooter: shooter, contest: contest});
+
+    var multiplier = (0.7 + 0.3 * effort) * (1 - 0.25 * fatigue);
+    var mean_eff_speed = intrinsic * multiplier;
+    var raw = gaussian(mean_eff_speed, 0.05);
+    return Math.min(1, Math.max(0, raw));
+  });
+
+  // Per-target hit probability for a shooter in a contest.
+  // Scale: 0–1 (probability of breaking an individual target).
+  var hit_probability_per_target_in_contest = function({shooter, contest}) {
+    var prec = effective_precision_in_contest({shooter: shooter, contest: contest});
+    var speed = effective_reaction_speed_in_contest({shooter: shooter, contest: contest});
+    var diff = contest_difficulty({contest: contest});
+
+    // Weighted combination: precision and speed help; difficulty hurts.
+    var mean_p = 0.1 + 0.6 * prec + 0.3 * speed - 0.4 * diff;
+    var clamped = Math.min(0.99, Math.max(0.01, mean_p));
+    return clamped;
+  };
+
+  // Individual score: total targets broken in a contest.
+  // Units: targets broken (integer, out of n_targets_per_contest).
+  var n_targets_per_contest = 25;
+
+  var individual_score_in_contest = mem(function({shooter, contest}) {
+    var p = hit_probability_per_target_in_contest({shooter: shooter, contest: contest});
+    return binomial({n: n_targets_per_contest, p: p});
+  });
+
+  // Team score in a contest: sum of individual scores for team members.
+  // Units: targets broken (integer).
+  var team_score_in_contest = function({team, contest}) {
+    return sum(map(function(shooter) {
+      return individual_score_in_contest({shooter: shooter, contest: contest});
+    }, team));
+  };
+
+  // Outcome function: who beats whom.
+  // Overloaded: can handle team contests or individual contests.
+  // Returns true if the first argument ("1") beats the second.
+  var beat = function(params) {
+    // Team vs team case:
+    if (params.team1) {
+      var score1 = team_score_in_contest({team: params.team1, contest: params.contest});
+      var score2 = team_score_in_contest({team: params.team2, contest: params.contest});
+      if (score1 > score2) { return true; }
+      if (score2 > score1) { return false; }
+      // Tie-breaker (rare).
+      return flip(0.5);
+    } else {
+      // Individual vs individual case:
+      var score1i = individual_score_in_contest({shooter: params.shooter1, contest: params.contest});
+      var score2i = individual_score_in_contest({shooter: params.shooter2, contest: params.contest});
+      if (score1i > score2i) { return true; }
+      if (score2i > score1i) { return false; }
+      return flip(0.5);
+    }
+  };
+
+  // Helper: team1 loses to team2 in a contest.
+  var lost = function({team1, team2, contest}) {
+    return !beat({team1: team1, team2: team2, contest: contest});
+  };
+
+  ////////////////////////////////////////
+  // QUERY-RELATED FUNCTIONS
+  ////////////////////////////////////////
+
+  // Rank of a shooter's intrinsic precision out of N random shooters.
+  // Returns: number of other shooters they are better than, out of N.
+  var intrinsic_shooting_precision_rank = function({shooter, out_of_n_shooters}) {
+    var random_ids = mapN(function(i) { return uniform(0, 1000); }, out_of_n_shooters - 1);
+    var this_skill = intrinsic_shooting_precision({shooter: shooter});
+    return sum(map(function(rid) {
+      return this_skill > intrinsic_shooting_precision({shooter: rid});
+    }, random_ids));
+  };
+
+  // Effort in contest on a 0–100% scale.
+  var effort_percentage_in_contest = function({shooter, contest}) {
+    return 100 * effort_in_contest({shooter: shooter, contest: contest});
+  };
+
+  // Predict who would win and by how much, expressed as:
+  // fraction of simulated future contests that Team 2 wins (0 = Team 1 always wins, 1 = Team 2 always wins).
+  var who_would_win_by_how_much = function({team1, team2, contest}) {
+    var num_future_contests_to_simulate = 100;
+    // Use “new” hypothetical contest IDs beyond the given one so we don't reuse the actual observed contests.
+    var random_future_contest_ids = mapN(function(i) {
+      return uniform(contest + 1, 1000);
+    }, num_future_contests_to_simulate);
+
+    var team2_wins = sum(map(function(cid) {
+      return lost({team1: team1, team2: team2, contest: cid});
+    }, random_future_contest_ids));
+
+    return team2_wins / num_future_contests_to_simulate;
+  };
+
+  ////////////////////////////////////////
+  // CONDITIONS (OBSERVATIONS)
+  ////////////////////////////////////////
+
+  // In the first contest, Carla and Ben beat Dylan and Riya.
+  condition(beat({team1: ['carla', 'ben'], team2: ['dylan', 'riya'], contest: 1}));
+
+  // In the second contest, Ben beat Dylan.
+  condition(beat({shooter1: 'ben', shooter2: 'dylan', contest: 2}));
+
+  // In the third contest, Riya beat Carla.
+  condition(beat({shooter1: 'riya', shooter2: 'carla', contest: 3}));
+
+  // In the fourth contest, Carla and Dylan beat Ben and Riya.
+  condition(beat({team1: ['carla', 'dylan'], team2: ['ben', 'riya'], contest: 4}));
+
+  ////////////////////////////////////////
+  // QUERIES
+  ////////////////////////////////////////
+
+  // Query 1: Out of 100 random shooters, where do you think Ben ranks in terms of intrinsic shooting precision?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Riya put into the third contest?
+  // Query 3: In a new contest later this same day between Carla and Ben (Team 1) and Dylan and Riya (Team 2), who would win and by how much?
+  // Query 4: In a new contest later this same day between Carla and Riya (Team 1) and Ben and Dylan (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_shooting_precision_rank({shooter: 'ben', out_of_n_shooters: 100}),
+    query2: effort_percentage_in_contest({shooter: 'riya', contest: 3}),
+    query3: who_would_win_by_how_much({team1: ['carla', 'ben'], team2: ['dylan', 'riya'], contest: 5}),
+    query4: who_would_win_by_how_much({team1: ['carla', 'riya'], team2: ['ben', 'dylan'], contest: 6})
+  };
+};
+
+// Run inference to estimate the posterior over the queries.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-42.json', posterior);

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of rowing races (coxless four). In each race, the team that wins depends on the average power output and synchronization of the rowers, based on their intrinsic strength modulated by other factors including how much effort they put into that race.
+Athletes compete as a fixed team of four.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Elias, Sarah, Mike, and Anna beat Ben, Lucas, Henry, and Mason.
+In the second race, Elias, Sarah, Mike, and Anna beat Ethan, Aiden, Logan, and Jackson.
+In the third race, Elias, Sarah, Mike, and Anna lost to Seb, Jack, Owen, and Theo.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Elias ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Seb put into the third race?
+Query 3: In a new race later this same day between Elias, Sarah, Mike, and Anna (Team 1) and Ben, Lucas, Seb, and Jack (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Ethan, Aiden, Henry, and Mason (Team 1) and Owen, Theo, Logan, and Jackson (Team 2), who would win and by how much?
+<END_SCENARIO>

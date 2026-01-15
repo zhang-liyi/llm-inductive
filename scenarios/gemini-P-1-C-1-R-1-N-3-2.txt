@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in 5-on-5 Ice Hockey scrimmages. The winning team depends on the aggregate skating speed and puck handling of the squad, based on intrinsic ability and the effort exerted during the scrimmage.
+The athletes are divided into two main squads, with one floater player.
+All scrimmages occur in one afternoon.
+
+CONDITIONS
+In the first scrimmage, The Blades (Jack, Ken, Leo, Mike, and Nick) beat The Pucks (Oscar, Pete, Ray, Stan, and Ted).
+In the second scrimmage, The Pucks beat The Blades (with Val replacing Jack).
+In the third scrimmage, The Blades beat The Pucks (with Val replacing Oscar).
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Val ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jack put into the first scrimmage?
+Query 3: In a new scrimmage later this same day between The Blades (with Val replacing Mike) and The Pucks, who would win and by how much?
+Query 4: In a new scrimmage later this same day between The Pucks (with Val replacing Ray) and The Blades (with Val replacing Ken), who would win and by how much?
+<END_SCENARIO>

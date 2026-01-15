@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a series of Field Hockey matches played in a 7-a-side format. The winning team is determined by goals scored, based on the athletes' intrinsic stick-handling and precision, modulated by the effort they put into the game.
+A player named Eva rotates between the two competing squads (The Strikers and The Defenders), who otherwise have fixed team members.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Eva and The Strikers beat The Defenders.
+In the second match, Eva and The Defenders beat The Strikers.
+In the third match, Eva and The Strikers lost to The Defenders.
+
+QUERIES
+Query 1: Out of 100 random field hockey players, where do you think Eva ranks in terms of intrinsic precision?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think The Defenders put into the third match?
+Query 3: In a new match later this same day between Eva and The Strikers (Team 1) and The Defenders (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between The Strikers (Team 1) and Eva and The Defenders (Team 2), who would win and by how much?
+<END_SCENARIO>

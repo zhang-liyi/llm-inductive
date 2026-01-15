@@ -1,0 +1,274 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  // BACKGROUND KNOWLEDGE
+  // Athletes have stable intrinsic physical and technical capabilities on this day.
+
+  // A shared latent "ability tier" for each athlete to couple strength and technical skill.
+  var athlete_tier = mem(function({athlete}) {
+    // 3 tiers: low / medium / high overall ability
+    return categorical({
+      ps: [0.3, 0.45, 0.25],
+      vs: ['low', 'medium', 'high']
+    });
+  });
+
+  // Intrinsic climbing strength / power of an athlete.
+  // Units: arbitrary "strength units", roughly centered around 100.
+  var intrinsic_strength = mem(function({athlete}) {
+    var tier = athlete_tier({athlete: athlete});
+
+    var mean_strength =
+        tier === 'low' ? 80 :
+        tier === 'medium' ? 100 :
+        125; // 'high'
+
+    var strength_sd = 12;
+
+    return Math.max(gaussian(mean_strength, strength_sd), 0);
+  });
+
+  // Intrinsic technical riding skill of an athlete.
+  // Units: arbitrary "technical skill units", roughly on same scale as strength.
+  var intrinsic_technical_skill = mem(function({athlete}) {
+    var tier = athlete_tier({athlete: athlete});
+
+    var mean_skill =
+        tier === 'low' ? 75 :
+        tier === 'medium' ? 100 :
+        120;
+
+    var skill_sd = 10;
+
+    return Math.max(gaussian(mean_skill, skill_sd), 0);
+  });
+
+  // Effort an athlete chooses to put into a specific run.
+  // Units: fraction of maximum effort for that day, between 0.0 and 1.0.
+  var athlete_effort_in_run = mem(function({athlete, run}) {
+    var strength = intrinsic_strength({athlete: athlete});
+
+    // Prior over low/medium/high effort depending (weakly) on intrinsic strength.
+    // Strong riders can sometimes afford to go a bit easier; weaker riders often need high effort.
+    var p_low =
+        strength > 120 ? 0.35 :
+        strength < 85  ? 0.15 :
+                         0.25;
+
+    var p_high =
+        strength > 120 ? 0.30 :
+        strength < 85  ? 0.45 :
+                         0.35;
+
+    var p_med = 1 - (p_low + p_high);
+
+    // Mean effort levels for each category (fraction of max).
+    var mean_low_effort  = 0.55;
+    var mean_med_effort  = 0.80;
+    var mean_high_effort = 0.96;
+
+    var base_effort = categorical({
+      ps: [p_low, p_med, p_high],
+      vs: [mean_low_effort, mean_med_effort, mean_high_effort]
+    });
+
+    var effort_sd = 0.07;
+
+    // Clamp to [0,1]
+    return Math.min(Math.max(gaussian(base_effort, effort_sd), 0), 1);
+  });
+
+  // Fatigue an athlete has accumulated by a given run.
+  // Depends on how hard they went in earlier, observed runs.
+  // Units: dimensionless fatigue factor (0 = fresh; larger = more fatigued).
+  var athlete_fatigue_in_run = function({athlete, run}) {
+    // Only runs 1–3 are explicitly observed; we approximate fatigue from those.
+    var effort_run1 = run > 1 ? athlete_effort_in_run({athlete: athlete, run: 1}) : 0;
+    var effort_run2 = run > 2 ? athlete_effort_in_run({athlete: athlete, run: 2}) : 0;
+    var effort_run3 = run > 3 ? athlete_effort_in_run({athlete: athlete, run: 3}) : 0;
+
+    var total_effort_before = effort_run1 + effort_run2 + effort_run3;
+
+    // Each full-effort run adds some fatigue.
+    var fatigue_per_effort_unit = 0.4;
+
+    return fatigue_per_effort_unit * total_effort_before;
+  };
+
+  // Effective strength an athlete actually brings to a given run,
+  // after considering effort and fatigue.
+  // Units: "effective strength units".
+  var effective_strength_in_run = function({athlete, run}) {
+    var base_strength = intrinsic_strength({athlete: athlete});
+    var effort = athlete_effort_in_run({athlete: athlete, run: run});
+    var fatigue = athlete_fatigue_in_run({athlete: athlete, run: run});
+
+    // Effort scales strength up; fatigue scales it down.
+    var effort_factor = 0.3 + 0.7 * effort; // between 0.3 and 1.0
+    var fatigue_factor = Math.max(0.6, 1 - 0.3 * fatigue); // cannot drop below 0.6
+
+    return base_strength * effort_factor * fatigue_factor;
+  };
+
+  // Effective technical skill in a given run.
+  // Units: "effective technical skill units".
+  var effective_technical_skill_in_run = function({athlete, run}) {
+    var base_skill = intrinsic_technical_skill({athlete: athlete});
+    var effort = athlete_effort_in_run({athlete: athlete, run: run});
+    var fatigue = athlete_fatigue_in_run({athlete: athlete, run: run});
+
+    // High effort and fatigue can slightly reduce precise technical execution.
+    var effort_penalty = 0.1 * effort;
+    var fatigue_penalty = 0.2 * fatigue;
+    var execution_factor = Math.max(0.5, 1 - effort_penalty - fatigue_penalty);
+
+    return base_skill * execution_factor;
+  };
+
+  // Team-level intrinsic strength: average of members' intrinsic strengths.
+  var team_intrinsic_strength = function({team}) {
+    return listMean(map(function(athlete) {
+      return intrinsic_strength({athlete: athlete});
+    }, team));
+  };
+
+  // Team-level intrinsic technical skill: average of members' intrinsic technical skills.
+  var team_intrinsic_technical_skill = function({team}) {
+    return listMean(map(function(athlete) {
+      return intrinsic_technical_skill({athlete: athlete});
+    }, team));
+  };
+
+  // Team-level effort in a given run: average of members' efforts.
+  // Units: fraction between 0 and 1.
+  var team_effort_in_run = function({team, run}) {
+    return listMean(map(function(athlete) {
+      return athlete_effort_in_run({athlete: athlete, run: run});
+    }, team));
+  };
+
+  // Team-level fatigue in a given run: average of members' fatigue.
+  var team_fatigue_in_run = function({team, run}) {
+    return listMean(map(function(athlete) {
+      return athlete_fatigue_in_run({athlete: athlete, run: run});
+    }, team));
+  };
+
+  // Overall team performance in a given run.
+  // Higher means faster / better performance on the course.
+  // Units: arbitrary "performance points".
+  var team_performance_in_run = mem(function({team, run}) {
+    // Aggregate effective strength and skill from team members.
+    var avg_effective_strength = listMean(map(function(athlete) {
+      return effective_strength_in_run({athlete: athlete, run: run});
+    }, team));
+
+    var avg_effective_skill = listMean(map(function(athlete) {
+      return effective_technical_skill_in_run({athlete: athlete, run: run});
+    }, team));
+
+    var team_effort = team_effort_in_run({team: team, run: run});
+    var team_fatigue = team_fatigue_in_run({team: team, run: run});
+
+    // Base performance from effective strength & skill.
+    var base_performance = 0.6 * avg_effective_strength + 0.4 * avg_effective_skill;
+
+    // Extra boost from team-level effort, mild penalty from fatigue.
+    var effort_boost = 0.5 + 0.5 * team_effort; // between 0.5 and 1.0
+    var fatigue_penalty = Math.max(0.7, 1 - 0.25 * team_fatigue);
+
+    var mean_performance = base_performance * effort_boost * fatigue_penalty;
+
+    // Unmodeled noise (mechanicals, small trail variation, etc.).
+    var performance_sd = 10;
+
+    return gaussian(mean_performance, performance_sd);
+  });
+
+  // Margin of victory: team2 performance minus team1 performance in a given run.
+  // Positive margin means team2 did better; negative means team1 did better.
+  var margin_of_victory = function({team1, team2, run}) {
+    var perf1 = team_performance_in_run({team: team1, run: run});
+    var perf2 = team_performance_in_run({team: team2, run: run});
+    return perf2 - perf1;
+  };
+
+  // A team beats another team in a run if its performance is higher.
+  var beat = function({team1, team2, run}) {
+    return team_performance_in_run({team: team1, run: run}) >
+           team_performance_in_run({team: team2, run: run});
+  };
+
+  // Convenience: team1 loses to team2 in a given run if it does not beat them.
+  var lost = function({team1, team2, run}) {
+    return !beat({team1: team1, team2: team2, run: run});
+  };
+
+  // Intrinsic strength ranking out of N random athletes:
+  // number of random athletes whose intrinsic strength is lower than this athlete's.
+  var intrinsic_strength_rank = function({athlete, out_of_n_athletes}) {
+    var random_ids = mapN(function(x) { return uniform(0, 10000); }, out_of_n_athletes - 1);
+
+    return sum(map(function(random_id) {
+      return intrinsic_strength({athlete: athlete}) >
+             intrinsic_strength({athlete: random_id});
+    }, random_ids));
+  };
+
+  // Effort percentage in a given run for an athlete, scaled 0–100%.
+  var effort_percentage_in_run = function({athlete, run}) {
+    return 100 * athlete_effort_in_run({athlete: athlete, run: run});
+  };
+
+  // Predict who would win and by how much (as a probability that Team 2 wins).
+  // Return: a number between 0 and 1, interpreted as the fraction of simulated future runs
+  // in which Team 2 beats Team 1 under this model.
+  var who_would_win_by_how_much = function({team1, team2, run}) {
+    var num_future_runs_to_simulate = 100;
+
+    // Simulate hypothetical later runs with new run IDs.
+    var future_run_ids = mapN(function(x) {
+      return uniform(run + 1, 1000);
+    }, num_future_runs_to_simulate);
+
+    var wins_by_team2 = sum(map(function(future_run_id) {
+      return lost({team1: team1, team2: team2, run: future_run_id});
+    }, future_run_ids));
+
+    return wins_by_team2 / num_future_runs_to_simulate;
+  };
+
+  // CONDITIONS
+  // In the first run, Harper beat Diego.
+  condition(beat({team1: ['harper'], team2: ['diego'], run: 1}));
+  // In the second run, Diego and Lina beat Harper and Quinn.
+  condition(beat({team1: ['diego', 'lina'], team2: ['harper', 'quinn'], run: 2}));
+  // In the third run, Harper beat Lina.
+  condition(beat({team1: ['harper'], team2: ['lina'], run: 3}));
+
+  // QUERIES
+  // Query 1: Out of 100 random mountain bikers, where do you think Harper ranks in terms of intrinsic strength?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Quinn put into the second run?
+  // Query 3: In a new run later this same day between Harper and Quinn (Team 1) and Diego and Lina (Team 2), who would win and by how much?
+  // Query 4: In a new run later this same day between Diego (Team 1) and Harper and Lina (Team 2, taking turns on the course), who would win and by how much?
+  return {
+    query1: intrinsic_strength_rank({athlete: 'harper', out_of_n_athletes: 100}),
+    query2: effort_percentage_in_run({athlete: 'quinn', run: 2}),
+    query3: who_would_win_by_how_much({team1: ['harper', 'quinn'], team2: ['diego', 'lina'], run: 4}),
+    query4: who_would_win_by_how_much({team1: ['diego'], team2: ['harper', 'lina'], run: 5})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: 'MCMC', samples: 10000});
+json.write('inference_results/result-22.json', posterior);

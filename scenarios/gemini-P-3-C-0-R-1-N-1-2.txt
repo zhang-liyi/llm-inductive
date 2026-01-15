@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 3-on-3 ice hockey matches. In each match, the team that wins depends on the average skating speed and puck handling of the athletes, based on their intrinsic skill modulated by other factors including how much effort they put into that match.
+Athletes compete as fixed teams of three, with one optional 1-on-1 matchup.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Sven, Lars, and Olaf beat Vlad, Igor, and Dmitri.
+In the second match, Vlad, Igor, and Dmitri beat Sven, Lars, and Olaf.
+In the third match, Vlad, Igor, and Dmitri beat Sven, Lars, and Olaf.
+In the fourth match, Vlad beat Sven.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Sven ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Sven put into the first match?
+Query 3: In a new match later this same day between Sven and Igor (Team 1) and Vlad and Lars (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Olaf and Dmitri (Team 1) and Lars and Igor (Team 2), who would win and by how much?
+<END_SCENARIO>

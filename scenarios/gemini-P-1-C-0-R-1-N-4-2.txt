@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of lacrosse matches (sixes format). In each match, the team that wins depends on the collective agility and shot accuracy of the athletes, based on their intrinsic coordination modulated by other factors including how much effort they put into that match.
+Athletes compete in fixed teams of six.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Xan, Ygo, Zek, Abe, Bud, and Cam beat Roy, Stu, Tom, Ury, Van, and Wes.
+In the second match, Don, Eli, Fox, Gab, Hal, and Ike beat Roy, Stu, Tom, Ury, Van, and Wes.
+In the third match, Jay, Ken, Lou, Max, Noe, and Ozz beat Roy, Stu, Tom, Ury, Van, and Wes.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Roy ranks in terms of intrinsic coordination?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Roy put into the third match?
+Query 3: In a new match later this same day between Roy, Stu, Tom, Ury, Van, and Wes (Team 1) and Xan, Ygo, Zek, Abe, Bud, and Cam (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Roy, Stu, Tom, Ury, Van, and Wes (Team 1) and Don, Eli, Fox, Gab, Hal, and Ike (Team 2), who would win and by how much?
+<END_SCENARIO>

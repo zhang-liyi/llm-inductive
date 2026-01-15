@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a swimming meet featuring individual races and relays in a short-course pool. Results in each race depend on the swimmers’ intrinsic speed and technique, combined with how much effort they choose to exert in that particular race.
+All races take place on the same day. Swimmers sometimes race individually and sometimes in relays.
+
+CONDITIONS
+In the first race, a 100m freestyle, Chloe beat Daniel.
+In the second race, a 200m freestyle, Felix beat Chloe.
+In the third race, a 4×100m freestyle relay, Chloe and Emma beat Daniel and Felix.
+
+QUERIES
+Query 1: Out of 100 random swimmers, where do you think Chloe ranks in terms of intrinsic swimming ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Felix put into the third race?
+Query 3: In a new race later this same day, a 200m freestyle between Chloe (Lane 1) and Felix (Lane 2), who would win and by how much?
+Query 4: In a new race later this same day, a 4×100m freestyle relay between Chloe and Daniel (Team 1) and Felix and Emma (Team 2), who would win and by how much?
+<END_SCENARIO>

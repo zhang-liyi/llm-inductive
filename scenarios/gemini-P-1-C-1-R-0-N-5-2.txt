@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+This event involves a series of Rugby Sevens matches. The winning side is determined by the combined physical strength and speed of the squad, a result of their intrinsic capabilities and the effort they apply during the match.
+Each side fields 7 players.
+All matches happen in a single afternoon.
+
+CONDITIONS
+In the first match, the team of Rob, Sal, Tim, Val, Will, Xander, and Yan beat the team of Hugo, Zane, Ash, Bill, Carl, Dave, and Earl.
+In the second match, the team of Zane, Ash, Bill, Carl, Dave, Earl, and Yan beat the team of Hugo, Rob, Sal, Tim, Val, Will, and Xander.
+In the third match, the team of Rob, Zane, Sal, Ash, Tim, Bill, and Val lost to the team of Hugo, Will, Carl, Xander, Dave, Yan, and Earl.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Hugo ranks in terms of intrinsic capabilities?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Yan put into the second match?
+Query 3: In a new match later this same day between the team of Rob, Sal, Tim, Val, Will, Xander, and Zane (Team 1) and the team of Hugo, Ash, Bill, Carl, Dave, Earl, and Yan (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the team of Hugo, Rob, Zane, Sal, Ash, Tim, and Bill (Team 1) and the team of Val, Will, Carl, Xander, Dave, Yan, and Earl (Team 2), who would win and by how much?
+<END_SCENARIO>

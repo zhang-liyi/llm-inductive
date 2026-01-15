@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of team table tennis matches. Most contests are 3-on-3: each team of three players takes turns playing points, and the combined performance determines the winner. There is also the occasional 1-on-1 game. In every contest, the outcome depends on the players’ intrinsic table tennis ability and how much effort they put into that specific match.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Lina beat Omar.
+In the second match, Victor, Hana, and Miles lost to Omar, Zoe, and Ken.
+In the third match, Victor, Hana, and Miles lost to Lina, Ken, and Priyanka.
+
+QUERIES
+Query 1: Out of 100 random table tennis players at this event, where do you think Ken ranks in terms of intrinsic table tennis ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Victor put into the third match?
+Query 3: In a new match later this same day between Omar, Lina, and Ken (Team 1) and Victor, Hana, and Miles (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Zoe, Priyanka, and Aaron (Team 1) and Hana, Miles, and Omar (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of volleyball games on an indoor court. In each game, the winning side is determined by the players’ intrinsic serving, passing, and attacking abilities, combined with how much effort they put into that game.
+Games are played either 1-on-1 skill duels or 4-on-4 team games.
+Most players remain on fixed 4-player squads (Mia, Nina, Olivia, and Paula on one team; Ravi, Sanjay, Tariq, and Umar on another), while Tyrell moves between different lineups.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Mia, Nina, Olivia, and Paula beat Ravi, Sanjay, Tariq, and Umar.
+In the second game, Tyrell, Ravi, Sanjay, and Tariq lost to Mia, Nina, Olivia, and Paula.
+In the third game, Tyrell, Mia, Nina, and Olivia lost to Ravi, Sanjay, Tariq, and Umar.
+In the fourth game, Tyrell lost to Ravi.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Mia ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Tyrell put into the second game?
+Query 3: In a new 4-on-4 game later this same day between Mia, Nina, Olivia, and Paula (Team 1) and Tyrell, Ravi, Sanjay, and Tariq (Team 2), who would win and by how much?
+Query 4: In a new 1-on-1 serving-and-rally game later this same day between Tyrell (Player 1) and Olivia (Player 2), who would win and by how much?
+<END_SCENARIO>

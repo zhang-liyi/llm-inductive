@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the players are competing in a series of small-sided 3-on-3 soccer matches. In each match, the team that wins depends on the players’ intrinsic soccer ability (first touch, speed, awareness, finishing, defending) and the level of effort they apply in that match.  
+All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Priya, Maya, and Lin lost to Zara, Nikhil, and Omar.  
+In the second match, Priya, Zara, and Hugo lost to Maya, Omar, and Leo.  
+In the third match, Priya, Leo, and Nikhil lost to Lin, Hugo, and Zara.  
+In the fourth match, Priya, Omar, and Ravi lost to Nikhil, Maya, and Leo.
+
+QUERIES  
+Query 1: Out of 100 random soccer players, where do you think Zara ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Priya put into the fourth match?  
+Query 3: In a new match later this same day between Maya, Lin, and Leo (Team 1) and Zara, Nikhil, and Hugo (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Priya, Maya, and Zara (Team 1) and Omar, Hugo, and Ravi (Team 2), who would win and by how much?  
+<END_SCENARIO>

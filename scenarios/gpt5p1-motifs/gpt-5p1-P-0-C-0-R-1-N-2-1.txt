@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this regatta, the rowers are competing in 4-person sculling boats. In each race, the boat that wins depends on the rowers’ intrinsic rowing power and technique, combined with how much effort they put in for that race.
+All races take place on the same day.
+Each rower is part of a fixed crew of four.
+
+CONDITIONS
+In the first race, Elena’s crew (Elena, Mira, Sophie, and Hannah) beat Kat’s crew (Kat, Riley, Dana, and Zoe).
+In the second race, Elena’s crew beat Lila’s crew (Lila, Erin, Paige, and Tori).
+In the third race, Kat’s crew beat Lila’s crew.
+
+QUERIES
+Query 1: Out of 100 random rowers, where do you think Elena ranks in terms of intrinsic rowing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Riley put into the third race?
+Query 3: In a new race later this same day between Elena’s crew and Kat’s crew, who would win and by how much?
+Query 4: In a new race later this same day between Kat’s crew and Lila’s crew, who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the cyclists are competing in a series of track cycling races inside a velodrome. In each race, the winner is determined by sprint speed and sustained power, which depend on each cyclist’s intrinsic explosiveness and technical skill, together with the effort they put into that particular race.
+Cyclists compete either individually or in teams.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Marco beat Nina.
+In the second race, Marco and Olivia beat Nina and Priya.
+In the third race, Nina, Olivia, and Sam beat Marco, Priya, and Tom.
+
+QUERIES
+Query 1: Out of 100 random track cyclists, where do you think Olivia ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Marco put into the third race?
+Query 3: In a new race later this same day between Marco and Olivia (Team 1) and Nina and Tom (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Marco and Nina (Team 1) and Olivia and Priya (Team 2), who would win and by how much?
+<END_SCENARIO>

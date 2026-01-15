@@ -1,0 +1,246 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  //////////////////////////////////////////////////////////////////////
+  // BACKGROUND KNOWLEDGE
+  //
+  // Each athlete has stable intrinsic endurance and intrinsic speed
+  // across all triathlons on the same day.
+  //
+  // For each triathlon, there is a course difficulty shared by all
+  // athletes, and each athlete chooses an effort level (0–1) in that
+  // triathlon. Effort interacts with endurance, speed, and course
+  // difficulty to determine an effective race speed, which then
+  // determines total time (lower is better).
+  //////////////////////////////////////////////////////////////////////
+
+  // Helper: logistic transform to map real line to (0,1).
+  var logistic = function(x) { return 1 / (1 + Math.exp(-x)); };
+
+  // A single latent "base ability" per athlete to induce some
+  // correlation between endurance and speed.
+  var base_ability = mem(function(athlete) {
+    // Dimensionless overall talent on a standard-normal-like scale.
+    return gaussian(0, 1);
+  });
+
+  // Intrinsic endurance of an athlete on an arbitrary scale, roughly
+  // centered around 100, higher = more enduring. Units: arbitrary "endurance units".
+  var intrinsic_endurance = mem(function({athlete}) {
+    var b = base_ability(athlete);
+    var endurance_mean = 100 + 15 * b;       // typical range ~ [70,130]
+    var endurance_sd = 10;
+
+    return Math.max(gaussian(endurance_mean, endurance_sd), 10);
+  });
+
+  // Intrinsic speed of an athlete on an arbitrary scale centered around
+  // 100, higher = potentially faster at high effort. Units: arbitrary "speed units".
+  var intrinsic_speed = mem(function({athlete}) {
+    var b = base_ability(athlete);
+    var speed_mean = 100 + 15 * b;
+    var speed_sd = 10;
+
+    return Math.max(gaussian(speed_mean, speed_sd), 10);
+  });
+
+  // Course difficulty per triathlon on a 0–100 scale.
+  // 0 = trivially easy, 100 = extremely difficult.
+  var course_difficulty = mem(function({triathlon}) {
+    var p_easy = 0.3;
+    var p_medium = 0.5;
+    var p_hard = 0.2;
+
+    var easy_mean = 30;
+    var medium_mean = 50;
+    var hard_mean = 70;
+    var difficulty_sd = 10;
+
+    var mean_difficulty = categorical({
+      ps: [p_easy, p_medium, p_hard],
+      vs: [easy_mean, medium_mean, hard_mean]
+    });
+
+    return Math.min(Math.max(gaussian(mean_difficulty, difficulty_sd), 0), 100);
+  });
+
+  // Effort level (0–1) that an athlete puts into a specific triathlon.
+  // Higher intrinsic endurance makes high effort more plausible.
+  // Units: fraction of maximum sustainable race effort (0–1).
+  var effort_in_triathlon = mem(function({athlete, triathlon}) {
+    var endurance = intrinsic_endurance({athlete: athlete});
+
+    // Normalize endurance so that 100 → baseline logit ≈ 1.
+    var endurance_centered = (endurance - 100) / 20;  // roughly -1..+1
+    var logit_mean = 1 + 0.5 * endurance_centered;    // typical effort 0.7–0.9
+    var logit_sd = 0.7;
+
+    var eff_raw = gaussian(logit_mean, logit_sd);
+    var eff = logistic(eff_raw); // in (0,1)
+
+    return eff;
+  });
+
+  // Convert effort level to a percentage 0–100%.
+  var effort_percentage_in_triathlon = function({athlete, triathlon}) {
+    return 100 * effort_in_triathlon({athlete: athlete, triathlon: triathlon});
+  };
+
+  // Effective / potential speed in a given triathlon.
+  // Combines intrinsic speed, endurance, effort, and course difficulty.
+  // Units: arbitrary "speed units" proportional to km/h.
+  var potential_speed_in_triathlon = function({athlete, triathlon}) {
+    var endurance = intrinsic_endurance({athlete: athlete});     // ~80–120
+    var speed = intrinsic_speed({athlete: athlete});             // ~80–120
+    var effort = effort_in_triathlon({athlete: athlete, triathlon: triathlon}); // 0–1
+    var difficulty = course_difficulty({triathlon: triathlon});  // 0–100
+
+    // Difficulty factor: 1.0 on very easy course, down to ~0.2–0.3 on hard.
+    var difficulty_factor = (100 - difficulty) / 100;
+
+    var base_speed = speed * effort * (endurance / 100);
+
+    return Math.max(base_speed * difficulty_factor, 1);
+  };
+
+  // We assume a fixed race distance.
+  // Units: kilometers.
+  var race_distance_km = 40;
+
+  // Total time in minutes for an athlete in a specific triathlon.
+  // time = distance / speed plus random performance noise.
+  var total_time_in_triathlon = mem(function({athlete, triathlon}) {
+    var speed = potential_speed_in_triathlon({athlete: athlete, triathlon: triathlon}); // ~ km/h
+    var ideal_time_hours = race_distance_km / speed;
+    var ideal_time_minutes = ideal_time_hours * 60;
+
+    // Performance noise, e.g., pacing, transitions, minor incidents.
+    var performance_sd_minutes = 5;
+
+    // Ensure strictly positive race times.
+    return Math.max(gaussian(ideal_time_minutes, performance_sd_minutes), 10);
+  });
+
+  // Time gap between two athletes in a triathlon, in minutes.
+  // Positive value means athlete1 is faster by that many minutes.
+  var time_gap_between_athletes = function({athlete1, athlete2, triathlon}) {
+    var t1 = total_time_in_triathlon({athlete: athlete1, triathlon: triathlon});
+    var t2 = total_time_in_triathlon({athlete: athlete2, triathlon: triathlon});
+    return t2 - t1;
+  };
+
+  // An athlete beats another if their total race time is strictly lower.
+  var beat = function({athlete1, athlete2, triathlon}) {
+    return total_time_in_triathlon({athlete: athlete1, triathlon: triathlon}) <
+           total_time_in_triathlon({athlete: athlete2, triathlon: triathlon});
+  };
+
+  // Intrinsic endurance ranking out of N random triathletes:
+  // expected number of other random triathletes this athlete has higher
+  // intrinsic endurance than, out of N total (including them).
+  var intrinsic_endurance_rank = function({athlete, out_of_n_triathletes}) {
+    // Generate out_of_n_triathletes - 1 random athlete IDs.
+    var random_athlete_ids = mapN(
+      function(x) { return uniform(0, 1000); },
+      out_of_n_triathletes - 1
+    );
+
+    // Count how many random athletes this athlete is more enduring than.
+    return sum(map(
+      function(random_athlete_id) {
+        return intrinsic_endurance({athlete: athlete}) >
+               intrinsic_endurance({athlete: random_athlete_id});
+      },
+      random_athlete_ids
+    ));
+  };
+
+  // Predict who would finish ahead and by how much, summarized as:
+  // the probability (0–1) that athlete2 would finish ahead of athlete1
+  // in future triathlons later the same day.
+  //
+  // 0   → athlete1 would almost certainly finish ahead
+  // 0.5 → roughly even odds
+  // 1   → athlete2 would almost certainly finish ahead
+  var who_would_finish_ahead_by_how_much = function({athlete1, athlete2, triathlon}) {
+    // Simulate outcomes in many hypothetical future triathlons with
+    // new triathlon IDs to represent new courses and effort choices.
+    var num_future_triathlons_to_simulate = 100;
+    var random_future_triathlon_ids = mapN(
+      function(x) { return uniform(triathlon + 1, 1000); },
+      num_future_triathlons_to_simulate
+    );
+
+    // Count in how many of these athlete2 beats athlete1.
+    var simulated_triathlons_won_by_athlete2 = sum(map(
+      function(random_future_triathlon_id) {
+        // athlete2 finishes ahead if they "beat" athlete1.
+        return beat({
+          athlete1: athlete2,
+          athlete2: athlete1,
+          triathlon: random_future_triathlon_id
+        });
+      },
+      random_future_triathlon_ids
+    ));
+
+    return simulated_triathlons_won_by_athlete2 / num_future_triathlons_to_simulate;
+  };
+
+  //////////////////////////////////////////////////////////////////////
+  // CONDITIONS (OBSERVED RACE RESULTS)
+  //////////////////////////////////////////////////////////////////////
+
+  // In the morning triathlon, Priya beat Jonah.
+  condition(beat({athlete1: 'priya', athlete2: 'jonah', triathlon: 1}))
+
+  // In the second triathlon, held a few hours later, Jonah beat Leah.
+  condition(beat({athlete1: 'jonah', athlete2: 'leah', triathlon: 2}))
+
+  // In the third triathlon, Leah beat Priya.
+  condition(beat({athlete1: 'leah', athlete2: 'priya', triathlon: 3}))
+
+  // In the fourth triathlon, Marcus beat Jonah, Priya, and Leah.
+  condition(
+    beat({athlete1: 'marcus', athlete2: 'jonah', triathlon: 4}) &&
+    beat({athlete1: 'marcus', athlete2: 'priya', triathlon: 4}) &&
+    beat({athlete1: 'marcus', athlete2: 'leah', triathlon: 4})
+  )
+
+  //////////////////////////////////////////////////////////////////////
+  // QUERIES
+  //////////////////////////////////////////////////////////////////////
+
+  // Query 1: Out of 100 random triathletes, where do you think Priya ranks in terms of intrinsic endurance?
+  var q1 = intrinsic_endurance_rank({athlete: 'priya', out_of_n_triathletes: 100});
+
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jonah put into the second triathlon?
+  var q2 = effort_percentage_in_triathlon({athlete: 'jonah', triathlon: 2});
+
+  // Query 3: In a new triathlon later this same day between Priya (Team 1) and Jonah (Team 2), who would finish ahead and by how much?
+  var q3 = who_would_finish_ahead_by_how_much({athlete1: 'priya', athlete2: 'jonah', triathlon: 5});
+
+  // Query 4: In a new triathlon later this same day between Leah (Team 1) and Marcus (Team 2), who would finish ahead and by how much?
+  var q4 = who_would_finish_ahead_by_how_much({athlete1: 'leah', athlete2: 'marcus', triathlon: 6});
+
+  return {
+    query1: q1,
+    query2: q2,
+    query3: q3,
+    query4: q4
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-32.json', posterior);

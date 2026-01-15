@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Rowing races. In each race, the boat that wins depends on the average speed generated, based on the athletes' intrinsic power and rhythm modulated by other factors including how much effort they put into that race.
+Athletes compete in crews of 4.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Crew A (Ian, Joe, Leo, and Max) beat Crew B (Sam, Tom, Vic) and Morgan.
+In the second race, Crew C (Dan, Ray, Ben, and Gus) beat Crew D (Kip, Jeb, Wes) and Morgan.
+In the third race, Crew B (Sam, Tom, Vic, and Max) beat Crew A (Ian, Joe, Leo) and Morgan.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Morgan ranks in terms of intrinsic power and rhythm?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Morgan put into the third race?
+Query 3: In a new race later this same day between Crew B (Sam, Tom, Vic) and Max (Team 1) and Crew A (Ian, Joe, Leo) and Morgan (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Crew D (Kip, Jeb, Wes) and Gus (Team 1) and Crew C (Dan, Ray, Ben) and Morgan (Team 2), who would win and by how much?
+<END_SCENARIO>

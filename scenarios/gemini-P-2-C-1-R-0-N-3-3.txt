@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of small-sided Soccer matches. In each match, the team that wins depends on the goal differential, based on the athletes' intrinsic dribbling and passing skills modulated by other factors including how much effort they put into that match.
+Athletes compete in teams of 5.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Maria, Ana, Sofia, Lucia, and Elena beat Carmen, Rosa, Julia, Paula, and Marta.
+In the second match, Maria, Carmen, Rosa, Julia, and Paula beat Ana, Sofia, Lucia, Elena, and Marta.
+In the third match, Maria, Ana, Carmen, Sofia, and Rosa beat Lucia, Elena, Julia, Paula, and Marta.
+In the fourth match, Maria, Lucia, Julia, Elena, and Paula lost to Ana, Carmen, Sofia, Rosa, and Marta.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Maria ranks in terms of intrinsic dribbling and passing skills?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Maria put into the fourth match?
+Query 3: In a new match later this same day between Maria, Ana, Sofia, Carmen, and Rosa (Team 1) and Lucia, Elena, Julia, Paula, and Marta (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Ana, Carmen, Sofia, Rosa, and Marta (Team 1) and Maria, Lucia, Julia, Elena, and Paula (Team 2), who would win and by how much?
+<END_SCENARIO>

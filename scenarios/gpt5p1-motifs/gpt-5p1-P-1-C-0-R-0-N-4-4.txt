@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of pool swimming races. In each race, the winner is determined by how fast the swimmers move through the water, based on their intrinsic speed, technique, and endurance, combined with how much effort they put into that race.
+Athletes compete either individually or in relay teams.
+When competing as a team, each relay team consists of six swimmers.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Serena lost to Gina.
+In the second race, Serena, Alex, Brooke, Daniel, Emma, and Finn lost to Henry, Isla, Jack, Kara, Liam, and Maya.
+In the third race, Serena, Alex, Brooke, Daniel, Emma, and Finn lost to Gina, Henry, Noah, Owen, Priya, and Quinn.
+
+QUERIES
+Query 1: Out of 100 random swimmers, where do you think Gina ranks in terms of intrinsic swimming ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Serena put into the third race?
+Query 3: In a new race later this same day between Serena, Alex, Brooke, Daniel, Emma, and Finn (Team 1) and Gina, Henry, Jack, Kara, Liam, and Maya (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Noah, Owen, Priya, Quinn, Rosa, and Theo (Team 1) and Gina, Henry, Isla, Jack, Liam, and Uma (Team 2), who would win and by how much?
+<END_SCENARIO>

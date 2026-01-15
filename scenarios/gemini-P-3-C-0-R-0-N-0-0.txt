@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Beach Volleyball matches. In each match, the team that wins depends on the collective defensive coverage and attack power of the athletes, based on their intrinsic agility and vertical leap modulated by other factors including how much effort they put into that match.
+Athletes compete as a team of two.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Liam and Noah lost to Mason and Oliver.
+In the second match, Liam and Noah lost to Mason and Elijah.
+In the third match, Liam and Noah beat Oliver and Elijah.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Liam ranks in terms of intrinsic agility and vertical leap?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the third match?
+Query 3: In a new match later this same day between Liam and Noah (Team 1) and Mason and Lucas (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Mason and Oliver (Team 1) and Noah and Elijah (Team 2), who would win and by how much?
+<END_SCENARIO>

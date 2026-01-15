@@ -1,0 +1,194 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  // BACKGROUND KNOWLEDGE
+  // Each player has an intrinsic cricket skill that is stable across matches (same day).
+  // Units: arbitrary "skill points" on a 0–200-ish scale; higher = better overall cricket ability.
+  var intrinsic_cricket_skill = mem(function({player}) {
+    var parameter_low_skill_prior = 0.3;
+    var parameter_average_skill_prior = 0.4;
+    var parameter_high_skill_prior = 0.3;
+
+    var low_skill_mean = 70;
+    var average_skill_mean = 100;
+    var high_skill_mean = 130;
+    var intrinsic_skill_variance = 15;
+
+    var mean_skill_bucket = categorical({
+      ps: [parameter_low_skill_prior, parameter_average_skill_prior, parameter_high_skill_prior],
+      vs: [low_skill_mean, average_skill_mean, high_skill_mean]
+    });
+
+    return Math.max(gaussian(mean_skill_bucket, intrinsic_skill_variance), 0);
+  });
+
+  // Batting, bowling, and fielding skills are noisy reflections of intrinsic cricket skill.
+  // Units: same skill points as intrinsic_cricket_skill.
+  var batting_skill = mem(function({player}) {
+    var base = intrinsic_cricket_skill({player: player});
+    return Math.max(gaussian(base, 10), 0);
+  });
+
+  var bowling_skill = mem(function({player}) {
+    var base = intrinsic_cricket_skill({player: player});
+    return Math.max(gaussian(base, 10), 0);
+  });
+
+  var fielding_skill = mem(function({player}) {
+    var base = intrinsic_cricket_skill({player: player});
+    return Math.max(gaussian(base, 10), 0);
+  });
+
+  // Intrinsic cricket skill ranking out of N players = expected number of random players
+  // this player is more skilled than, out of N total.
+  var intrinsic_cricket_skill_rank = function({player, out_of_n_players}) {
+    var random_player_ids = mapN(function(x) { return uniform(0, 10000); }, out_of_n_players - 1);
+
+    return sum(map(function(random_id) {
+      return intrinsic_cricket_skill({player: player}) >
+             intrinsic_cricket_skill({player: random_id}) ? 1 : 0;
+    }, random_player_ids));
+  };
+
+  // Effort in a given match is match-specific and on a 0–100% scale.
+  // Prior over effort has low/medium/high "buckets" whose probabilities depend on intrinsic skill.
+  // Units: percentage points, 0–100.
+  var effort_in_match = mem(function({player, match}) {
+    var skill = intrinsic_cricket_skill({player: player});
+
+    // Better players are somewhat more likely to sustain high effort; weaker players
+    // more often show medium effort, sometimes low.
+    var parameter_low_effort_prior =
+      skill > 120 ? 0.1 :
+      skill < 80  ? 0.4 :
+                    0.2;
+
+    var parameter_medium_effort_prior =
+      skill > 120 ? 0.3 :
+      skill < 80  ? 0.4 :
+                    0.5;
+
+    var parameter_high_effort_prior =
+      skill > 120 ? 0.6 :
+      skill < 80  ? 0.2 :
+                    0.3;
+
+    var low_effort_mean = 40;   // Typical lower effort ~40%
+    var medium_effort_mean = 65; // Typical medium effort ~65%
+    var high_effort_mean = 90;  // Typical high effort ~90%
+    var effort_variance = 10;
+
+    var mean_effort_bucket = categorical({
+      ps: [parameter_low_effort_prior, parameter_medium_effort_prior, parameter_high_effort_prior],
+      vs: [low_effort_mean, medium_effort_mean, high_effort_mean]
+    });
+
+    return Math.min(Math.max(gaussian(mean_effort_bucket, effort_variance), 0), 100);
+  });
+
+  // Report effort as a 0–100% value.
+  var effort_percentage_in_match = function({player, match}) {
+    return effort_in_match({player: player, match: match});
+  };
+
+  // Effective player match skill combines batting, bowling, fielding and effort for that match.
+  // Units: "runs contribution" equivalent for that short-format match.
+  var effective_player_match_skill = mem(function({player, match}) {
+    var bat = batting_skill({player: player});
+    var bowl = bowling_skill({player: player});
+    var field = fielding_skill({player: player});
+    var base_multi_skill = listMean([bat, bowl, field]);
+
+    var eff_pct = effort_in_match({player: player, match: match});
+    var eff_frac = eff_pct / 100.0;
+
+    // Higher effort scales up how much of their multi-skill they realize.
+    var mean_contribution = base_multi_skill * eff_frac;
+    var performance_variance = 20;
+
+    return Math.max(gaussian(mean_contribution, performance_variance), 0);
+  });
+
+  // Team match performance: sum of effective player skills, plus a small team-level noise term.
+  // Units: runs-equivalent team performance in that match.
+  var team_match_performance = mem(function({team, match}) {
+    var player_contributions = map(function(player) {
+      return effective_player_match_skill({player: player, match: match});
+    }, team);
+
+    var base_team_performance = sum(player_contributions);
+    var team_noise = gaussian(0, 10); // extra variability from strategy/conditions
+
+    return base_team_performance + team_noise;
+  });
+
+  // Margin of victory in runs-equivalent: team1 - team2.
+  var margin_of_victory = function({team1, team2, match}) {
+    return team_match_performance({team: team1, match: match}) -
+           team_match_performance({team: team2, match: match});
+  };
+
+  // Team1 beats Team2 in a match if its margin of victory is positive.
+  var beat = function({team1, team2, match}) {
+    return margin_of_victory({team1: team1, team2: team2, match: match}) > 0;
+  };
+
+  // Team1 loses to Team2 if they do not beat Team2.
+  var lost = function({team1, team2, match}) {
+    return !beat({team1: team1, team2: team2, match: match});
+  };
+
+  // Predictive query: who would win and by how much (as probability Team 2 wins).
+  // We simulate many future matches with new effort draws (same intrinsic skills).
+  // Return value: fraction (0–1) of simulated future matches where Team 2 wins.
+  var who_would_win_by_how_much = function({team1, team2, match}) {
+    var num_future_matches_to_simulate = 100;
+    var random_future_match_ids = mapN(function(x) { return uniform(match + 1, 1000); },
+                                       num_future_matches_to_simulate);
+
+    var simulated_rounds_won_by_team2 = sum(map(function(random_match_id) {
+      return lost({team1: team1, team2: team2, match: random_match_id}) ? 1 : 0;
+    }, random_future_match_ids));
+
+    return simulated_rounds_won_by_team2 / num_future_matches_to_simulate;
+  };
+
+  // CONDITIONS
+  // In the first match, Arjun, Ravi, and Kiran beat Sandeep, Imran, and Farid.
+  condition(beat({team1: ['arjun', 'ravi', 'kiran'], team2: ['sandeep', 'imran', 'farid'], match: 1}))
+
+  // In the second match, Arjun and Sandeep beat Ravi and Imran.
+  condition(beat({team1: ['arjun', 'sandeep'], team2: ['ravi', 'imran'], match: 2}))
+
+  // In the third match, Kiran and Farid lost to Imran and Omar.
+  condition(lost({team1: ['kiran', 'farid'], team2: ['imran', 'omar'], match: 3}))
+
+  // In the fourth match, Ravi and Omar beat Arjun and Tariq.
+  condition(beat({team1: ['ravi', 'omar'], team2: ['arjun', 'tariq'], match: 4}))
+
+  // QUERIES
+  // Query 1: Out of 100 random cricket players, where do you think Arjun ranks in terms of intrinsic cricket skill?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Imran put into the third match?
+  // Query 3: In a new match later this same day between Arjun, Kiran, and Omar (Team 1) and Ravi, Sandeep, and Farid (Team 2), who would win and by how much?
+  // Query 4: In a new match later this same day between Imran and Ravi (Team 1) and Arjun and Farid (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_cricket_skill_rank({player: 'arjun', out_of_n_players: 100}),
+    query2: effort_percentage_in_match({player: 'imran', match: 3}),
+    query3: who_would_win_by_how_much({team1: ['arjun', 'kiran', 'omar'], team2: ['ravi', 'sandeep', 'farid'], match: 5}),
+    query4: who_would_win_by_how_much({team1: ['imran', 'ravi'], team2: ['arjun', 'farid'], match: 6})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-9.json', posterior);

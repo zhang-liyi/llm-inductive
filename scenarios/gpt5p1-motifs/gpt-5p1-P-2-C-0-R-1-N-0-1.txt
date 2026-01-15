@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes compete in rowing pairs races. Each race is between boats with two rowers, and the boat that wins is the one that can sustain a higher average boat speed, determined by the rowers’ intrinsic power and technique together with how much effort they put into that race.  
+There is also an occasional single-scull race with one rower per boat.  
+Whenever athletes row in pairs, they always row with the same partner throughout the event.  
+All races take place on the same day.
+
+CONDITIONS  
+In the first race, Daniel and Hugo beat Leo and Mark.  
+In the second race, Daniel and Hugo beat Owen and Felix.  
+In the third race, Leo and Mark beat Daniel and Hugo.  
+In the fourth race, Daniel beat Leo.
+
+QUERIES  
+Query 1: Out of 100 random rowers, where do you think Daniel ranks in terms of intrinsic rowing strength and technique?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Leo put into the third race?  
+Query 3: In a new race later this same day between Daniel and Hugo (Boat 1) and Leo and Mark (Boat 2), who would win and by how much?  
+Query 4: In a new race later this same day between Owen and Felix (Boat 1) and Leo and Mark (Boat 2), who would win and by how much?  
+<END_SCENARIO>

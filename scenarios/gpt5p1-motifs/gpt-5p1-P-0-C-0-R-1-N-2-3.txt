@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, teams are competing in 4-on-4 volleyball matches. In each match, the winning team depends on the players’ intrinsic volleyball skill (such as serving, spiking, and blocking) combined with how much effort they put in during that match.
+All matches are played on the same day.
+Each player is on a fixed team of four.
+
+CONDITIONS
+In the first match, Naomi’s team (Naomi, Keira, Lana, and Brooke) beat Aria’s team (Aria, Chloe, Faith, and Quinn).
+In the second match, Naomi’s team beat Mia’s team (Mia, Harper, Jade, and Skye).
+In the third match, Aria’s team beat Mia’s team.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Naomi ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Aria put into the third match?
+Query 3: In a new match later this same day between Naomi’s team and Aria’s team, who would win and by how much?
+Query 4: In a new match later this same day between Aria’s team and Mia’s team, who would win and by how much?
+<END_SCENARIO>

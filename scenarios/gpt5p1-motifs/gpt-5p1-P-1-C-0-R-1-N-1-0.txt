@@ -1,0 +1,22 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of 3-on-3 half-court basketball games.  
+For each game, the team that wins depends on the players’ intrinsic basketball abilities (such as shooting accuracy, ball control, and defensive skill) combined with how much effort they put into that particular game.  
+Teams are fixed: the same three players always play together.  
+All games take place on the same day.
+
+CONDITIONS  
+Team Blaze: Ava, Noah, Sofia  
+Team Steel: Ethan, Leo, Marcus  
+Team Crest: Dylan, Harper, Iris  
+
+In the first game, Blaze beat Steel.  
+In the second game, Crest beat Steel.  
+In the third game, Blaze beat Crest.
+
+QUERIES  
+Query 1: Out of 100 random pickup basketball players, where do you think Ava ranks in terms of intrinsic basketball ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ethan put into the second game?  
+Query 3: In a new game later this same day between Blaze and Steel, who would win and by how much?  
+Query 4: In a new game later this same day between Steel and Crest, who would win and by how much?
+<END_SCENARIO>

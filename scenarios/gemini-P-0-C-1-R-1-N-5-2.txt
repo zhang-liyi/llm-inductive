@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in Rugby Sevens matches. As the name implies, there are 7 players per team. Victory depends on the team's ability to score tries, based on the intrinsic strength and speed of the athletes, modulated by the physical effort they commit to the match.
+Most players are on fixed rosters (The Warriors, The Knights, The Spartans, The Trojans), but Morgan switches sides throughout the day.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, The Warriors (with Morgan) beat The Knights.
+In the second match, The Spartans (with Morgan) beat The Trojans.
+In the third match, The Knights (with Morgan) beat The Warriors.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Morgan ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think The Warriors put into the third match?
+Query 3: In a new match later this same day between The Spartans (with Morgan) and The Knights, who would win and by how much?
+Query 4: In a new match later this same day between The Warriors and The Trojans, who would win and by how much?
+<END_SCENARIO>

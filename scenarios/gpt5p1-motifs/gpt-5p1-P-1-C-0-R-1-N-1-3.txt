@@ -1,0 +1,22 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, players are competing in a 3-on-3 Ultimate Frisbee tournament.  
+For each game, the winning team is determined by the players’ intrinsic abilities (such as throwing accuracy, catching ability, and speed) together with the amount of effort they put in during that game.  
+Teams are fixed: the same three players always form a team.  
+All games are played on the same day.
+
+CONDITIONS  
+Team Sky: Jenna, Brooke, Tessa  
+Team Wind: Cole, Damian, Elise  
+Team Sun: Henry, Quinn, Violet  
+
+In the first game, Wind beat Sky.  
+In the second game, Sun beat Sky.  
+In the third game, Wind beat Sun.
+
+QUERIES  
+Query 1: Out of 100 random Ultimate Frisbee players, where do you think Cole ranks in terms of intrinsic Ultimate ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jenna put into the second game?  
+Query 3: In a new game later this same day between Sky and Wind, who would win and by how much?  
+Query 4: In a new game later this same day between Sky and Sun, who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in ultimate frisbee games and 1v1 throwing accuracy challenges. Game outcomes depend on the players’ intrinsic speed, catching, cutting, and throwing ability, combined with how much effort they put in.
+Players compete either in 1v1 throwing challenges or in games between teams of 9 players.
+All contests take place on the same day.
+
+CONDITIONS
+In the first game, Maya, Lucas, Erin, Noah, Priyanka, Felix, Hana, Jared, and Silas beat Riley, Connor, Beth, Amir, Tessa, Dylan, Simone, Carlo, and Neve.
+In the second game, Maya, Lucas, Erin, Noah, Priyanka, Felix, Hana, Jared, and Silas beat Riley, Connor, Beth, Amir, Tessa, Dylan, Simone, Lior, and Neve.
+In a 1v1 throwing accuracy challenge, Maya beat Riley.
+In the third game, Maya, Lucas, Erin, Noah, Priyanka, Felix, Hana, Jared, and Silas beat Grant, Connor, Beth, Amir, Tessa, Dylan, Simone, Carlo, and Neve.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Maya ranks in terms of intrinsic playing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Riley put into the 1v1 throwing challenge against Maya?
+Query 3: In a new game later this same day between Maya, Lucas, Erin, Noah, Priyanka, Felix, Hana, Jared, and Silas (Team 1) and Grant, Connor, Beth, Amir, Tessa, Dylan, Simone, Carlo, and Neve (Team 2), who would win and by how much?
+Query 4: In a new 1v1 throwing accuracy challenge later this same day between Riley and Grant, who would win and by how much?
+<END_SCENARIO>

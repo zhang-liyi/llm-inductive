@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of track cycling races inside a velodrome. In each race, the result is determined by the riders’ intrinsic sprinting ability and speed endurance, combined with how much effort they put into that particular race.  
+Cyclists compete either individually or in two-rider teams.  
+All races take place on the same day.
+
+CONDITIONS  
+In the first race, Nina beat Oliver.  
+In the second race, Nina and Kai beat Oliver and Tess.  
+In the third race, Tess beat Kai.  
+In the fourth race, Oliver and Tess beat Nina and Rui.
+
+QUERIES  
+Query 1: Out of 100 random track cyclists, where do you think Nina ranks in terms of intrinsic strength?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Tess put into the fourth race?  
+Query 3: In a new race later this same day between Nina and Kai (Team 1) and Oliver and Rui (Team 2), who would win and by how much?  
+Query 4: In a new race later this same day between Tess and Nina (Team 1) and Kai and Oliver (Team 2), who would win and by how much?  
+<END_SCENARIO>

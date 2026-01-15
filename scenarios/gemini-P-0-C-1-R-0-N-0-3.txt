@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Pickleball matches. In each match, the winning team is determined by the strategic placement and reflexes of the athletes, based on their intrinsic court sense modulated by other factors including how much effort they put into that match.
+Athletes compete as a team of two.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Rohan and Kyle beat Liam and Noah.
+In the second match, Rohan and Liam beat Kyle and Noah.
+In the third match, Rohan and Noah beat Kyle and Liam.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Rohan ranks in terms of intrinsic court sense?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Kyle put into the second match?
+Query 3: In a new match later this same day between Rohan and Kyle (Team 1) and Liam and Noah (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Kyle and Liam (Team 1) and Noah and a new player named Oscar (Team 2), who would win and by how much?
+<END_SCENARIO>

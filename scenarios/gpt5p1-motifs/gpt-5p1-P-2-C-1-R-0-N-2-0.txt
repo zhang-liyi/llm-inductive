@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of indoor volleyball games. In each game, the team that wins depends on the combined intrinsic volleyball skills of the players (serving, passing, setting, hitting) and how much effort each player puts into that game.  
+Players compete either individually in simple serving duels or as part of a 4‑player team.  
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Maya, Liam, Zoe, and Eric beat Noah, Priya, Ben, and Carla.  
+In the second game, Maya, Noah, Priya, and Ben beat Liam, Zoe, Tia, and Victor.  
+In the third game, Priya, Liam, Carla, and Victor beat Maya, Noah, Zoe, and Ben.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Maya ranks in terms of intrinsic volleyball ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the third game?  
+Query 3: In a new game later this same day between Maya, Priya, Tia, and Eric (Team 1) and Noah, Liam, Ben, and Carla (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Zoe, Victor, Tia, and Ben (Team 1) and Maya, Noah, Priya, and Carla (Team 2), who would win and by how much?
+<END_SCENARIO>

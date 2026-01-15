@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of half-court 2-on-2 basketball games, plus one individual matchup. In each game, the winning team is determined by the players’ intrinsic shooting accuracy, ball-handling, and endurance, together with how much effort they put into that game.
+Athletes compete either individually or in pairs.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Jordan and Tasha beat Marco and Eli.
+In the second game, Marco and Eli lost to Ryan and Chloe.
+In the third game, Jordan and Ryan beat Marco and Eli.
+In a 1-on-1 game, Tasha beat Chloe.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Jordan ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Eli put into the third game?
+Query 3: In a new 2-on-2 game later this same day between Jordan and Chloe (Team 1) and Ryan and Tasha (Team 2), who would win and by how much?
+Query 4: In a new 2-on-2 game later this same day between Marco and Eli (Team 1) and Jordan and Ryan (Team 2), who would win and by how much?
+<END_SCENARIO>

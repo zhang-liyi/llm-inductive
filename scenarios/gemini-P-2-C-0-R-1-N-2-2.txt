@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of swimming relays (4x100m). In each race, the team that wins depends on the average swimming speed of the athletes, based on their intrinsic strength modulated by other factors including how much effort they put into that race.
+Athletes compete as a fixed team of four.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Caleb, Ryan, Seth, and Josh beat Adam, Brian, Carl, and Dave.
+In the second race, Caleb, Ryan, Seth, and Josh beat Eric, Frank, Greg, and Hank.
+In the third race, Caleb, Ryan, Seth, and Josh lost to Ian, John, Kyle, and Liam.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Caleb ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ian put into the third race?
+Query 3: In a new race later this same day between Caleb, Ryan, Seth, and Josh (Team 1) and Ian, John, Adam, and Brian (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Kyle, Liam, Carl, and Dave (Team 1) and Eric, Frank, Greg, and Hank (Team 2), who would win and by how much?
+<END_SCENARIO>

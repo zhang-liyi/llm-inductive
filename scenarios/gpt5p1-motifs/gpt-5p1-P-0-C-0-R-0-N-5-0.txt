@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 7‑a‑side soccer matches. In each match, the team that wins depends on the combined soccer ability of the seven players, based on their intrinsic skill (speed, control, awareness, etc.) and how much effort they put into that match.
+All matches take place on the same day.
+Some athletes appear on different teams across matches, but Diego always plays with the same six teammates.
+
+CONDITIONS
+In the first match, Diego, Omar, Liam, Noah, Ethan, Hugo, and Marco beat Ava, Ben, Chloe, Daniel, Emma, Farid, and Grace.
+In the second match, Diego, Omar, Liam, Noah, Ethan, Hugo, and Marco beat Henry, Isla, Jack, Kayla, Leo, Mia, and Nate.
+In the third match, Ava, Henry, Chloe, Jack, Emma, Leo, and Olivia beat Ben, Isla, Daniel, Kayla, Farid, Mia, and Nate.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Diego ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Olivia put into the third match?
+Query 3: In a new match later this same day between Diego, Omar, Liam, Noah, Ethan, Hugo, and Marco (Team 1) and Ava, Henry, Chloe, Jack, Emma, Leo, and Olivia (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Ava, Ben, Chloe, Daniel, Emma, Farid, and Grace (Team 1) and Henry, Isla, Jack, Kayla, Leo, Mia, and Nate (Team 2), who would win and by how much?
+<END_SCENARIO>

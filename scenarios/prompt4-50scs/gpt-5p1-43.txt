@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, golfers are competing over a series of rounds. Scores in each round depend on how consistently they strike the ball and control distance and direction, which in turn depends on their intrinsic golfing ability, modulated by how much effort and concentration they apply in that round.
+Golfers play both individually and in pairs, with team results determined by the combined performance of the partners.
+All rounds are played on the same day across the same course.
+
+CONDITIONS
+In the first round, Oliver beat Priya.
+In the second round, Oliver and James beat Priya and Sofia.
+In the third round, Priya and James beat Oliver and Sofia.
+In the fourth round, Sofia beat James.
+
+QUERIES
+Query 1: Out of 100 random golfers, where do you think Priya ranks in terms of intrinsic ball-striking ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Oliver put into the second round?
+Query 3: In a new round later this same day between Oliver and Sofia (Team 1) and Priya and James (Team 2), who would win and by how much?
+Query 4: In a new round later this same day between Oliver and Priya (Team 1) and James and Sofia (Team 2), who would win and by how much?
+<END_SCENARIO>

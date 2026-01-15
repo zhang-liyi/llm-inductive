@@ -1,0 +1,21 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a mixed-gender Ultimate Frisbee tournament. Outcomes depend mainly on players’ intrinsic speed, change-of-direction quickness, throwing accuracy and power, plus how much focused effort they put in during each game.
+Players belong to fixed 7-player squads, and some events are also played individually (such as 1v1 cutting and marking drills).
+All games and drills take place on the same day.
+
+Team Skyfire (Noah’s team): Noah, Asha, Ben, Lila, Omar, Riley, Tara  
+Team Thunder: Mia, Jonah, Keiko, Sam, Victor, Zoe, Lucas  
+Team Orbit: Hannah, Diego, Priyanka, Cole, Ivan, Serena, Mark
+
+CONDITIONS
+In the first drill, Mia beat Noah.
+In the second game, Team Thunder beat Team Skyfire.
+In the third game, Team Orbit beat Team Skyfire.
+
+QUERIES
+Query 1: Out of 100 random Ultimate players, where do you think Noah ranks in terms of intrinsic cutting speed and throwing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Noah put into the third game?
+Query 3: In a new game later this same day between Team Thunder and Team Orbit, who would win and by how much?
+Query 4: In a new game later this same day between Team Skyfire and Team Thunder, who would win and by how much?
+<END_SCENARIO>

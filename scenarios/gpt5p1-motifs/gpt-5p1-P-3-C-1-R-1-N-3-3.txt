@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the cricketers are playing a series of indoor 5-a-side cricket games along with a head-to-head batting showdown. Outcomes are determined by players’ intrinsic batting, bowling, and fielding skill, combined with how much focused effort they bring to each game.  
+All games and the showdown occur on the same day.
+
+CONDITIONS  
+In the first game, Arjun, Ravi, Karan, Mohan, and Nikhil lost to Imran, Farid, Salman, Tariq, and Umar.  
+In the second contest, Nikhil beat Imran in a 1-on-1 batting face-off.  
+In the third game, Nikhil, Imran, Farid, Salman, and Tariq lost to Arjun, Ravi, Karan, Mohan, and Suresh.  
+In the fourth game, Nikhil, Suresh, Mohan, Karan, and Ravi lost to Imran, Farid, Salman, Tariq, and Umar.
+
+QUERIES  
+Query 1: Out of 100 random cricket players, where do you think Nikhil ranks in terms of intrinsic cricket ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Imran put into the second contest?  
+Query 3: In a new 5-a-side game later this same day between Nikhil, Arjun, Ravi, Karan, and Mohan (Team 1) and Imran, Farid, Salman, Tariq, and Umar (Team 2), who would win and by how much in terms of runs?  
+Query 4: In a new 5-a-side game later this same day between Nikhil, Suresh, Mohan, Tariq, and Umar (Team 1) and Arjun, Ravi, Karan, Farid, and Salman (Team 2), who would win and by how much in terms of runs?
+<END_SCENARIO>

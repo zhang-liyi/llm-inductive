@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Handball games. In each game, the team that wins depends on the total goals scored, based on the athletes' intrinsic throwing power and agility modulated by other factors including how much effort they put in to that game.
+Athletes compete in teams of 7.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Ali, Bo, Cy, Di, Ed, Fa, and Gi beat Hal, Ian, Jo, Ko, Li, Mo, and Ezra.
+In the second game, Ezra, Ali, Bo, Cy, Di, Ed, and Hal beat Fa, Gi, Ian, Jo, Ko, Li, and Mo.
+In the third game, Fa, Gi, Ian, Jo, Ko, Li, and Mo beat Ali, Bo, Cy, Di, Ed, Hal, and Ezra.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Ezra ranks in terms of intrinsic throwing power and agility?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Hal put into the second game?
+Query 3: In a new game later this same day between Ezra, Ian, Jo, Ko, Li, Mo, and Na (Team 1) and Ali, Bo, Cy, Di, Ed, Fa, and Gi (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Hal, Ian, Jo, Ko, Li, Mo, and Ezra (Team 1) and Ali, Bo, Cy, Di, Ed, Fa, and Gi (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the players are competing in a series of handball games with 7 players per team on the court. The outcome of each game depends on the players’ intrinsic handball ability (such as shooting power, agility, and anticipation) and how much effort they put into that particular game.  
+Players compete either individually in shooting duels or as part of a 7-player team.  
+All games and duels take place on the same day.
+
+CONDITIONS  
+In the first game, Darius, Lukas, Emil, Jonas, Marek, Pavel, and Stefan beat Viktor, Milan, Tomas, Igor, Adam, Radek, and Filip.  
+In the second game, Darius, Viktor, Adam, Filip, Leon, Marek, and Pavel beat Lukas, Milan, Tomas, Igor, Jonas, Radek, and Stefan.  
+In the third game, Darius, Milan, Jonas, Igor, Adam, Radek, and Filip beat Viktor, Lukas, Emil, Leon, Marek, Pavel, and Stefan.
+
+QUERIES  
+Query 1: Out of 100 random handball players, where do you think Darius ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Viktor put into the second game?  
+Query 3: In a new 7-player game later this same day between Darius, Lukas, Tomas, Igor, Adam, Marek, and Stefan (Team 1) and Viktor, Milan, Emil, Jonas, Radek, Leon, and Filip (Team 2), who would win and by how much?  
+Query 4: In a new 7-player game later this same day between Darius, Viktor, Emil, Jonas, Adam, Pavel, and Leon (Team 1) and Milan, Lukas, Tomas, Igor, Marek, Radek, and Filip (Team 2), who would win and by how much?  
+<END_SCENARIO>

@@ -1,0 +1,15 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of 3‑on‑3 small‑sided soccer games. In each game, the team that wins depends on the players’ intrinsic ball control, speed, and decision‑making, combined with how much effort they put into that game. Most players stay with their usual 3‑player squads, but Jordan is moved around between different lineups. All games take place on the same day.
+
+CONDITIONS
+In the first game, Malik, Theo, and Victor beat Jordan, Luis, and Andre.
+In the second game, Luis, Andre, and Chris beat Jordan, Malik, and Theo.
+In the third game, Jordan, Victor, and Chris beat Malik, Luis, and Andre.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Jordan ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Luis put into the second game?
+Query 3: In a new game later this same day between Jordan, Malik, and Chris (Team 1) and Theo, Victor, and Andre (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Jordan, Theo, and Luis (Team 1) and Malik, Victor, and Chris (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a Field Hockey tournament using a modified 8-a-side format. In each match, the team that wins depends on the ball control and defensive coordination of the athletes, based on their intrinsic technique modulated by other factors including how much effort they put into that match.
+Players have fixed teams.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Fiona's Team beat the Grasshoppers.
+In the second match, Fiona's Team lost to the Strikers.
+In the third match, Fiona's Team lost to the Dribblers.
+In the fourth match, Fiona's Team lost to the Sweepers.
+
+QUERIES
+Query 1: Out of 100 random hockey players, where do you think Fiona ranks in terms of intrinsic technique?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Fiona's Team put into the first match?
+Query 3: In a new match later this same day between Fiona's Team (Team 1) and the Strikers (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the Grasshoppers (Team 1) and the Sweepers (Team 2), who would win and by how much?
+<END_SCENARIO>

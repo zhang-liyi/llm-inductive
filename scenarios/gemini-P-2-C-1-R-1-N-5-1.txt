@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a series of Ultimate Frisbee games. Each team consists of 7 players. The winner is decided by the team's ability to complete passes and score in the endzone, based on their intrinsic speed and handling skills, modulated by factors such as the effort put into the game.
+Player Kai rotates between teams, while the core squads (Team Gust and Team Gale) generally keep their rosters fixed.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Kai and Team Gust beat Team Gale.
+In the second game, Kai and Team Gale beat Team Gust.
+In the third game, Kai and Team Gust lost to Team Gale.
+
+QUERIES
+Query 1: Out of 100 random ultimate players, where do you think Kai ranks in terms of intrinsic speed?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Team Gale put into the third game?
+Query 3: In a new game later this same day between Kai and Team Gust (Team 1) and Team Gale (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Team Gust (Team 1) and Kai and Team Gale (Team 2), who would win and by how much?
+<END_SCENARIO>

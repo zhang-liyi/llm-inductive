@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in Ultimate Frisbee matches. Each team consists of 8 players. The winning team is determined by the collective speed, agility, and tactical awareness of the players, modulated by the effort they exert during the match.
+There are established squads (Red Squad, Blue Squad, and Green Squad) that have fixed rosters, but one star athlete, Jordan, rotates between them for different matches.
+All matches occur on the same day.
+
+CONDITIONS
+In the first match, Jordan and the Red Squad beat the Blue Squad.
+In the second match, Jordan and the Blue Squad beat the Red Squad.
+In the third match, the Green Squad lost to Jordan and the Blue Squad.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jordan ranks in terms of intrinsic agility and skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think the Green Squad put into the third match?
+Query 3: In a new match later this same day between Jordan and the Green Squad (Team 1) and the Red Squad (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the Red Squad (Team 1) and the Blue Squad (Team 2), who would win and by how much?
+<END_SCENARIO>

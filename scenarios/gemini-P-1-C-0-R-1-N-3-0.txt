@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in a basketball tournament. In each game, the team that wins depends on the total points scored, which is determined by the athletes' intrinsic shooting accuracy and defensive skills, modulated by the amount of hustle and effort they put into that specific game.
+Athletes compete in fixed teams of 5.
+All games take place on the same weekend.
+
+CONDITIONS
+In the first game, the team of Michael, Scottie, Dennis, Steve, and Ron beat the team of Ralph, Jim, Dwight, Stanley, and Kevin.
+In the second game, the team of Kobe, Shaquille, Derek, Rick, and Robert beat the team of Ralph, Jim, Dwight, Stanley, and Kevin.
+In the third game, the team of Tim, Tony, Manu, Bruce, and David beat the team of Ralph, Jim, Dwight, Stanley, and Kevin.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Ralph ranks in terms of intrinsic shooting accuracy and defensive skills?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ralph put into the third game?
+Query 3: In a new game later this same weekend between the team of Ralph, Jim, Dwight, Stanley, and Kevin (Team 1) and the team of Michael, Scottie, Dennis, Steve, and Ron (Team 2), who would win and by how much?
+Query 4: In a new game later this same weekend between the team of Ralph, Jim, Dwight, Stanley, and Kevin (Team 1) and the team of Kobe, Shaquille, Derek, Rick, and Robert (Team 2), who would win and by how much?
+<END_SCENARIO>

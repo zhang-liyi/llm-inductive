@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee games and individual throwing accuracy duels. The outcome of each contest is determined by players’ intrinsic Ultimate skills (such as throwing precision, sprint speed, and catching ability) and the amount of effort they choose to invest in that contest.
+Athletes compete either individually or in teams of 6.
+All contests take place on the same day.
+
+CONDITIONS
+In the first game, Team Aurora (Carlos, Miguel, Javier, Luis, Sergio, Rafael) beat Team Zenith (Eliot, Marcus, Julian, Finn, Parker, Simon).
+In the second game, Team Aurora beat Team Cascade (Adrian, Victor, Henry, Mason, Oliver, Theo).
+In the third contest, an individual long-throw accuracy duel, Carlos lost to Eliot.
+
+QUERIES
+Query 1: Out of 100 random Ultimate Frisbee players, where do you think Carlos ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Eliot put into the third contest?
+Query 3: In a new 6-on-6 Ultimate Frisbee game later this same day between Team Aurora and Team Zenith, who would win and by how much?
+Query 4: In a new 6-on-6 Ultimate Frisbee game later this same day between Team Aurora and Team Cascade, who would win and by how much?
+<END_SCENARIO>

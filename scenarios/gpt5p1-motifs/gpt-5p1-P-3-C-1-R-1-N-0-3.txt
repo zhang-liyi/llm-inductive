@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND
+In this table tennis event, athletes are playing a series of doubles matches. The outcome of each match is determined by the players’ intrinsic table tennis skills—such as reaction speed, spin control, and placement—combined with how much effort they put into that specific match.
+
+Most players remain with a consistent partner, while Lena frequently changes partners between matches.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Lena and Marta lost to Kim and Soo.
+In the second match, Lena and Olga lost to Diego and Raul.
+In the third match, Lena and Petra lost to Kim and Soo.
+In the fourth match, Lena and Marta beat Diego and Raul.
+
+QUERIES
+Query 1: Out of 100 random table tennis players, where do you think Lena ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Marta put into the fourth match?
+Query 3: In a new match later this same day between Lena and Petra (Team 1) and Diego and Raul (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Kim and Soo (Team 1) and Olga and Marta (Team 2), who would win and by how much?
+<END_SCENARIO>

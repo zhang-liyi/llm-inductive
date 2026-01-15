@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of 3-on-3 half-court basketball games. In each game, the team that wins depends on the players’ intrinsic basketball ability (such as shooting touch, quickness, and coordination), modulated by how much effort they put in during that game.
+Players compete either individually or on 3-player teams.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Jordan, Priya, and Malik beat Hanna, Luis, and Chen.
+In the second game, Jordan, Hanna, and Nora beat Priya, Luis, and Malik.
+In the third game, Jordan beat Luis.
+In the fourth game, Jordan, Chen, and Luis beat Malik, Nora, and Priya.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Jordan ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Luis put into the third game?
+Query 3: In a new game later this same day between Jordan, Priya, and Luis (Team 1) and Hanna, Malik, and Taylor (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Nora, Chen, and Malik (Team 1) and Jordan, Hanna, and Casey (Team 2), who would win and by how much?
+<END_SCENARIO>

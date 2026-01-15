@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a 7-a-side Soccer tournament. In each match, the team that wins depends on the collective ball control and stamina of the players, based on their intrinsic athletic ability modulated by other factors including how much effort they put into that match.
+Athletes compete in teams of 7.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, the team of Carlos, Dom, Ed, Fred, Greg, Hans, and Ian lost to the team of Jack, Karl, Len, Matt, Nick, Olin, and Pat.
+In the second match, the team of Carlos, Dom, Ed, Fred, Greg, Hans, and Ian lost to the team of Jack, Karl, Len, Russ, Sam, Tim, and Ulf.
+In the third match, the team of Carlos, Dom, Ed, Fred, Greg, Hans, and Ian beat the team of Matt, Nick, Olin, Russ, Sam, Tim, and Ulf.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Carlos ranks in terms of intrinsic athletic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Carlos put into the third match?
+Query 3: In a new match later this same day between the team of Carlos, Dom, Ed, Fred, Greg, Hans, and Ian (Team 1) and the team of Jack, Karl, Len, Matt, Nick, Olin, and Pat (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the team of Matt, Nick, Olin, Russ, Sam, Tim, and Ulf (Team 1) and the team of Carlos, Dom, Ed, Fred, Greg, Hans, and Ian (Team 2), who would win and by how much?
+<END_SCENARIO>

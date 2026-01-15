@@ -1,0 +1,167 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  // BACKGROUND KNOWLEDGE
+  // Athletes have a stable intrinsic strength for rowing that is constant across all races on this day.
+  // Units: arbitrary "strength units" on a roughly 0–200 scale.
+  var intrinsic_strength = mem(function({athlete}) {
+    var parameter_low_strength_prior = 0.2;
+    var parameter_average_strength_prior = 0.6;
+    var parameter_high_strength_prior = 0.2;
+
+    var low_strength_mean = 70;    // weaker-than-average rowers
+    var average_strength_mean = 100; // typical rowers
+    var high_strength_mean = 130;   // particularly strong rowers
+    var strength_sd = 10;           // standard deviation of intrinsic strength
+
+    var base_strength_mean = categorical({
+      ps: [parameter_low_strength_prior,
+           parameter_average_strength_prior,
+           parameter_high_strength_prior],
+      vs: [low_strength_mean,
+           average_strength_mean,
+           high_strength_mean]
+    });
+
+    return Math.max(gaussian(base_strength_mean, strength_sd), 0);
+  });
+
+  // Effort is race-specific and athlete-specific, from 0–100%.
+  // Units: percent effort (0–100).
+  var effort_in_race = mem(function({athlete, race}) {
+    var strength = intrinsic_strength({athlete: athlete});
+
+    // Priors over low/medium/high effort depend weakly on intrinsic strength.
+    var low_effort_prior =
+        strength > 120 ? 0.1 :
+        strength < 80  ? 0.5 :
+                         0.3;
+
+    var medium_effort_prior =
+        strength > 120 ? 0.3 :
+        strength < 80  ? 0.3 :
+                         0.5;
+
+    var high_effort_prior = 1 - low_effort_prior - medium_effort_prior;
+
+    var low_effort_mean = 30;   // 30% effort
+    var medium_effort_mean = 60; // 60% effort
+    var high_effort_mean = 90;   // 90% effort
+    var effort_sd = 15;          // standard deviation in effort (% points)
+
+    var effort_level_mean = categorical({
+      ps: [low_effort_prior, medium_effort_prior, high_effort_prior],
+      vs: [low_effort_mean, medium_effort_mean, high_effort_mean]
+    });
+
+    var raw_effort = gaussian(effort_level_mean, effort_sd);
+    return Math.min(Math.max(raw_effort, 0), 100);
+  });
+
+  // Intrinsic strength ranking out of N athletes: number of others this athlete is stronger than.
+  var intrinsic_strength_rank = function({athlete, out_of_n_athletes}) {
+    var random_athlete_ids =
+        mapN(function(i) { return uniform(0, 1000); }, out_of_n_athletes - 1);
+
+    return sum(map(function(random_athlete_id) {
+      return intrinsic_strength({athlete: athlete}) >
+             intrinsic_strength({athlete: random_athlete_id});
+    }, random_athlete_ids));
+  };
+
+  // Individual rowing speed in a given race.
+  // Units: meters per second (m/s), averaged over the race.
+  var individual_rowing_speed_in_race = function({athlete, race}) {
+    var strength = intrinsic_strength({athlete: athlete});
+    var effort_percent = effort_in_race({athlete: athlete, race: race});
+    var effort_fraction = effort_percent / 100;
+
+    // Base potential speed grows with strength.
+    var base_max_speed = strength / 10; // e.g., strength 100 → ~10 m/s potential
+
+    // Effective speed is proportional to effort fraction, plus some noise.
+    var expected_speed = base_max_speed * effort_fraction;
+    var speed_sd = 0.5; // m/s standard deviation capturing environmental noise
+
+    return Math.max(gaussian(expected_speed, speed_sd), 0);
+  };
+
+  // Team rowing speed in a race is the mean of members' individual speeds.
+  // Units: meters per second (m/s).
+  var team_rowing_speed_in_race = mem(function({team, race}) {
+    var speeds = map(function(athlete) {
+      return individual_rowing_speed_in_race({athlete: athlete, race: race});
+    }, team);
+    return listMean(speeds);
+  });
+
+  // Team1 beats Team2 in a race if its team speed is greater.
+  var beat = function({team1, team2, race}) {
+    return team_rowing_speed_in_race({team: team1, race: race}) >
+           team_rowing_speed_in_race({team: team2, race: race});
+  };
+
+  // Team1 loses to Team2 in a race if it does not beat Team2.
+  var lost = function({team1, team2, race}) {
+    return !beat({team1: team1, team2: team2, race: race});
+  };
+
+  // Effort percentage in a given race for a given athlete.
+  // Units: percent (0–100).
+  var effort_percentage_in_race = function({athlete, race}) {
+    return effort_in_race({athlete: athlete, race: race});
+  };
+
+  // For "who would win and by how much", we return the probability (0–1)
+  // that Team 2 would win, estimated via simulation of many possible future races
+  // (with new race IDs so they don't collide with observed races).
+  var who_would_win_by_how_much = function({team1, team2, race}) {
+    var num_future_races_to_simulate = 100;
+    var random_future_race_ids =
+        mapN(function(i) { return uniform(race + 1, 1000); },
+             num_future_races_to_simulate);
+
+    var simulated_races_won_by_team2 = sum(map(function(random_future_race_id) {
+      return lost({team1: team1, team2: team2, race: random_future_race_id});
+    }, random_future_race_ids));
+
+    // Return probability that Team 2 wins (0 = Team 1 surely wins, 1 = Team 2 surely wins).
+    return simulated_races_won_by_team2 / num_future_races_to_simulate;
+  };
+
+  // CONDITIONS
+  // In the first race, Alice beat Casey.
+  condition(beat({team1: ['alice'], team2: ['casey'], race: 1}));
+
+  // In the second race, Alice and Ness beat Casey and Max.
+  condition(beat({team1: ['alice', 'ness'], team2: ['casey', 'max'], race: 2}));
+
+  // In the third race, Max and Alice lost to Casey and Ness.
+  condition(lost({team1: ['max', 'alice'], team2: ['casey', 'ness'], race: 3}));
+
+  // QUERIES
+  // Query 1: Out of 100 random athletes, where do you think Alice ranks in terms of intrinsic strength?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Max put into the third race?
+  // Query 3: In a new race later this same day between Alice and Ness (Team 1) and Max and Taylor (Team 2), who would win and by how much?
+  // Query 4: In a new race later this same day between Max and Casey (Team 1) and Ness and Willow (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_strength_rank({athlete: 'alice', out_of_n_athletes: 100}),
+    query2: effort_percentage_in_race({athlete: 'max', race: 3}),
+    query3: who_would_win_by_how_much({team1: ['alice', 'ness'], team2: ['max', 'taylor'], race: 4}),
+    query4: who_would_win_by_how_much({team1: ['max', 'casey'], team2: ['ness', 'willow'], race: 5})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "rejection", samples: 10000});
+json.write('inference_results/result-rejection-canoe.json', posterior);

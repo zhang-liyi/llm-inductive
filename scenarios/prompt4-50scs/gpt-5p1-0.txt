@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the players are competing in a series of half-court basketball games. The team that wins a game depends on the players’ intrinsic basketball ability (shooting, defense, decision-making) together with how much effort they put into that game.  
+Players sometimes play 3-on-3 and sometimes play individually in quick 1-on-1 games.  
+All games take place on the same day.
+
+CONDITIONS  
+In the first game, Jordan, Riley, and Sam beat Taylor, Casey, and Devon.  
+In the second game, Jordan, Taylor, and Riley beat Sam, Casey, and Devon.  
+In the third game, Devon beat Riley.  
+
+QUERIES  
+Query 1: Out of 100 random basketball players, where do you think Jordan ranks in terms of intrinsic basketball ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Taylor put into the second game?  
+Query 3: In a new game later this same day between Jordan, Sam, and Casey (Team 1) and Taylor, Riley, and Devon (Team 2), who would win and by how much?  
+Query 4: In a new 1-on-1 game later this same day between Jordan (Player 1) and Devon (Player 2), who would win and by how much?  
+<END_SCENARIO>

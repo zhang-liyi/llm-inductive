@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the sailors are competing in a series of fleet races in small keelboats. In each race, the winning boat is the one that completes the course first, which depends on the crew’s intrinsic tactical judgment, coordination, and feel for boat handling, modulated by how much focused effort they put into trimming, steering, and maneuvers.
+Sailors compete in crews of three or four, and some also race individually in single-handed dinghies.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Alex, Blair, and Casey beat Drew, Erin, and Fox.
+In the second race, Drew beat Casey in single-handed dinghies.
+In the third race, Alex and Fox beat Blair and Erin.
+
+QUERIES
+Query 1: Out of 100 random sailors, where do you think Drew ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Alex put into the first race?
+Query 3: In a new race later this same day between Alex, Blair, and Casey (Boat 1) and Drew, Erin, and Fox (Boat 2), who would win and by how much?
+Query 4: In a new race later this same day between Drew and Casey (single-handed, Race 1) and Alex and Fox (double-handed, Race 2, scored on time) considered as a head-to-head contest, who would effectively be faster and by how much?
+<END_SCENARIO>

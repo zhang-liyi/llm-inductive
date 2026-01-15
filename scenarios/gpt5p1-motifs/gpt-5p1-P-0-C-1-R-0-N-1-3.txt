@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the swimmers are competing in a series of relay and individual races in a pool. In the relay races, teams consist of 3 swimmers, each swimming an equal distance. The result of each race depends on the swimmers’ intrinsic swimming ability (stroke efficiency, speed, and endurance), modulated by how much effort they put in during that race.
+Swimmers compete either individually or on 3-swimmer relay teams.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Ava, Leo, and Nina beat Marcus, Talia, and Bryn.
+In the second race, Ava, Marcus, and Owen beat Leo, Talia, and Nina.
+In the third race, Ava, Bryn, and Talia beat Marcus, Nina, and Owen.
+
+QUERIES
+Query 1: Out of 100 random swimmers, where do you think Ava ranks in terms of intrinsic swimming ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Marcus put into the second race?
+Query 3: In a new relay race later this same day between Ava, Nina, and Owen (Team 1) and Leo, Marcus, and Bryn (Team 2), who would win and by how much?
+Query 4: In a new relay race later this same day between Ava, Talia, and Bryn (Team 1) and Leo, Nina, and Casey (Team 2), who would win and by how much?
+<END_SCENARIO>

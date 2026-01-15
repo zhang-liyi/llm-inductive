@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of cross-country skiing races. Race results depend on each skier’s intrinsic aerobic capacity, technique, and efficiency, combined with how much effort they put into that specific race.  
+Some races are individual starts, and some are two-person team relays.  
+All races take place on the same day.
+
+CONDITIONS  
+In the first race, Anja beat Felix.  
+In the second race, Leo and Anja beat Felix and Nora.  
+In the third race, Nora beat Leo.  
+In the fourth race, Felix and Nora beat Anja and Mila.
+
+QUERIES  
+Query 1: Out of 100 random cross-country skiers, where do you think Felix ranks in terms of intrinsic endurance and strength?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Nora put into the fourth race?  
+Query 3: In a new race later this same day between Anja and Leo (Team 1) and Felix and Mila (Team 2), who would win and by how much?  
+Query 4: In a new race later this same day between Nora (Team 1) and Leo and Felix (Team 2, relay), who would win and by how much?
+<END_SCENARIO>

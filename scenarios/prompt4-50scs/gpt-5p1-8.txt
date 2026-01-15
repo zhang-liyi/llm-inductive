@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of fastpitch softball scrimmages. The results of each game depend on the players’ intrinsic ability to pitch, hit, field, and run the bases, together with how much effort they choose to put into that particular game.
+Athletes compete in small teams of three or pairs.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Priya, Kara, and Liam beat Morgan, Haley, and Zoe.
+In the second game, Jade and Morgan beat Priya and Haley.
+In the third game, Kara and Zoe beat Jade and Liam.
+In the fourth game, Priya and Zoe lost to Morgan and Liam.
+
+QUERIES
+Query 1: Out of 100 random softball players, where do you think Priya ranks in terms of intrinsic softball skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Zoe put into the fourth game?
+Query 3: In a new game later this same day between Priya, Kara, and Jade (Team 1) and Morgan, Haley, and Liam (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Zoe and Jade (Team 1) and Priya and Morgan (Team 2), who would win and by how much?
+<END_SCENARIO>

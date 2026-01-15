@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this competition, athletes face off in Tennis matches. The outcome depends on the tactical precision and stamina of the players, derived from their intrinsic talent modulated by the intensity of effort they apply to the court during the match.
+Athletes compete either individually or in fixed teams of two.
+All matches are scheduled for the same day.
+
+CONDITIONS
+In the first match, Oscar lost to Hugo.
+In the second match, Oscar and Felix lost to Hugo and Jack.
+In the third match, Oscar and Felix beat Hugo and Jack.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Oscar ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Hugo put into the third match?
+Query 3: In a new match later this same day between Oscar and Hugo (Team 1) and Felix and Jack (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Felix and Jack (Team 1) and Oscar and Hugo (Team 2), who would win and by how much?
+<END_SCENARIO>

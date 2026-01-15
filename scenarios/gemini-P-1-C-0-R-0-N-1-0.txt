@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 3-on-3 basketball games. In each game, the team that wins depends on the collective scoring accuracy and defensive capability of the athletes, based on their intrinsic skill modulated by other factors including how much effort they put into that game.
+Athletes compete either individually (in 1v1 warmups) or as a team of three.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Mike, Steve, and Bill beat Rory, Sam, and Tom.
+In the second game, Greg, Steve, and Alan beat Rory, Sam, and Tom.
+In the third game, Mike beat Rory.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Rory ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mike put into the third game?
+Query 3: In a new game later this same day between Steve and Greg (Team 1) and Rory and Sam (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Rory and Tom (Team 1) and Bill and Alan (Team 2), who would win and by how much?
+<END_SCENARIO>

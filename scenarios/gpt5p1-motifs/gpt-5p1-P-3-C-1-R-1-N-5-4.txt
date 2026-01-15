@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing 7‑a‑side field hockey. Performance in each game depends on intrinsic stick skills, speed, and coordination, along with how much effort the athletes put into that game.
+Athletes compete either individually in shooting drills or as part of a 7‑player team.
+All games and drills take place on the same day.
+
+CONDITIONS
+In the first drill, Mei lost to Rachel.
+In the second game, Rachel, Sara, Tania, Uma, Vera, Wendy, and Yara beat Mei, Colin, David, Ethan, Frank, Greg, and Ian.
+In the third game, Colin, David, Ethan, Frank, Greg, Ian, and Joel beat Mei, Rachel, Sara, Tania, Uma, Vera, and Wendy.
+In the fourth game, Mei, Rachel, Sara, Colin, David, Ethan, and Frank beat Tania, Uma, Vera, Wendy, Greg, Ian, and Joel.
+
+QUERIES
+Query 1: Out of 100 random field hockey players, where do you think Mei ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Rachel put into the second game?
+Query 3: In a new game later this same day between Mei, Rachel, Sara, Tania, Uma, Vera, and Wendy (Team 1) and Colin, David, Ethan, Frank, Greg, Ian, and Joel (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Mei, Yara, Colin, David, Ethan, Frank, and Greg (Team 1) and Rachel, Sara, Tania, Uma, Vera, Wendy, and Ian (Team 2), who would win and by how much?
+<END_SCENARIO>

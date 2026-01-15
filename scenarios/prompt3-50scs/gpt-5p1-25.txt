@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the skiers are competing in a series of alpine giant slalom runs. In each run, the winner is the skier or team with the fastest combined time, which depends on their intrinsic technical skill, balance, and power, modulated by how much effort and focus they put into that run.
+Skiers compete either individually or in pairs whose times are averaged.
+All runs take place on the same day.
+
+CONDITIONS
+In the first run, Dana beat Leo.
+In the second run, Dana and Mira beat Leo and Noah.
+In the third run, Noah beat Mira.
+
+QUERIES
+Query 1: Out of 100 random alpine skiers, where do you think Dana ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Noah put into the third run?
+Query 3: In a new run later this same day between Dana and Mira (Team 1) and Leo and Paula (Team 2), who would win and by how much?
+Query 4: In a new run later this same day between Noah and Leo (Team 1) and Mira and Quinn (Team 2), who would win and by how much?
+<END_SCENARIO>

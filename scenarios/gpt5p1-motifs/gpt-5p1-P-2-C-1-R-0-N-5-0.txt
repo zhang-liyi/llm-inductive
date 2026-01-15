@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the players are competing in a series of full-court basketball scrimmages and occasional 1-on-1 games. In each game, the team that wins depends mainly on the players’ intrinsic shooting accuracy, quickness, and stamina, along with how much effort they put in on that particular game.  
+All games take place on the same day.
+
+CONDITIONS  
+In the first scrimmage, Lena, Noah, Ava, Bryce, Chloe, Dylan, and Ethan beat Fiona, Gabe, Hazel, Iris, Jonah, Kai, and Leo.  
+In the second scrimmage, Lena, Fiona, Gabe, Noah, Iris, Max, and Nia beat Ava, Bryce, Chloe, Dylan, Ethan, Hazel, and Jonah.  
+In the third scrimmage, Bryce, Chloe, Dylan, Ethan, Lena, Kai, and Leo lost to Ava, Fiona, Gabe, Hazel, Iris, Jonah, and Max.  
+Later that day, Lena beat Max.
+
+QUERIES  
+Query 1: Out of 100 random basketball players, where do you think Lena ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Bryce put into the third scrimmage?  
+Query 3: In a new scrimmage later this same day between Lena, Ava, Fiona, Gabe, Noah, Hazel, and Kai (Team 1) and Ethan, Bryce, Chloe, Dylan, Iris, Jonah, and Max (Team 2), who would win and by how much?  
+Query 4: In a new scrimmage later this same day between Lena, Chloe, Dylan, Ethan, Leo, Max, and Nia (Team 1) and Ava, Fiona, Gabe, Hazel, Iris, Jonah, and Kai (Team 2), who would win and by how much?  
+<END_SCENARIO>

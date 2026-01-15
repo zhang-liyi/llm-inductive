@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the players are in a series of small-sided 2-on-2 soccer games on a short pitch. The team that wins each game depends on the players’ intrinsic ball control, speed, and decision-making, as well as the intensity of effort they put into running, pressing, and finishing during that game.  
+All games take place on the same day.
+
+CONDITIONS  
+In the first game, Diego and Amir beat Lucas and Ben.  
+In the second game, Diego and Lucas beat Amir and Rafa.  
+In the third game, Ben and Rafa beat Diego and Kai.  
+In the fourth game, Diego and Ben beat Kai and Lucas.
+
+QUERIES  
+Query 1: Out of 100 random soccer players, where do you think Diego ranks in terms of intrinsic playing ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Kai put into the third game?  
+Query 3: In a new game later this same day between Diego and Rafa (Team 1) and Amir and Ben (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Diego and Kai (Team 1) and Lucas and Rafa (Team 2), who would win and by how much?  
+<END_SCENARIO>

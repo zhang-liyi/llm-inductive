@@ -1,0 +1,22 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are playing a small-sided 3-on-3 soccer tournament.  
+For each match, the result depends on the players’ intrinsic soccer abilities (such as touch, speed, and finishing) and how much effort they put in during that match.  
+Teams are fixed: each group of three always plays together.  
+All matches are played on the same day.
+
+CONDITIONS  
+Team River: Maya, Priya, Zoe  
+Team Summit: Lucas, Ryan, Emma  
+Team Harbor: Jack, Nina, Oscar  
+
+In the first match, Summit beat River.  
+In the second match, Harbor beat River.  
+In the third match, Summit beat Harbor.
+
+QUERIES  
+Query 1: Out of 100 random recreational soccer players, where do you think Lucas ranks in terms of intrinsic soccer ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Maya put into the second match?  
+Query 3: In a new match later this same day between River and Summit, who would win and by how much?  
+Query 4: In a new match later this same day between River and Harbor, who would win and by how much?
+<END_SCENARIO>

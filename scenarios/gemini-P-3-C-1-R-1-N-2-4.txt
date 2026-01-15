@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, players compete in a half-court 4-on-4 basketball tournament. The winning team is determined by the total points scored, which depends on shooting accuracy and defensive capability, based on the players' intrinsic skill levels and the effort they put into the game.
+Athletes compete in teams of four.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Dante, Kobe, Lebron, and Magic lost to Steph, Klay, Dray, and Iggy.
+In the second game, Dante, Shaq, Penny, and Grant lost to Tim, Tony, Manu, and David.
+In the third game, Dante, Dirk, Steve, and Mike beat Paul, James, Chris, and Kevin.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Dante ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Steph put into the first game?
+Query 3: In a new game later this same day between Dante, Kobe, Lebron, and Magic (Team 1) and Tim, Tony, Manu, and David (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Steph, Klay, Dray, and Iggy (Team 1) and Paul, James, Chris, and Kevin (Team 2), who would win and by how much?
+<END_SCENARIO>

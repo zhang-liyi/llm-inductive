@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ice Hockey games. In each game, the team that wins depends on the average skating speed and puck control of the athletes, based on their intrinsic skill modulated by other factors including how much effort they put into that game.
+Athletes compete as a team of 6.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Harper, Reese, Otto, Levi, Gwen, and Ian beat Hugo, Zara, Noah, Amy, Ben, and Eva.
+In the second game, Harper, Reese, Hugo, Zara, Noah, and Amy beat Otto, Levi, Gwen, Ian, Ben, and Eva.
+In the third game, Harper, Reese, Ben, Eva, Otto, and Levi lost to Gwen, Ian, Hugo, Zara, Noah, and Amy.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Harper ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Harper put into the third game?
+Query 3: In a new game later this same day between Team 1 (Harper, Reese, Otto, Levi, Gwen, Ian) and Team 2 (Hugo, Zara, Noah, Amy, Ben, Eva), who would win and by how much?
+Query 4: In a new game later this same day between Team 1 (Hugo, Zara, Otto, Levi, Ben, Eva) and Team 2 (Gwen, Ian, Noah, Amy, Harper, Reese), who would win and by how much?
+<END_SCENARIO>

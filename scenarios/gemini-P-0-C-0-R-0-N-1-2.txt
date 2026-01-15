@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of mini-Ultimate Frisbee games. In each game, the team that wins depends on the possession time and successful catches, based on the speed and throwing accuracy of the athletes, derived from their intrinsic athleticism modulated by how much effort they put into that game.
+Athletes compete as a team of three.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Sarah, Emily, and Jessica beat Ashley, Brittany, and Amanda.
+In the second game, Sarah, Emily, and Jessica beat Ashley, Megan, and Samantha.
+In the third game, Sarah, Emily, and Jessica beat Brittany, Megan, and Amanda.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Sarah ranks in terms of intrinsic athleticism?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ashley put into the second game?
+Query 3: In a new game later this same day between Sarah, Emily, and Jessica (Team 1) and Samantha, Brittany, and Ashley (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Ashley, Emily, and Megan (Team 1) and Sarah, Amanda, and Samantha (Team 2), who would win and by how much?
+<END_SCENARIO>

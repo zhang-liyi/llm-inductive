@@ -1,0 +1,22 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in 8‑a‑side Ultimate Frisbee games and occasional 1‑on‑1 throwing contests. In each game, the winning team is determined by players’ intrinsic Ultimate skills (throwing accuracy, speed, catching) together with how much effort they put into that game.
+Players compete either individually or as part of an 8‑player team.
+All games take place on the same day.
+
+The Comets usually consist of Adam, Ben, Chloe, Dylan, Emma, Felix, Grace, and Henry.
+The Dragons usually consist of Iris, Jack, Katie, Liam, Maya, Noah, Olivia, and Parker.
+The Phoenix usually consist of Quinn, Riley, Sara, Theo, Una, Violet, Will, and Zoe.
+Luca is the only player who moves between teams.
+
+CONDITIONS
+In the first game, Luca joined the Comets (replacing Henry), and the Comets beat the Dragons.
+In the second game, Luca joined the Dragons (replacing Parker), and the Dragons beat the Phoenix.
+In a later 1‑on‑1 throwing accuracy contest, Parker beat Luca.
+
+QUERIES
+Query 1: Out of 100 random Ultimate Frisbee players, where do you think Luca ranks in terms of intrinsic Ultimate ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Parker put into the 1‑on‑1 contest?
+Query 3: In a new 8‑a‑side game later this same day between Luca, Adam, Ben, Chloe, Dylan, Emma, Felix, and Grace (Team 1) and Iris, Jack, Katie, Liam, Maya, Noah, Olivia, and Parker (Team 2), who would win and by how much?
+Query 4: In a new 8‑a‑side game later this same day between Adam, Ben, Chloe, Dylan, Emma, Felix, Grace, and Henry (Team 1) and Luca, Quinn, Riley, Sara, Theo, Una, Violet, and Will (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in Ultimate Frisbee matches with teams of 5. The team that wins is determined by the collective agility and throwing accuracy of the players, based on their intrinsic athleticism and the effort they apply to the match.
+Teams are generally fixed, except for one substitute player who rotates in.
+All matches are played back-to-back.
+
+CONDITIONS
+In the first match, The Flyers (Will, Xander, Yves, Zach, and Adam) beat The Discs (Ben, Chris, Dan, Ed, and Fred).
+In the second match, The Discs beat The Flyers (with Morgan replacing Will).
+In the third match, The Flyers beat The Discs (with Morgan replacing Ben).
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Morgan ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Will put into the first match?
+Query 3: In a new match later this same day between The Flyers (with Morgan replacing Adam) and The Discs, who would win and by how much?
+Query 4: In a new match later this same day between The Discs (with Morgan replacing Chris) and The Flyers (with Morgan replacing Xander), who would win and by how much?
+<END_SCENARIO>

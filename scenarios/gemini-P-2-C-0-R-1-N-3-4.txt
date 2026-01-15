@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of ice hockey scrimmages. In each scrimmage, the team that wins depends on the number of goals scored, based on the athletes' intrinsic skating speed and puck handling modulated by other factors including how much effort they put into that scrimmage.
+Athletes compete in fixed teams of five.
+All scrimmages take place on the same day.
+
+CONDITIONS
+In the first scrimmage, Connor, Leon, Zach, Ryan, and Evan beat Auston, Mitch, John, William, and Morgan.
+In the second scrimmage, Connor, Leon, Zach, Ryan, and Evan beat Nathan, Cale, Mikko, Gabriel, and Devon.
+In the third scrimmage, Connor, Leon, Zach, Ryan, and Evan lost to Auston, Mitch, John, William, and Morgan.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Connor ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Auston put into the third scrimmage?
+Query 3: In a new scrimmage later this same day between Connor, Leon, Zach, Ryan, and Evan (Team 1) and Nathan, Cale, Mikko, Gabriel, and Devon (Team 2), who would win and by how much?
+Query 4: In a new scrimmage later this same day between Auston, Mitch, John, William, and Morgan (Team 1) and Nathan, Cale, Mikko, Gabriel, and Devon (Team 2), who would win and by how much?
+<END_SCENARIO>

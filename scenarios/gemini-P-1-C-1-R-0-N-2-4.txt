@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Volleyball matches. In each match, the team that wins depends on their ability to score points, based on the athletes' intrinsic spiking and blocking ability modulated by other factors including how much effort they put into that match.
+Athletes compete either individually (1 on 1 court coverage) or as a team of 4.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Logan lost to Peyton.
+In the second match, Peyton, Kerry, Robin, and Noel beat Logan, Blair, Dallas, and Shea.
+In the third match, Logan, Peyton, Robin, and Shea lost to Kerry, Noel, Blair, and Dallas.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Logan ranks in terms of intrinsic spiking and blocking ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Peyton put into the third match?
+Query 3: In a new match later this same day between Logan, Blair, Dallas, and Shea (Team 1) and Peyton, Kerry, Robin, and Noel (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Logan, Peyton, Kerry, and Robin (Team 1) and Noel, Blair, Dallas, and Shea (Team 2), who would win and by how much?
+<END_SCENARIO>

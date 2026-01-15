@@ -1,0 +1,15 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in **Sprint Track** (Relay and 100m). The winner is determined by the average top speed the athletes can maintain, based on their intrinsic speed modulated by their focus and effort in that specific heat. Athletes compete either individually or in fixed relay teams of four. All heats take place on the same day.
+
+CONDITIONS
+In the first heat, Rohan beat Tyrell.
+In the second heat, Team Tyrell (Tyrell, Marcus, Andre, Deon) beat Team Rohan (Rohan, Sam, Chris, Ben).
+In the third heat, Team Julian (Julian, Malik, Trey, Victor) beat Team Rohan (Rohan, Sam, Chris, Ben).
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Rohan ranks in terms of intrinsic speed?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Sam put into the second heat?
+Query 3: In a new race later this same day between Team Tyrell and Team Julian, who would win and by how much?
+Query 4: In a new race later this same day between Rohan and Marcus (Team 1) and Tyrell and Sam (Team 2), who would win and by how much?
+<END_SCENARIO>

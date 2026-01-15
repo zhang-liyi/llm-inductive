@@ -1,0 +1,184 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  // BACKGROUND KNOWLEDGE
+  // Athletes have stable intrinsic power (physical strength / engine) over the day.
+  // We'll model this on an arbitrary scale centered around 100 "power units".
+  var intrinsic_power = mem(function({athlete}) {
+    var low_power_mean = 80;
+    var average_power_mean = 100;
+    var high_power_mean = 130;
+    var parameter_low_power_prior = 0.3;
+    var parameter_average_power_prior = 0.4;
+    var parameter_high_power_prior = 0.3;
+    var power_cluster_mean = categorical({
+      ps: [parameter_low_power_prior, parameter_average_power_prior, parameter_high_power_prior],
+      vs: [low_power_mean, average_power_mean, high_power_mean]
+    });
+    // Add some within-cluster variation.
+    var power = gaussian(power_cluster_mean, 15);
+    return Math.max(power, 0); // power units, non-negative
+  });
+
+  // Athletes also have stable technique (paddling efficiency, boat handling) over the day.
+  // Technique is on an arbitrary 0–200 scale, centered around 100.
+  var technique = mem(function({athlete}) {
+    var low_tech_mean = 80;
+    var average_tech_mean = 100;
+    var high_tech_mean = 120;
+    var parameter_low_tech_prior = 0.3;
+    var parameter_average_tech_prior = 0.4;
+    var parameter_high_tech_prior = 0.3;
+    var tech_cluster_mean = categorical({
+      ps: [parameter_low_tech_prior, parameter_average_tech_prior, parameter_high_tech_prior],
+      vs: [low_tech_mean, average_tech_mean, high_tech_mean]
+    });
+    var tech = gaussian(tech_cluster_mean, 10);
+    return Math.min(Math.max(tech, 0), 200); // technique units
+  });
+
+  // Each athlete has a typical effort level for sprint races (0–1), stable over the day,
+  // around which individual-race effort fluctuates.
+  var baseline_effort = mem(function({athlete}) {
+    // Most sprint races are run hard: Beta(8,2) has mean ~0.8
+    return beta(8, 2); // unitless fraction in [0,1]
+  });
+
+  // Effort in a particular race, between 0 and 1, can vary around the athlete's baseline.
+  var effort_in_race = mem(function({athlete, race}) {
+    var base = baseline_effort({athlete: athlete});
+    // Add some noise around baseline; clip to [0,1].
+    var raw_effort = gaussian(base, 0.05);
+    return Math.min(Math.max(raw_effort, 0), 1);
+  });
+
+  // Baseline speed potential at 100% effort for a given athlete on flat water.
+  // Units: arbitrary "speed units" roughly proportional to meters/second.
+  var baseline_speed_potential = function({athlete}) {
+    var p = intrinsic_power({athlete: athlete});
+    var t = technique({athlete: athlete});
+    // Higher power and technique → higher potential speed.
+    // Scale constants chosen just to give reasonable magnitudes.
+    return p * (0.6 + 0.004 * t);
+  };
+
+  // Athlete's intrinsic power ranking out of N random athletes.
+  // Ranking = how many out of (N-1) random athletes this athlete is more powerful than.
+  var intrinsic_power_rank = function({athlete, out_of_n_athletes}) {
+    var random_athlete_ids = mapN(
+      function(x) { return uniform(0, 1000); },
+      out_of_n_athletes - 1
+    );
+    return sum(map(
+      function(random_athlete_id) {
+        return intrinsic_power({athlete: athlete}) >
+               intrinsic_power({athlete: random_athlete_id});
+      },
+      random_athlete_ids
+    ));
+  };
+
+  // Effort in race as a percentage from 0 to 100%.
+  var effort_percentage_in_race = function({athlete, race}) {
+    return 100 * effort_in_race({athlete: athlete, race: race});
+  };
+
+  // Team effective power in a specific race:
+  // sum over paddlers of intrinsic_power * effort_in_race.
+  // Units: same arbitrary power units.
+  var team_effective_power_in_race = function({team, race}) {
+    return sum(map(
+      function(a) {
+        return intrinsic_power({athlete: a}) *
+               effort_in_race({athlete: a, race: race});
+      },
+      team
+    ));
+  };
+
+  // Team technique: average of paddlers' technique scores in that boat.
+  var team_technique = function({team}) {
+    return listMean(map(
+      function(a) { return technique({athlete: a}); },
+      team
+    ));
+  };
+
+  // Team speed in a race.
+  // Higher team effective power and technique → higher speed.
+  // Units: arbitrary speed units (monotonic with meters/second).
+  var team_speed_in_race = function({team, race}) {
+    var eff_power = team_effective_power_in_race({team: team, race: race});
+    var tech = team_technique({team: team});
+    var mean_speed = eff_power * (0.6 + 0.004 * tech);
+    var noisy_speed = gaussian(mean_speed, 20);
+    return Math.max(noisy_speed, 0.01);
+  };
+
+  // Team 1 beats Team 2 in a given race if its speed is higher
+  // (equivalently, time to cover the fixed course is lower).
+  var beat = function({team1, team2, race}) {
+    return team_speed_in_race({team: team1, race: race}) >
+           team_speed_in_race({team: team2, race: race});
+  };
+
+  // For a hypothetical future race between two teams, compute how likely Team 2 is to win.
+  // Return value in [0,1]: 0 means Team 1 almost surely wins; 1 means Team 2 almost surely wins.
+  var who_would_win_by_how_much = function({team1, team2, race}) {
+    var num_future_races_to_simulate = 100;
+    var random_future_race_ids = mapN(
+      function(x) { return uniform(race + 1, 1000); },
+      num_future_races_to_simulate
+    );
+
+    // Count how many of these simulated races Team 2 wins.
+    var simulated_races_won_by_team2 = sum(map(
+      function(rid) {
+        // Team 2 wins when Team 1 does not beat Team 2.
+        return !beat({team1: team1, team2: team2, race: rid});
+      },
+      random_future_race_ids
+    ));
+
+    return simulated_races_won_by_team2 / num_future_races_to_simulate;
+  };
+
+  // CONDITIONS
+  // In the first race, Hugo beat Tessa.
+  condition(beat({team1: ['hugo'], team2: ['tessa'], race: 1}));
+
+  // In the second race, Omar and Tessa beat Hugo and Riley.
+  condition(beat({team1: ['omar', 'tessa'], team2: ['hugo', 'riley'], race: 2}));
+
+  // In the third race, Riley beat Omar.
+  condition(beat({team1: ['riley'], team2: ['omar'], race: 3}));
+
+  // In the fourth race, Hugo and Omar beat Tessa and Riley.
+  condition(beat({team1: ['hugo', 'omar'], team2: ['tessa', 'riley'], race: 4}));
+
+  // QUERIES
+  // Query 1: Out of 100 random kayak sprinters, where do you think Hugo ranks in terms of intrinsic power?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Tessa put into the second race?
+  // Query 3: In a new race later this same day between Hugo and Riley (Team 1) and Omar and Tessa (Team 2), who would win and by how much?
+  // Query 4: In a new race later this same day between Omar (Team 1) and Tessa (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_power_rank({athlete: 'hugo', out_of_n_athletes: 100}),
+    query2: effort_percentage_in_race({athlete: 'tessa', race: 2}),
+    query3: who_would_win_by_how_much({team1: ['hugo', 'riley'], team2: ['omar', 'tessa'], race: 5}),
+    query4: who_would_win_by_how_much({team1: ['omar'], team2: ['tessa'], race: 6})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-31.json', posterior);

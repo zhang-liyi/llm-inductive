@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing small-sided 3-on-3 soccer games on a reduced-size pitch. The result of each game depends on the players’ intrinsic abilities such as ball control, speed, and finishing, and on how much physical and mental effort they invest in pressing, movement, and teamwork in that game.
+All games are played on the same day.
+
+CONDITIONS
+In the first game, Diego, Ethan, and Felix beat Jordan, Kai, and Leo.  
+In the second game, Diego, Ethan, and Felix beat Jordan, Max, and Nico.  
+In the third game, Kai, Leo, and Max beat Jordan, Diego, and Ethan.  
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Jordan ranks in terms of intrinsic soccer ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Diego put into the third game?  
+Query 3: In a new 3-on-3 game later this same day between Diego, Ethan, and Felix (Team 1) and Kai, Leo, and Max (Team 2), who would win and by how much?  
+Query 4: In a new 3-on-3 game later this same day between Jordan, Nico, and Owen (Team 1) and Diego, Ethan, and Felix (Team 2), who would win and by how much?
+<END_SCENARIO>

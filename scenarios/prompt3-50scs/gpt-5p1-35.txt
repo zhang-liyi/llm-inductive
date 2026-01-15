@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of wrestling bouts. In each bout, the wrestler or team that wins depends on the effective grappling strength they can bring to bear, based on their intrinsic abilities and how much effort they put into that bout.
+Athletes compete either individually or as a team.
+All bouts take place on the same day.
+
+CONDITIONS
+In the first bout, Liam beat Noah.
+In the second bout, Liam and Ava beat Noah and Mia.
+In the third bout, Noah and Ava beat Liam and Mia.
+
+QUERIES
+Query 1: Out of 100 random wrestlers, where do you think Liam ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Noah put into the first bout?
+Query 3: In a new bout later this same day between Liam and Noah (Team 1) and Ava and Mia (Team 2), who would win and by how much?
+Query 4: In a new bout later this same day between Liam and Mia (Team 1) and Noah and Ava (Team 2), who would win and by how much?
+<END_SCENARIO>

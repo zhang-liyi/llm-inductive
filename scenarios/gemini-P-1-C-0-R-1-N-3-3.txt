@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a 5-on-5 flag American Football tournament. In each game, the team that wins depends on the points scored, based on the athletes' intrinsic agility and route-running ability, modulated by other factors including the physical effort they put into that game.
+Athletes compete in fixed teams of 5.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the Eagles (Jalen, DeVonta, AJ, Fletcher, and Jason) beat the Ducks (Chester, Bill, Bob, Ben, and Barry).
+In the second game, the Chiefs (Patrick, Travis, Chris, Isiah, and Nick) beat the Ducks (Chester, Bill, Bob, Ben, and Barry).
+In the third game, the Niners (Brock, Christian, Deebo, George, and Nick) beat the Ducks (Chester, Bill, Bob, Ben, and Barry).
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Chester ranks in terms of intrinsic agility and route-running ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Chester put into the third game?
+Query 3: In a new game later this same day between the Ducks (Team 1) and the Eagles (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between the Ducks (Team 1) and the Chiefs (Team 2), who would win and by how much?
+<END_SCENARIO>

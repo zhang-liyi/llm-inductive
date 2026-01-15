@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of rowing races. Some races are held in eight-person boats, while others are individual tests on the rowing ergometer. In each race or test, the winner is determined by the athletes’ intrinsic rowing power and technique, combined with how much effort they choose to exert on that attempt. All races take place on the same day.
+
+CONDITIONS
+In the first race, Crew Blue (Felix, Amelia, Brooke, Dylan, Ethan, Grace, Hannah, Isaac) lost to Crew Red (Julia, Kevin, Lily, Marco, Nina, Owen, Paige, Quinn).  
+In the second race, Amelia beat Julia.  
+In the third race, Crew Green (Amelia, Julia, Kevin, Lily, Marco, Nina, Owen, Paige) beat Crew Yellow (Brooke, Chloe, Dylan, Ethan, Grace, Hannah, Isaac, Riley).  
+In the fourth race, Crew Blue (Felix, Amelia, Brooke, Dylan, Ethan, Grace, Hannah, Isaac) lost to Crew Black (Julia, Kevin, Lily, Marco, Nina, Owen, Paige, Riley).
+
+QUERIES
+Query 1: Out of 100 random rowers, where do you think Felix ranks in terms of intrinsic rowing ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Amelia put into the second race?  
+Query 3: In a new race later this same day between Crew Blue (Felix, Amelia, Brooke, Dylan, Ethan, Grace, Hannah, Isaac) and Crew Silver (Julia, Kevin, Lily, Marco, Nina, Owen, Paige, Quinn), who would win and by how much?  
+Query 4: In a new race later this same day between Crew Green (Amelia, Julia, Kevin, Lily, Marco, Nina, Owen, Paige) and Crew Black (Julia, Kevin, Lily, Marco, Nina, Owen, Paige, Riley), who would win and by how much?
+<END_SCENARIO>

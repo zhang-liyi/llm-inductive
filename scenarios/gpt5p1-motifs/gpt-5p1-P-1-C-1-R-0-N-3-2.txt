@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 5-player volleyball games, with occasional individual serving contests. Each game’s outcome depends on the players’ intrinsic serving power, spiking ability, reaction speed, coordination, and how much effort they put into that game.
+Athletes compete either individually or as a team of five.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Ivy, Connor, Jade, Felix, and Nora beat Dylan, Adrian, Lila, Owen, and Paige.
+In the second game, Dylan, Ivy, Felix, Hazel, and Owen lost to Connor, Jade, Nora, Adrian, and Lila.
+In the third game, Ivy, Jade, Felix, Adrian, and Owen beat Dylan, Connor, Nora, Paige, and Hazel.
+In a serving accuracy contest, Jade beat Dylan.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Jade ranks in terms of intrinsic playing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Dylan put into the third game?
+Query 3: In a new game later this same day between Dylan, Ivy, Nora, Hazel, and Owen (Team 1) and Connor, Jade, Felix, Adrian, and Lila (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Dylan, Connor, Jade, Paige, and Felix (Team 1) and Ivy, Nora, Adrian, Lila, and Owen (Team 2), who would win and by how much?
+<END_SCENARIO>

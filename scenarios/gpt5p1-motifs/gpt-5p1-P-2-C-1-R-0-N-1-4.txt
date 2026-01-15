@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of table tennis team matches. Each team match features three players per side who rotate through individual games, and the overall winning team is the one whose players perform better across those games. Outcomes depend on intrinsic table tennis ability (such as reflexes, spin control, and shot placement) combined with how much effort each player puts into that match.
+Players compete either individually or as part of three-player teams.
+All matches take place on the same day.
+
+CONDITIONS
+In the first team match, Clara, David, and Irene beat Felix, Jonas, and Mei.  
+In the second team match, Clara, Felix, and Hugo beat David, Jonas, and Irene.  
+In the third match, Clara lost to Mei.  
+In the fourth team match, Clara, Jonas, and Mei beat Felix, Hugo, and David.
+
+QUERIES
+Query 1: Out of 100 random table tennis players, where do you think Clara ranks in terms of intrinsic table tennis ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mei put into the third match?  
+Query 3: In a new team match later this same day between Clara, David, and Jonas (Team 1) and Felix, Irene, and Mei (Team 2), who would win and by how much?  
+Query 4: In a new team match later this same day between Clara, Hugo, and Irene (Team 1) and David, Felix, and Mei (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of half-court basketball games. In each game, the team that wins depends on the players’ intrinsic shooting, ball-handling, defense, and stamina, together with how much focused effort they put in on that game.
+Players compete either individually or as a team.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Mia beat Jonah.
+In the second game, Mia, Leo, Priya, and Noah beat Jonah, Zara, Ethan, and Kai.
+In the third game, Leo, Zara, Kai, and Mia beat Jonah, Priya, Ethan, and Noah.
+In the fourth game, Ethan beat Jonah.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jonah ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Zara put into the third game?
+Query 3: In a new game later this same day between Mia, Zara, Kai, and Priya (Team 1) and Jonah, Leo, Ethan, and Noah (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Ethan and Mia (Team 1) and Jonah and Kai (Team 2), who would win and by how much?
+<END_SCENARIO>

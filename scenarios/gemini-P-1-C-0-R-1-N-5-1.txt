@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Handball games. Each team consists of 7 athletes. In each game, the team that wins depends on the average throwing power and defensive coordination of the athletes, based on their intrinsic ability modulated by other factors including how much effort they put into that game.
+Athletes compete in fixed teams.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the Tigers beat the Lions (the team containing Jaden).
+In the second game, the Bears beat the Lions (the team containing Jaden).
+In the third game, the Tigers lost to the Bears.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jaden ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think the Bears put into the third game?
+Query 3: In a new game later this same day between the Lions (Team 1) and the Bears (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between the Tigers (Team 1) and the Bears (Team 2), who would win and by how much?
+<END_SCENARIO>

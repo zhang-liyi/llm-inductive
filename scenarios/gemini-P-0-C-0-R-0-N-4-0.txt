@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Volleyball matches. In each match, the team that wins depends on the collective jumping height and hitting power of the athletes, based on their intrinsic athleticism modulated by other factors including how much effort they put into that match.
+Athletes compete as a team of 6.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Kaito, Ren, Hana, Yumi, Ken, and Shin beat Taro, Jiro, Saburo, Shiro, Goro, and Roku.
+In the second match, Kaito, Ren, Taro, Jiro, Saburo, and Shiro beat Hana, Yumi, Ken, Shin, Goro, and Roku.
+In the third match, Kaito, Ren, Goro, Roku, Hana, and Yumi beat Taro, Jiro, Saburo, Shiro, Ken, and Shin.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Kaito ranks in terms of intrinsic athleticism?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Taro put into the third match?
+Query 3: In a new match later this same day between Kaito, Ren, Ken, Shin, Goro, and Roku (Team 1) and Taro, Jiro, Saburo, Shiro, Hana, and Yumi (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Hana, Yumi, Taro, Jiro, Saburo, and Shiro (Team 1) and Ken, Shin, Goro, Roku, Kaito, and Ren (Team 2), who would win and by how much?
+<END_SCENARIO>

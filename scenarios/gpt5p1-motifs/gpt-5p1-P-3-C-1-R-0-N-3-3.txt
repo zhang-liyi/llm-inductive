@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee games. Each game’s winner is determined by the players’ intrinsic Ultimate abilities (throwing accuracy, catching, speed, and field awareness) combined with how much effort they put into that particular game.
+Athletes compete either individually (1-on-1 throwing contests) or in teams of 5.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Leo, Ava, Ben, Cara, and Dylan lost to Ella, Finn, Gia, Hank, and Iris.
+In the second game, Leo, Ella, Finn, Jack, and Kara lost to Ava, Ben, Dylan, Gia, and Hank.
+In the third game, Leo, Ava, Finn, Liam, and Maya beat Ben, Cara, Dylan, Ella, and Noah.
+In the fourth game, Leo, Ben, Hank, Noah, and Owen lost to Ava, Cara, Finn, Gia, and Pia.
+
+QUERIES
+Query 1: Out of 100 random Ultimate Frisbee players, where do you think Leo ranks in terms of intrinsic Ultimate ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Finn put into the third game?
+Query 3: In a new game later this same day between Leo, Ava, Finn, Liam, and Maya (Team 1) and Ben, Cara, Dylan, Ella, and Noah (Team 2), who would win and by how much?
+Query 4: In a new 1-on-1 throwing accuracy contest later this same day between Leo and Ava, who would win and by how much?
+<END_SCENARIO>

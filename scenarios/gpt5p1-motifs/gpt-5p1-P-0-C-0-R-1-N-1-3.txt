@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in team table tennis matches. Each team has three players, and the overall team result depends on the players’ intrinsic reaction speed, spin control, and consistency, along with how much effort they put into each match they play.
+Players compete only in fixed three-player teams.
+All matches take place on the same day.
+
+CONDITIONS
+In the first team match, Lin, Mei, and Zhen beat Aria, Nikhil, and Jonas.  
+In the second team match, Lin, Mei, and Zhen beat Carlos, Dimitri, and Pavel.  
+In the third team match, Aria, Nikhil, and Jonas beat Carlos, Dimitri, and Pavel.
+
+QUERIES
+Query 1: Out of 100 random table tennis players, where do you think Lin ranks in terms of intrinsic table tennis ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jonas put into the third team match?  
+Query 3: In a new team match later this same day between Lin, Mei, and Zhen (Team 1) and Aria, Nikhil, and Jonas (Team 2), who would win and by how much?  
+Query 4: In a new team match later this same day between Carlos, Dimitri, and Pavel (Team 1) and a new team of Felix, Omar, and Luca (Team 2), who would win and by how much?  
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a series of 5‑a‑side soccer matches and penalty contests. The result of each match depends on players’ intrinsic soccer abilities (first touch, vision, speed, and finishing) combined with how much effort they put into that specific match.
+Players compete either individually or in 5‑player teams.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Marco, Diego, Luis, Omar, and Felix lost to Ivan, Nico, Raul, Sergio, and Tomas.
+In the second match, Marco, Diego, Luis, Omar, and Felix lost to Nico, Raul, Leo, Tomas, and Bruno.
+In a separate penalty contest, Leo beat Diego.
+In the third match, Marco, Diego, Luis, Omar, and Felix beat Ivan, Sergio, Bruno, Pablo, and Raul.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Marco ranks in terms of intrinsic soccer ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Leo put into the penalty contest?
+Query 3: In a new match later this same day between Marco, Diego, Luis, Omar, and Felix (Team 1) and Ivan, Nico, Leo, Bruno, and Pablo (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Raul, Sergio, Tomas, Bruno, and Pablo (Team 1) and Diego, Luis, Nico, Leo, and Tomas (Team 2), who would win and by how much?
+<END_SCENARIO>

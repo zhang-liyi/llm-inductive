@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of ultimate frisbee games. In each game, the team that wins depends on the players’ intrinsic ultimate ability (throwing accuracy, catching, cutting speed, endurance) combined with how much effort they put in that game.
+Players compete either individually (for example in throwing accuracy contests) or in teams of 6.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Dante, Ava, Colin, Elise, Harper, and Jonah beat Max, Ruby, Finn, Stella, Ian, and Nora.
+In the second game, Dante, Ava, Colin, Elise, Harper, and Jonah beat Zoe, Caleb, Mira, Lucas, Paige, and Trent.
+In the third game, Max, Ruby, Zoe, Caleb, Mira, and Lucas beat Finn, Stella, Ian, Nora, Paige, and Trent.
+Later that day, Dante beat Max.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Dante ranks in terms of intrinsic ultimate ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Max put into the third game?
+Query 3: In a new game later this same day between Dante, Ava, Colin, Elise, Harper, and Jonah (Team 1) and Max, Ruby, Zoe, Caleb, Mira, and Lucas (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Ava, Max, Finn, Stella, Ian, and Paige (Team 1) and Ruby, Zoe, Nora, Caleb, Lucas, and Trent (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, fencers are competing in a series of bouts. The winner of a bout is determined by how effectively they land valid touches, which depends on their intrinsic fencing skill, including speed and timing, modulated by how much effort and focus they put into that bout.
+Fencers compete only individually.
+All bouts take place on the same day.
+
+CONDITIONS
+In the first bout, Mara beat Liam.
+In the second bout, Liam beat Noah.
+In the third bout, Mara beat Noah.
+
+QUERIES
+Query 1: Out of 100 random fencers, where do you think Mara ranks in terms of intrinsic fencing skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the second bout?
+Query 3: In a new bout later this same day between Mara and Liam, who would win and by how much?
+Query 4: In a new bout later this same day between Noah and Liam, who would win and by how much?
+<END_SCENARIO>

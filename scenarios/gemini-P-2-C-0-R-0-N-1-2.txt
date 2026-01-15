@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of small-sided soccer matches. In each match, the team that wins depends on the average ball control and tactical awareness of the athletes, based on their intrinsic skill modulated by other factors including how much effort they put into that match.
+Athletes compete either individually or as a team of three.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Lionel beat Cristiano.
+In the second match, Lionel, Neymar, and Luis beat Cristiano, Kylian, and Luka.
+In the third match, Lionel, Neymar, and Luis lost to Kylian, Luka, and Kevin.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Lionel ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Luis put into the third match?
+Query 3: In a new match later this same day between Lionel, Neymar, and Luis (Team 1) and Cristiano, Kevin, and Erling (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Cristiano, Kylian, and Erling (Team 1) and Luka, Kevin, and Mohamed (Team 2), who would win and by how much?
+<END_SCENARIO>

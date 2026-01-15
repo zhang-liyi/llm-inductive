@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of beach volleyball matches. In each match, the result depends on the players’ intrinsic volleyball skills (serving, passing, attacking, blocking) combined with how much focused effort they put into that specific match.  
+Matches are mostly played 2-on-2. All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Lena and Maja lost to Zoe and Quinn.  
+In the second match, Lena and Zoe lost to Maja and Noor.  
+In the third match, Lena and Noor beat Quinn and Ivy.  
+In the fourth match, Lena and Ivy lost to Zoe and Maja.
+
+QUERIES  
+Query 1: Out of 100 random beach volleyball players, where do you think Lena ranks in terms of intrinsic skill?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Zoe put into the second match?  
+Query 3: In a new match later this same day between Lena and Zoe (Team 1) and Quinn and Noor (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Lena and Maja (Team 1) and Ivy and Noor (Team 2), who would win and by how much?
+<END_SCENARIO>

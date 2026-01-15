@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 3-on-3 basketball games. In each game, the team that wins depends on the total points scored, which is determined by the shooting accuracy and defensive agility of the players, based on their intrinsic skill modulated by how much effort they put into that specific game.
+Athletes compete as a team of three.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Marcus, Lucas, and John beat Kobe, Shaquille, and Pau.
+In the second game, Marcus, Lucas, and John beat Kobe, LeBron, and Dwyane.
+In the third game, Marcus, Lucas, and John beat Shaquille, LeBron, and Pau.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Marcus ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Kobe put into the second game?
+Query 3: In a new game later this same day between Marcus, Lucas, and John (Team 1) and LeBron, Shaquille, and Dwyane (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Kobe, Lucas, and Pau (Team 1) and Marcus, LeBron, and Shaquille (Team 2), who would win and by how much?
+<END_SCENARIO>

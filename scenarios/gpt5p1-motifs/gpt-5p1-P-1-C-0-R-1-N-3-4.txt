@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, three 5‑player Ultimate Frisbee teams compete on a small-sided field. For each game, the winning team is the one whose players have higher intrinsic Ultimate abilities (throwing accuracy, cutting speed, catching reliability, field awareness) and who apply more focused effort in that game. All players stay on fixed teams for the entire event.
+Team Sky: Alice, Ben, Cara, Devon, Elise.
+Team Orbit: Felix, Grace, Henry, Isla, Jonah.
+Team Delta: Hugo, Kira, Lana, Milo, Nora.
+Hugo always plays on Team Delta.
+
+CONDITIONS
+In the first game, Sky beat Delta.
+In the second game, Orbit beat Delta.
+In the third game, Orbit beat Sky.
+
+QUERIES
+Query 1: Out of 100 random Ultimate Frisbee players, where do you think Felix ranks in terms of intrinsic Ultimate ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Hugo put into the first game?
+Query 3: In a new game later this same day between Sky and Delta, who would win and by how much?
+Query 4: In a new game later this same day between Orbit and Delta, who would win and by how much?
+<END_SCENARIO>

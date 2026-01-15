@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of short rugby sevens matches. Performance in each match depends on the players’ intrinsic speed, strength, and agility, modulated by how much effort they put in during that match.
+Athletes compete either individually in skills drills or as part of a 7‑player team.
+All matches take place on the same day.
+
+CONDITIONS
+In the first drill, Lena lost to Nina.
+In the second match, Omar, Josh, Nina, Carlos, Mei, Victor, and Hannah beat Lena, Samir, Zoe, Diego, Priya, Leo, and Tessa.
+In the third match, Samir, Zoe, Diego, Priya, Leo, Tessa, and Arjun beat Lena, Omar, Josh, Nina, Carlos, Mei, and Victor.
+In the fourth match, Lena, Hannah, Samir, Zoe, Diego, Priya, and Leo beat Omar, Josh, Nina, Carlos, Mei, Victor, and Arjun.
+
+QUERIES
+Query 1: Out of 100 random rugby sevens players, where do you think Lena ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Omar put into the second match?
+Query 3: In a new match later this same day between Lena, Omar, Josh, Nina, Carlos, Mei, and Victor (Team 1) and Samir, Zoe, Diego, Priya, Leo, and Tessa plus Arjun (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Lena, Hannah, Victor, Samir, Zoe, Diego, and Priya (Team 1) and Nina, Carlos, Mei, Leo, Tessa, Arjun, and Josh (Team 2), who would win and by how much?
+<END_SCENARIO>

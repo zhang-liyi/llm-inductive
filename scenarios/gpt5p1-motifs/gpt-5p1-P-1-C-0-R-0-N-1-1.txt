@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of small-sided soccer matches. Most matches are 3-on-3 on a short field, with an occasional 1-on-1 matchup. In each match, the result depends on the players’ intrinsic soccer ability and how much effort they put into that specific match.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Diego beat Luca.
+In the second match, Maya, Felix, and Tara lost to Luca, Sara, and Ben.
+In the third match, Maya, Felix, and Tara lost to Diego, Ben, and Noor.
+
+QUERIES
+Query 1: Out of 100 random soccer players at this event, where do you think Maya ranks in terms of intrinsic soccer ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Felix put into the third match?
+Query 3: In a new match later this same day between Diego, Luca, and Sara (Team 1) and Maya, Felix, and Tara (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Ben, Noor, and Hana (Team 1) and Tara, Zoe, and Luca (Team 2), who would win and by how much?
+<END_SCENARIO>

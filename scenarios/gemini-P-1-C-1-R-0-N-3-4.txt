@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Handball matches. In each match, the team that wins depends on the throwing power and defensive agility the athletes are able to sustain, based on their intrinsic physical capability modulated by other factors including how much effort they put in to that match.
+Athletes compete as a team of 5.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Hansen, Karabatic, Sagosen, Duvnjak, and Gensheimer beat Palmarsson, Cindric, Mem, Fabregas, and Lucas.
+In the second match, Landin, Wolff, Perez, Gomez, and Entrerrios beat Richardson, Remili, Lagarde, Porte, and Lucas.
+In the third match, Lucas, Abalo, Guigou, Sorhaindo, and Narcisse lost to Hansen, Karabatic, Landin, Wolff, and Sagosen.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Lucas ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Lucas put into the third match?
+Query 3: In a new match later this same day between Hansen, Karabatic, Sagosen, Landin, and Wolff (Team 1) and Palmarsson, Cindric, Mem, Fabregas, and Richardson (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Lucas, Remili, Lagarde, Porte, and Abalo (Team 1) and Duvnjak, Gensheimer, Perez, Gomez, and Entrerrios (Team 2), who would win and by how much?
+<END_SCENARIO>

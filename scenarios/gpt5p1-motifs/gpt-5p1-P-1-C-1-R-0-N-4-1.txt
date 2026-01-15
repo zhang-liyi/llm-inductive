@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of small‑sided soccer matches. In each match, the winning team is the one whose overall performance, determined by players’ intrinsic soccer skill and how much effort they put in, is better. 
+All matches are 6‑a‑side.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Priya, Omar, Lucas, Nina, Jade, and Felix lost to Hannah, Mateo, Zara, Colin, Yasmin, and Theo.
+In the second match, Priya, Hannah, Colin, Jade, Yasmin, and Theo lost to Omar, Lucas, Nina, Felix, Zara, and Mateo.
+In the third match, Omar, Hannah, Lucas, Nina, Zara, and Colin beat Felix, Jade, Mateo, Yasmin, Theo, and Leo.
+In the fourth match, Priya, Zara, Felix, Nina, Colin, and Leo lost to Omar, Hannah, Lucas, Jade, Mateo, and Yasmin.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Priya ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Omar put into the third match?
+Query 3: In a new match later this same day between Priya, Omar, Lucas, Jade, Zara, and Theo (Team 1) and Hannah, Nina, Felix, Mateo, Colin, and Yasmin (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Priya, Hannah, Nina, Mateo, Zara, and Leo (Team 1) and Omar, Lucas, Felix, Colin, Yasmin, and Theo (Team 2), who would win and by how much?
+<END_SCENARIO>

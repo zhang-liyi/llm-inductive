@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of rugby sevens matches. Each match is decided by the combined intrinsic rugby ability of the players (speed, tackling, ball‑handling, vision) and the level of effort they give in that match.
+All matches take place on the same day.
+Lineups change between matches, but Lachlan always plays with the same six teammates.
+
+CONDITIONS
+In the first match, Lachlan, Angus, Finn, Rory, Callum, Sean, and Toby beat Marcus, Neil, Fraser, Dylan, Scott, Ewan, and Jace.
+In the second match, Lachlan, Angus, Finn, Rory, Callum, Sean, and Toby beat Lewis, Harry, Owen, Blake, Declan, Rhys, and Joel.
+In the third match, Marcus, Lewis, Fraser, Harry, Scott, Declan, and Rhys beat Neil, Owen, Dylan, Blake, Ewan, Jace, and Joel.
+
+QUERIES
+Query 1: Out of 100 random rugby sevens players, where do you think Lachlan ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Marcus put into the third match?
+Query 3: In a new match later this same day between Lachlan, Angus, Finn, Rory, Callum, Sean, and Toby (Team 1) and Marcus, Lewis, Fraser, Harry, Scott, Declan, and Rhys (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Marcus, Neil, Fraser, Dylan, Scott, Ewan, and Jace (Team 1) and Lewis, Harry, Owen, Blake, Declan, Rhys, and Joel (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a series of 4-on-4 half-court basketball games. In each game, the team that wins depends on the players’ intrinsic basketball skill (such as shooting accuracy, ball-handling, and defensive ability) combined with how much effort they put in during that game.
+All games are played on the same day.
+Each player belongs to a fixed team of four.
+
+CONDITIONS
+In the first game, Jordan’s team (Jordan, Amir, Leo, and Dante) beat Chris’s team (Chris, Nolan, Victor, and Sam).
+In the second game, Jordan’s team beat Tyler’s team (Tyler, Ben, Omar, and Felix).
+In the third game, Chris’s team beat Tyler’s team.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Jordan ranks in terms of intrinsic basketball skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Chris put into the third game?
+Query 3: In a new game later this same day between Jordan’s team and Chris’s team, who would win and by how much?
+Query 4: In a new game later this same day between Chris’s team and Tyler’s team, who would win and by how much?
+<END_SCENARIO>

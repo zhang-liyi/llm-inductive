@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a short-format Cricket tournament where teams consist of 8 players. In each match, the team that wins depends on the run-scoring and wicket-taking abilities of the athletes, based on their intrinsic talent modulated by other factors including how much effort they put into that match.
+Players compete in fixed teams.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Arjun's XI lost to the Royals.
+In the second match, Arjun's XI lost to the Titans.
+In the third match, Arjun's XI beat the Challengers.
+
+QUERIES
+Query 1: Out of 100 random cricketers, where do you think Arjun ranks in terms of intrinsic talent?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think the Royals put into the first match?
+Query 3: In a new match later this same day between Arjun's XI (Team 1) and the Titans (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the Royals (Team 1) and the Challengers (Team 2), who would win and by how much?
+<END_SCENARIO>

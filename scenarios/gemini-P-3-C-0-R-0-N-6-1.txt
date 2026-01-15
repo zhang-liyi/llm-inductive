@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+Athletes are competing in short-format 8-a-side Field Hockey games. The winner is decided by the team's average stick-handling capability and speed, which stems from their intrinsic skill level adjusted by the intensity of effort they apply to the game.
+One player, Sarah, plays every game with the exact same seven teammates, while their opponents are formed by rotating other available players.
+All games are played back-to-back.
+
+CONDITIONS
+In the first game, Sarah, Amy, Bea, Cat, Deb, Eve, Fay, and Gia lost to Ivy, Jen, Kim, Liz, Mia, Noa, Pam, and Rue.
+In the second game, Sarah, Amy, Bea, Cat, Deb, Eve, Fay, and Gia lost to Ivy, Jen, Kim, Liz, Sue, Tea, Una, and Viv.
+In the third game, Sarah, Amy, Bea, Cat, Deb, Eve, Fay, and Gia beat Sue, Tea, Una, Viv, Wyn, Zoe, Ann, and Dot.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Sarah ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ivy put into the first game?
+Query 3: In a new game later this same day between Sarah, Amy, Bea, Cat, Deb, Eve, Fay, and Gia (Team 1) and Ivy, Jen, Kim, Liz, Mia, Noa, Pam, and Rue (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Sue, Tea, Una, Viv, Wyn, Zoe, Ann, and Dot (Team 1) and Ivy, Jen, Kim, Liz, Mia, Noa, Pam, and Rue (Team 2), who would win and by how much?
+<END_SCENARIO>

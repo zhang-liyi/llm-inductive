@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this competition, athletes play Field Hockey in an 8-a-side format. The winner is the team that scores the most goals, a result of the players' intrinsic stick skills and speed, modulated by the effort they put into the match.
+The teams (Eagles, Hawks, Falcons) are fixed units, but Zoe is a designated "floater" who plays for different teams in specific rounds.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, the Eagles (with Zoe) beat the Hawks.
+In the second match, the Falcons (with Zoe) beat the Hawks.
+In the third match, the Falcons (with Zoe) lost to the Eagles.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Zoe ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think the Eagles put into the third match?
+Query 3: In a new match later this same day between the Eagles (with Zoe) and the Falcons (without Zoe), who would win and by how much?
+Query 4: In a new match later this same day between the Hawks (with Zoe) and the Falcons (without Zoe), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are taking part in a series of 9‑a‑side field hockey matches. The winning team in each match is determined by the players’ intrinsic field hockey ability (such as speed, stick skills, and spatial awareness) along with how much effort they put into that match.  
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Bianca, Caleb, Diana, Ethan, Fiona, Gabriel, Hazel, Isaac, and Jordan lost to Kara, Liam, Maya, Nolan, Olivia, Parker, Quinn, Riley, and Sofia.  
+In the second match, Bianca, Caleb, Diana, Ethan, Fiona, Gabriel, Hazel, Isaac, and Jordan lost to Liam, Maya, Nolan, Olivia, Parker, Quinn, Riley, Sofia, and Toby.  
+In the third match, Bianca, Caleb, Diana, Ethan, Fiona, Gabriel, Hazel, Isaac, and Jordan beat Kara, Liam, Maya, Nolan, Olivia, Parker, Quinn, Riley, and Toby.  
+In a later match without Bianca, Caleb, Diana, Ethan, Fiona, Gabriel, Hazel, Isaac, Jordan, and Kara beat Liam, Maya, Nolan, Olivia, Parker, Quinn, Riley, Sofia, and Uma.
+
+QUERIES
+Query 1: Out of 100 random field hockey players, where do you think Bianca ranks in terms of intrinsic field hockey ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the second match?  
+Query 3: In a new match later this same day between Bianca, Caleb, Diana, Ethan, Fiona, Gabriel, Hazel, Isaac, and Jordan (Team 1) and Kara, Liam, Maya, Nolan, Olivia, Parker, Quinn, Riley, and Uma (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Caleb, Kara, Diana, Ethan, Fiona, Gabriel, Hazel, Isaac, and Jordan (Team 1) and Liam, Maya, Nolan, Olivia, Parker, Quinn, Riley, Sofia, and Toby (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the players are competing in a series of small-sided soccer games (6 players per team). The team that wins each game depends on the players’ intrinsic soccer ability (technical skill, speed, endurance) and how much effort they choose to put in during that game. All games take place on the same day.
+
+CONDITIONS  
+In the first game, Lena, Diego, Mia, Sam, Omar, and Zoe beat Jordan, Priya, Ethan, Noor, Felix, and Hana.  
+In the second game, Lena, Jordan, Priya, Ethan, Sam, and Noor beat Diego, Mia, Omar, Zoe, Felix, and Hana.  
+In the third game, Lena lost to Diego.  
+In the fourth game, Lena, Mia, Felix, Hana, Luca, and Omar beat Jordan, Priya, Ethan, Sam, Noor, and Zoe.
+
+QUERIES  
+Query 1: Out of 100 random soccer players, where do you think Lena ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Diego put into the third game?  
+Query 3: In a new game later this same day between Lena, Diego, Priya, Felix, Noor, and Zoe (Team 1) and Jordan, Mia, Sam, Ethan, Hana, and Luca (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Diego, Jordan, Omar, Ethan, Hana, and Luca (Team 1) and Mia, Priya, Sam, Noor, Felix, and Zoe (Team 2), who would win and by how much?  
+<END_SCENARIO>

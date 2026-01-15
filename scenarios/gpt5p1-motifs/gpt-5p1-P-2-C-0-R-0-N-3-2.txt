@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in indoor volleyball using 5-player teams, along with occasional 1-on-1 serving and hitting contests. Match outcomes depend on players’ intrinsic volleyball ability—such as vertical jump, coordination, and ball control—modulated by how much focus and physical effort they put into each rally and each match.
+All contests are played on the same day.
+
+CONDITIONS
+In the first contest, Lena beat Mia.
+In the second match, Lena, Arun, Bella, Chris, and Dana beat Mia, Igor, Nia, Paolo, and Quinn.
+In the third match, Lena, Arun, Bella, Chris, and Dana lost to Nia, Paolo, Quinn, Igor, and Rosa.
+In the fourth match, Mia, Arun, Quinn, Tyler, and Rosa beat Bella, Dana, Igor, Nia, and Paolo.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Lena ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Nia put into the third match?
+Query 3: In a new match later this same day between Lena, Arun, Bella, Chris, and Dana (Team 1) and Mia, Nia, Paolo, Quinn, and Tyler (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Igor, Rosa, Tyler, Bella, and Quinn (Team 1) and Mia, Arun, Dana, Paolo, and Chris (Team 2), who would win and by how much?
+<END_SCENARIO>

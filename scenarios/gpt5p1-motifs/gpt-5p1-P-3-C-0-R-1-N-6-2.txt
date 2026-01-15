@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a day-long indoor volleyball meet. Each volleyball team has exactly 8 fixed players who remain together throughout the event.
+Match outcomes depend on the players’ intrinsic volleyball skills and how much effort and intensity they bring to each rally and set.
+All matches occur on the same day.
+Hiro is on Team Tide in every match he plays.
+
+CONDITIONS
+In the first match, Team Blaze beat Team Tide.
+In the second match, Team Summit beat Team Tide.
+In the third match, Team Tide beat Team Blaze.
+In the fourth match, Team Summit beat Team Blaze.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Hiro ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Lina from Team Summit put into the second match?
+Query 3: In a new match later this same day between Team Tide and Team Summit, who would win and by how much?
+Query 4: In a new match later this same day between Team Blaze and Team Tide, who would win and by how much?
+<END_SCENARIO>

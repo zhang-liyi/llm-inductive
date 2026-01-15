@@ -1,0 +1,206 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  /////////////////////////////////////////////////////////
+  // BACKGROUND KNOWLEDGE / LATENT ATHLETE PROPERTIES
+  /////////////////////////////////////////////////////////
+
+  // Intrinsic endurance: 0–100 scale (higher = can sustain high work rate longer).
+  var intrinsic_endurance = mem(function({athlete}) {
+    var mean_endurance = 55;   // population mean endurance ~55/100
+    var sd_endurance = 15;     // population SD ~15 points
+    return Math.min(Math.max(gaussian(mean_endurance, sd_endurance), 0), 100);
+  });
+
+  // Intrinsic stick skills: 0–100 scale (higher = better ball control/passing/shooting).
+  var intrinsic_stick_skill = mem(function({athlete}) {
+    var mean_skill = 55;
+    var sd_skill = 15;
+    return Math.min(Math.max(gaussian(mean_skill, sd_skill), 0), 100);
+  });
+
+  // Intrinsic spatial awareness: 0–100 scale (higher = better positioning / reading play).
+  var intrinsic_spatial_awareness = mem(function({athlete}) {
+    var mean_awareness = 55;
+    var sd_awareness = 15;
+    return Math.min(Math.max(gaussian(mean_awareness, sd_awareness), 0), 100);
+  });
+
+  // Intrinsic strength: 0–100 scale (higher = more powerful physically).
+  // Correlated with endurance (stronger players tend to have somewhat higher endurance).
+  var intrinsic_strength = mem(function({athlete}) {
+    var base_strength = gaussian(50, 15); // baseline strength component
+    var endurance = intrinsic_endurance({athlete: athlete});
+    var strength_mean = 0.6 * endurance + 0.4 * base_strength;
+    var strength_sd = 10;
+    return Math.min(Math.max(gaussian(strength_mean, strength_sd), 0), 100);
+  });
+
+  // Overall intrinsic field hockey ability: 0–100 scale, combining endurance, skills, awareness.
+  var intrinsic_overall_field_hockey_ability = mem(function({athlete}) {
+    var endurance = intrinsic_endurance({athlete: athlete});
+    var stick = intrinsic_stick_skill({athlete: athlete});
+    var awareness = intrinsic_spatial_awareness({athlete: athlete});
+
+    // Simple average, plus small noise to allow individual differences not captured by components.
+    var base = (endurance + stick + awareness) / 3;
+    var ability_sd = 5;
+    return Math.min(Math.max(gaussian(base, ability_sd), 0), 100);
+  });
+
+  /////////////////////////////////////////////////////////
+  // MATCH-SPECIFIC EFFORT AND PERFORMANCE
+  /////////////////////////////////////////////////////////
+
+  // Athlete effort in a specific match: percentage 0–100 (% of max effort).
+  var athlete_effort_in_match = mem(function({athlete, match}) {
+    // Prior over typical effort levels (low, medium, high).
+    var p_low = 0.2;
+    var p_med = 0.5;
+    var p_high = 0.3;
+
+    var low_effort_mean = 40;   // 40%
+    var med_effort_mean = 70;   // 70%
+    var high_effort_mean = 90;  // 90%
+    var effort_sd = 10;         // variability within category
+
+    var effort_center = categorical({
+      ps: [p_low, p_med, p_high],
+      vs: [low_effort_mean, med_effort_mean, high_effort_mean]
+    });
+
+    return Math.min(Math.max(gaussian(effort_center, effort_sd), 0), 100);
+  });
+
+  // Effective individual performance in a specific match (0–100 scale).
+  // Depends on intrinsic overall ability and that match's effort.
+  var athlete_effective_skill_in_match = mem(function({athlete, match}) {
+    var ability = intrinsic_overall_field_hockey_ability({athlete: athlete}); // 0–100
+    var effort_pct = athlete_effort_in_match({athlete: athlete, match: match}); // 0–100
+    var effort_fraction = effort_pct / 100;
+
+    // Base performance is intrinsic ability scaled by effort fraction.
+    var base_performance = ability * effort_fraction;
+
+    // Add small noise for game-day randomness (luck, minor issues).
+    var performance_sd = 5;
+    return Math.min(Math.max(gaussian(base_performance, performance_sd), 0), 100);
+  });
+
+  // Team effective skill in a match: sum of member effective skills.
+  // Units: arbitrary performance points (roughly 0–100 per athlete).
+  var team_effective_skill_in_match = mem(function({team, match}) {
+    return sum(map(function(player) {
+      return athlete_effective_skill_in_match({athlete: player, match: match});
+    }, team));
+  });
+
+  // Team match score: team effective skill + additional match-level noise.
+  // Units: performance score (arbitrary scale, comparable between teams).
+  var team_match_score = mem(function({team, match}) {
+    var eff = team_effective_skill_in_match({team: team, match: match});
+    var noise_sd = 10; // match-level randomness (offsides, lucky bounces, etc.)
+    return gaussian(eff, noise_sd);
+  });
+
+  // Margin of victory in a match: team1_score - team2_score.
+  // Positive margin => team1 wins; negative => team2 wins.
+  var margin_of_victory_in_match = function({team1, team2, match}) {
+    var score1 = team_match_score({team: team1, match: match});
+    var score2 = team_match_score({team: team2, match: match});
+    return score1 - score2;
+  };
+
+  /////////////////////////////////////////////////////////
+  // OUTCOME RELATIONS
+  /////////////////////////////////////////////////////////
+
+  // Team1 beats Team2 in a match if its score is greater.
+  var beat = function({team1, team2, match}) {
+    return margin_of_victory_in_match({team1: team1, team2: team2, match: match}) > 0;
+  };
+
+  /////////////////////////////////////////////////////////
+  // QUERY HELPERS
+  /////////////////////////////////////////////////////////
+
+  // Intrinsic strength ranking out of N athletes:
+  // number of random other athletes this athlete is stronger than.
+  var intrinsic_strength_rank = function({athlete, out_of_n_athletes}) {
+    // Generate out_of_n_athletes - 1 random athlete IDs from population prior.
+    var random_athlete_ids = mapN(function(x) { return uniform(0, 10000); },
+                                  out_of_n_athletes - 1);
+
+    return sum(map(function(random_id) {
+      return intrinsic_strength({athlete: athlete}) >
+             intrinsic_strength({athlete: random_id});
+    }, random_athlete_ids));
+  };
+
+  // Effort percentage in a given match: 0–100%.
+  var effort_percentage_in_match = function({athlete, match}) {
+    return athlete_effort_in_match({athlete: athlete, match: match});
+  };
+
+  // Predict who would win and by how much (expressed as probability Team 2 wins).
+  // Return value: fraction between 0 and 1 (0 = Team 1 certain to win, 1 = Team 2 certain to win).
+  var who_would_win_by_how_much = function({team1, team2, match}) {
+    var num_future_matches_to_simulate = 100;
+    // Use new match IDs > current to represent independent future games.
+    var random_future_match_ids = mapN(function(x) { return uniform(match + 1, 1000); },
+                                       num_future_matches_to_simulate);
+
+    var simulated_wins_team2 = sum(map(function(future_match_id) {
+      var margin = margin_of_victory_in_match({
+        team1: team1,
+        team2: team2,
+        match: future_match_id
+      });
+      return margin < 0; // Team 2 wins if margin is negative
+    }, random_future_match_ids));
+
+    return simulated_wins_team2 / num_future_matches_to_simulate;
+  };
+
+  /////////////////////////////////////////////////////////
+  // CONDITIONS (OBSERVED MATCH OUTCOMES)
+  /////////////////////////////////////////////////////////
+
+  // In the first match, Ava beat Harper.
+  condition(beat({team1:['ava'], team2:['harper'], match: 1}));
+  // In the second match, Ava and Liam beat Harper and Zoe.
+  condition(beat({team1:['ava', 'liam'], team2:['harper', 'zoe'], match: 2}));
+  // In the third match, Zoe and Mia beat Liam and Harper.
+  condition(beat({team1:['zoe', 'mia'], team2:['liam', 'harper'], match: 3}));
+  // In the fourth match, Mia beat Ava.
+  condition(beat({team1:['mia'], team2:['ava'], match: 4}));
+
+  /////////////////////////////////////////////////////////
+  // QUERIES
+  /////////////////////////////////////////////////////////
+
+  // Query 1: Out of 100 random field hockey athletes, where do you think Ava ranks in terms of intrinsic strength?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Harper put into the third match?
+  // Query 3: In a new match later this same day between Ava and Liam (Team 1) and Mia and Zoe (Team 2), who would win and by how much?
+  // Query 4: In a new match later this same day between Harper and Taylor (Team 1) and Liam and Zoe (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_strength_rank({athlete: 'ava', out_of_n_athletes: 100}),
+    query2: effort_percentage_in_match({athlete: 'harper', match: 3}),
+    query3: who_would_win_by_how_much({team1:['ava', 'liam'], team2:['mia', 'zoe'], match: 5}),
+    query4: who_would_win_by_how_much({team1:['harper', 'taylor'], team2:['liam', 'zoe'], match: 6})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-13.json', posterior);

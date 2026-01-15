@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in 5-on-5 Basketball games. The winning team is determined by the collective shooting accuracy and defensive capability of the five players, based on their intrinsic skill modulated by the effort they exert during the game.
+Players generally belong to fixed rosters, but substitutions occur.
+All games happen on the same weekend.
+
+CONDITIONS
+In the first game, The Titans (Aaron, Bob, Carl, Dave, and Evan) beat The Giants (Frank, Greg, Hank, Ian, and John).
+In the second game, The Giants beat The Titans (with Rory replacing Aaron).
+In the third game, The Titans beat The Giants (with Rory replacing Frank).
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Rory ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Aaron put into the first game?
+Query 3: In a new game later this same day between The Titans (with Rory replacing Evan) and The Giants, who would win and by how much?
+Query 4: In a new game later this same day between The Giants (with Rory replacing Ian) and The Titans (with Rory replacing Bob), who would win and by how much?
+<END_SCENARIO>

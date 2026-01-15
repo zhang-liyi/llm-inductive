@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in indoor field hockey games. In each game, the winner is determined by the tactical speed and stick-work of the six players on the court, based on their intrinsic skill level modulated by the physical effort they exert during play.
+Athletes compete in teams of six.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Team Alpha beat Team Omega (featuring Hugo, Victor, Charles, Henry, Louis, and George).
+In the second game, Team Beta beat Team Omega (featuring Hugo, Victor, Charles, Henry, Louis, and George).
+In the third game, Team Omega (featuring Hugo, Victor, Charles, Henry, Louis, and George) lost to Team Gamma.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Hugo ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Team Gamma put into the third game?
+Query 3: In a new game later this same day between Team Alpha (Team 1) and Team Omega (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Team Beta (Team 1) and Team Gamma (Team 2), who would win and by how much?
+<END_SCENARIO>

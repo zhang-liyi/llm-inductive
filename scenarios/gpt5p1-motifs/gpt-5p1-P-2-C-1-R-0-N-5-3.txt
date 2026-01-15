@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the players are taking part in a series of 7-a-side soccer matches. Results depend mainly on each player’s intrinsic ball control, speed, and endurance, as well as how much effort they put into each match.  
+All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Connor, Daniel, Ethan, Felix, Gabriel, Hugo, and Isaac beat Jacob, Kevin, Liam, Marco, Noah, Owen, and Pablo.  
+In the second match, Connor, Jacob, Kevin, Felix, Liam, Noah, and Quinn beat Daniel, Ethan, Gabriel, Hugo, Isaac, Marco, and Ryan.  
+In the third match, Ethan, Felix, Gabriel, Hugo, Isaac, Marco, and Connor beat Jacob, Kevin, Liam, Noah, Owen, Pablo, and Ryan.  
+In a later small-sided match, Connor, Owen, Pablo, Ryan, Stefan, Toby, and Marco lost to Daniel, Ethan, Felix, Gabriel, Hugo, Isaac, and Kevin.
+
+QUERIES  
+Query 1: Out of 100 random soccer players, where do you think Connor ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Noah put into the second match?  
+Query 3: In a new match later this same day between Connor, Daniel, Ethan, Felix, Jacob, Liam, and Owen (Team 1) and Gabriel, Hugo, Isaac, Kevin, Marco, Noah, and Pablo (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Connor, Gabriel, Hugo, Isaac, Quinn, Ryan, and Stefan (Team 1) and Daniel, Ethan, Felix, Jacob, Kevin, Liam, and Toby (Team 2), who would win and by how much?  
+<END_SCENARIO>

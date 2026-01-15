@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the rowers are competing in quad scull races (4 rowers per boat), with occasional individual time trials in single sculls. In each race, the result depends on the rowers’ intrinsic power and rowing technique, combined with how much effort they apply during that race.
+Rowers either compete in fixed 4-person crews or individually.
+
+CONDITIONS
+Team Wave (Lara, Brooke, Dana, Quinn) beat Team Tide (Clara, Erin, Holly, Paige) in the first race.
+Team Current (Ivy, Megan, Zoe, Ruth) beat Team Tide (Clara, Erin, Holly, Paige) in the second race.
+Team Wave (Lara, Brooke, Dana, Quinn) beat Team Current (Ivy, Megan, Zoe, Ruth) in the third race.
+In a single-scull time trial, Lara beat Ivy.
+
+QUERIES
+Query 1: Out of 100 random rowers, where do you think Lara ranks in terms of intrinsic rowing strength and technique?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Erin put into the second race?
+Query 3: In a new quad race later this same day between Team Wave (Lara, Brooke, Dana, Quinn) and Team Tide (Clara, Erin, Holly, Paige), who would win and by how much?
+Query 4: In a new quad race later this same day between Team Current (Ivy, Megan, Zoe, Ruth) and Team Tide (Clara, Erin, Holly, Paige), who would win and by how much?
+<END_SCENARIO>

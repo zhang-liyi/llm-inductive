@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of tag-style rugby games and individual tackling duels. The result of each contest is determined by intrinsic rugby qualities (such as strength, acceleration, and balance) and how much effort each player applies during that specific contest.
+Athletes compete either individually or in teams of 6.
+All contests take place on the same day.
+
+CONDITIONS
+In the first game, Team Storm (Sophie, Hannah, Claire, Megan, Jodie, Freya) beat Team Boulder (Kate, Laura, Rachel, Brooke, Tessa, Erin).
+In the second game, Team Storm beat Team Thunder (Naomi, Amber, Carly, Sienna, Jade, Millie).
+In the third contest, an individual tackling duel, Sophie lost to Kate.
+
+QUERIES
+Query 1: Out of 100 random rugby players, where do you think Sophie ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Kate put into the third contest?
+Query 3: In a new 6-on-6 rugby game later this same day between Team Storm and Team Boulder, who would win and by how much?
+Query 4: In a new 6-on-6 rugby game later this same day between Team Storm and Team Thunder, who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a Rugby Sevens tournament. In each match, the team that wins depends on the combined speed and physicality of the players, based on their intrinsic strength modulated by other factors including how much effort they put into that specific match.
+Athletes compete in teams of 7.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, the team of Jared, Kian, Leo, Max, Ned, Oli, and Pete lost to the team of Quinn, Ray, Steve, Tim, Uri, Van, and Wes.
+In the second match, the team of Jared, Kian, Leo, Max, Ned, Oli, and Pete lost to the team of Quinn, Ray, Steve, Xander, Yan, Zeke, and Ash.
+In the third match, the team of Jared, Kian, Leo, Max, Ned, Oli, and Pete beat the team of Tim, Uri, Van, Xander, Yan, Zeke, and Ash.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jared ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jared put into the third match?
+Query 3: In a new match later this same day between the team of Jared, Kian, Leo, Max, Ned, Oli, and Pete (Team 1) and the team of Quinn, Ray, Steve, Tim, Uri, Van, and Wes (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the team of Tim, Uri, Van, Xander, Yan, Zeke, and Ash (Team 1) and the team of Jared, Kian, Leo, Max, Ned, Oli, and Pete (Team 2), who would win and by how much?
+<END_SCENARIO>

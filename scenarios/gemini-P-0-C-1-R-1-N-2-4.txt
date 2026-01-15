@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of cross-country skiing relays (4x10km). In each race, the team that wins depends on the average speed with which the athletes are able to ski, based on their intrinsic endurance modulated by other factors including how much effort they put in to that race.
+Athletes compete as a team of four.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Avery, Jon, Ray, and Ted beat Wes, Sal, Moe, and Ned.
+In the second race, Avery, Wes, Sal, and Moe beat Jon, Ray, Ted, and Ned.
+In the third race, Avery, Jon, Ray, and Wes beat Ned, Sal, Moe, and Ted.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Avery ranks in terms of intrinsic endurance?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ned put into the second race?
+Query 3: In a new race later this same day between Avery, Jon, Ray, and Ted (Team 1) and Wes, Sal, Moe, and Ned (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Avery, Wes, Sal, and Moe (Team 1) and Jon, Ray, Ted, and Ned (Team 2), who would win and by how much?
+<END_SCENARIO>

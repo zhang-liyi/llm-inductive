@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a squash ladder. In each match, the winner is determined by movement, shot precision, and tactical choices, which depend on intrinsic ability and the effort each player puts into that match.  
+All matches are one-on-one.  
+All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Lina beat Noor.  
+In the second match, Noor beat Priya.  
+In the third match, Samir beat Lina.  
+In the fourth match, Priya beat Samir.
+
+QUERIES  
+Query 1: Out of 100 random squash players, where do you think Lina ranks in terms of intrinsic playing ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Samir put into the fourth match?  
+Query 3: In a new match later this same day between Lina and Priya, who would win and by how much?  
+Query 4: In a new match later this same day between Noor and Samir, who would win and by how much?
+<END_SCENARIO>

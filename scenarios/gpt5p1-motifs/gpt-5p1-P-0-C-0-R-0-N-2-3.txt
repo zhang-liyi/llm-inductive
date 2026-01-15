@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 2-on-2 beach volleyball games. Each game’s result is determined by the players’ intrinsic volleyball ability—such as serving, setting, hitting, and defense—combined with how much effort they put into that particular game.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Hana and Yuki beat Mia and Sara.
+In the second game, Hana and Yuki beat Leo and Niko.
+In the third game, Mia and Leo beat Sara and Niko.
+
+QUERIES
+Query 1: Out of 100 random players, where do you think Hana ranks in terms of intrinsic beach volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Niko put into the third game?
+Query 3: In a new game later this same day between Hana and Yuki (Team 1) and Mia and Leo (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Sara and Niko (Team 1) and Mia and Leo (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a beach volleyball meet with 2-player teams. The result of each match depends on the players’ intrinsic beach volleyball ability (such as serving, setting, and movement in sand) and how much effort they put into that match. Teams with higher combined intrinsic ability and match-specific effort tend to perform better.
+All matches take place on the same day.
+Players always compete in fixed pairs: Priyanka and Sam form one team, Logan and Ava form another, and Ethan and Riley form a third.
+
+CONDITIONS
+In the first match, Priyanka and Sam beat Logan and Ava.
+In the second match, Ethan and Riley beat Logan and Ava.
+In the third match, Priyanka and Sam beat Ethan and Riley.
+
+QUERIES
+Query 1: Out of 100 random beach volleyball players, where do you think Priyanka ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Logan put into the second match?
+Query 3: In a new match later this same day between Priyanka and Sam versus Logan and Ava, who would win and by how much?
+Query 4: In a new match later this same day between Ethan and Riley versus Logan and Ava, who would win and by how much?
+<END_SCENARIO>

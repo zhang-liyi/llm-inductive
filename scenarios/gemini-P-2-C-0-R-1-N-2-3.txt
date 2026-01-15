@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of sprint track relays (4x100m). In each race, the team that wins depends on the average sprinting speed and baton handling of the athletes, based on their intrinsic strength modulated by other factors including how much effort they put into that race.
+Athletes compete as a fixed team of four.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Tasha, Mel, Kim, and Dee lost to Rose, Lily, Iris, and Fern.
+In the second race, Tasha, Mel, Kim, and Dee beat Tara, Nina, Opal, and Ivy.
+In the third race, Tasha, Mel, Kim, and Dee beat Luna, Stella, Nova, and Sky.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Tasha ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Rose put into the first race?
+Query 3: In a new race later this same day between Tasha, Mel, Kim, and Dee (Team 1) and Rose, Lily, Tara, and Nina (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Iris, Fern, Opal, and Ivy (Team 1) and Luna, Stella, Nova, and Sky (Team 2), who would win and by how much?
+<END_SCENARIO>

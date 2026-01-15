@@ -1,0 +1,15 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of ultimate frisbee games. In each game, the outcome depends on players’ intrinsic ultimate frisbee ability together with how much effort they put into that game. Athletes sometimes play individually and sometimes as part of 8‑player teams.
+
+CONDITIONS
+In the first game, Hugo, Iris, Jay, Kim, Leo, Mira, Nate, and Opal beat Tariq, Alice, Ben, Cara, Dev, Ella, Finn, and Gia.
+In the second game, Tariq beat Hugo.
+In the third game, Hugo, Ben, Cara, Ella, Finn, Gia, Leo, and Quinn beat Tariq, Alice, Jay, Kim, Dev, Raya, Sam, and Tia.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Tariq ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Hugo put into the third game?
+Query 3: In a new game under the same conditions between Tariq, Alice, Raya, Sam, Tia, Dev, Finn, and Gia (Team 1) and Hugo, Iris, Jay, Kim, Leo, Mira, Nate, and Opal (Team 2), who would win and by how much?
+Query 4: In a new game under the same conditions between Tariq, Ben, Cara, Ella, Quinn, Raya, Sam, and Tia (Team 1) and Hugo, Alice, Dev, Finn, Gia, Leo, Mira, and Nate (Team 2), who would win and by how much?
+<END_SCENARIO>

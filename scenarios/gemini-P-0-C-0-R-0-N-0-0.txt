@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Beach Volleyball matches. In each match, the team that wins depends on the total points scored, which is determined by the athletes' intrinsic agility and power, modulated by other factors including how much effort they put into that specific match.
+Athletes compete as a team of two.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Kai and Noah beat Liam and Mason.
+In the second match, Kai and Noah beat Mason and Ethan.
+In the third match, Kai and Noah beat Liam and Ethan.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Kai ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the third match?
+Query 3: In a new match later this same day between Kai and Noah (Team 1) and Liam and Caleb (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Mason and Ethan (Team 1) and Noah and Owen (Team 2), who would win and by how much?
+<END_SCENARIO>

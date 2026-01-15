@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a 3-on-3 indoor volleyball tournament. In each match, the team that wins depends on the players’ intrinsic volleyball ability (including power, coordination, and reading of the play), together with how much effort they put into that specific match.
+Athletes compete either individually or as part of their fixed 3-player team.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Hannah, Julia, and Kate beat Brooke, Megan, and Tessa.
+In the second match, Hannah, Julia, and Kate beat Riley, Quinn, and Dana.
+In the third match, Brooke, Megan, and Tessa beat Riley, Quinn, and Dana.
+In the fourth match, Riley, Quinn, and Dana beat Hannah, Julia, and Kate.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Hannah ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Julia put into the fourth match?
+Query 3: In a new match later this same day between Hannah, Julia, and Kate (Team 1) and Brooke, Megan, and Tessa (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Brooke, Megan, and Tessa (Team 1) and Riley, Quinn, and Dana (Team 2), who would win and by how much?
+<END_SCENARIO>

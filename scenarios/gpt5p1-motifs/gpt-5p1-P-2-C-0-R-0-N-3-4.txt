@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in table tennis both individually and in 5-player team matches, where each team member’s games contribute to an overall result. Outcomes depend on players’ intrinsic table tennis ability—such as reaction speed, spin control, and touch—together with how much concentration and physical effort they put into that particular match.
+All matches occur on the same day.
+
+CONDITIONS
+In the first match, Mei beat Victor.
+In the second team match, Mei, Alan, Rosa, Kevin, and Yuki beat Victor, Lina, Omar, Sara, and Tomas.
+In the third team match, Mei, Alan, Rosa, Kevin, and Yuki lost to Lina, Omar, Sara, Tomas, and Jonah.
+In the fourth team match, Victor, Alan, Sara, Jonah, and Priyank beat Rosa, Kevin, Lina, Omar, and Yuki.
+
+QUERIES
+Query 1: Out of 100 random table tennis players, where do you think Mei ranks in terms of intrinsic table tennis ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Lina put into the third team match?
+Query 3: In a new team match later this same day between Mei, Alan, Rosa, Kevin, and Yuki (Team 1) and Victor, Lina, Omar, Sara, and Jonah (Team 2), who would win and by how much?
+Query 4: In a new team match later this same day between Tomas, Priyank, Kevin, Lina, and Victor (Team 1) and Mei, Alan, Rosa, Omar, and Yuki (Team 2), who would win and by how much?
+<END_SCENARIO>

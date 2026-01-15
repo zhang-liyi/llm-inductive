@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 5-on-5 ultimate frisbee games. The winning team in each game is determined by intrinsic abilities like throwing accuracy, catching reliability, cutting speed, and field awareness, combined with the level of effort players put in during that game.
+Teams are mostly stable lineups of five, except for one player, Chloe, who rotates among different teams.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Alex, Ben, Cara, Dylan, and Chloe lost to Emma, Felix, Gavin, Hannah, and Isaac.
+In the second game, Alex, Ben, Evan, Dylan, and Chloe lost to Emma, Felix, Gavin, Hannah, and Isaac.
+In the third game, Ben, Cara, Evan, Dylan, and Chloe lost to Emma, Felix, Gavin, Hannah, and Isaac.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Chloe ranks in terms of intrinsic ultimate ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Chloe put into the third game?
+Query 3: In a new game later this same day between Alex, Ben, Cara, Dylan, and Evan (Team 1) and Emma, Felix, Gavin, Hannah, and Isaac (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Ben, Cara, Evan, Dylan, and Chloe (Team 1) and Emma, Felix, Gavin, Hannah, and Julia (Team 2), who would win and by how much?
+<END_SCENARIO>

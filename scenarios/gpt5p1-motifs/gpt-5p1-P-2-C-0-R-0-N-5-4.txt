@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of handball games. For each game, the winning team is determined by the players’ intrinsic handball skills, such as shooting and defending, combined with how much effort they put into that game.
+Athletes compete either individually or in teams of seven.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Leo beat Henrik.
+In the second game, Leo, Amira, Boris, Chiara, Diego, Elin, and Farid beat Henrik, Isa, Jonas, Kasia, Laila, Malik, and Noor.
+In the third game, Leo, Amira, Boris, Chiara, Diego, Elin, and Farid lost to Henrik, Isa, Jonas, Kasia, Laila, Oskar, and Petra.
+In the fourth game, Leo, Amira, Boris, Chiara, Diego, Elin, and Farid beat Henrik, Rami, Selma, Malik, Noor, Oskar, and Tariq.
+
+QUERIES
+Query 1: Out of 100 random handball players, where do you think Leo ranks in terms of intrinsic playing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Henrik put into the third game?
+Query 3: In a new game later this same day between Leo, Amira, Boris, Chiara, Diego, Elin, and Farid (Team 1) and Henrik, Isa, Jonas, Kasia, Laila, Malik, and Noor (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Amira, Boris, Chiara, Diego, Elin, Farid, and Greta (Team 1) and Henrik, Rami, Selma, Malik, Noor, Oskar, and Petra (Team 2), who would win and by how much?
+<END_SCENARIO>

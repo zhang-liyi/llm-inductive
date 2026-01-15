@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of volleyball matches and serving contests. In each match, the team that wins is the one whose players can serve, pass, set, and spike more effectively, based on their intrinsic jumping ability, coordination, timing, and how much effort they put into that match.
+Athletes compete either individually or as a team of 9 players.
+All matches and contests take place on the same day. Most players stay on fixed 9‑player squads, but one player, Sasha, is moved between different lineups as the day goes on.
+
+CONDITIONS
+In the first match, Sasha, Nina, and seven other Waves lost to Leo, Tara, and six other Blaze players.
+In the second match, Sasha, Leo, and seven other Blaze players lost to Iris, Cole, and six other Storm players.
+In a serving‑accuracy contest later that day, Sasha beat Nina.
+In the final match, Sasha, Iris, and seven other Storm players lost to Tara, Cole, and seven other Blaze players.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Sasha ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Leo put into the second match?
+Query 3: In a new volleyball match later this same day between Sasha, Nina, and seven other Waves (Team 1) and Leo, Tara, and seven other Blaze players (Team 2), who would win and by how much?
+Query 4: In a new volleyball match later this same day between Sasha, Iris, and seven other Storm players (Team 1) and Cole, Tara, and seven other Blaze players (Team 2), who would win and by how much?
+<END_SCENARIO>

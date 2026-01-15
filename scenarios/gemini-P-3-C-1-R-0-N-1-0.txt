@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 3-on-3 basketball games. In each game, the team that wins depends on the collective shooting accuracy and defensive capability of the athletes, based on their intrinsic skill modulated by other factors including how much effort they put into that game.
+Athletes compete as a team of three.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Rohan, Steve, and Kyle lost to Mike, Dan, and Leo.
+In the second game, Rohan, Mike, and Dan lost to Steve, Kyle, and Leo.
+In the third game, Rohan, Leo, and Steve beat Mike, Dan, and Kyle.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Leo ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Rohan put into the third game?
+Query 3: In a new game later this same day between Leo, Steve, and Kyle (Team 1) and Mike, Dan, and Rohan (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Rohan, Mike, and Steve (Team 1) and Dan, Leo, and Kyle (Team 2), who would win and by how much?
+<END_SCENARIO>

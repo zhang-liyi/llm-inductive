@@ -1,0 +1,166 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  // BACKGROUND KNOWLEDGE
+  // Intrinsic badminton ability is a stable attribute of a given player (footwork, shot accuracy, tactical sense, stamina capacity).
+  // It does not change over matches on the same day.
+  // We'll model population ability as falling into rough buckets (low / average / high), then add continuous variability.
+  // Units: arbitrary "ability units" on a scale roughly centered near 100.
+  var intrinsic_ability = mem(function({player}) {
+    var parameter_low_ability_prior = 0.33;
+    var parameter_average_prior = 0.33;
+    var parameter_high_ability_prior = 0.34;
+
+    var low_ability_mean = 80;    // ability units
+    var average_ability_mean = 100;
+    var high_ability_mean = 140;
+    var parameter_intrinsic_ability_sd = 10; // ability units (std dev)
+
+    var this_player_ability_mean = categorical({
+      ps: [parameter_low_ability_prior, parameter_average_prior, parameter_high_ability_prior],
+      vs: [low_ability_mean, average_ability_mean, high_ability_mean]
+    });
+
+    // Ensure non-negative ability
+    return Math.max(gaussian(this_player_ability_mean, parameter_intrinsic_ability_sd), 0);
+  });
+
+  // Effort is match-specific and can vary from 0 to 1 (later scaled to 0–100%).
+  // Higher intrinsic ability players may on average choose slightly higher effort, but everyone varies by match.
+  var effort_in_match = mem(function({player, match}) {
+    var ability = intrinsic_ability({player: player});
+
+    // Simple dependence of the Beta prior on intrinsic ability.
+    // Higher-ability players: more mass toward higher effort.
+    var alpha =
+        ability > 130 ? 4 :
+        ability < 90  ? 2 :
+                        3;
+    var betaParam =
+        ability > 130 ? 1.5 :
+        ability < 90  ? 2.5 :
+                        2;
+
+    // Effort is between 0 and 1 (dimensionless fraction of max possible effort).
+    return beta(alpha, betaParam);
+  });
+
+  // Player's effective ability in a particular match:
+  // function of intrinsic ability, effort in that match, plus small noise.
+  // Units: ability units.
+  var player_match_effective_ability = mem(function({player, match}) {
+    var ability = intrinsic_ability({player: player});
+    var effort = effort_in_match({player: player, match: match});
+
+    // With effort=0, player performs at ~50% of intrinsic ability.
+    // With effort=1, player performs at ~100% of intrinsic ability.
+    var effective_mean = ability * (0.5 + 0.5 * effort);
+    var performance_noise_sd = 5; // ability units
+
+    return Math.max(gaussian(effective_mean, performance_noise_sd), 0);
+  });
+
+  // Team effective ability for a given match (singles or doubles).
+  // For singles, this is just that player's effective ability.
+  // For doubles, it's the mean of the two players' effective abilities plus small synergy noise.
+  // Units: ability units.
+  var team_match_effective_ability = mem(function({team, match}) {
+    var member_effectives = map(function(player) {
+      return player_match_effective_ability({player: player, match: match});
+    }, team);
+
+    var base_team_ability = listMean(member_effectives);
+    var team_synergy_noise_sd = 3; // ability units
+
+    return Math.max(gaussian(base_team_ability, team_synergy_noise_sd), 0);
+  });
+
+  // Latent "score" for a team in a given match, driven by team effective ability plus match-level randomness.
+  // Units: abstract "performance score units".
+  var team_score_in_match = mem(function({team, match}) {
+    var team_ability = team_match_effective_ability({team: team, match: match});
+    var match_variability_sd = 10; // performance units
+
+    return gaussian(team_ability, match_variability_sd);
+  });
+
+  // A team beats another team in a match if its score is higher.
+  var beat = function({team1, team2, match}) {
+    return team_score_in_match({team: team1, match: match}) >
+           team_score_in_match({team: team2, match: match});
+  };
+
+  // Intrinsic ability ranking:
+  // For a given player, how many out of N-1 random population players they are better than,
+  // based on inferred intrinsic ability.
+  var intrinsic_ability_rank = function({player, out_of_n_players}) {
+    // Generate out_of_n_players - 1 random player IDs from a generic population.
+    var random_player_ids = mapN(function(x) { return uniform(0, 1000); }, out_of_n_players - 1);
+
+    // Count how many random players this player is more skilled than.
+    return sum(map(function(random_id) {
+      return intrinsic_ability({player: player}) > intrinsic_ability({player: random_id});
+    }, random_player_ids));
+  };
+
+  // Effort percentage in a match: 0 to 100%.
+  var effort_percentage_in_match = function({player, match}) {
+    return 100 * effort_in_match({player: player, match: match});
+  };
+
+  // Predictive: who would win and by how much (expressed as probability team 2 wins).
+  // We simulate many hypothetical future matches with new match IDs and see how often team 2 wins.
+  // Return value: between 0 and 1; 0 = Team 1 almost surely wins, 1 = Team 2 almost surely wins.
+  var who_would_win_by_how_much = function({team1, team2, match}) {
+    var num_future_matches_to_simulate = 100;
+    var random_future_match_ids = mapN(function(x) {
+      return uniform(match + 1, 1000);
+    }, num_future_matches_to_simulate);
+
+    var simulated_wins_by_team2 = sum(map(function(random_match_id) {
+      // If team1 does NOT beat team2, we treat it as a team2 win (ties are extremely unlikely).
+      return beat({team1: team1, team2: team2, match: random_match_id}) ? 0 : 1;
+    }, random_future_match_ids));
+
+    return simulated_wins_by_team2 / num_future_matches_to_simulate;
+  };
+
+  // CONDITIONS
+  // In the first match, Arun beat Ben.  
+  condition(beat({team1:['arun'], team2:['ben'], match: 1}))
+
+  // In the second match, Arun and Dia beat Ben and Cara.  
+  condition(beat({team1:['arun', 'dia'], team2:['ben', 'cara'], match: 2}))
+
+  // In the third match, Ben and Eva beat Arun and Farid.  
+  condition(beat({team1:['ben', 'eva'], team2:['arun', 'farid'], match: 3}))
+
+  // In the fourth match, Cara beat Dia.  
+  condition(beat({team1:['cara'], team2:['dia'], match: 4}))
+
+  // QUERIES
+  // Query 1: Out of 100 random badminton players, where do you think Arun ranks in terms of intrinsic badminton ability?  
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ben put into the third match?  
+  // Query 3: In a new match later this same day between Arun and Cara (Team 1) and Ben and Dia (Team 2), who would win and by how much?  
+  // Query 4: In a new match later this same day between Arun and Eva (Team 1) and Ben and Farid (Team 2), who would win and by how much?  
+  return {
+    query1: intrinsic_ability_rank({player: 'arun', out_of_n_players: 100}),
+    query2: effort_percentage_in_match({player: 'ben', match: 3}),
+    query3: who_would_win_by_how_much({team1:['arun', 'cara'], team2:['ben', 'dia'], match: 5}),
+    query4: who_would_win_by_how_much({team1:['arun', 'eva'], team2:['ben', 'farid'], match: 6})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-4.json', posterior);

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the players are competing in a series of small‑sided ice hockey scrimmages. The outcome of each scrimmage depends on each skater’s intrinsic hockey skill, skating speed, and endurance, plus how much effort they put in during that scrimmage.  
+Athletes compete either individually in shooting drills or in 8‑player teams.  
+All scrimmages take place on the same day.
+
+CONDITIONS  
+In the first scrimmage, Diego, Alex, Bruno, Carlos, Emilio, Franco, Hugo, and Jorge lost to Kevin, Luis, Marco, Nico, Omar, Pablo, Raul, and Sergio.  
+In the second scrimmage, Diego, Alex, Bruno, Carlos, Emilio, Franco, Hugo, and Jorge lost to Kevin, Leo, Mateo, Nico, Oscar, Paulo, Ruben, and Tomas.  
+In the third scrimmage, Diego, Alex, Bruno, Carlos, Emilio, Franco, Hugo, and Jorge beat Andres, Beto, Cesar, Daniel, Esteban, Felix, Guillermo, and Hernan.  
+In the fourth scrimmage, Kevin, Alex, Bruno, Carlos, Emilio, Franco, Hugo, and Jorge lost to Andres, Beto, Cesar, Luis, Marco, Nico, Omar, and Pablo.
+
+QUERIES  
+Query 1: Out of 100 random ice hockey players, where do you think Diego ranks in terms of intrinsic skill?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Kevin put into the second scrimmage?  
+Query 3: In a new scrimmage later this same day between Diego, Alex, Bruno, Carlos, Emilio, Franco, Hugo, and Jorge (Team 1) and Kevin, Luis, Marco, Nico, Omar, Pablo, Raul, and Sergio (Team 2), who would win and by how much?  
+Query 4: In a new scrimmage later this same day between Kevin, Leo, Mateo, Nico, Oscar, Paulo, Ruben, and Tomas (Team 1) and Andres, Beto, Cesar, Daniel, Esteban, Felix, Guillermo, and Hernan (Team 2), who would win and by how much?
+<END_SCENARIO>

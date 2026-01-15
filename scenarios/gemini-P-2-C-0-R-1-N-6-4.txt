@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in lacrosse matches played with a modified squad size. Each team fields exactly 8 players. The outcome of the match depends on the speed and coordination of the squad, based on their intrinsic stick skills and physical conditioning, modulated by the effort they exert during play.
+Players have fixed teams and compete with the same 7 teammates in every match.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Tyrell's squad beat Evan's squad.
+In the second match, Tyrell's squad beat Lucas's squad.
+In the third match, Tyrell's squad lost to Marcus's squad.
+In the fourth match, Tyrell's squad beat Justin's squad.
+
+QUERIES
+Query 1: Out of 100 random lacrosse players, where do you think Tyrell ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Tyrell's squad put into the third match?
+Query 3: In a new match later this same day between Tyrell's squad (Team 1) and Lucas's squad (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Marcus's squad (Team 1) and Evan's squad (Team 2), who would win and by how much?
+<END_SCENARIO>

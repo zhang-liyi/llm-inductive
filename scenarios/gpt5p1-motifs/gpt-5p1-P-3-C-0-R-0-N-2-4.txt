@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of 4‑on‑4 volleyball matches. In each match, the result depends on the players’ intrinsic volleyball ability (such as jumping power, arm swing, ball control, and reaction speed) together with the effort they put in on each rally.
+Players may compete individually in serving drills or as part of a 4‑player team.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Darren, Alicia, Bruno, and Mei lost to Carla, Ivan, Noor, and Theo.
+In the second match, Darren, Alicia, Bruno, and Mei lost to Yasmin, Ivan, Noor, and Leo.
+In the third match, Darren, Alicia, Bruno, and Mei beat Carla, Yasmin, Priya, and Sam.
+In the fourth match, Darren, Alicia, Bruno, and Mei lost to Theo, Leo, Priya, and Sam.
+
+QUERIES
+Query 1: Out of 100 random recreational volleyball players, where do you think Darren ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Noor put into the second match?
+Query 3: In a new match later this same day between Darren, Alicia, Bruno, and Mei (Team 1) and Carla, Ivan, Noor, and Leo (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Theo, Yasmin, Priya, and Sam (Team 1) and Alicia, Bruno, Carla, and Leo (Team 2), who would win and by how much?
+<END_SCENARIO>

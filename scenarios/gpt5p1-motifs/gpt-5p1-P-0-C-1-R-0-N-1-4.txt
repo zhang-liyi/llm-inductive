@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of 3-on-3 indoor volleyball games. The outcome of each game depends on the players’ intrinsic volleyball ability (serving, passing, attacking, blocking, and coordination), modulated by how much effort they put in during that game.
+Players compete either individually or on 3-player teams.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Noah, Iris, and Kenji beat Pablo, Leah, and Sam.
+In the second game, Noah, Leah, and Dana beat Iris, Pablo, and Kenji.
+In the third game, Noah, Sam, and Pablo beat Leah, Dana, and Iris.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Noah ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Pablo put into the first game?
+Query 3: In a new game later this same day between Noah, Iris, and Sam (Team 1) and Kenji, Leah, and Dana (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Noah, Pablo, and Dana (Team 1) and Iris, Kenji, and Casey (Team 2), who would win and by how much?
+<END_SCENARIO>

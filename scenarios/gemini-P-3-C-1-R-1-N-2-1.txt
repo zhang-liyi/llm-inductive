@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, cyclists compete in a 4000m Team Pursuit on a track. The winner is the team that completes the distance in the shortest time, dependent on the aerodynamic efficiency and power output of the riders, based on their intrinsic cycling ability and the effort they put into the race.
+Athletes compete in teams of four.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Sarah, Tina, Uma, and Vera lost to Wendy, Xena, Yara, and Zara.
+In the second race, Sarah, Amy, Beth, and Cara lost to Dana, Ema, Fran, and Gina.
+In the third race, Sarah, Holly, Iris, and Jane beat Kate, Lisa, Mona, and Nora.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Sarah ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Wendy put into the first race?
+Query 3: In a new race later this same day between Sarah, Tina, Uma, and Vera (Team 1) and Dana, Ema, Fran, and Gina (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Wendy, Xena, Yara, and Zara (Team 1) and Kate, Lisa, Mona, and Nora (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of basketball games. In each game, the team that wins depends on the total points scored, which is a result of the athletes' intrinsic shooting and defensive skills modulated by other factors including how much effort they put into that game.
+Athletes compete in fixed teams of five.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Marcus, Jay, Dan, Phil, and Rob beat Lebron, Kev, Steph, James, and Anthony.
+In the second game, Marcus, Jay, Dan, Phil, and Rob beat Tim, Tony, Manu, Kawhi, and David.
+In the third game, Marcus, Jay, Dan, Phil, and Rob lost to Lebron, Kev, Steph, James, and Anthony.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Marcus ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Lebron put into the third game?
+Query 3: In a new game later this same day between Marcus, Jay, Dan, Phil, and Rob (Team 1) and Tim, Tony, Manu, Kawhi, and David (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Lebron, Kev, Steph, James, and Anthony (Team 1) and Tim, Tony, Manu, Kawhi, and David (Team 2), who would win and by how much?
+<END_SCENARIO>

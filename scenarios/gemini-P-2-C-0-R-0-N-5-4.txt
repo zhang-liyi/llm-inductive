@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in a series of 7-on-7 flag football games. In each game, the team that wins depends on the collective route-running and catching ability of the athletes, based on their intrinsic talent modulated by other factors including how much effort they put into that game.
+Athletes compete in teams of 7.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Dax, Eli, Fay, Gil, Hal, Ian, and Jon beat Ken, Leo, Mac, Ned, Obe, Pat, and Ray.
+In the second game, Dax, Eli, Ken, Leo, Mac, Ned, and Obe beat Sal, Tim, Uli, Van, Wes, Xab, and Ygo.
+In the third game, Dax, Eli, Sal, Tim, Uli, Van, and Wes lost to Fay, Gil, Hal, Ian, Jon, Pat, and Ray.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Dax ranks in terms of intrinsic talent?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Dax put into the third game?
+Query 3: In a new game later this same day between Team 1 (Dax, Eli, Fay, Gil, Hal, Ian, Jon) and Team 2 (Sal, Tim, Uli, Van, Wes, Xab, Ygo), who would win and by how much?
+Query 4: In a new game later this same day between Team 1 (Ken, Leo, Mac, Ned, Obe, Pat, Ray) and Team 2 (Sal, Tim, Uli, Van, Wes, Xab, Ygo), who would win and by how much?
+<END_SCENARIO>

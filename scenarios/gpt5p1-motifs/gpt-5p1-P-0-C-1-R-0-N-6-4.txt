@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the players are competing in a series of indoor volleyball scrimmages. The team that wins each scrimmage depends on the players’ intrinsic volleyball ability (such as spiking power, setting precision, blocking, and court coverage), modulated by how much effort they put into that particular game.  
+Players compete either individually in serving duels or on teams of 8.  
+All scrimmages take place on the same day.
+
+CONDITIONS  
+In the first scrimmage, Helena beat Mason.  
+In the second scrimmage, Helena, Ava, Riley, Jonah, Cole, Diana, Finn, and Paige beat Mason, Leah, Grant, Ivy, Noah, Stella, Chris, and Aaron.  
+In the third scrimmage, Helena, Leah, Grant, Ivy, Noah, Stella, Chris, and Aaron beat Ava, Riley, Jonah, Cole, Diana, Finn, Paige, and Mason.  
+In the fourth scrimmage, Helena beat Grant.
+
+QUERIES  
+Query 1: Out of 100 random volleyball players, where do you think Helena ranks in terms of intrinsic volleyball ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mason put into the third scrimmage?  
+Query 3: In a new scrimmage later this same day between Helena, Ava, Riley, Cole, Noah, Stella, Chris, and Paige (Team 1) and Mason, Leah, Grant, Ivy, Jonah, Diana, Finn, and Aaron (Team 2), who would win and by how much?  
+Query 4: In a new scrimmage later this same day between Ava, Riley, Jonah, Cole, Diana, Finn, Leah, and Grant (Team 1) and Ivy, Noah, Stella, Chris, Aaron, Mason, Paige, and Helena (Team 2), who would win and by how much?  
+<END_SCENARIO>

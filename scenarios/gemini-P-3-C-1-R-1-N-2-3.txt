@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, rowers compete in Quad Sculls races. The winning boat is determined by the average velocity generated, which depends on the synchronization and power of the rowers, based on their intrinsic rowing strength and the effort they put into the race.
+Athletes compete in teams of four.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Julia, Alice, Bea, and Cat lost to Deb, Eve, Fay, and Gia.
+In the second race, Julia, Hope, Ivy, and Jen lost to Kim, Liz, Mia, and Nan.
+In the third race, Julia, Pat, Quinn, and Rose beat Sue, Tia, Una, and Val.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Julia ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Deb put into the first race?
+Query 3: In a new race later this same day between Julia, Alice, Bea, and Cat (Team 1) and Kim, Liz, Mia, and Nan (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Deb, Eve, Fay, and Gia (Team 1) and Sue, Tia, Una, and Val (Team 2), who would win and by how much?
+<END_SCENARIO>

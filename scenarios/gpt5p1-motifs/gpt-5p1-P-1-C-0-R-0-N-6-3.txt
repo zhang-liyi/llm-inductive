@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of ultimate frisbee games and individual throwing contests. Team games are played 8-on-8. The winner in each game or contest is determined by intrinsic throwing accuracy, catching ability, speed, and field awareness, together with how much effort each athlete puts into that game. All games occur on the same day.
+
+CONDITIONS
+In the first game, Team Storm (Zoe, Alex, Brooke, Colin, Dana, Evan, Fiona, Grant) lost to Team Blaze (Hazel, Ian, Jenna, Kyle, Lily, Mason, Nora, Owen).  
+In the second game, Evan beat Mason.  
+In the third game, Team Blaze lost to Team Frost (Alex, Brooke, Colin, Dana, Fiona, Grant, Paige, Quinn).  
+In the fourth game, Team Storm (Zoe, Alex, Brooke, Colin, Dana, Evan, Fiona, Grant) lost to Team Wave (Hazel, Ian, Jenna, Kyle, Lily, Mason, Nora, Ryan).
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Zoe ranks in terms of intrinsic ultimate ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mason put into the third game?  
+Query 3: In a new game later this same day between Team Storm (Zoe, Alex, Brooke, Colin, Dana, Evan, Fiona, Grant) and a mixed team (Hazel, Ian, Jenna, Kyle, Lily, Paige, Quinn, Ryan), who would win and by how much?  
+Query 4: In a new game later this same day between Team Frost (Alex, Brooke, Colin, Dana, Fiona, Grant, Paige, Quinn) and Team Wave (Hazel, Ian, Jenna, Kyle, Lily, Mason, Nora, Ryan), who would win and by how much?
+<END_SCENARIO>

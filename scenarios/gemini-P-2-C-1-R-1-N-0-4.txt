@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Table Tennis matches. In each match, the winner is determined by the spin and speed they can impart on the ball, based on their intrinsic hand-eye coordination modulated by other factors including how much effort they put in to that match.
+Athletes compete either individually or as a doubles team.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Deng beat Wei.
+In the second match, Deng and Hao beat Lu and Bo.
+In the third match, Deng and Lu lost to Wei and Hao.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Deng ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Deng put into the third match?
+Query 3: In a new match later this same day between Deng and Hao (Team 1) and Lu and Wei (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Wei and Hao (Team 1) and Lu and Bo (Team 2), who would win and by how much?
+<END_SCENARIO>

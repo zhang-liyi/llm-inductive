@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of badminton matches. In each match, the team that wins depends on how consistently the players can execute serves, returns, and smashes, based on their intrinsic reflexes, coordination, and tactical sense, modulated by how much effort they put into that match.
+Athletes compete either individually or as a doubles team.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Priya and Leo lost to Maya and Trent.
+In the second match, Priya and Leo beat Jordan and Maya.
+In the third match, Priya and Leo lost to Trent and Omar.
+
+QUERIES
+Query 1: Out of 100 random badminton players, where do you think Priya ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Maya put into the second match?
+Query 3: In a new doubles match later this same day between Priya and Leo (Team 1) and Trent and Jordan (Team 2), who would win and by how much?
+Query 4: In a new doubles match later this same day between Leo and Omar (Team 1) and Maya and Trent (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of five-on-five ultimate frisbee games. In each game, the team that wins depends on the players’ intrinsic throwing accuracy, speed, and field awareness, as well as how much effort and focus they bring to that game. Players compete either individually in short one-on-one points or in teams of five. All games take place on the same day.
+
+CONDITIONS
+In the first game, Sienna beat Liam.
+In the second game, Sienna, Lucas, Elijah, Logan, and Aiden beat Liam, Noah, Oliver, Ethan, and Mason.
+In the third game, Sienna, Liam, Noah, Oliver, and Ethan beat Lucas, Elijah, Logan, Aiden, and Carter.
+In the fourth game, Liam, Noah, Oliver, Ethan, and Mason lost to Lucas, Elijah, Logan, Aiden, and Carter.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Sienna ranks in terms of intrinsic ultimate ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Lucas put into the fourth game?
+Query 3: In a new game later this same day between Sienna, Lucas, Elijah, Logan, and Aiden (Team 1) and Liam, Noah, Oliver, Ethan, and Mason (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Liam, Noah, Oliver, Ethan, and Mason (Team 1) and Lucas, Elijah, Logan, Aiden, and Carter (Team 2), who would win and by how much?
+<END_SCENARIO>

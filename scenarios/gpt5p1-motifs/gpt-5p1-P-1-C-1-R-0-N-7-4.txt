@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this tournament, the athletes are competing in Ultimate Frisbee games. Full games are played 9‑a‑side, and there are also 1‑on‑1 cutting and marking drills. The team or player that wins depends on intrinsic throwing accuracy, speed, and catching ability, combined with how much effort they put into that game or drill.
+All games and drills take place on the same day.
+
+CONDITIONS
+In the first game, Yusuf, Aria and seven others lost to Dylan, Maya and seven others.
+In the second game, Yusuf, Dylan and seven others lost to Aria, Hugo and seven others.
+In the third game, Yusuf, Maya and seven others lost to Sam, Lila and seven others.
+In a 1‑on‑1 marking drill, Yusuf lost to Aria.
+
+QUERIES
+Query 1: Out of 100 random Ultimate Frisbee players, where do you think Aria ranks in terms of intrinsic playing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Yusuf put into the third game?
+Query 3: In a new 9‑a‑side game later this same day between Yusuf, Lila and seven others (Team 1) and Aria, Dylan and seven others (Team 2), who would win and by how much?
+Query 4: In a new 1‑on‑1 cutting and marking drill later this same day between Yusuf and Sam, who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of ice hockey games. In each game, the team that wins depends on the average skating speed and puck handling skills of the six players on the ice, based on their intrinsic skill level modulated by other factors including how much effort they put into that game.
+Athletes compete in teams of six (5 skaters + 1 goalie).
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the team of Jon, Rob, Tim, Sal, Vin, and Gil beat the team of Ken, Art, Hal, Mel, Sid, and Guy.
+In the second game, the team of Ken, Art, Hal, Mel, Sid, and Guy beat the team of Jon, Rob, Tim, Sal, Vin, and Riley.
+In the third game, the team of Jon, Rob, Tim, Sal, Vin, and Gil beat the team of Ken, Art, Hal, Mel, Sid, and Riley.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jon ranks in terms of intrinsic skill level?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Riley put into the third game?
+Query 3: In a new game later this same day between the team of Jon, Rob, Tim, Sal, Vin, and Gil (Team 1) and the team of Ken, Art, Hal, Mel, Sid, and Guy (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between a team of Jon, Rob, Ken, Art, Tim, and Sal (Team 1) and a team of Vin, Riley, Hal, Mel, Sid, and Guy (Team 2), who would win and by how much?
+<END_SCENARIO>

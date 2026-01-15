@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of short indoor volleyball games. Each game’s outcome depends on the players’ intrinsic volleyball ability (serving, passing, setting, attacking, and blocking) together with how much effort they exert in that game.
+Athletes compete either individually (1-on-1 serve–receive drills) or in teams of 5.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Priya, Arjun, Bella, Chloe, and Dev lost to Emma, Faisal, Grace, Henrik, and Isha.
+In the second game, Priya, Emma, Grace, Jonas, and Kai lost to Arjun, Bella, Dev, Faisal, and Henrik.
+In the third game, Priya, Arjun, Faisal, Grace, and Lina beat Bella, Chloe, Dev, Emma, and Miguel.
+In the fourth game, Priya, Bella, Henrik, Jonas, and Miguel lost to Chloe, Dev, Faisal, Grace, and Nora.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Priya ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Emma put into the third game?
+Query 3: In a new game later this same day between Priya, Arjun, Faisal, Grace, and Lina (Team 1) and Bella, Chloe, Dev, Emma, and Henrik (Team 2), who would win and by how much?
+Query 4: In a new 1-on-1 serving duel later this same day between Priya and Emma, who would win and by how much?
+<END_SCENARIO>

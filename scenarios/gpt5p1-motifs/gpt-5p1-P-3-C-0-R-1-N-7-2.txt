@@ -1,0 +1,22 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of baseball games with teams of 9 players. In each game, the winning team depends on the players’ intrinsic baseball abilities—such as hitting power, pitching control, fielding skill, and running speed—combined with how much effort they put into that game.
+Teams have fixed rosters of 9 players, and the same players always appear together on their team.
+
+Team Falcons: Jordan, Ethan, Cole, Ryder, Mason, Oliver, Gavin, Leo, Wyatt.  
+Team Titans: Brandon, Curtis, Derek, Shane, Trevor, Miles, Hunter, Jared, Scott.  
+Team Rangers: Dominic, Eric, Jason, Luke, Matt, Nolan, Owen, Paul, Zach.
+
+CONDITIONS
+In the first game, Team Titans beat Team Falcons.  
+In the second game, Team Rangers beat Team Falcons.  
+In the third game, Team Falcons beat Team Rangers.
+
+(Here, Jordan is the player who loses all but one game and always plays with the same teammates on Team Falcons.)
+
+QUERIES
+Query 1: Out of 100 random baseball players, where do you think Jordan ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Brandon put into the first game?  
+Query 3: In a new game later this same day between Team Falcons and Team Titans, who would win and by how much?  
+Query 4: In a new game later this same day between Team Titans and Team Rangers, who would win and by how much?
+<END_SCENARIO>

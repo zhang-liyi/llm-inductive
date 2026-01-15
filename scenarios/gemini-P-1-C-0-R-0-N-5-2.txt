@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in Rugby Sevens matches. In each match, the team that wins depends on the points scored, based on the athletes' intrinsic speed and tackling strength modulated by other factors including how much effort they put into that match.
+Athletes compete in teams of 7.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, the team of Dylan, Connor, and 5 others beat the team of Hugo, Jack, and 5 others.
+In the second match, the team of Rhys, Owen, and 5 others beat the team of Hugo, Jack, and 5 different players.
+In the third match, the team of Dylan, Rhys, and 5 others beat the team of Hugo, Jack, and a new group of 5 players.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Hugo ranks in terms of intrinsic speed and tackling strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Rhys put into the second match?
+Query 3: In a new match later this same day between a team led by Dylan and Rhys (Team 1) and a team led by Hugo and Jack (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between a team led by Connor and Owen (Team 1) and a team led by Hugo and a random player (Team 2), who would win and by how much?
+<END_SCENARIO>

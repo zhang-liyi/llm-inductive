@@ -1,0 +1,21 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of seven-a-side ice hockey games. In each game, the winning team is determined by the players’ intrinsic skating speed, stick-handling skill, and shooting ability, along with how much effort they put in to that game.
+Teams consist of fixed squads of seven players, and each player always plays on the same team whenever they appear.
+All games take place on the same day.
+
+Team Morgan: Morgan, Alex, Jamie, Riley, Casey, Jordan, Taylor  
+Team Nina: Nina, Cole, Harper, Blake, Logan, Drew, Sydney  
+Team Pavel: Pavel, Ivan, Mila, Anya, Sergei, Lena, Viktor
+
+CONDITIONS
+In the first game, Morgan’s team beat Nina’s team.  
+In the second game, Morgan’s team beat Pavel’s team.  
+In the third game, Pavel’s team beat Nina’s team.
+
+QUERIES
+Query 1: Out of 100 random ice hockey players, where do you think Morgan ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Nina put into the first game?  
+Query 3: In a new game later this same day between Morgan’s team (Team 1) and Nina’s team (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Pavel’s team (Team 1) and Nina’s team (Team 2), who would win and by how much?
+<END_SCENARIO>

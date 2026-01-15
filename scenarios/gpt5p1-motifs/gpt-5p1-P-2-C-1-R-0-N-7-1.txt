@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this regatta, the rowers are competing in a series of rowing races. The speed of each boat depends on the intrinsic power and technique of the rowers, modulated by how much effort they put into that race.
+Rowers compete either individually in single sculls (1‑on‑1) or in larger crews of 9.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Omar beat Ben.
+In the second race, Omar, Alice, Chloe, David, Ella, Finn, Grace, Hugo, and Iris beat Ben, Jack, Kiara, Liam, Maya, Noah, Olivia, Paul, and Quinn.
+In the third race, Omar, Jack, Kiara, Liam, Maya, Noah, Olivia, Paul, and Quinn lost to Ben, Alice, Chloe, David, Ella, Finn, Grace, Hugo, and Riley.
+
+QUERIES
+Query 1: Out of 100 random rowers, where do you think Omar ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ben put into the third race?
+Query 3: In a new race later this same day between Omar, Alice, Chloe, David, Ella, Finn, Grace, Hugo, and Iris (Crew 1) and Ben, Jack, Kiara, Liam, Maya, Noah, Olivia, Paul, and Quinn (Crew 2), who would win and by how much?
+Query 4: In a new race later this same day between Omar, Jack, Kiara, Liam, Maya, Noah, Olivia, Paul, and Quinn (Crew 1) and Ben, Alice, Chloe, David, Ella, Finn, Grace, Hugo, and Riley (Crew 2), who would win and by how much?
+<END_SCENARIO>

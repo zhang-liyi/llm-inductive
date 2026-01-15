@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of small-sided Ultimate Frisbee games. In each game, the team that wins depends on the players’ throwing accuracy, speed, endurance, and field awareness, all shaped by their intrinsic ability and how much effort they put in for that game.  
+Games are played with teams of 5 players.  
+All games take place on the same day.
+
+CONDITIONS  
+In the first game, Jordan’s team (Jordan, Riley, Sam, Taylor, Quinn) beat Casey’s team (Casey, Morgan, Alex, Drew, Jamie).  
+In the second game, Jordan, Riley, and Casey teamed up with two substitutes and beat a mixed team including Sam and Alex.  
+In the third game, Casey, Sam, Taylor, and two substitutes beat Jordan, Morgan, Drew, and two substitutes.  
+In the fourth game, a team led by Casey and Alex beat a team led by Riley and Quinn.
+
+QUERIES  
+Query 1: Out of 100 random Ultimate players, where do you think Jordan ranks in terms of intrinsic playing ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Casey put into the third game?  
+Query 3: In a new game later this same day between Jordan, Riley, and three substitutes (Team 1) and Casey, Sam, and three substitutes (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Alex, Morgan, Drew, Quinn, and a substitute (Team 1) and Taylor, Jamie, and three substitutes (Team 2), who would win and by how much?
+<END_SCENARIO>

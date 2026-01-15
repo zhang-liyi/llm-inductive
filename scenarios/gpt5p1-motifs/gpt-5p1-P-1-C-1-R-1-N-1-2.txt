@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in 3-person rowing races in coxless boats. Each race is decided by the boat’s average speed, which depends on the intrinsic endurance and power of the rowers and how much effort they put into their stroke rate and timing in that race.
+All races occur on the same day over the same distance.
+
+CONDITIONS
+In the first race, Boat A (Jonah, Kyle, and Liam) beat Boat B (Harper, Maya, and Zoe).  
+In the second race, Jonah, Kyle, and Liam beat Rowan, Harper, and Maya.  
+In the third race, Harper, Maya, and Zoe beat Rowan, Jonah, and Kyle.  
+In the fourth race, Harper, Maya, and Zoe beat Rowan, Liam, and Noah.
+
+QUERIES
+Query 1: Out of 100 random rowers, where do you think Rowan ranks in terms of intrinsic rowing strength and endurance?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Harper put into the third race?  
+Query 3: In a new race later this same day between Jonah, Kyle, and Liam (Boat 1) and Harper, Maya, and Zoe (Boat 2), who would win and by how much?  
+Query 4: In a new race later this same day between Rowan, Noah, and Olivia (Boat 1) and Harper, Maya, and Zoe (Boat 2), who would win and by how much?
+<END_SCENARIO>

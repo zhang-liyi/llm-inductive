@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of beach volleyball matches. Each match is played in pairs. The outcome of a match depends on the players’ intrinsic abilities in serving, passing, setting, attacking, and reading the game, as well as how much effort they put in on the sand in that specific match.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Ava and Nico beat Blake and Harper.
+In the second match, Blake and Quinn beat Ava and Eli.
+In the third match, Harper and Eli beat Nico and Quinn.
+In the fourth match, Ava and Harper beat Blake and Quinn.
+
+QUERIES
+Query 1: Out of 100 random beach volleyball players, where do you think Ava ranks in terms of intrinsic beach volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Quinn put into the third match?
+Query 3: In a new match later this same day between Ava and Quinn (Team 1) and Blake and Nico (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Harper and Eli (Team 1) and Ava and Blake (Team 2), who would win and by how much?
+<END_SCENARIO>

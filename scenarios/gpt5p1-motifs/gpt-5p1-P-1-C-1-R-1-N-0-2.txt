@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in tennis matches. The result of each match depends on the players’ intrinsic stroke technique, speed, and consistency, modulated by how much effort and concentration they invest in that match.  
+They play mainly doubles (teams of two), with an occasional singles match, all on the same day.
+
+CONDITIONS  
+In the first match, Caleb and Jonas lost to Marco and Felix.  
+In the second match, Caleb and Owen lost to Marco and Felix.  
+In the third match, Caleb and Theo lost to Lucas and Daniel.  
+In the fourth match, Marco beat Caleb.
+
+QUERIES  
+Query 1: Out of 100 random tennis players, where do you think Caleb ranks in terms of intrinsic tennis ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Marco put into the fourth match?  
+Query 3: In a new doubles match later this same day between Caleb and Felix (Team 1) and Marco and Jonas (Team 2), who would win and by how much?  
+Query 4: In a new doubles match later this same day between Owen and Theo (Team 1) and Lucas and Daniel (Team 2), who would win and by how much?
+<END_SCENARIO>

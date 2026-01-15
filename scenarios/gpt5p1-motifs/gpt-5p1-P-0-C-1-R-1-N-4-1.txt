@@ -1,0 +1,20 @@
+<START_SCENARIO>
+BACKGROUND  
+This is a 6‑a‑side indoor soccer tournament. Match outcomes depend on each player’s intrinsic soccer ability (ball control, speed, decision‑making, and finishing) and on how much effort they put into that particular match.  
+Players can compete individually in 1v1 dribbling/shootout contests or in 6‑player teams. All matches take place on the same day.  
+Two 5‑player cores usually stay together:  
+- Strikers core: Ethan, Luke, Sam, Oliver, Henry  
+- Defenders core: Ravi, Jake, Miguel, Caleb, Tyler  
+Marco floats between sides instead of belonging to a fixed team.
+
+CONDITIONS  
+In the first match, Marco, Ethan, Luke, Sam, Oliver, and Henry beat Ravi, Jake, Miguel, Caleb, Tyler, and Grace.  
+In the second match, Ravi, Jake, Miguel, Caleb, Tyler, and Marco beat Ethan, Luke, Sam, Oliver, Henry, and Grace.  
+Later, in a 1v1 dribbling and finishing contest, Marco beat Ethan.
+
+QUERIES  
+Query 1: Out of 100 random small‑sided soccer players, where do you think Marco ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Grace put into the second match?  
+Query 3: In a new 6‑a‑side match later this same day between Marco, Ethan, Luke, Sam, Oliver, and Caleb (Team 1) and Ravi, Jake, Miguel, Tyler, Henry, and Grace (Team 2), who would win and by how much?  
+Query 4: In a new 1v1 shootout later this same day between Marco (Team 1) and Ravi (Team 2), who would win and by how much?  
+<END_SCENARIO>

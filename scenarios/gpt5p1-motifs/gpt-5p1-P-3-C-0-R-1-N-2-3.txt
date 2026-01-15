@@ -1,0 +1,20 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in team table tennis ties, where each team has four players. The result of each team tie depends on the players’ intrinsic table tennis ability—such as speed, spin control, and reflexes—combined with how much effort they put into that tie. All ties take place on the same day. Teams are fixed and always use the same four players.
+
+CONDITIONS
+Squad Alpha consists of Freya, Nina, Pavel, and Oleg.
+Squad Beta consists of Jonas, Erik, Milan, and Toby.
+Squad Gamma consists of Iris, Clara, Felix, and Damon.
+
+In the first team tie, Squad Beta beat Squad Alpha.
+In the second team tie, Squad Gamma beat Squad Alpha.
+In the third team tie, Squad Alpha beat Squad Gamma.
+In the fourth team tie, Squad Beta beat Squad Gamma.
+
+QUERIES
+Query 1: Out of 100 random table tennis players, where do you think Freya ranks in terms of intrinsic table tennis ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Damon put into the third team tie?
+Query 3: In a new team tie later this same day between Freya, Nina, Pavel, and Oleg (Team 1) and Jonas, Erik, Milan, and Toby (Team 2), who would win and by how much?
+Query 4: In a new team tie later this same day between Iris, Clara, Felix, and Damon (Team 1) and a new squad of four players, Lian, Rosa, Kurt, and Helena (Team 2), who would win and by how much?
+<END_SCENARIO>

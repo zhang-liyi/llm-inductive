@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in doubles badminton. The result of each match depends on the players’ intrinsic badminton ability (speed, reflexes, shot precision) and the amount of effort and concentration they invest in that match.  
+All matches are played as 2-on-2 doubles.  
+All matches occur on the same day, with each player’s intrinsic ability fixed while their effort can change from match to match.
+
+CONDITIONS
+In the first match, Priya and Anita beat Lina and Mei.  
+In the second match, Priya and Anita beat Sara and Nia.  
+In the third match, Sara and Nia beat Lina and Mei.  
+In the fourth match, Priya and Anita beat Lina and Mei again.
+
+QUERIES
+Query 1: Out of 100 random badminton players, where do you think Priya ranks in terms of intrinsic skill?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Lina put into the third match?  
+Query 3: In a new match later this same day between Priya and Anita (Team 1) and Sara and Nia (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Lina and Mei (Team 1) and Sara and Nia (Team 2), who would win and by how much?
+<END_SCENARIO>

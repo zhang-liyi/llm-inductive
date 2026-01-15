@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the rowers are competing in a series of crew races using three-person boats. In each race, the boat that wins depends on the rowers’ intrinsic rowing strength and technique, combined with how much effort they put into that race.  
+All races take place on the same day.
+
+CONDITIONS  
+In the first race, Tom, Alex, and Ben lost to Chris, David, and Emma.  
+In the second race, Tom, Chris, and Fiona lost to Alex, Emma, and Henry.  
+In the third race, Tom, David, and Grace lost to Ben, Fiona, and Henry.
+
+QUERIES  
+Query 1: Out of 100 random rowers, where do you think Alex ranks in terms of intrinsic strength and technique?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Tom put into the third race?  
+Query 3: In a new race later this same day between Alex, Ben, and Emma (Boat 1) and Chris, David, and Henry (Boat 2), who would win and by how much?  
+Query 4: In a new race later this same day between Tom, Emma, and Grace (Boat 1) and Ben, Fiona, and David (Boat 2), who would win and by how much?  
+<END_SCENARIO>

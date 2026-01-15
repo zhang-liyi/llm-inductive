@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in team table tennis matches with three players per team. The team that wins each match depends on the players’ intrinsic racket control, reflexes, and consistency, combined with how much effort they put into that particular match. All matches are played on the same day.
+
+CONDITIONS
+In the first match, Lena, Robin, and Chen lost to Oliver, Mei, and Victor.
+In the second match, Lena, Robin, and Chen beat Sara, Victor, and Arun.
+In the third match, Lena, Robin, and Chen lost to Oliver, Arun, and Paige.
+In the fourth match, Mei beat Sara.
+
+QUERIES
+Query 1: Out of 100 random table tennis players, where do you think Lena ranks in terms of intrinsic table tennis ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Victor put into the first match?
+Query 3: In a new match later this same day between Lena, Robin, and Chen (Team 1) and Oliver, Mei, and Arun (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Sara, Victor, and Paige (Team 1) and Robin, Chen, and Mei (Team 2), who would win and by how much?
+<END_SCENARIO>

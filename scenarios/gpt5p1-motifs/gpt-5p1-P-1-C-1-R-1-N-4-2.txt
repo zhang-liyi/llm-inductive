@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of 6‑a‑side ice hockey scrimmages. The team that wins each scrimmage is the one that can skate faster, control the puck better, and create more effective shots, determined by each player's intrinsic skating and puck‑handling ability combined with the effort they put in during that scrimmage.
+Sometimes, players also take part in 1‑on‑1 breakaway drills.
+All scrimmages and drills take place on the same day.
+
+CONDITIONS
+In the first scrimmage, Owen, Aaron, Blake, Cole, Dylan, and Ethan lost to Gavin, Hunter, Isaac, Jason, Kyle, and Liam.
+In the second scrimmage, Gavin, Hunter, Isaac, Jason, Owen, and Liam lost to Aaron, Blake, Cole, Dylan, Ethan, and Finn.
+In the third scrimmage, Owen, Aaron, Hunter, Cole, Isaac, and Finn lost to Gavin, Blake, Jason, Dylan, Kyle, and Liam.
+In a later breakaway drill, Owen lost to Gavin.
+
+QUERIES
+Query 1: Out of 100 random ice hockey players, where do you think Gavin ranks in terms of intrinsic ice hockey ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Owen put into the third scrimmage?
+Query 3: In a new 6‑a‑side scrimmage later this same day between Aaron, Blake, Cole, Dylan, Ethan, and Finn (Team 1) and Gavin, Hunter, Isaac, Jason, Kyle, and Liam (Team 2), who would win and by how much?
+Query 4: In a new 6‑a‑side scrimmage later this same day between Owen, Aaron, Blake, Cole, Dylan, and Kyle (Team 1) and Gavin, Hunter, Isaac, Jason, Liam, and Finn (Team 2), who would win and by how much?
+<END_SCENARIO>

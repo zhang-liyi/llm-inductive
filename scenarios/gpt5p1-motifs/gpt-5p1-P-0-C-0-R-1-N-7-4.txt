@@ -1,0 +1,22 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, three rugby squads play 9‑a‑side training matches. Each team has 9 fixed players.  
+Match outcomes depend on players’ intrinsic rugby abilities (speed, tackling strength, ball-handling, evasiveness, stamina) along with how much effort they exert in that particular match.  
+All matches and individual contests take place on the same day.  
+Teams are fixed, and players always stay with their own 9-person team.
+
+Team Ridge: Elena, Sara M., Chloe D., Hannah K., Julia, Megan, Ruth, Talia, Zoe F.  
+Team Valley: Brooke L., Cara, Dana P., Erin, Faith C., Georgie, Holly, Isla, Jodie  
+Team Summit: Kara, Lana, Mira, Nadine, Orla, Pippa, Quinn C., Rosa, Sian  
+
+CONDITIONS  
+In the first 9‑a‑side match, Ridge beat Valley.  
+In the second 9‑a‑side match, Ridge beat Summit.  
+Later that day, in a 1‑on‑1 tackling and breakaway drill, Elena beat Brooke L.
+
+QUERIES  
+Query 1: Out of 100 random rugby players, where do you think Elena ranks in terms of intrinsic rugby ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Brooke L. put into the 1‑on‑1 drill?  
+Query 3: In a new 9‑a‑side match later this same day between Ridge and Valley, who would win and by how much?  
+Query 4: In a new 9‑a‑side match later this same day between Valley and Summit, who would win and by how much?  
+<END_SCENARIO>

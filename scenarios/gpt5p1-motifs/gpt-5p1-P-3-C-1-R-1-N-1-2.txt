@@ -1,0 +1,15 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of 3‑on‑3 ultimate frisbee points. The result of each point depends on the players’ intrinsic throwing accuracy, speed, and catching ability, together with the effort they put into that point. Most players remain with their usual 3‑player lines, but Miguel is shifted between different combinations. All points occur on the same day.
+
+CONDITIONS
+In the first point, Aaron, Blake, and Cody beat Miguel, Dylan, and Ethan.
+In the second point, Dylan, Ethan, and Felix beat Miguel, Aaron, and Blake.
+In the third point, Miguel, Cody, and Felix beat Aaron, Dylan, and Ethan.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Miguel ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Dylan put into the second point?
+Query 3: In a new point later this same day between Miguel, Aaron, and Felix (Team 1) and Blake, Cody, and Dylan (Team 2), who would win and by how much?
+Query 4: In a new point later this same day between Miguel, Ethan, and Cody (Team 1) and Aaron, Blake, and Felix (Team 2), who would win and by how much?
+<END_SCENARIO>

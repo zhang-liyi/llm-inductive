@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Lacrosse matches using the "Sixes" format (6 players per side). In each match, the team that wins depends on the stick skills and tactical awareness of the athletes, based on their intrinsic talent modulated by other factors including how much effort they put into that match.
+There are three club teams: The Lions, The Tigers, and The Falcons. A standout player, Chloe, substitutes into different teams for specific matches.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, The Lions (with Chloe) beat The Tigers.
+In the second match, The Falcons (with Chloe) beat The Lions.
+In the third match, The Tigers (with Chloe) lost to The Falcons.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Chloe ranks in terms of intrinsic talent?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Chloe put into the third match?
+Query 3: In a new match later this same day between The Lions (with Chloe) and The Falcons, who would win and by how much?
+Query 4: In a new match later this same day between The Tigers (without Chloe) and The Lions (without Chloe), who would win and by how much?
+<END_SCENARIO>

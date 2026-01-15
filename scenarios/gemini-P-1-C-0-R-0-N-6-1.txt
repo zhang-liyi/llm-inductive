@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee games. In each game, the team that wins depends on the average speed and throwing accuracy of the athletes, based on their intrinsic agility modulated by other factors including how much effort they put in to that game.
+Athletes compete in teams of 8.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the team of Mason, Logan, Aiden, Ethan, Matthew, Samuel, David, and Joseph lost to the team of Carter, Owen, Wyatt, John, Jack, Luke, Jayden, and Dylan.
+In the second game, the team of Mason, Logan, Carter, Owen, Wyatt, John, Jack, and Luke lost to the team of Aiden, Ethan, Matthew, Samuel, David, Joseph, Jayden, and Dylan.
+In the third game, the team of Mason, Logan, Jayden, Dylan, Aiden, Ethan, Matthew, and Samuel lost to the team of Carter, Owen, Wyatt, John, Jack, Luke, David, and Joseph.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Mason ranks in terms of intrinsic agility?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Carter put into the third game?
+Query 3: In a new game later this same day between Mason and Logan (Team 1) and Carter and Owen (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Carter and Aiden (Team 1) and Logan and Jayden (Team 2), who would win and by how much?
+<END_SCENARIO>

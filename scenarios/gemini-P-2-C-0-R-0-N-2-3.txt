@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of half-court basketball games. In each game, the team that wins depends on the collective shooting accuracy and defensive agility of the athletes, based on their intrinsic skill modulated by other factors including how much effort they put into that game.
+Athletes compete in teams of four.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Leah, Maya, Zoe, and Chloe beat Tara, Kara, Lara, and Sara.
+In the second game, Leah, Maya, Zoe, and Chloe beat Tara, Kara, Mara, and Dara.
+In the third game, Leah, Maya, Zoe, and Chloe lost to Lara, Sara, Mara, and Dara.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Leah ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Leah put into the third game?
+Query 3: In a new game later this same day between Leah, Maya, Zoe, and Chloe (Team 1) and Tara, Kara, Lara, and Sara (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Lara, Sara, Mara, and Dara (Team 1) and Tara, Kara, Zoe, and Chloe (Team 2), who would win and by how much?
+<END_SCENARIO>

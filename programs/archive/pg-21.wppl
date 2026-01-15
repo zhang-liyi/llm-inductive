@@ -1,0 +1,275 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+
+  ////////////////////////////////////////////////////////////////////////////
+  // BACKGROUND KNOWLEDGE
+  ////////////////////////////////////////////////////////////////////////////
+
+  // All continuous trait scales below are on an arbitrary 0–100 scale where:
+  //   0   = extremely poor for a competitive track cyclist
+  //   50  = typical lower‑tier competitive cyclist
+  //   70–90 = strong competitive track cyclist
+  //   100 = extremely exceptional
+
+  // ------------------------------------------------------------------------
+  // Latent intrinsic traits (do NOT change over races in the same day)
+  // ------------------------------------------------------------------------
+
+  // A cyclist-specific latent base strength that induces positive correlation
+  // between sprinting ability and speed endurance. (0–100 units)
+  var base_strength = mem(function({cyclist}) {
+    // Prior for competitive track cyclists: mean around 70, SD ~10.
+    var mean = 70;
+    var sd = 10;
+    var raw = gaussian(mean, sd);
+    return Math.min(Math.max(raw, 0), 100);
+  });
+
+  // Intrinsic sprinting ability (0–100 units).
+  var intrinsic_sprinting_ability = mem(function({cyclist}) {
+    // Slight sprint bias relative to base strength
+    var bias_mean = 2;   // sprinters a bit better in sprinting
+    var bias_sd = 3;
+    var bias = gaussian(bias_mean, bias_sd);
+    var raw = gaussian(base_strength({cyclist: cyclist}) + bias, 5);
+    return Math.min(Math.max(raw, 0), 100);
+  });
+
+  // Intrinsic speed endurance (0–100 units).
+  var intrinsic_speed_endurance = mem(function({cyclist}) {
+    // Slight endurance bias in opposite direction on average
+    var bias_mean = -2;
+    var bias_sd = 3;
+    var bias = gaussian(bias_mean, bias_sd);
+    var raw = gaussian(base_strength({cyclist: cyclist}) + bias, 5);
+    return Math.min(Math.max(raw, 0), 100);
+  });
+
+  // Intrinsic strength: overall track-cycling capability (0–100 units).
+  // Depends on both sprinting ability and speed endurance.
+  var intrinsic_strength = mem(function({cyclist}) {
+    var sprint = intrinsic_sprinting_ability({cyclist: cyclist});
+    var endurance = intrinsic_speed_endurance({cyclist: cyclist});
+    // Track races here are somewhat endurance biased but still need sprint.
+    var raw = 0.4 * sprint + 0.6 * endurance;
+    return Math.min(Math.max(raw, 0), 100);
+  });
+
+  // ------------------------------------------------------------------------
+  // Intrinsic strength ranking among random cyclists
+  // ------------------------------------------------------------------------
+
+  // Out of N random track cyclists drawn from the same population,
+  // how many do we expect this cyclist to be stronger than?
+  var intrinsic_strength_rank = function({cyclist, out_of_n_athletes}) {
+    // Generate out_of_n_athletes - 1 random "other cyclist" IDs
+    var random_cyclist_ids =
+        mapN(function(x) { return uniform(0, 1000); }, out_of_n_athletes - 1);
+
+    return sum(map(function(random_id) {
+      return intrinsic_strength({cyclist: cyclist}) >
+             intrinsic_strength({cyclist: random_id});
+    }, random_cyclist_ids));
+  };
+
+  // ------------------------------------------------------------------------
+  // Effort, fatigue, and performance within a race
+  // ------------------------------------------------------------------------
+
+  // Effort in a given race, for a given cyclist.
+  // Units: percentage from 0 to 100 (% of maximal possible effort).
+  var effort_in_race = mem(function({cyclist, race}) {
+    // Most competitive races involve high effort. Model effort_fraction in [0,1]
+    // with a Beta prior whose mean gradually decreases over later races
+    // (slightly less willing/able to go all-out).
+    var base_a = 8; // pulls toward high effort
+    var base_b = 2;
+    var fatigue_bump = 0.4 * Math.max(race - 1, 0); // later races => slightly larger b
+    var a = base_a;
+    var b = base_b + fatigue_bump;
+
+    var effort_fraction = beta({a: a, b: b}); // in [0,1]
+    return effort_fraction * 100;             // convert to percentage
+  });
+
+  // Acute fatigue modifier in a race, for a cyclist.
+  // Units: multiplicative factor on power, typically in [0.8, 1].
+  // Depends on how hard they have gone in PREVIOUS races that day.
+  var acute_fatigue_in_race = mem(function({cyclist, race}) {
+    var num_prev = race - 1;
+
+    var avg_prev_effort =
+        num_prev <= 0 ?
+        0 :
+        (sum(mapN(function(i) {
+           var prevRace = i + 1; // races are 1,2,...,(race-1)
+           return effort_in_race({cyclist: cyclist, race: prevRace});
+         }, num_prev)) / num_prev);
+
+    // Convert previous effort from 0–100% to 0–1 fraction.
+    var avg_prev_effort_fraction = avg_prev_effort / 100;
+
+    // Simple linear fatigue model: more previous hard efforts -> more fatigue.
+    // Bound modifier between 0.8 and 1.0.
+    var raw_modifier = 1 - 0.15 * avg_prev_effort_fraction * (num_prev > 0 ? 1 : 0);
+    return Math.max(0.8, Math.min(raw_modifier, 1.0));
+  });
+
+  // Effective power index in a race (0–100-ish units).
+  // Depends on intrinsic strength, effort, and acute fatigue.
+  var effective_power_in_race = mem(function({cyclist, race}) {
+    var strength = intrinsic_strength({cyclist: cyclist}); // 0–100
+    var effort_fraction = effort_in_race({cyclist: cyclist, race: race}) / 100; // 0–1
+    var fatigue_modifier = acute_fatigue_in_race({cyclist: cyclist, race: race}); // ~0.8–1
+
+    // Effective power before stochastic race-to-race variability.
+    return strength * effort_fraction * fatigue_modifier;
+  });
+
+  // Individual race performance index (higher = better/faster).
+  // Units: arbitrary performance index (roughly proportional to speed or
+  // inverse of time). Mean competitive range typically around 30–90.
+  var individual_race_performance = mem(function({cyclist, race}) {
+    var base_power = effective_power_in_race({cyclist: cyclist, race: race});
+    // Add small zero-mean noise to capture tactical/positional luck etc.
+    var noise = gaussian(0, 5);
+    return base_power + noise;
+  });
+
+  // Team race performance: aggregate two riders (or a single rider).
+  // Units: same performance index as individual_race_performance.
+  var team_race_performance = function({team, race}) {
+    // team is a list of 1 or 2 cyclists.
+    var indiv_perfs = map(function(cyclist) {
+      return individual_race_performance({cyclist: cyclist, race: race});
+    }, team);
+
+    // Simple approximation: average of team members' performances.
+    // (Could also bias toward the weaker member; here we keep it simple.)
+    return listMean(indiv_perfs);
+  };
+
+  // Margin of victory for a given race between two teams.
+  // Units: performance index difference (positive quantity).
+  var margin_of_victory = function({team1, team2, race}) {
+    var perf1 = team_race_performance({team: team1, race: race});
+    var perf2 = team_race_performance({team: team2, race: race});
+    return Math.abs(perf1 - perf2);
+  };
+
+  // ------------------------------------------------------------------------
+  // Outcome predicates: beat, lost
+  // ------------------------------------------------------------------------
+
+  // A team beats another if its team performance index is higher.
+  var beat = function({team1, team2, race}) {
+    return team_race_performance({team: team1, race: race}) >
+           team_race_performance({team: team2, race: race});
+  };
+
+  // Convenience: team1 loses if it does not beat team2.
+  var lost = function({team1, team2, race}) {
+    return !beat({team1: team1, team2: team2, race: race});
+  };
+
+  // ------------------------------------------------------------------------
+  // Effort percentage query helper
+  // ------------------------------------------------------------------------
+
+  // Return cyclist's effort percentage (0–100%) in a given race.
+  var effort_percentage_in_race = function({cyclist, race}) {
+    return effort_in_race({cyclist: cyclist, race: race});
+  };
+
+  // ------------------------------------------------------------------------
+  // Predictive query: who_would_win_by_how_much
+  // ------------------------------------------------------------------------
+
+  // For a hypothetical future race later the same day:
+  // Return the estimated probability (0–1) that TEAM 2 would win.
+  // (0 => Team 1 certainly wins, 1 => Team 2 certainly wins.)
+  var who_would_win_by_how_much = function({team1, team2, race}) {
+    var num_future_races_to_simulate = 100;
+
+    // Simulate hypothetical race IDs beyond the given "race" index to
+    // avoid reusing observed races.
+    var random_future_race_ids =
+        mapN(function(x) { return uniform(race + 1, 1000); },
+             num_future_races_to_simulate);
+
+    var simulated_races_won_by_team2 =
+        sum(map(function(rid) {
+          return lost({team1: team1, team2: team2, race: rid});
+        }, random_future_race_ids));
+
+    return simulated_races_won_by_team2 / num_future_races_to_simulate;
+  };
+
+  ////////////////////////////////////////////////////////////////////////////
+  // CONDITIONS (OBSERVED RACE RESULTS)
+  ////////////////////////////////////////////////////////////////////////////
+
+  // In the first race, Nina beat Oliver.
+  condition(beat({team1: ['nina'], team2: ['oliver'], race: 1}));
+
+  // In the second race, Nina and Kai beat Oliver and Tess.
+  condition(beat({team1: ['nina', 'kai'], team2: ['oliver', 'tess'], race: 2}));
+
+  // In the third race, Tess beat Kai.
+  condition(beat({team1: ['tess'], team2: ['kai'], race: 3}));
+
+  // In the fourth race, Oliver and Tess beat Nina and Rui.
+  condition(beat({team1: ['oliver', 'tess'], team2: ['nina', 'rui'], race: 4}));
+
+  ////////////////////////////////////////////////////////////////////////////
+  // QUERIES
+  ////////////////////////////////////////////////////////////////////////////
+
+  // Query 1: Out of 100 random track cyclists, where do you think Nina ranks
+  // in terms of intrinsic strength?
+  var query1 =
+      intrinsic_strength_rank({cyclist: 'nina', out_of_n_athletes: 100});
+
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you
+  // think Tess put into the fourth race?
+  var query2 =
+      effort_percentage_in_race({cyclist: 'tess', race: 4});
+
+  // Query 3: In a new race later this same day between Nina and Kai (Team 1)
+  // and Oliver and Rui (Team 2), who would win and by how much?
+  // (Return: probability Team 2 would win, from 0 to 1.)
+  var query3 =
+      who_would_win_by_how_much({team1: ['nina', 'kai'],
+                                 team2: ['oliver', 'rui'],
+                                 race: 5});
+
+  // Query 4: In a new race later this same day between Tess and Nina (Team 1)
+  // and Kai and Oliver (Team 2), who would win and by how much?
+  // (Return: probability Team 2 would win, from 0 to 1.)
+  var query4 =
+      who_would_win_by_how_much({team1: ['tess', 'nina'],
+                                 team2: ['kai', 'oliver'],
+                                 race: 6});
+
+  return {
+    query1: query1,
+    query2: query2,
+    query3: query3,
+    query4: query4
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: 'MCMC', samples: 10000});
+json.write('inference_results/result-21.json', posterior);

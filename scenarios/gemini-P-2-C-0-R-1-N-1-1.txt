@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ice Hockey scrimmages played on a half-rink. In each scrimmage, the team that wins depends on the number of goals scored, based on their intrinsic skating and puck-handling abilities modulated by other factors including how much effort they put into that scrimmage.
+Athletes compete as a fixed team of three.
+All scrimmages take place on the same day.
+
+CONDITIONS
+In the first scrimmage, Sarah, Kendall, and Brianna beat Hilary, Meghan, and Amanda.
+In the second scrimmage, Sarah, Kendall, and Brianna beat Hilary, Meghan, and Amanda.
+In the third scrimmage, Sarah, Kendall, and Brianna lost to Hilary, Meghan, and Amanda.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Sarah ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Sarah put into the third scrimmage?
+Query 3: In a new scrimmage later this same day between Sarah and Hilary (Team 1) and Kendall and Meghan (Team 2), who would win and by how much?
+Query 4: In a new scrimmage later this same day between Brianna and Amanda (Team 1) and Sarah and Hilary (Team 2), who would win and by how much?
+<END_SCENARIO>

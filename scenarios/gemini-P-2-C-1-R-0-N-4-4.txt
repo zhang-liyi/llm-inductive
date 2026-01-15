@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of small-sided Field Hockey games. In each game, the team that wins depends on their goal-scoring efficiency, based on their intrinsic dribbling and passing technique modulated by other factors including how much effort they put into that game.
+Athletes compete in teams of 6.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the team of Reese, Red, Blue, Green, Gold, and Silver beat the team of Cyan, Magenta, Yellow, Black, White, and Grey.
+In the second game, the team of Reese, Cyan, Magenta, Yellow, Black, and White beat the team of Red, Blue, Green, Gold, Silver, and Grey.
+In the third game, the team of Reese, Red, Cyan, Blue, Magenta, and Green lost to the team of Gold, Silver, Yellow, Black, White, and Grey.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Reese ranks in terms of intrinsic dribbling and passing technique?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Reese put into the third game?
+Query 3: In a new game later this same day between the team of Reese, Red, Blue, Green, Gold, and Silver (Team 1) and the team of Cyan, Magenta, Yellow, Black, White, and Grey (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between the team of Reese, Cyan, Magenta, Yellow, Black, and White (Team 1) and the team of Red, Blue, Green, Gold, Silver, and Grey (Team 2), who would win and by how much?
+<END_SCENARIO>

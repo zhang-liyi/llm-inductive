@@ -1,0 +1,21 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of 5‑on‑5 ice hockey games. Each game’s result depends on the skaters’ intrinsic ice hockey ability (such as skating speed, puck control, shooting, and reaction time) together with how much effort they exert in that game.  
+Players are assigned to fixed teams of five and stay with the same teammates for all games.  
+All games are held on the same day.
+
+Team Aurora: Nikolai, Pavel, Yuri, Anton, Misha  
+Team Glacier: Erik, Jonas, Lars, Nils, Oskar  
+Team Thunder: Blake, Cody, Mason, Tyler, Ryan  
+
+CONDITIONS  
+In the first game, Aurora beat Glacier.  
+In the second game, Aurora beat Thunder.  
+In the third game, Thunder beat Aurora.  
+
+QUERIES  
+Query 1: Out of 100 random ice hockey players, where do you think Nikolai ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Blake put into the third game?  
+Query 3: In a new game later this same day between Aurora (Team 1) and Glacier (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Glacier (Team 1) and Thunder (Team 2), who would win and by how much?  
+<END_SCENARIO>

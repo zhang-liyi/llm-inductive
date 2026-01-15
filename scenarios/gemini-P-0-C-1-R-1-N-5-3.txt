@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a 7-on-7 American Football passing tournament. The winning team is determined by successful completions and touchdowns, based on the intrinsic route-running and catching ability of the players, modulated by the effort they put into the game.
+Players are attached to fixed teams (The Jets, The Sharks, The Wolves, The Bears), except for Avery, who plays quarterback for different teams.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, The Jets (with Avery) beat The Sharks.
+In the second game, The Wolves (with Avery) beat The Bears.
+In the third game, The Sharks (with Avery) beat The Jets.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Avery ranks in terms of intrinsic route-running ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think The Jets put into the third game?
+Query 3: In a new game later this same day between The Wolves (with Avery) and The Sharks, who would win and by how much?
+Query 4: In a new game later this same day between The Jets and The Bears, who would win and by how much?
+<END_SCENARIO>

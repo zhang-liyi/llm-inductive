@@ -1,0 +1,21 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a 7-a-side Soccer tournament. Match outcomes depend on players’ intrinsic endurance, acceleration, ball control, and finishing ability, combined with how much effort they put in during each game.
+Players are organized into fixed 7-player squads, but there is also a 1v1 dribbling-and-finishing challenge.
+All games and challenges take place on the same day.
+
+Team Orion (Marco’s team): Marco, Daniel, Iris, Khalid, Nina, Tom, Valentina  
+Team Eclipse: Sara, Hugo, Mei, Carlos, Jenna, Owen, Pavel  
+Team Comet: Liam, Aria, Mateo, Chloe, Devin, Sophia, Erik
+
+CONDITIONS
+In the first challenge, Hugo beat Marco.
+In the second match, Team Eclipse beat Team Orion.
+In the third match, Team Comet beat Team Orion.
+
+QUERIES
+Query 1: Out of 100 random 7-a-side Soccer players, where do you think Marco ranks in terms of intrinsic touch and attacking instinct?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Marco put into the third match?
+Query 3: In a new match later this same day between Team Eclipse and Team Comet, who would win and by how much?
+Query 4: In a new match later this same day between Team Orion and Team Eclipse, who would win and by how much?
+<END_SCENARIO>

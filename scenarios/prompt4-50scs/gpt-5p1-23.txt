@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of speed skating races over the same distance. The winner of each race is determined by the skaters’ intrinsic skating speed and ability to sustain it, influenced by how much effort they put into that race.  
+Skaters compete either individually or in three-skater team pursuits.  
+All races take place on the same day.
+
+CONDITIONS  
+In the first race, Jae beat Mila.  
+In the second race, Mila and Noor beat Jae and Erik.  
+In the third race, Jae, Mila, and Erik beat Noor, Sora, and Lina.  
+In the fourth race, Noor beat Erik.
+
+QUERIES  
+Query 1: Out of 100 random speed skaters, where do you think Jae ranks in terms of intrinsic strength?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mila put into the third race?  
+Query 3: In a new race later this same day between Jae and Noor (Team 1) and Mila and Erik (Team 2), who would win and by how much?  
+Query 4: In a new team pursuit later this same day between Jae, Noor, and Mila (Team 1) and Erik, Sora, and Lina (Team 2), who would win and by how much?  
+<END_SCENARIO>

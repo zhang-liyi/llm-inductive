@@ -1,0 +1,20 @@
+<START_SCENARIO>
+BACKGROUND  
+This is a short‑sided field hockey event using 6‑player teams. Match outcomes depend on each player’s intrinsic field hockey ability (stick skills, speed, ball control, tackling) and the effort they apply in that match.  
+Players can take part in 1v1 attacking/defending drills or full 6‑player team games. All matches are held on the same day.  
+Two 5‑player cores generally stay together:  
+- Lions core: Emma, Claire, Natalie, Brooke, Hazel  
+- Tigers core: Zara, Layla, Quinn, Paige, Harper  
+Sofia is not on a fixed team and usually switches between sides.
+
+CONDITIONS  
+In the first match, Sofia, Emma, Claire, Natalie, Brooke, and Hazel beat Zara, Layla, Quinn, Paige, Harper, and Mia.  
+In the second match, Zara, Layla, Quinn, Paige, Harper, and Sofia beat Emma, Claire, Natalie, Brooke, Hazel, and Mia.  
+Later, in a 1v1 attacking versus defending drill, Sofia beat Mia.
+
+QUERIES  
+Query 1: Out of 100 random field hockey players, where do you think Sofia ranks in terms of intrinsic field hockey ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mia put into the second match?  
+Query 3: In a new 6‑player match later this same day between Sofia, Emma, Claire, Quinn, Paige, and Hazel (Team 1) and Zara, Layla, Harper, Natalie, Brooke, and Mia (Team 2), who would win and by how much?  
+Query 4: In a new 1v1 attacking drill later this same day between Sofia (Team 1) and Zara (Team 2), who would win and by how much?  
+<END_SCENARIO>

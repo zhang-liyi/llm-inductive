@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are playing a series of small-sided soccer matches. The team that wins depends on the players’ intrinsic soccer ability (such as touch on the ball, decision-making, speed, and endurance), modulated by how much effort they put into each match.  
+Players compete either individually in 1v1 duels or in teams of 8.  
+All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Luka beat Diego.  
+In the second match, Luka, Maya, Sofia, Daniel, Karim, Hugo, Lin, and Tessa beat Diego, Alex, Bruno, Marco, Yara, Felix, Noor, and Iris.  
+In the third match, Luka, Alex, Bruno, Yara, Felix, Noor, Iris, and Jamal beat Maya, Sofia, Daniel, Karim, Hugo, Lin, Tessa, and Diego.
+
+QUERIES  
+Query 1: Out of 100 random soccer players, where do you think Luka ranks in terms of intrinsic soccer ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Diego put into the third match?  
+Query 3: In a new match later this same day between Luka, Maya, Sofia, Felix, Noor, Jamal, Lin, and Marco (Team 1) and Diego, Alex, Bruno, Daniel, Karim, Hugo, Tessa, and Iris (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Maya, Sofia, Daniel, Yara, Hugo, Lin, Tessa, and Jamal (Team 1) and Alex, Bruno, Marco, Felix, Noor, Iris, Diego, and Karim (Team 2), who would win and by how much?  
+<END_SCENARIO>

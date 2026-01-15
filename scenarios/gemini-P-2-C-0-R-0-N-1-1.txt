@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee matches. In each match, the team that wins depends on the average speed and throwing precision of the athletes, based on their intrinsic athleticism modulated by other factors including how much effort they put into that match.
+Athletes compete as a team of three.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Riley, Sam, and Alex beat Morgan, Jamie, and Taylor.
+In the second match, Riley, Sam, and Alex lost to Morgan, Taylor, and Casey.
+In the third match, Riley, Sam, and Alex beat Jamie, Casey, and Jordan.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Riley ranks in terms of intrinsic athleticism?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Sam put into the second match?
+Query 3: In a new match later this same day between Riley, Sam, and Alex (Team 1) and Morgan, Casey, and Quinn (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Morgan, Jamie, and Jordan (Team 1) and Taylor, Casey, and Quinn (Team 2), who would win and by how much?
+<END_SCENARIO>

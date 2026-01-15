@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are engaged in a sequence of box lacrosse scrimmages. In each scrimmage, the outcome depends on players’ intrinsic stick skills, quickness, and shooting accuracy, together with the level of effort they put into that scrimmage.
+Athletes play in rotating combinations of small teams.
+All scrimmages take place on the same day.
+
+CONDITIONS
+In the first scrimmage, Liam beat Nora.
+In the second scrimmage, Liam and Owen beat Nora and Priya.
+In the third scrimmage, Nora and Sam beat Liam and Owen.
+In the fourth scrimmage, Priya beat Sam.
+
+QUERIES
+Query 1: Out of 100 random lacrosse players, where do you think Nora ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Owen put into the third scrimmage?
+Query 3: In a new scrimmage later this same day between Liam and Priya (Team 1) and Nora and Owen (Team 2), who would win and by how much?
+Query 4: In a new scrimmage later this same day between Liam, Nora, and Sam (Team 1) and Owen, Priya, and Taylor (Team 2), who would win and by how much?
+<END_SCENARIO>

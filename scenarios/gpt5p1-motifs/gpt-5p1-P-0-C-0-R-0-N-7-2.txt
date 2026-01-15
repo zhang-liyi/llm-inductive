@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of full-court basketball scrimmages and 1v1 contests. The outcome of each contest depends on the players’ intrinsic shooting, ball-handling, and defensive ability, together with how much effort they put in.
+Players compete either in 1v1 games or in scrimmages between teams of 9 players.
+All contests take place on the same day.
+
+CONDITIONS
+In the first scrimmage, Harper, Jalen, Kiara, Miles, Zoe, Dante, Priya, Louis, and Nina beat Caleb, Rowan, Ivy, Trent, Malik, Serena, Omar, Jade, and Victor.
+In the second scrimmage, Harper, Jalen, Kiara, Miles, Zoe, Dante, Priya, Louis, and Nina beat Caleb, Rowan, Ivy, Trent, Malik, Serena, Omar, Tori, and Victor.
+In a 1v1 game, Harper beat Caleb.
+In the third scrimmage, Harper, Jalen, Kiara, Miles, Zoe, Dante, Priya, Louis, and Nina beat Theo, Rowan, Ivy, Trent, Malik, Serena, Omar, Jade, and Victor.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Harper ranks in terms of intrinsic playing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Caleb put into the 1v1 game against Harper?
+Query 3: In a new scrimmage later this same day between Harper, Jalen, Kiara, Miles, Zoe, Dante, Priya, Louis, and Nina (Team 1) and Theo, Rowan, Ivy, Trent, Malik, Serena, Omar, Jade, and Victor (Team 2), who would win and by how much?
+Query 4: In a new 1v1 game later this same day between Caleb and Theo, who would win and by how much?
+<END_SCENARIO>

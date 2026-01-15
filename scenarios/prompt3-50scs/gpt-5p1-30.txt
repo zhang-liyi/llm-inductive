@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this canoe slalom event, athletes complete timed runs through a series of gates. The winner of each run is the athlete or team with the faster time, which depends on their intrinsic paddling skill, balance, and power, combined with how much effort they put into that particular run.
+Athletes compete either individually or in pairs.
+All runs take place on the same day.
+
+CONDITIONS
+In the first run, Lina beat Oscar.
+In the second run, Lina and Ben beat Oscar and Tara.
+In the third run, Tara beat Ben.
+
+QUERIES
+Query 1: Out of 100 random canoe slalom athletes, where do you think Lina ranks in terms of intrinsic slalom ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Tara put into the third run?
+Query 3: In a new run later this same day between Lina and Tara (Team 1) and Oscar and Ben (Team 2), who would win and by how much?
+Query 4: In a new run later this same day between Oscar and Tara (Team 1) and Ben and a new athlete Kai (Team 2), who would win and by how much?
+<END_SCENARIO>

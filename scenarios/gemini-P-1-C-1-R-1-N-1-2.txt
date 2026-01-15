@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee games. In each game, the team that wins depends on the speed and catching reliability of the athletes, based on their intrinsic stamina modulated by other factors including how much effort they put in to that game.
+Athletes compete either individually or as a team of three.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Owen, Luke, and Evan beat Adam, Seth, and Reese.
+In the second game, Adam, Seth, and Evan beat Owen, Luke, and Reese.
+In the third game, Reese lost to Owen.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Reese ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Adam put into the third race?
+Query 3: In a new race later this same day between Reese and Luke (Team 1) and Evan and Seth (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Evan and Adam (Team 1) and Luke and Owen (Team 2), who would win and by how much?
+<END_SCENARIO>

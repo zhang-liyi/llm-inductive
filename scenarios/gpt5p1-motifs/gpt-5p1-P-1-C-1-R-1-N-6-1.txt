@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of small‑sided soccer games. In each game, the winning team is determined by the players’ intrinsic soccer skills, modulated by how much effort they put into running, pressing, and staying engaged throughout the game.
+Players compete either individually (in penalty shootouts) or in teams of eight.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Adam, Ben, Carl, David, Ethan, Frank, George, and Harry (Team Orion) beat Isaac, Jack, Kyle, Liam, Mason, Nathan, Owen, and Peter (Team Nova).
+In the second game, Lena, Adam, Ben, Carl, David, Ethan, Frank, and George lost to Isaac, Jack, Kyle, Liam, Mason, Nathan, Owen, and Peter.
+In the third game, Lena, Isaac, Jack, Kyle, Liam, Mason, Nathan, and Owen lost to Adam, Ben, Carl, David, Ethan, Frank, George, and Harry.
+In a penalty shootout later that day, Lena lost to Mason.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Mason ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Lena put into the third game?
+Query 3: In a new game later this same day between Lena, Adam, Ben, Carl, David, Ethan, Frank, and George (Team 1) and Isaac, Jack, Kyle, Liam, Mason, Nathan, Owen, and Peter (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Lena, Isaac, Jack, Kyle, Liam, Mason, Nathan, and Owen (Team 1) and Adam, Ben, Carl, David, Ethan, Frank, George, and Harry (Team 2), who would win and by how much?
+<END_SCENARIO>

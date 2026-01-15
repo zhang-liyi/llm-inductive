@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in Ultimate Frisbee games played 8-on-8. The winning team is determined by the number of points scored, based on the athletes' intrinsic agility and throwing accuracy, modulated by the effort they put into the game.
+Teams are reformed with different rosters for each game.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the line of (Hal, Ira, Jem, Kai, Len, Mel, Nat, Ori) beat the line of (Milo, Ari, Bo, Cam, Dee, Ev, Fin, Gio).
+In the second game, the line of (Milo, Hal, Ira, Jem, Kai, Len, Mel, Nat) beat the line of (Ari, Bo, Cam, Dee, Ev, Fin, Gio, Ori).
+In the third game, the line of (Hal, Ira, Jem, Kai, Len, Mel, Nat, Ori) beat the line of (Milo, Ari, Bo, Cam, Dee, Ev, Fin, Gio).
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Milo ranks in terms of intrinsic agility?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ari put into the second game?
+Query 3: In a new game later this same day between the line of (Milo, Hal, Ira, Jem, Kai, Len, Mel, Nat) (Team 1) and the line of (Ari, Bo, Cam, Dee, Ev, Fin, Gio, Ori) (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between the line of (Milo, Ari, Bo, Cam, Dee, Ev, Fin, Gio) (Team 1) and the line of (Hal, Ira, Jem, Kai, Len, Mel, Nat, Ori) (Team 2), who would win and by how much?
+<END_SCENARIO>

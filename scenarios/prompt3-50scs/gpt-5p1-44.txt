@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of disc golf rounds. In each round, the winner is the player or team that completes the layout in fewer throws, determined by intrinsic throwing power, accuracy, and consistency, modulated by how much focused effort they put into that round.
+Athletes compete either individually or as teams of three using combined scores.
+All rounds take place on the same day.
+
+CONDITIONS
+In the first round, Sasha beat Drew.
+In the second round, Sasha, Leo, and Quinn lost to Drew, Petra, and Miles.
+In the third round, Quinn beat Miles.
+
+QUERIES
+Query 1: Out of 100 random disc golfers, where do you think Drew ranks in terms of intrinsic disc golf ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Sasha put into the second round?
+Query 3: In a new round later this same day between Sasha and Quinn (Team 1) and Drew and Miles (Team 2, each team counting the better score on each hole), who would win and by how much?
+Query 4: In a new round later this same day between Leo, Petra, and Quinn (Team 1) and Sasha, Drew, and Miles (Team 2), who would win and by how much?
+<END_SCENARIO>

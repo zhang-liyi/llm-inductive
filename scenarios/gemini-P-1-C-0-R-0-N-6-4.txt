@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Lacrosse games. In each game, the team that wins depends on the collective stick handling and speed of the athletes, based on their intrinsic talent modulated by other factors including how much effort they put in to that game.
+Athletes compete in teams of 8.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the team of Elias, Colton, Cameron, Carson, Robert, Angel, Maverick, and Nicholas lost to the team of Dominic, Jaxson, Greyson, Austin, Ian, Jordan, Cooper, and Brayden.
+In the second game, the team of Elias, Colton, Dominic, Jaxson, Greyson, Austin, Ian, and Jordan lost to the team of Cameron, Carson, Robert, Angel, Maverick, Nicholas, Cooper, and Brayden.
+In the third game, the team of Elias, Colton, Cooper, Brayden, Cameron, Carson, Robert, and Angel lost to the team of Dominic, Jaxson, Greyson, Austin, Ian, Jordan, Maverick, and Nicholas.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Elias ranks in terms of intrinsic talent?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Dominic put into the third game?
+Query 3: In a new game later this same day between Elias and Colton (Team 1) and Dominic and Jaxson (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Dominic and Cameron (Team 1) and Colton and Cooper (Team 2), who would win and by how much?
+<END_SCENARIO>

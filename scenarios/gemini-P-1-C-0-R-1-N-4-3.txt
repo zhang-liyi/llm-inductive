@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of ultimate frisbee matches. In each match, the team that wins depends on the speed and throwing precision of the athletes, based on their intrinsic athleticism modulated by other factors including how much effort they put into that match.
+Athletes compete in fixed teams of six.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Sam, Ted, Ugo, Vic, Wil, and Xav beat Moe, Ned, Oli, Pat, Qen, and Ray.
+In the second match, Yan, Zac, Art, Bil, Cop, and Dax beat Moe, Ned, Oli, Pat, Qen, and Ray.
+In the third match, Ean, Fay, Gil, Han, Ivy, and Joe beat Moe, Ned, Oli, Pat, Qen, and Ray.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Moe ranks in terms of intrinsic athleticism?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Moe put into the third match?
+Query 3: In a new match later this same day between Moe, Ned, Oli, Pat, Qen, and Ray (Team 1) and Sam, Ted, Ugo, Vic, Wil, and Xav (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Moe, Ned, Oli, Pat, Qen, and Ray (Team 1) and Yan, Zac, Art, Bil, Cop, and Dax (Team 2), who would win and by how much?
+<END_SCENARIO>

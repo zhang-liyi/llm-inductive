@@ -1,0 +1,224 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  ////////////////////////////////
+  // BACKGROUND KNOWLEDGE
+  ////////////////////////////////
+
+  // Each rower has an intrinsic rowing strength & skill that is constant across all races.
+  // Units: "rowing performance units" (arbitrary scale, higher = stronger/faster when fresh at full effort).
+  var intrinsic_rowing_strength_and_skill = mem(function({rower}) {
+    // Three broad ability buckets in the rowing population.
+    var low_prior = 0.3;
+    var mid_prior = 0.4;
+    var high_prior = 0.3;
+
+    // Means for the three buckets.
+    var low_mean = 80;   // weaker club-level rower
+    var mid_mean = 100;  // solid competitive rower
+    var high_mean = 130; // especially strong/skilled rower
+
+    var ability_bucket_mean = categorical({
+      ps: [low_prior, mid_prior, high_prior],
+      vs: [low_mean, mid_mean, high_mean]
+    });
+
+    // Add individual variation within bucket.
+    var ability = gaussian(ability_bucket_mean, 10); // sd = 10 units
+    return Math.max(ability, 0);
+  });
+
+  // Baseline effort tendency: how hard a rower tends to push when not too fatigued.
+  // Units: fraction of max effort, 0–1.
+  var baseline_effort_tendency = mem(function({rower}) {
+    var ability = intrinsic_rowing_strength_and_skill({rower: rower});
+
+    // Slight assumption: stronger rowers are a bit more likely to push hard.
+    var high_effort = ability > 120;
+    var a = high_effort ? 4 : 2;
+    var b = high_effort ? 2 : 3;
+
+    return beta({a: a, b: b}); // mean around 0.6–0.7 for strong, 0.4–0.5 for others
+  });
+
+  // Effort in a given race (latent, 0–1). Depends on baseline tendency and current fatigue.
+  // Units: fraction of maximum possible effort.
+  var effort_in_race = mem(function({rower, race}) {
+    var base = baseline_effort_tendency({rower: rower});
+    var fatigue = fatigue_in_race({rower: rower, race: race}); // defined below
+
+    // Fatigue reduces the effective mean effort.
+    // If fatigue = 0, effective mean ≈ base; if fatigue = 1, effective mean ≈ base * 0.5.
+    var effective_mean = base * (1 - 0.5 * fatigue);
+
+    // Keep within (0,1)
+    effective_mean = Math.max(Math.min(effective_mean, 0.99), 0.01);
+
+    // Sample actual effort from a Beta centered on effective_mean.
+    var concentration = 8; // higher = less variable around the mean
+    var a = 1 + concentration * effective_mean;
+    var b = 1 + concentration * (1 - effective_mean);
+
+    var e = beta({a: a, b: b});
+    return Math.min(Math.max(e, 0), 1);
+  });
+
+  // Fatigue in a given race. Accumulates with prior efforts.
+  // Units: 0 (fresh) to 1 (maximally fatigued).
+  var fatigue_in_race = mem(function({rower, race}) {
+    if (race <= 1) {
+      // First race of the day: assume essentially fresh.
+      return 0;
+    } else {
+      // Fatigue in this race builds on previous race's fatigue and effort.
+      var prev_fatigue = fatigue_in_race({rower: rower, race: race - 1});
+      var prev_effort = effort_in_race({rower: rower, race: race - 1});
+
+      // Each prior race at full effort can add up to ~0.4 fatigue on average.
+      var fatigue_increment_mean = 0.4 * prev_effort;
+      var fatigue_increment = gaussian(fatigue_increment_mean, 0.05);
+
+      var raw_fatigue = prev_fatigue + fatigue_increment;
+      return Math.min(Math.max(raw_fatigue, 0), 1);
+    }
+  });
+
+  // Team intrinsic rowing strength & skill: combine rowers on the boat.
+  // Singles: just that rower. Doubles: mean of the two rowers' abilities.
+  // Units: rowing performance units (same as individual).
+  var team_intrinsic_rowing_strength_and_skill = function({team}) {
+    return listMean(map(function(rower) {
+      return intrinsic_rowing_strength_and_skill({rower: rower});
+    }, team));
+  };
+
+  // Team effort in a given race: mean of rowers' efforts in that race.
+  // Units: fraction of maximum, 0–1.
+  var team_effort_in_race = function({team, race}) {
+    return listMean(map(function(rower) {
+      return effort_in_race({rower: rower, race: race});
+    }, team));
+  };
+
+  // Boat-type modifier: doubles vs singles conversion from power to speed.
+  // (Both teams in a given race share the same boat_type, so this mostly matters
+  // when comparing across scenarios, not within a race.)
+  var boat_type_factor = function({boat_type}) {
+    return boat_type === 'doubles' ? 1.3 : 1.0;
+  };
+
+  // Effective power for a team in a race, before race-level conditions.
+  // Units: effective power units (proportional to expected boat speed).
+  var team_effective_power_in_race = function({team, race, boat_type}) {
+    var team_ability = team_intrinsic_rowing_strength_and_skill({team: team});
+    var team_effort = team_effort_in_race({team: team, race: race});
+    var type_factor = boat_type_factor({boat_type: boat_type});
+
+    return team_ability * team_effort * type_factor;
+  };
+
+  // Race-level shared conditions (wind, current, etc.)
+  // Units: power-equivalent offsets (same scale as effective power).
+  var random_race_conditions = mem(function({race}) {
+    return gaussian(0, 5);
+  });
+
+  // Team race performance: higher = better (faster).
+  // Units: "performance score" roughly proportional to boat speed.
+  var team_race_performance = function({team, race, boat_type}) {
+    var power = team_effective_power_in_race({team: team, race: race, boat_type: boat_type});
+    var conditions = random_race_conditions({race: race});
+    var idiosyncratic_noise = gaussian(0, 5);
+
+    return power + conditions + idiosyncratic_noise;
+  };
+
+  // A team beats another team if its race performance is higher (i.e., faster).
+  var beat = function({team1, team2, race, boat_type}) {
+    return team_race_performance({team: team1, race: race, boat_type: boat_type}) >
+           team_race_performance({team: team2, race: race, boat_type: boat_type});
+  };
+
+  // Intrinsic ability rank: how many out of N random rowers this rower is better than.
+  var intrinsic_rowing_strength_and_skill_rank = function({rower, out_of_n_rowers}) {
+    // Generate out_of_n_rowers - 1 other random rower IDs
+    var random_rower_ids = mapN(function(x) { return uniform(0, 1000); }, out_of_n_rowers - 1);
+
+    return sum(map(function(random_id) {
+      return intrinsic_rowing_strength_and_skill({rower: rower}) >
+             intrinsic_rowing_strength_and_skill({rower: random_id});
+    }, random_rower_ids));
+  };
+
+  // Effort percentage in a given race, 0–100%.
+  var effort_percentage_in_race = function({rower, race}) {
+    return 100 * effort_in_race({rower: rower, race: race});
+  };
+
+  // Predict who would win and by how much:
+  // Return: probability (0–1) that Team 2 would win in hypothetical future races with these teams.
+  // 0   => Team 1 almost always wins
+  // 0.5 => evenly matched
+  // 1   => Team 2 almost always wins
+  var who_would_win_by_how_much = function({team1, team2, race, boat_type}) {
+    // Simulate multiple hypothetical future races with new race IDs to resample noise/effort.
+    var num_future_races_to_simulate = 100;
+
+    // Future race IDs slightly beyond the provided race index to respect "later the same day"
+    var random_future_race_ids = mapN(function(x) {
+      return uniform(race + 1, race + 10);
+    }, num_future_races_to_simulate);
+
+    var team2_wins_count = sum(map(function(future_race_id) {
+      // If team1 does NOT beat team2, count as a win for team2 (ties are negligible under continuous noise).
+      return beat({team1: team1, team2: team2, race: future_race_id, boat_type: boat_type}) ? 0 : 1;
+    }, random_future_race_ids));
+
+    return team2_wins_count / num_future_races_to_simulate;
+  };
+
+  ////////////////////////////////
+  // CONDITIONS
+  ////////////////////////////////
+
+  // In the first race, a singles race, Harper beat Quinn.  
+  condition(beat({team1: ['harper'], team2: ['quinn'], race: 1, boat_type: 'singles'}));
+
+  // In the second race, a doubles race, Harper and Riley beat Quinn and Taylor.  
+  condition(beat({team1: ['harper', 'riley'], team2: ['quinn', 'taylor'], race: 2, boat_type: 'doubles'}));
+
+  // In the third race, a doubles race, Quinn and Riley beat Harper and Morgan.  
+  condition(beat({team1: ['quinn', 'riley'], team2: ['harper', 'morgan'], race: 3, boat_type: 'doubles'}));
+
+  // In the fourth race, a singles race, Morgan beat Quinn.  
+  condition(beat({team1: ['morgan'], team2: ['quinn'], race: 4, boat_type: 'singles'}));
+
+  ////////////////////////////////
+  // QUERIES
+  ////////////////////////////////
+
+  // Query 1: Out of 100 random rowers, where do you think Harper ranks in terms of intrinsic rowing strength and skill?  
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Riley put into the third race?  
+  // Query 3: In a new doubles race later this same day between Harper and Riley (Team 1) and Quinn and Morgan (Team 2), who would win and by how much?  
+  // Query 4: In a new singles race later this same day between Harper and Morgan, who would win and by how much?  
+  return {
+    query1: intrinsic_rowing_strength_and_skill_rank({rower: 'harper', out_of_n_rowers: 100}),
+    query2: effort_percentage_in_race({rower: 'riley', race: 3}),
+    query3: who_would_win_by_how_much({team1: ['harper', 'riley'], team2: ['quinn', 'morgan'], race: 5, boat_type: 'doubles'}),
+    query4: who_would_win_by_how_much({team1: ['harper'], team2: ['morgan'], race: 6, boat_type: 'singles'})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: 'MCMC', samples: 10000});
+json.write('inference_results/result-17.json', posterior);

@@ -1,0 +1,254 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  // BACKGROUND KNOWLEDGE
+  // ----------------------------------------------------
+  // We model each skater's stable intrinsic traits on a 0–100 scale:
+  // - intrinsic_strength: power/stability for technical elements.
+  // - intrinsic_technical_ability: difficulty/quality of jumps, spins, etc.
+  // - intrinsic_artistic_ability: expressiveness, musicality, aesthetics.
+  // These are constant across all programs on the same day.
+  
+  // Intrinsic strength is bucketed into low / average / high with noise.
+  var intrinsic_strength = mem(function({skater}) {
+    var parameter_low_prior = 0.3;
+    var parameter_average_prior = 0.4;
+    var parameter_high_prior = 0.3;
+    
+    // Means for low / average / high strength on a 0–100 scale.
+    var low_strength_mean = 35;
+    var average_strength_mean = 55;
+    var high_strength_mean = 75;
+    var strength_variance = 10;
+    
+    var strength_bucket_mean = categorical({
+      ps: [parameter_low_prior, parameter_average_prior, parameter_high_prior],
+      vs: [low_strength_mean, average_strength_mean, high_strength_mean]
+    });
+    
+    // Truncate to [0, 100].
+    return Math.min(Math.max(gaussian(strength_bucket_mean, strength_variance), 0), 100);
+  });
+  
+  // Intrinsic technical ability depends positively on intrinsic strength.
+  var intrinsic_technical_ability = mem(function({skater}) {
+    var strength = intrinsic_strength({skater: skater});
+    // On a 0–100 scale. Stronger skaters tend to have higher technical ceilings.
+    var mean_tech = 0.6 * strength + 25; // Typical around 45–70.
+    var tech_variance = 12;
+    return Math.min(Math.max(gaussian(mean_tech, tech_variance), 0), 100);
+  });
+  
+  // Intrinsic artistic ability is largely independent of strength, but similar 3-bucket prior.
+  var intrinsic_artistic_ability = mem(function({skater}) {
+    var parameter_low_prior = 0.3;
+    var parameter_average_prior = 0.4;
+    var parameter_high_prior = 0.3;
+    
+    var low_art_mean = 35;
+    var average_art_mean = 55;
+    var high_art_mean = 75;
+    var art_variance = 10;
+    
+    var art_bucket_mean = categorical({
+      ps: [parameter_low_prior, parameter_average_prior, parameter_high_prior],
+      vs: [low_art_mean, average_art_mean, high_art_mean]
+    });
+    
+    return Math.min(Math.max(gaussian(art_bucket_mean, art_variance), 0), 100);
+  });
+  
+  // Baseline precision/consistency depends on technical ability and strength.
+  // Scale: 0–100 (higher = more consistent).
+  var baseline_precision = mem(function({skater}) {
+    var tech = intrinsic_technical_ability({skater: skater});
+    var strength = intrinsic_strength({skater: skater});
+    var mean_precision = 0.5 * tech + 0.3 * strength; // Typical mid-to-high.
+    var precision_variance = 12;
+    return Math.min(Math.max(gaussian(mean_precision, precision_variance), 0), 100);
+  });
+  
+  // For each skater and program, they invest some effort (0–100%).
+  // Effort is generally high in competition, slightly shaped by abilities.
+  var effort_in_program = mem(function({skater, program}) {
+    var tech = intrinsic_technical_ability({skater: skater});
+    var art = intrinsic_artistic_ability({skater: skater});
+    var avg_ability = (tech + art) / 2;
+    
+    // Mean effort (as a fraction 0–1) conditional on ability.
+    var mean_effort_fraction =
+      avg_ability > 65 ? 0.82 :
+      avg_ability < 45 ? 0.72 :
+                         0.78;
+    
+    // Concentration for Beta prior: most mass near the mean.
+    var concentration = 20;
+    var alpha = mean_effort_fraction * concentration;
+    var beta_param = (1 - mean_effort_fraction) * concentration;
+    
+    var effort_fraction = beta({a: alpha, b: beta_param}); // In [0,1].
+    return 100 * effort_fraction; // Convert to 0–100% scale.
+  });
+  
+  // Precision realized in a program depends on baseline precision and effort that day.
+  // Scale: 0–100 (higher = cleaner, tighter skating).
+  var precision_in_program = mem(function({skater, program}) {
+    var base_prec = baseline_precision({skater: skater});
+    var effort = effort_in_program({skater: skater, program: program});
+    var mean_precision = 0.6 * base_prec + 0.4 * effort;
+    var variance_precision = 10;
+    return Math.min(Math.max(gaussian(mean_precision, variance_precision), 0), 100);
+  });
+  
+  // Technical performance score in a given program.
+  // Scale: roughly 0–100 technical points (arbitrary continuous score).
+  var technical_performance_in_program = function({skater, program}) {
+    var tech = intrinsic_technical_ability({skater: skater});
+    var strength = intrinsic_strength({skater: skater});
+    var effort = effort_in_program({skater: skater, program: program});
+    var precision = precision_in_program({skater: skater, program: program});
+    
+    var mean_tech_perf =
+      0.4 * tech +
+      0.2 * strength +
+      0.2 * effort +
+      0.2 * precision;
+    
+    var tech_perf_variance = 8;
+    return Math.min(Math.max(gaussian(mean_tech_perf, tech_perf_variance), 0), 100);
+  };
+  
+  // Artistic performance score in a given program.
+  // Scale: roughly 0–100 artistic points.
+  var artistic_performance_in_program = function({skater, program}) {
+    var art = intrinsic_artistic_ability({skater: skater});
+    var effort = effort_in_program({skater: skater, program: program});
+    var precision = precision_in_program({skater: skater, program: program});
+    
+    var mean_art_perf =
+      0.6 * art +
+      0.2 * effort +
+      0.2 * precision;
+    
+    var art_perf_variance = 8;
+    return Math.min(Math.max(gaussian(mean_art_perf, art_perf_variance), 0), 100);
+  };
+  
+  // Individual total program score (e.g., sum of technical and artistic, equally weighted).
+  // Scale: roughly 0–100 total points.
+  var individual_program_score = function({skater, program}) {
+    var tech_perf = technical_performance_in_program({skater: skater, program: program});
+    var art_perf = artistic_performance_in_program({skater: skater, program: program});
+    return 0.5 * tech_perf + 0.5 * art_perf;
+  };
+  
+  // Team program score: sum of individual scores of all team members.
+  // Units: total team points on same 0–100 per-skater scale.
+  var team_program_score = function({team, program}) {
+    return sum(map(
+      function(skater) {
+        return individual_program_score({skater: skater, program: program});
+      },
+      team
+    ));
+  };
+  
+  // Team1 beats Team2 in a program if its total score is higher.
+  var beat = function({team1, team2, program}) {
+    return team_program_score({team: team1, program: program}) >
+           team_program_score({team: team2, program: program});
+  };
+  
+  // Convenience: team1 loses to team2 if it does not beat team2.
+  var lost = function({team1, team2, program}) {
+    return !beat({team1: team1, team2: team2, program: program});
+  };
+  
+  // Intrinsic strength ranking: how many out of N random skaters this skater exceeds.
+  var intrinsic_strength_rank = function({skater, out_of_n_skaters}) {
+    // Generate out_of_n_skaters - 1 random skater IDs.
+    var random_skater_ids = mapN(
+      function(x) { return uniform(0, 1000); },
+      out_of_n_skaters - 1
+    );
+    
+    return sum(map(
+      function(random_id) {
+        return intrinsic_strength({skater: skater}) >
+               intrinsic_strength({skater: random_id});
+      },
+      random_skater_ids
+    ));
+  };
+  
+  // Return effort as a percentage (0–100) in a given program.
+  var effort_percentage_in_program = function({skater, program}) {
+    return effort_in_program({skater: skater, program: program});
+  };
+  
+  // Predictive function: who would win and by how much (as win probability for Team 2).
+  // We approximate by simulating many hypothetical future programs with new IDs.
+  // Return value: fraction in [0,1], interpreted as P(Team 2 wins).
+  var who_would_win_by_how_much = function({team1, team2, program}) {
+    var num_future_programs_to_simulate = 100;
+    
+    // Simulate future program IDs (ensure they don't clash with observed ones).
+    var random_future_program_ids = mapN(
+      function(x) { return uniform(program + 1, 1000); },
+      num_future_programs_to_simulate
+    );
+    
+    // Count how many simulated programs Team 2 wins.
+    var simulated_programs_won_by_team_2 = sum(map(
+      function(random_program_id) {
+        return lost({team1: team1, team2: team2, program: random_program_id});
+      },
+      random_future_program_ids
+    ));
+    
+    return simulated_programs_won_by_team_2 / num_future_programs_to_simulate;
+  };
+  
+  // ----------------------------------------------------
+  // CONDITIONS
+  // ----------------------------------------------------
+  // In the first program, Ava beat Rowan.
+  condition(beat({team1:['ava'], team2:['rowan'], program: 1}));
+  
+  // In the second program, Ava and Luka beat Rowan and Mei.
+  condition(beat({team1:['ava', 'luka'], team2:['rowan', 'mei'], program: 2}));
+  
+  // In the third program, Mei beat Ava.
+  condition(beat({team1:['mei'], team2:['ava'], program: 3}));
+  
+  // In the fourth program, Rowan, Mei, and Luka beat Ava, Theo, and Sara.
+  condition(beat({team1:['rowan', 'mei', 'luka'], team2:['ava', 'theo', 'sara'], program: 4}));
+  
+  // ----------------------------------------------------
+  // QUERIES
+  // ----------------------------------------------------
+  // Query 1: Out of 100 random figure skaters, where do you think Ava ranks in terms of intrinsic strength?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Rowan put into the fourth program?
+  // Query 3: In a new program later this same day between Ava and Mei (Team 1) and Rowan and Luka (Team 2), who would win and by how much?
+  // Query 4: In a new team program later this same day between Ava, Luka, and Theo (Team 1) and Rowan, Mei, and Sara (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_strength_rank({skater: 'ava', out_of_n_skaters: 100}),
+    query2: effort_percentage_in_program({skater: 'rowan', program: 4}),
+    query3: who_would_win_by_how_much({team1:['ava', 'mei'], team2:['rowan', 'luka'], program: 5}),
+    query4: who_would_win_by_how_much({team1:['ava', 'luka', 'theo'], team2:['rowan', 'mei', 'sara'], program: 6})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-24.json', posterior);

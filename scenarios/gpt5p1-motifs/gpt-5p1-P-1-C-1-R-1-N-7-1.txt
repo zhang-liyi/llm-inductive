@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of softball games. Each team fields 9 players on defense. Game outcomes depend on the players’ intrinsic batting and fielding ability, combined with how much effort they put in during that game.
+Most athletes are on fixed teams: the Comets, the Dragons, and the Falcons. Lila is a guest player who sometimes fills in for different teams. Players can also face off individually in batting duels against a pitcher.
+All games take place on the same afternoon.
+
+CONDITIONS
+In the first game, the Comets with Lila in the lineup lost to the Dragons.
+In the second game, the Falcons with Lila in the lineup lost to the Dragons.
+In the third game, the Dragons beat the Comets using their regular lineups without Lila.
+In an individual batting duel, Lila lost to Naomi from the Dragons.
+
+QUERIES
+Query 1: Out of 100 random softball players, where do you think Lila ranks in terms of intrinsic softball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Lila put into the second game?
+Query 3: In a new game later this same day between the Dragons and the Comets with Lila added to the Comets, who would win and by how much?
+Query 4: In a new game later this same day between the Dragons and the Falcons with Lila added to the Falcons, who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Volleyball games. In each game, the team that wins depends on the points scored, based on the athletes' intrinsic spiking power and agility modulated by other factors including how much effort they put into that game.
+Athletes compete either individually or as a team of three.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Reese, Tina, and Amy lost to Liz, Meg, and Jo.
+In the second game, Reese, Liz, and Meg lost to Tina, Amy, and Jo.
+In the third game, Reese beat Jo.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Reese ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jo put into the third race?
+Query 3: In a new race later this same day between Reese and Tina (Team 1) and Liz and Amy (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Liz and Meg (Team 1) and Tina and Jo (Team 2), who would win and by how much?
+<END_SCENARIO>

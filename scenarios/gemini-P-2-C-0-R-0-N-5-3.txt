@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in a series of 7-a-side soccer matches. In each match, the team that wins depends on the average dribbling and passing accuracy of the athletes, based on their intrinsic technique modulated by other factors including how much effort they put into that match.
+Athletes compete in teams of 7.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Nia, Ola, Pat, Quin, Rob, Sam, and Tim beat Ugo, Vic, Wil, Xyl, Yan, Zed, and Ash.
+In the second match, Nia, Ola, Ugo, Vic, Wil, Xyl, and Yan beat Ben, Cal, Dom, Eli, Fin, Gus, and Hal.
+In the third match, Nia, Ola, Ben, Cal, Dom, Eli, and Fin lost to Pat, Quin, Rob, Sam, Tim, Zed, and Ash.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Nia ranks in terms of intrinsic technique?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Nia put into the third match?
+Query 3: In a new match later this same day between Team 1 (Nia, Ola, Pat, Quin, Rob, Sam, Tim) and Team 2 (Ben, Cal, Dom, Eli, Fin, Gus, Hal), who would win and by how much?
+Query 4: In a new match later this same day between Team 1 (Ugo, Vic, Wil, Xyl, Yan, Zed, Ash) and Team 2 (Ben, Cal, Dom, Eli, Fin, Gus, Hal), who would win and by how much?
+<END_SCENARIO>

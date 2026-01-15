@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of small‑sided soccer games. The outcome of each game depends on the players’ intrinsic soccer ability (ball control, passing, shooting, defending) and on how much effort they put into that game.  
+Players sometimes play short 1‑on‑1 finishing duels and sometimes play as part of a 4‑player team.  
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Lucia, Mateo, Sara, and Bruno beat Diego, Carla, Hugo, and Elena.  
+In the second game, Lucia beat Hugo.  
+In the third game, Diego, Mateo, Carla, and Nina beat Lucia, Hugo, Sara, and Bruno.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Lucia ranks in terms of intrinsic soccer ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Diego put into the third game?  
+Query 3: In a new game later this same day between Lucia, Diego, Nina, and Mateo (Team 1) and Hugo, Carla, Sara, and Bruno (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Lucia, Elena, Hugo, and Nina (Team 1) and Diego, Mateo, Carla, and Sara (Team 2), who would win and by how much?
+<END_SCENARIO>

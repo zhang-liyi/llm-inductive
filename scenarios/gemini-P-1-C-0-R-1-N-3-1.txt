@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a 5-a-side soccer tournament. In each match, the team that wins depends on the number of goals scored, based on the athletes' intrinsic ball control and tactical awareness, modulated by other factors including the running intensity and effort they put into that match.
+Athletes compete in fixed teams of 5.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Team Alpha (Leo, Neymar, Kylian, Sergio, and Luis) beat Team Omega (Barnaby, Ted, Marshall, Lily, and Robin).
+In the second match, Team Beta (Cristiano, Luka, Gareth, Karim, and Marcelo) beat Team Omega (Barnaby, Ted, Marshall, Lily, and Robin).
+In the third match, Team Gamma (Erling, Kevin, Phil, Ruben, and Ederson) beat Team Omega (Barnaby, Ted, Marshall, Lily, and Robin).
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Barnaby ranks in terms of intrinsic ball control and tactical awareness?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Barnaby put into the third match?
+Query 3: In a new match later this same day between Team Omega (Team 1) and Team Alpha (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Team Omega (Team 1) and Team Beta (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a series of small-sided field hockey games. Each team is composed of 8 players. The winner of each game depends on the offensive and defensive capabilities of the group, based on their intrinsic skill levels modulated by the intensity and effort they bring to the field.
+Teams are fixed, so the same 8 players remain together for every game.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Nia's team beat Zoe's team.
+In the second game, Nia's team beat Hannah's team.
+In the third game, Nia's team lost to Olivia's team.
+In the fourth game, Nia's team beat Grace's team.
+
+QUERIES
+Query 1: Out of 100 random hockey players, where do you think Nia ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Nia's team put into the third game?
+Query 3: In a new game later this same day between Nia's team (Team 1) and Zoe's team (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Olivia's team (Team 1) and Hannah's team (Team 2), who would win and by how much?
+<END_SCENARIO>

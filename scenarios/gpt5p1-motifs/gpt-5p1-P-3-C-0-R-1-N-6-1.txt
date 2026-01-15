@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a series of basketball scrimmages. Each team has a fixed roster of 8 players, and these rosters never change across games.
+Outcomes depend on each player’s intrinsic basketball skill and how much effort and concentration they apply in that particular game or contest.
+All scrimmages and skill contests take place on the same day.
+Maya is on the Falcons in every game she plays.
+
+CONDITIONS
+In the first scrimmage, the Hawks beat the Falcons.
+In the second scrimmage, the Lynx beat the Falcons.
+In the third scrimmage, the Falcons beat the Hawks.
+In a separate three-point shooting contest, Zoe from the Lynx beat Maya from the Falcons.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Maya ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Zoe put into the three-point shooting contest?
+Query 3: In a new full-court game later this same day between the Falcons and the Lynx, who would win and by how much?
+Query 4: In a new full-court game later this same day between the Hawks and the Lynx, who would win and by how much?
+<END_SCENARIO>

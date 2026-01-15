@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in track cycling team sprint races. Each team has three riders, and the outcome of each race depends on the riders’ intrinsic power, aerodynamics, pacing sense, and bike handling, combined with how much effort they put into that race.
+Riders compete only in fixed three-rider teams.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Eva, Marta, and Sofia beat Chloe, Isabelle, and Nina.  
+In the second race, Eva, Marta, and Sofia beat Karin, Laura, and Petra.  
+In the third race, Chloe, Isabelle, and Nina beat Karin, Laura, and Petra.
+
+QUERIES
+Query 1: Out of 100 random track cyclists, where do you think Eva ranks in terms of intrinsic cycling ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Karin put into the third race?  
+Query 3: In a new team sprint race later this same day between Eva, Marta, and Sofia (Team 1) and Chloe, Isabelle, and Nina (Team 2), who would win and by how much?  
+Query 4: In a new team sprint race later this same day between Karin, Laura, and Petra (Team 1) and a new team of Helena, Noor, and Yuki (Team 2), who would win and by how much?  
+<END_SCENARIO>

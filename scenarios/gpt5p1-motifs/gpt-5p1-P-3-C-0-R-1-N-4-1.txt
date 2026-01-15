@@ -1,0 +1,22 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a small-sided 6-a-side soccer tournament played over a single afternoon. Match outcomes depend on each player’s intrinsic soccer ability (first touch, passing, dribbling, positioning, finishing, and defending) and the level of effort they put in during that match. Teams with higher combined ability and effort create more chances and concede fewer.
+All matches are 6-on-6.
+Players have fixed teams and always play with the same teammates.
+
+Team 1 (Omar’s team): Omar, Leo, Miguel, Arjun, Felix, Samir  
+Team 2: Daniel, Victor, Hugo, Tomas, Andre, Malik  
+Team 3: Noah, Karim, Paolo, Jonah, Elias, Ruben  
+
+CONDITIONS
+In the first match, Omar, Leo, Miguel, Arjun, Felix, and Samir lost to Daniel, Victor, Hugo, Tomas, Andre, and Malik.  
+In the second match, Omar, Leo, Miguel, Arjun, Felix, and Samir lost to Noah, Karim, Paolo, Jonah, Elias, and Ruben.  
+In the third match, Omar, Leo, Miguel, Arjun, Felix, and Samir beat Daniel, Victor, Hugo, Tomas, Andre, and Malik.  
+In the fourth match, Omar, Leo, Miguel, Arjun, Felix, and Samir lost to Noah, Karim, Paolo, Jonah, Elias, and Ruben.
+
+QUERIES
+Query 1: Out of 100 random small-sided soccer players, where do you think Omar ranks in terms of intrinsic soccer ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Noah put into the fourth match?  
+Query 3: In a new match later this same day between Omar, Leo, Miguel, Arjun, Felix, and Samir (Team 1) and Daniel, Victor, Hugo, Tomas, Andre, and Malik (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Daniel, Victor, Hugo, Tomas, Andre, and Malik (Team 1) and Noah, Karim, Paolo, Jonah, Elias, and Ruben (Team 2), who would win and by how much?
+<END_SCENARIO>

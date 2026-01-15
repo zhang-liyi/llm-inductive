@@ -1,0 +1,115 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+    // BACKGROUND KNOWLEDGE
+    // Intrinsic soccer ability is an attribute of a given player that varies widely. Players generally fall into unskilled, skilled, or particularly skilled categories.
+    var intrinsic_soccer_ability = mem(function ({player}) {
+      var low_skill_prior = 0.33;
+      var average_skill_prior = 0.33;
+      var high_skill_prior = 0.34;
+
+      // On an arbitrary scale centered around 100.
+      var low_skill_mean = 80; 
+      var average_skill_mean = 100;
+      var high_skill_mean = 140;
+      var skill_variance = 10;
+
+      var player_skill_average = categorical({ps: [low_skill_prior, average_skill_prior, high_skill_prior], 
+      vs: [low_skill_mean, average_skill_mean, high_skill_mean]});
+
+      return Math.max(gaussian(player_skill_average, skill_variance), 0);
+    })
+
+    // A player's intrinsic soccer ability ranking out of n other players is the number of other players we might expect them to be more skilled than out of N total random players.
+    var intrinsic_soccer_ability_rank = function({player, out_of_n_players}) {
+        var random_player_ids = mapN(function(x) {return uniform(0, 1000)}, out_of_n_players - 1)
+        
+        return sum(map(
+            function(random_player_id) {
+              return intrinsic_soccer_ability({player: player}) > intrinsic_soccer_ability({player: random_player_id})}, random_player_ids))
+    }
+    
+    // Effort a player puts into a match can vary. Players with higher intrinsic ability might choose to invest more effort.
+    var effort_in_match = mem(function({player, match}) {
+      var player_skill = intrinsic_soccer_ability({player: player})
+
+      var low_effort_prior = player_skill > 120 ? 0.1 : player_skill < 80 ? 0.6 : 0.3;
+      var medium_effort_prior = player_skill > 120 ? 0.2 : player_skill < 80 ? 0.3 : 0.5;
+      var high_effort_prior = player_skill > 120 ? 0.7 : player_skill < 80 ? 0.1 : 0.2;
+
+      var low_effort_mean = 30; 
+      var medium_effort_mean = 60;
+      var high_effort_mean = 90;
+      var effort_variance = 10;
+      
+      var player_effort_average = categorical({ps: [low_effort_prior, medium_effort_prior, high_effort_prior], 
+      vs: [low_effort_mean, medium_effort_mean, high_effort_mean]});
+
+      return Math.min(Math.max(gaussian(player_effort_average, effort_variance), 0), 100)
+    })
+
+    // A team's performance in a match is based on the sum of intrinsic abilities and efforts of all players on the team.
+    var team_performance_in_match = function({team, match}) {
+      var total_skill = sum(map(function(player) { return intrinsic_soccer_ability({player: player}) }, team))
+      var total_effort = sum(map(function(player) { return effort_in_match({player: player, match: match}) }, team))
+
+      return total_skill + total_effort;
+    }
+    
+    // A team beats another team in a match if their performance is greater than the other team's performance in that match. 
+    var beat = function({team1, team2, match}){
+      return team_performance_in_match({team: team1, match: match}) > team_performance_in_match({team: team2, match: match})
+    }
+    
+    // A team loses to another team in a given match if they did not beat the team in that match.
+    var lost = function({team1, team2, match}){ 
+      return !beat({team1: team1, team2: team2, match: match})
+    }
+
+    // To calculate who would win and by how much, we will calculate the likelihood that a team would win over another. 
+    var who_would_win_by_how_much = function({team1, team2, match}) {
+      var num_future_matches_to_simulate = 100;
+      var random_future_match_ids = mapN(function(x) {return uniform(match+1, 1000)}, num_future_matches_to_simulate);
+
+      var simulated_matches_won_by_team_2 = sum(map(
+            function(random_future_match_id) {
+              return lost({team1: team1, team2: team2, match: random_future_match_id})}, random_future_match_ids))
+
+      return simulated_matches_won_by_team_2 / num_future_matches_to_simulate;
+    }
+
+  // CONDITIONS
+  // In the first match, Alex, Bruno, Carlos, Diego, Elias, Fabio, and Hugo beat Ivan, Jonas, Karim, Leo, Marco, Noah, and Omar.
+  condition(beat({team1:['alex', 'bruno', 'carlos', 'diego', 'elias', 'fabio', 'hugo'], team2:['ivan', 'jonas', 'karim', 'leo', 'marco', 'noah', 'omar'], match: 1}))
+  // In the second match, Ivan, Jonas, Karim, Leo, Marco, Noah, and Alex beat Bruno, Carlos, Diego, Elias, Fabio, and Hugo.
+  condition(beat({team1:['ivan', 'jonas', 'karim', 'leo', 'marco', 'noah', 'alex'], team2:['bruno', 'carlos', 'diego', 'elias', 'fabio', 'hugo'], match: 2}))
+  // In the third match, Karim, Leo, Marco, Noah, Omar, Diego, and Fabio beat Alex, Bruno, Carlos, Elias, Hugo, Ivan, and Jonas.
+  condition(beat({team1:['karim', 'leo', 'marco', 'noah', 'omar', 'diego', 'fabio'], team2:['alex', 'bruno', 'carlos', 'elias', 'hugo', 'ivan', 'jonas'], match: 3}))
+  // In the fourth match, Alex’s team lost to Karim’s team.
+  condition(lost({team1:['alex'], team2:['karim'], match: 4}))
+
+  // QUERIES
+  // Query 1: Out of 100 random soccer players, where do you think Karim ranks in terms of intrinsic soccer ability?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Alex put into the third match?
+  // Query 3: In a new match later this same day between Alex, Bruno, Carlos, Diego, Elias, Fabio, and Hugo (Team 1) and Karim, Leo, Marco, Noah, Omar, Ivan, and Jonas (Team 2), who would win and by how much?
+  // Query 4: In a new match later this same day between Alex, Karim, Leo, Noah, Marco, and Omar (Team 1) and Bruno, Carlos, Diego, Elias, Fabio, and Hugo (Team 2), who would win and by how much?
+  return {
+    query1: intrinsic_soccer_ability_rank({player: 'karim', out_of_n_players: 100}),
+    query2: effort_in_match({player: 'alex', match: 3}),
+    query3: who_would_win_by_how_much({team1:['alex', 'bruno', 'carlos', 'diego', 'elias', 'fabio', 'hugo'], team2:['karim', 'leo', 'marco', 'noah', 'omar', 'ivan', 'jonas'], match: 5}),
+    query4: who_would_win_by_how_much({team1:['alex', 'karim', 'leo', 'noah', 'marco', 'omar'], team2:['bruno', 'carlos', 'diego', 'elias', 'fabio', 'hugo'], match: 6})
+  }
+}
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-sports-1.json', posterior);

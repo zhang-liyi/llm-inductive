@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of ultimate frisbee games played with six players per side. Each result depends on the athletes’ intrinsic ultimate abilities (such as sprint speed, throwing precision, and catching reliability) together with how much effort they put into that game.
+Athletes compete either individually or in teams of six.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Blake beat Marcus.
+In the second game, Blake, Gia, Hugo, Iris, Jay, and Kara beat Marcus, Alice, Cara, Dev, Erin, and Finn.
+In the third game, Blake, Alice, Cara, Dev, Erin, and Finn beat Marcus, Gia, Hugo, Liam, Mira, and Nico.
+In the fourth game, Marcus, Iris, Jay, Owen, Paige, and Quinn beat Blake, Liam, Mira, Nico, Ria, and Sam.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Marcus ranks in terms of intrinsic ultimate frisbee ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Blake put into the first game?
+Query 3: In a new game later this same day between Marcus, Alice, Hugo, Liam, Mira, and Uma (Team 1) and Blake, Cara, Dev, Erin, Finn, and Victor (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Gia, Iris, Jay, Owen, Paige, and Quinn (Team 1) and Alice, Cara, Dev, Erin, Nico, and Ria (Team 2), who would win and by how much?
+<END_SCENARIO>

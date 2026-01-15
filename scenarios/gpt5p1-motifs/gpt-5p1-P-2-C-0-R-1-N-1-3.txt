@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in team table tennis. Each team consists of three players, and a team match is decided by the combined results of several games among the team members. The team that wins depends on the players’ intrinsic table tennis skills (such as spin control, reflexes, and consistency) and how much effort they put into that specific match.
+Athletes compete either individually in singles or as part of their fixed 3-player team.
+All matches take place on the same day.
+
+CONDITIONS
+In the first team match, Priya, Anil, and Dev beat Mira, Karan, and Neel.
+In the second match, Priya beat Mira in singles.
+In the third team match, Priya, Anil, and Dev beat Rohan, Ishaan, and Rahul.
+In the fourth team match, Rohan, Ishaan, and Rahul beat Priya, Anil, and Dev.
+
+QUERIES
+Query 1: Out of 100 random table tennis players, where do you think Priya ranks in terms of intrinsic table tennis ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Anil put into the fourth team match?
+Query 3: In a new team match later this same day between Priya, Anil, and Dev (Team 1) and Mira, Karan, and Neel (Team 2), who would win and by how much?
+Query 4: In a new team match later this same day between Mira, Karan, and Neel (Team 1) and Rohan, Ishaan, and Rahul (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes compete in table tennis. Matches can be doubles, where two players form a team, or occasionally singles. The winner of each match is the side that can produce higher-quality shots and rallies overall, driven by the players’ intrinsic table tennis skill moderated by how much effort they invest in that match.  
+Whenever athletes play doubles, they stay with the same partner throughout the event.  
+All matches are played on the same day.
+
+CONDITIONS  
+In the first match, Priya and Elena beat Jonah and Luis.  
+In the second match, Priya and Elena beat Mira and Quinn.  
+In the third match, Jonah and Luis beat Priya and Elena.  
+In the fourth match, Priya beat Jonah.
+
+QUERIES  
+Query 1: Out of 100 random table tennis players, where do you think Priya ranks in terms of intrinsic playing strength?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jonah put into the third match?  
+Query 3: In a new match later this same day between Priya and Elena (Team 1) and Jonah and Luis (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Mira and Quinn (Team 1) and Jonah and Luis (Team 2), who would win and by how much?  
+<END_SCENARIO>

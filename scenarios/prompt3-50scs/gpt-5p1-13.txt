@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of short-sided field hockey matches. In each match, the victorious team is determined by players’ intrinsic stick skills, speed, and coordination, along with how much effort they exert in that match.
+Athletes participate in mixed small teams.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Harper beat Blake.
+In the second match, Harper and Isla beat Blake and Maya.
+In the third match, Blake and Isla beat Harper and Maya.
+
+QUERIES
+Query 1: Out of 100 random field hockey players, where do you think Isla ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Harper put into the second match?
+Query 3: In a new match later this same day between Harper and Isla (Team 1) and Blake and Jordan (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Harper, Maya, and Jordan (Team 1) and Blake, Isla, and Casey (Team 2), who would win and by how much?
+<END_SCENARIO>

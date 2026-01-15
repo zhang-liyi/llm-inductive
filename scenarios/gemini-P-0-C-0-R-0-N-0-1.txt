@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Tennis matches. In each match, the team that wins depends on the number of sets won, based on the athletes' intrinsic accuracy and speed, modulated by other factors including how much effort they put into that match.
+Athletes compete either individually or as a team.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Zara beat Ava.
+In the second match, Zara and Mia beat Ava and Zoe.
+In the third match, Zara and Mia beat Zoe and Lily.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Zara ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Zoe put into the third match?
+Query 3: In a new match later this same day between Zara and Mia (Team 1) and Ava and Grace (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Zoe and Lily (Team 1) and Mia and Harper (Team 2), who would win and by how much?
+<END_SCENARIO>

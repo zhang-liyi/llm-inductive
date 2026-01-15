@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of basketball games. Each squad has 9 players on its roster, and lineups are rotated throughout the game. The outcome of each game depends on players’ intrinsic shooting, ball‑handling, and defensive ability, together with how much effort they put in.
+Most players remain on their fixed squads: the Raptors, the Stallions, and Phoenix. Hana is a swing player who sometimes joins different squads. Players can also compete individually in one‑on‑one half‑court games.
+All games take place on the same evening.
+
+CONDITIONS
+In the first game, the Raptors with Hana on their roster lost to the Stallions.
+In the second game, Phoenix with Hana on their roster lost to the Raptors’ regular squad.
+In the third game, the Stallions beat Phoenix using their regular squads without Hana.
+In a one‑on‑one game, Hana lost to Riley from the Stallions.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Hana ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Hana put into the first game?
+Query 3: In a new game later this same evening between the Stallions and the Raptors with Hana added again to the Raptors, who would win and by how much?
+Query 4: In a new game later this same evening between the Stallions and Phoenix with Hana added again to Phoenix, who would win and by how much?
+<END_SCENARIO>

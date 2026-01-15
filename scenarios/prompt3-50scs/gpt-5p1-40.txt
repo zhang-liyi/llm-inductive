@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of fencing bouts. In each bout, the winner is determined by how effectively the fencer uses their speed, timing, and precision, based on their intrinsic fencing skill modulated by how much effort they put into that bout.
+Athletes compete either individually or as a team of two.
+All bouts take place on the same day.
+
+CONDITIONS
+In the first bout, Lina beat Boris.
+In the second bout, Lina and Maya beat Boris and Theo.
+In the third bout, Theo beat Maya.
+
+QUERIES
+Query 1: Out of 100 random fencers, where do you think Lina ranks in terms of intrinsic fencing skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Boris put into the second bout?
+Query 3: In a new bout later this same day between Lina and Theo (Team 1) and Boris and Maya (Team 2), who would win and by how much?
+Query 4: In a new bout later this same day between Boris (Team 1) and Maya and Theo (Team 2 fencing in an alternating-relay format), who would win and by how much?
+<END_SCENARIO>

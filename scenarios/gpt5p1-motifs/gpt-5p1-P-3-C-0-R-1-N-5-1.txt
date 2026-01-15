@@ -1,0 +1,24 @@
+<START_SCENARIO>
+BACKGROUND  
+This is a one-day indoor handball mini-tournament with teams of seven players (including the goalkeeper).  
+The result of each match depends on players’ intrinsic jumping ability, throwing power, reflexes, and their level of effort in that match.  
+Every player stays on the same team for all matches.
+
+Team Orion: Marta, Elena, Sofia, Clara, Julia, Ines, Paula.  
+Team Nova: Ana, Beatriz, Laura, Vera, Rita, Camila, Diana.  
+Team Zenith: Carla, Joana, Luisa, Marta S., Helena, Raquel, Filipa.
+
+CONDITIONS  
+In the first match, Team Nova beat Team Orion.  
+In the second match, Team Zenith beat Team Orion.  
+In the third match, Team Orion beat Team Nova.  
+In the fourth match, Team Zenith beat Team Orion.  
+
+(Marta is on Team Orion and loses all but the third match.)
+
+QUERIES  
+Query 1: Out of 100 random handball players, where do you think Marta ranks in terms of intrinsic ability for this sport?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Sofia put into the third match?  
+Query 3: In a new match later this same day between Team Orion and Team Zenith, who would win and by how much?  
+Query 4: In a new match later this same day between Team Nova and Team Zenith, who would win and by how much?  
+<END_SCENARIO>

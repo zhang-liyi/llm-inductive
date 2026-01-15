@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 3-on-3 ice hockey drills. In each drill, the team that wins depends on the number of goals scored, determined by the skating speed and puck handling of the athletes, based on their intrinsic ability modulated by other factors including how much effort they put into that drill.
+Athletes compete as a team of three.
+All drills take place on the same day.
+
+CONDITIONS
+In the first drill, Wayne, Mark, and Brett beat Mario, Sidney, and Alex.
+In the second drill, Wayne, Mark, and Brett beat Mario, Connor, and Nathan.
+In the third drill, Wayne, Mark, and Brett beat Sidney, Connor, and Alex.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Wayne ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mario put into the second drill?
+Query 3: In a new drill later this same day between Wayne, Mark, and Brett (Team 1) and Nathan, Sidney, and Mario (Team 2), who would win and by how much?
+Query 4: In a new drill later this same day between Mario, Mark, and Connor (Team 1) and Wayne, Alex, and Nathan (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in 5-a-side Soccer matches. The winner is decided by the team's average speed and ball control, derived from the players' intrinsic talent and the specific effort they put into that match.
+Teams consist of 5 players each.
+All matches take place during a single tournament day.
+
+CONDITIONS
+In the first match, United (Liam, Noah, Oliver, Paul, and Quinn) beat City (Ross, Steve, Tom, Uri, and Victor).
+In the second match, City beat United (with Jamie replacing Liam).
+In the third match, United beat City (with Jamie replacing Ross).
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jamie ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ross put into the first match?
+Query 3: In a new match later this same day between United (with Jamie replacing Paul) and City, who would win and by how much?
+Query 4: In a new match later this same day between City (with Jamie replacing Steve) and United (with Jamie replacing Noah), who would win and by how much?
+<END_SCENARIO>

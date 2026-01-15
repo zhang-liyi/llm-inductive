@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the rowers are competing in a series of races in single sculls and in four-person boats. In each race, the result depends on the rowers’ intrinsic power and technique, combined with how much effort they put into that particular race.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Ethan lost to Colin.
+In the second race, Ethan, Mia, Luca, and Zoe lost to Colin, Tara, Ben, and Nadia.
+In the third race, Ethan, Tara, Ben, and Mia beat Colin, Luca, Zoe, and Nadia.
+In the fourth race, Ethan, Nadia, Zoe, and Leo lost to Colin, Mia, Ben, and Tara.
+
+QUERIES
+Query 1: Out of 100 random rowers, where do you think Ethan ranks in terms of intrinsic rowing strength and technique?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Colin put into the third race?
+Query 3: In a new race later this same day between Ethan, Colin, Mia, and Leo (Team 1) and Tara, Luca, Zoe, and Ben (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Ethan, Nadia, Tara, and Ben (Team 1) and Colin, Mia, Luca, and Zoe (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, three 5‑player volleyball teams play a series of rally‑scoring matches on an indoor court. In each match, the winner is determined by the players’ intrinsic volleyball ability (serving, passing, setting, attacking, blocking) together with how much sustained effort they put in during that match. Each player remains on the same team for all matches; teams are fixed.
+Team Wave: Priya, Lila, Morgan, Tessa, Yara.
+Team Summit: Brooke, Dana, Farah, Gwen, Holly.
+Team Ember: Iris, Jade, Karla, Lena, Mira.
+Priya always plays on Team Wave.
+
+CONDITIONS
+In the first match, Summit beat Wave.
+In the second match, Ember beat Wave.
+In the third match, Summit beat Ember.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Brooke ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Priya put into the second match?
+Query 3: In a new match later this same day between Summit and Wave, who would win and by how much?
+Query 4: In a new match later this same day between Ember and Wave, who would win and by how much?
+<END_SCENARIO>

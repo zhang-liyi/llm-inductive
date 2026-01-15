@@ -1,0 +1,258 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+
+  /////////////////////////////////
+  // Helper functions
+  /////////////////////////////////
+
+  var clamp = function(x, min, max) {
+    return Math.min(Math.max(x, min), max);
+  };
+
+  var sigmoid = function(z) {
+    return 1 / (1 + Math.exp(-z));
+  };
+
+  // Prior hyperparameters for intrinsic maximal strength (total kg across squat+bench+deadlift)
+  var strength_prior_mean = 550;  // kg, typical competitive total
+  var strength_prior_sd = 100;    // kg
+
+  /////////////////////////////////
+  // Latent athlete traits (per athlete, fixed for the day)
+  /////////////////////////////////
+
+  // Intrinsic maximal strength in kg total across squat + bench + deadlift.
+  var intrinsic_maximal_strength = mem(function({athlete}) {
+    var low_mean = 400;   // kg, weaker competitive lifter
+    var mid_mean = 550;   // kg, average competitive lifter
+    var high_mean = 700;  // kg, particularly strong lifter
+    var strength_variance = 60; // kg standard deviation around bucket mean
+
+    var bucket_mean = categorical({
+      ps: [0.3, 0.4, 0.3],
+      vs: [low_mean, mid_mean, high_mean]
+    });
+
+    var strength = Math.max(gaussian(bucket_mean, strength_variance), 250); // clamp to at least 250 kg
+    return strength;
+  });
+
+  // Neuromuscular control / technical skill: multiplicative factor on expression of strength.
+  // Dimensionless, typically around 1.0.
+  var neuromuscular_control = mem(function({athlete}) {
+    var control = gaussian(1.0, 0.1);
+    return clamp(control, 0.7, 1.3);
+  });
+
+  // Baseline risk tolerance / aggressiveness trait in [0,1].
+  var baseline_risk_tolerance = mem(function({athlete}) {
+    var risk = gaussian(0.5, 0.2);
+    return clamp(risk, 0, 1);
+  });
+
+  /////////////////////////////////
+  // Per-lift true maxes (per athlete, per lift, fixed for the day)
+  /////////////////////////////////
+
+  // True 1RM for each lift type, in kg.
+  var per_lift_true_max = mem(function({athlete, lift}) {
+    var total_strength = intrinsic_maximal_strength({athlete: athlete});
+    var control = neuromuscular_control({athlete: athlete});
+
+    // Typical distribution of total across lifts
+    var share =
+      lift === 'squat'  ? 0.36 :
+      (lift === 'bench' ? 0.24 : 0.40); // deadlift
+
+    var base_max = total_strength * share;
+    var true_max_mean = base_max * control;
+
+    var true_max = gaussian(true_max_mean, true_max_mean * 0.05); // 5% SD
+    return Math.max(true_max, 20); // kg, minimum
+  });
+
+  /////////////////////////////////
+  // Per-round decisions: effort & aggressiveness
+  /////////////////////////////////
+
+  // Effort level in a given round: fraction of capacity [0,1].
+  var chosen_effort_in_round = mem(function({athlete, round}) {
+    var strength = intrinsic_maximal_strength({athlete: athlete});
+    var risk = baseline_risk_tolerance({athlete: athlete});
+
+    var strength_z = (strength - strength_prior_mean) / strength_prior_sd;
+
+    // Base high effort, modulated by strength and risk tolerance.
+    var base_effort_mean = 0.85 + 0.03 * strength_z + 0.05 * (risk - 0.5);
+    var effort = clamp(gaussian(base_effort_mean, 0.08), 0.5, 1.0);
+    return effort;
+  });
+
+  // Effort reported as a percentage [0,100].
+  var effort_percentage_in_round = function({athlete, round}) {
+    return 100 * chosen_effort_in_round({athlete: athlete, round: round});
+  };
+
+  // Aggressiveness in attempt selection in a round (how close to/above max they go).
+  // Values near 0.7–1.0 are typical; >1 means very aggressive (above estimated max).
+  var aggressiveness_in_round = mem(function({athlete, round}) {
+    var risk = baseline_risk_tolerance({athlete: athlete});
+    var strength = intrinsic_maximal_strength({athlete: athlete});
+    var strength_z = (strength - strength_prior_mean) / strength_prior_sd;
+
+    var mean_agg = 0.7 + 0.15 * risk + 0.05 * strength_z;
+    var agg = clamp(gaussian(mean_agg, 0.15), 0.3, 1.3);
+    return agg;
+  });
+
+  /////////////////////////////////
+  // Attempts, success probabilities, and best lifts (per athlete, lift, round)
+  /////////////////////////////////
+
+  // Attempted weight for a given lift and round, in kg.
+  var per_lift_attempted_weight_in_round = mem(function({athlete, lift, round}) {
+    var true_max = per_lift_true_max({athlete: athlete, lift: lift});
+    var effort = chosen_effort_in_round({athlete: athlete, round: round});
+    var aggressiveness = aggressiveness_in_round({athlete: athlete, round: round});
+
+    // Fraction of true max they aim to realize this round.
+    var target_fraction_mean = 0.9 * effort + 0.1 + 0.1 * (aggressiveness - 0.7);
+    var target_fraction = clamp(gaussian(target_fraction_mean, 0.07), 0.7, 1.1);
+
+    var attempt = true_max * target_fraction;
+    return Math.max(attempt, 20); // kg
+  });
+
+  // Success probability for that attempted weight.
+  var per_lift_success_probability_in_round = function({athlete, lift, round}) {
+    var true_max = per_lift_true_max({athlete: athlete, lift: lift});
+    var attempt = per_lift_attempted_weight_in_round({athlete: athlete, lift: lift, round: round});
+    var control = neuromuscular_control({athlete: athlete});
+    var effort = chosen_effort_in_round({athlete: athlete, round: round});
+
+    var ratio = attempt / (true_max + 1e-6); // attempt / true max
+
+    // Logistic model: as ratio exceeds 1, probability drops quickly.
+    var logit_base = 3 * (1 - ratio); // attempt = true_max => 0
+    var logit = logit_base + 2 * (control - 1) + (effort - 0.85) / 0.05;
+    var prob = sigmoid(logit);
+    return clamp(prob, 0.01, 0.99);
+  };
+
+  // Best successful lift (expected) for a lift type in a round, in kg.
+  var best_lift_in_round_for_lift_type = function({athlete, lift, round}) {
+    var attempt = per_lift_attempted_weight_in_round({athlete: athlete, lift: lift, round: round});
+    var success_prob = per_lift_success_probability_in_round({athlete: athlete, lift: lift, round: round});
+
+    // Approximate best lift as noisy version of attempt * success_probability.
+    var expected_best = attempt * success_prob;
+    var best = clamp(gaussian(expected_best, attempt * 0.05), 0, attempt);
+    return best;
+  };
+
+  /////////////////////////////////
+  // Totals and team outcomes
+  /////////////////////////////////
+
+  // Athlete's total in a round (sum of best squat, bench, deadlift), in kg.
+  var athlete_total_in_round = function({athlete, round}) {
+    var lifts = ['squat', 'bench', 'deadlift'];
+    var bests = map(function(lift) {
+      return best_lift_in_round_for_lift_type({athlete: athlete, lift: lift, round: round});
+    }, lifts);
+    return sum(bests);
+  };
+
+  // Team's total in a round (sum of members' totals), in kg.
+  var team_total_in_round = function({team, round}) {
+    var totals = map(function(athlete) {
+      return athlete_total_in_round({athlete: athlete, round: round});
+    }, team);
+    return sum(totals);
+  };
+
+  // Team1 beats Team2 in a given round if team1's total > team2's total.
+  var beat = function({team1, team2, round}) {
+    return team_total_in_round({team: team1, round: round}) >
+           team_total_in_round({team: team2, round: round});
+  };
+
+  var lost = function({team1, team2, round}) {
+    return !beat({team1: team1, team2: team2, round: round});
+  };
+
+  /////////////////////////////////
+  // Rankings and predictive queries
+  /////////////////////////////////
+
+  // Intrinsic maximal strength rank of an athlete out of N random athletes.
+  var intrinsic_maximal_strength_rank = function({athlete, out_of_n_athletes}) {
+    var random_athlete_ids = mapN(function(i) { return uniform(0, 10000); }, out_of_n_athletes - 1);
+    var this_strength = intrinsic_maximal_strength({athlete: athlete});
+
+    var num_weaker = sum(map(function(random_athlete_id) {
+      return this_strength > intrinsic_maximal_strength({athlete: random_athlete_id});
+    }, random_athlete_ids));
+
+    return num_weaker;
+  };
+
+  // Predictive: fraction of future simulated rounds in which Team 2 beats Team 1.
+  // 0.0 => Team 1 almost always wins; 1.0 => Team 2 almost always wins.
+  var who_would_win_by_how_much = function({team1, team2, round}) {
+    var num_future_rounds_to_simulate = 100;
+    var random_future_round_ids = mapN(function(i) {
+      return uniform(round + 1, 10000);
+    }, num_future_rounds_to_simulate);
+
+    var simulated_rounds_won_by_team_2 = sum(map(function(random_future_round_id) {
+      return lost({team1: team1, team2: team2, round: random_future_round_id});
+    }, random_future_round_ids));
+
+    return simulated_rounds_won_by_team_2 / num_future_rounds_to_simulate;
+  };
+
+  /////////////////////////////////
+  // CONDITIONS (observed match outcomes)
+  /////////////////////////////////
+
+  // In the first round, Carla beat Ethan.
+  condition(beat({team1:['carla'], team2:['ethan'], round: 1}));
+  // In the second round, Ethan beat Jamie.
+  condition(beat({team1:['ethan'], team2:['jamie'], round: 2}));
+  // In the third round, Carla and Jamie beat Ethan and Victor.
+  condition(beat({team1:['carla', 'jamie'], team2:['ethan', 'victor'], round: 3}));
+  // In the fourth round, Victor beat Carla.
+  condition(beat({team1:['victor'], team2:['carla'], round: 4}));
+
+  /////////////////////////////////
+  // QUERIES
+  /////////////////////////////////
+
+  // Query 1: Out of 100 random powerlifters, where do you think Carla ranks in terms of intrinsic maximal strength?
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Victor put into the fourth round?
+  // Query 3: In a new round later this same day between Carla and Ethan (Team 1) and Jamie and Victor (Team 2), who would win and by how much?
+  // Query 4: In a new round later this same day between Ethan (Team 1) and Victor (Team 2), who would win and by how much?
+
+  return {
+    query1: intrinsic_maximal_strength_rank({athlete: 'carla', out_of_n_athletes: 100}),
+    query2: effort_percentage_in_round({athlete: 'victor', round: 4}),
+    query3: who_would_win_by_how_much({team1:['carla', 'ethan'], team2:['jamie', 'victor'], round: 5}),
+    query4: who_would_win_by_how_much({team1:['ethan'], team2:['victor'], round: 6})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-34.json', posterior);

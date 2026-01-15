@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in Rugby Sevens matches. As the name implies, each team has 7 players on the field. Victory is determined by the average speed and tackling strength of the team members, influenced by their current fatigue and the effort they apply to the match.
+Javier plays for the "Spartans," who are playing a series against the "Titans."
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, the Titans beat the Spartans.
+In the second match, the Titans beat the Spartans.
+In the third match, the Spartans beat the Titans.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Javier ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Javier put into the third match?
+Query 3: In a new match later this same day between the Spartans (Team 1) and the Titans (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the Titans (Team 1) and the Spartans (Team 2), who would win and by how much?
+<END_SCENARIO>

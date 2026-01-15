@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee matches played 6-on-6 on sand. In each match, the team that wins depends on the speed and throwing accuracy of the athletes, based on their intrinsic agility modulated by other factors including how much effort they put into that match.
+The tournament consists of three fixed teams: Wind, Fire, and Earth. One player, Jordan, is a "wildcard" who plays for different teams in different rounds.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Team Wind (with Jordan) beat Team Fire.
+In the second match, Team Earth (with Jordan) beat Team Wind.
+In the third match, Team Fire (with Jordan) lost to Team Earth.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jordan ranks in terms of intrinsic agility?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jordan put into the third match?
+Query 3: In a new match later this same day between Team Wind (with Jordan) and Team Earth, who would win and by how much?
+Query 4: In a new match later this same day between Team Fire (without Jordan) and Team Wind (without Jordan), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the players are competing in a series of short baseball scrimmages. In each game, the team that wins depends on how well the players can hit, pitch, and field, based on their intrinsic baseball ability and how much effort they put in to that game.  
+Players compete either individually (batting duels) or on teams.  
+When teams play, each side fields 9 players. All games take place on the same day.
+
+CONDITIONS  
+In the first game, Diego, Ben, and Carla lost to Aaron, Nina, and Omar.  
+In the second game, Diego, Nina, and Leo beat Ben, Omar, and Priya.  
+In the third game, Diego and Priya lost to Aaron and Carla.  
+In the fourth game, Ben, Carla, and Leo beat Nina, Omar, and Taylor.
+
+QUERIES  
+Query 1: Out of 100 random baseball players, where do you think Diego ranks in terms of intrinsic baseball ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Nina put into the second game?  
+Query 3: In a new game later this same day between Diego, Aaron, and Priya (Team 1) and Ben, Carla, and Omar (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Diego, Ben, and Taylor (Team 1) and Nina, Leo, and Priya (Team 2), who would win and by how much?  
+<END_SCENARIO>

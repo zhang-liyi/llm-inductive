@@ -1,0 +1,15 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of rugby games on a reduced-size field. Games can be played one-on-one (in tackling and evasion contests) or between two teams of 8 players each. The outcome of each game depends on the players’ intrinsic rugby ability and the effort they put in. All games take place on the same day.
+
+CONDITIONS
+In the first game, Leila beat Amir.
+In the second game, Leila, Boris, Ciara, and five other teammates beat Amir, Dan, Ella, and five other teammates.
+In the third game, Leila, Dan, Finn, and five other teammates lost to Amir, Boris, Ciara, and five other teammates.
+
+QUERIES
+Query 1: Out of 100 random rugby players, where do you think Leila ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Dan put into the third game?
+Query 3: In a new game later this same day between Leila, Ciara, Finn, and five other teammates (Team 1) and Amir, Boris, Ella, and five other teammates (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Greta, Hugo, and six other teammates (Team 1) and Dan, Imani, and six other teammates (Team 2), who would win and by how much?
+<END_SCENARIO>

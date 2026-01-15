@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in 5-on-5 Flag American Football matches. The winner of each match is decided by the team's overall speed and tactical execution, which depends on the players' intrinsic athleticism modulated by the amount of effort they put into that specific match.
+Teams consist of 5 players.
+All matches occur on the same afternoon.
+
+CONDITIONS
+In the first match, Dakota and the Eagles beat the Wolves.
+In the second match, Dakota and the Wolves beat the Eagles.
+In the third match, Dakota and the Eagles lost to the Wolves.
+
+QUERIES
+Query 1: Out of 100 random football players, where do you think Dakota ranks in terms of intrinsic athleticism?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Dakota put into the third match?
+Query 3: In a new match later this same day between Dakota and the Wolves (Team 1) and the Eagles (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between the Eagles (Team 1) and the Wolves (Team 2) without Dakota, who would win and by how much?
+<END_SCENARIO>

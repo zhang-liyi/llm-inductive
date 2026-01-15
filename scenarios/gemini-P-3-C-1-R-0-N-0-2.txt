@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of tennis sets. In each set, the team that wins depends on the combined serving speed and court coverage of the athletes, based on their intrinsic tennis prowess modulated by other factors including how much effort they put into that set.
+Athletes compete as a team of two.
+All sets take place on the same day.
+
+CONDITIONS
+In the first set, Rohan and Sarah lost to Kyle and Pete.
+In the second set, Rohan and Kyle lost to Sarah and Pete.
+In the third set, Rohan and Pete beat Sarah and Kyle.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Rohan ranks in terms of intrinsic tennis prowess?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Kyle put into the third set?
+Query 3: In a new set later this same day between Rohan and Sarah (Team 1) and Kyle and Pete (Team 2), who would win and by how much?
+Query 4: In a new set later this same day between Rohan and Kyle (Team 1) and Sarah and Pete (Team 2), who would win and by how much?
+<END_SCENARIO>

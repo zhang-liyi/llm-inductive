@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, athletes compete in doubles badminton matches. Each match is decided by which pair can control rallies more effectively, based on their intrinsic speed, coordination, and shot quality along with the effort they put into that particular match.  
+There is also the possibility of a singles match.  
+Whenever players enter a doubles match, they always play with the same partner for this event.  
+All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Kenji and Rina beat Oliver and Mei.  
+In the second match, Kenji and Rina beat Samir and Lila.  
+In the third match, Oliver and Mei beat Kenji and Rina.  
+In the fourth match, Kenji beat Oliver.
+
+QUERIES  
+Query 1: Out of 100 random badminton players, where do you think Kenji ranks in terms of intrinsic playing strength?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Oliver put into the third match?  
+Query 3: In a new match later this same day between Kenji and Rina (Team 1) and Oliver and Mei (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Samir and Lila (Team 1) and Oliver and Mei (Team 2), who would win and by how much?  
+<END_SCENARIO>

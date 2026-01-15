@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a mix of individual sprints and 4‑runner relay races on the track (100–400 m). In each race, the result depends on intrinsic sprinting ability (speed and acceleration) modulated by how much effort they put into that race.
+Athletes compete either individually or in 4‑runner relay teams.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Riley beat Noah.
+In the second race, Riley, Sam, Taylor, and Uma beat Noah, Olivia, Priya, and Quinn.
+In the third race, Riley, Victor, Sam, and Uma lost to Noah, Olivia, Priya, and Quinn.
+
+QUERIES
+Query 1: Out of 100 random sprinters, where do you think Riley ranks in terms of intrinsic sprinting ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Noah put into the third race?
+Query 3: In a new 4‑runner relay later this same day between Riley, Taylor, Uma, and Victor (Team 1) and Noah, Olivia, Priya, and Quinn (Team 2), who would win and by how much?
+Query 4: In a new 4‑runner relay later this same day between Sam, Taylor, Uma, and Liam (Team 1) and Noah, Olivia, Priya, and Quinn (Team 2), who would win and by how much?
+<END_SCENARIO>

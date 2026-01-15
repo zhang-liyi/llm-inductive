@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of basketball games. In each game, the outcome depends on the players’ intrinsic basketball ability, modulated by how much sustained effort they put into running, defending, and staying aggressive on offense.
+Players compete either individually (in shooting contests) or in teams of eight.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Ava, Brooke, Cara, Dani, Elise, Faith, Gina, and Holly (Team Thunder) beat Ian, Jonah, Kyle, Leo, Miles, Nate, Owen, and Paul (Team Storm).
+In the second game, Marco, Ava, Brooke, Cara, Dani, Elise, Faith, and Gina lost to Ian, Jonah, Kyle, Leo, Miles, Nate, Owen, and Paul.
+In the third game, Marco, Ian, Jonah, Kyle, Leo, Miles, Nate, and Owen lost to Ava, Brooke, Cara, Dani, Elise, Faith, Gina, and Holly.
+In a three‑point shooting contest later that day, Marco lost to Leo.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Leo ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Marco put into the third game?
+Query 3: In a new game later this same day between Marco, Ava, Brooke, Cara, Dani, Elise, Faith, and Gina (Team 1) and Ian, Jonah, Kyle, Leo, Miles, Nate, Owen, and Paul (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Marco, Ian, Jonah, Kyle, Leo, Miles, Nate, and Owen (Team 1) and Ava, Brooke, Cara, Dani, Elise, Faith, Gina, and Holly (Team 2), who would win and by how much?
+<END_SCENARIO>

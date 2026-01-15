@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of speed lacrosse drills. In each drill, the team that wins depends on the average agility and stick skills of the athletes, based on their intrinsic coordination modulated by other factors including how much effort they put in to that drill.
+Athletes compete as a team of three.
+All drills take place on the same day.
+
+CONDITIONS
+In the first drill, Archer, Paul, and Rob beat Tom, Gary, and Mikey.
+In the second drill, Archer, Tom, and Gary beat Paul, Rob, and Mikey.
+In the third drill, Archer, Mikey, and Gary beat Paul, Rob, and Tom.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Archer ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Paul put into the third race?
+Query 3: In a new race later this same day between Archer and Paul (Team 1) and Tom and Gary (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Tom and Mikey (Team 1) and Paul and Rob (Team 2), who would win and by how much?
+<END_SCENARIO>

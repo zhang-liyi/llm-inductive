@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND  
+In this regatta, rowers compete in a series of rowing races. In team races, each boat has 8 rowers. The boat that wins is the one whose rowers generate the highest sustained boat speed, which depends only on each rower’s intrinsic rowing strength and how much effort they put into that race.  
+Rowers can also compete individually in single sculls.  
+All races take place on the same day.  
+Most rowers stay with fixed 8‑person crews, but one standout rower, Mila, is allowed to join different crews in different races.
+
+CONDITIONS  
+In the first race, Mila with Aaron, Blake, Chloe, Devon, Elias, Farah, and Grace beat Crew Orion (Hugo, Iris, Jay, Kai, Leo, Maya, Noah, and Owen).  
+In the second race, Mila with Parker, Quinn, Riley, Sasha, Theo, Uma, Victor, and Willow beat Crew Orion.  
+In the third race, Crew Orion beat Crew Zephyr (Parker, Quinn, Riley, Sasha, Theo, Uma, Victor, and Willow).  
+In the fourth race, Mila beat Hugo in a single‑scull race.
+
+QUERIES  
+Query 1: Out of 100 random rowers, where do you think Mila ranks in terms of intrinsic rowing strength?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Hugo put into the third race?  
+Query 3: In a new 8‑rower race later this same day between Mila, Parker, Quinn, Riley, Sasha, Theo, Uma, and Victor (Crew 1) and Hugo, Iris, Jay, Kai, Leo, Maya, Noah, and Owen (Crew 2), who would win and by how much?  
+Query 4: In a new 8‑rower race later this same day between Parker, Quinn, Riley, Sasha, Theo, Uma, Victor, and Willow (Crew 1, without Mila) and Hugo, Iris, Jay, Kai, Leo, Maya, Noah, and Owen (Crew 2), who would win and by how much?
+<END_SCENARIO>

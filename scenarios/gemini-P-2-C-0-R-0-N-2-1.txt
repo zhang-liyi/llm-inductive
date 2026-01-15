@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of rowing races (coxless four). In each race, the team that wins depends on the average power and synchronization with which the athletes are able to row, based on their intrinsic strength modulated by other factors including how much effort they put into that race.
+Athletes compete in teams of four.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Elena, Sarah, Mike, and Tom beat Jack, Jill, Bill, and Ben.
+In the second race, Elena, Sarah, Mike, and Tom lost to Jack, Jill, Harry, and Sally.
+In the third race, Elena, Sarah, Mike, and Tom beat Bill, Ben, Harry, and Sally.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Elena ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Elena put into the second race?
+Query 3: In a new race later this same day between Elena, Sarah, Mike, and Tom (Team 1) and Jack, Jill, Bill, and Ben (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Jack, Jill, Harry, and Sally (Team 1) and Bill, Ben, Mike, and Tom (Team 2), who would win and by how much?
+<END_SCENARIO>

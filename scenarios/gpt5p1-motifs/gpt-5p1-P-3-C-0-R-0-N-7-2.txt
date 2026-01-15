@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 9‑a‑side volleyball scrimmages. Each scrimmage’s result depends on the players’ intrinsic volleyball ability (such as vertical jump, coordination, timing, and ball control) together with how much effort they put into that scrimmage.  
+All scrimmages take place on the same day.
+
+CONDITIONS
+In the first set, Omar, Alice, Ben, Carina, David, Ella, Farid, Gia, and Hugo lost to Iris, Jack, Kira, Luis, Mona, Noah, Priya, Quinn, and Rosa.  
+In the second set, Omar, Alice, Ben, Carina, David, Ella, Farid, Gia, and Hugo lost to Jack, Kira, Luis, Mona, Noah, Priya, Quinn, Rosa, and Theo.  
+In the third set, Omar, Alice, Ben, Carina, David, Ella, Farid, Gia, and Hugo beat Iris, Jack, Kira, Luis, Mona, Noah, Priya, Quinn, and Theo.  
+In a later set without Omar, Alice, Ben, Carina, David, Ella, Farid, Gia, Hugo, and Iris beat Jack, Kira, Luis, Mona, Noah, Priya, Quinn, Rosa, and Theo.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Omar ranks in terms of intrinsic volleyball ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jack put into the second set?  
+Query 3: In a new set later this same day between Omar, Alice, Ben, Carina, David, Ella, Farid, Gia, and Hugo (Team 1) and Iris, Jack, Kira, Luis, Mona, Noah, Priya, Quinn, and Theo (Team 2), who would win and by how much?  
+Query 4: In a new set later this same day between Alice, Iris, Ben, Carina, David, Ella, Farid, Gia, and Hugo (Team 1) and Jack, Kira, Luis, Mona, Noah, Priya, Quinn, Rosa, and Theo (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of small-sided handball matches played 5-on-5. In each match, the winning team is determined by the players’ intrinsic handball ability (throwing power, accuracy, movement, defensive skill) and the effort they put into that match.  
+Players compete either individually (in shooting duels) or as members of 5-player teams.  
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Ravi, Arjun, Elias, Jakob, and Milan beat Boris, Conrad, Felix, Hugo, and Leon.  
+In the second match, Ravi, Boris, Felix, Nils, and Oskar beat Arjun, Elias, Hugo, Jakob, and Tariq.  
+In the third match, Ravi beat Leon in a shooting duel.  
+In the fourth match, Ravi, Conrad, Hugo, Tariq, and Milan beat Boris, Arjun, Felix, Jakob, and Nils.
+
+QUERIES
+Query 1: Out of 100 random handball players, where do you think Ravi ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Leon put into the third match?  
+Query 3: In a new 5-on-5 match later this same day between Ravi, Arjun, Conrad, Elias, and Tariq (Team 1) and Boris, Felix, Hugo, Jakob, and Milan (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Nils and Oskar (a shooting duel), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 4-on-4 Ultimate Frisbee games. In each game, the team that wins depends on the agility and throwing accuracy of the athletes, based on their intrinsic skill modulated by other factors including how much effort they put into that game.
+Athletes compete in fixed teams of four.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, the team of Jay, Kai, Asa, and Bo beat the team of Liam, Noah, Eli, and Ian.
+In the second game, the team of Ty, Roy, Guy, and Lee beat the team of Liam, Noah, Eli, and Ian.
+In the third game, the team of Jay, Kai, Asa, and Bo beat the team of Ty, Roy, Guy, and Lee.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Liam ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jay put into the third game?
+Query 3: In a new game later this same day between the team of Liam, Noah, Eli, and Ian (Team 1) and the team of Jay, Kai, Asa, and Bo (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between the team of Jay, Kai, Asa, and Bo (Team 1) and the team of Ty, Roy, Guy, and Lee (Team 2), who would win and by how much?
+<END_SCENARIO>

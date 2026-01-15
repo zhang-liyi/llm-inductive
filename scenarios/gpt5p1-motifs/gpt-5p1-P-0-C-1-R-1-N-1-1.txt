@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of rowing races. Each boat has three rowers. The outcome of each race depends on the crew’s average rowing power and technique, which come from their intrinsic strength and skill, combined with how much effort they put into that race.
+Crews are of size three.
+Most rowers remain in fixed boats for the day, but Maya switches between different boats across races.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Maya, Alex, and Ben beat Chloe, Dylan, and Eva.
+In the second race, Maya, Finn, and Grace beat Chloe, Dylan, and Eva.
+In the third race, Maya, Hugo, and Iris beat Alex, Ben, and Jack.
+In the fourth race, Maya beat Chloe.
+
+QUERIES
+Query 1: Out of 100 random rowers, where do you think Maya ranks in terms of intrinsic rowing strength and skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Alex put into the third race?
+Query 3: In a new race later this same day between Maya, Ben, and Grace (Boat 1) and Chloe, Dylan, and Jack (Boat 2), who would win and by how much?
+Query 4: In a new race later this same day between Alex, Ben, and Jack (Boat 1) and Chloe, Dylan, and Eva (Boat 2), who would win and by how much?
+<END_SCENARIO>

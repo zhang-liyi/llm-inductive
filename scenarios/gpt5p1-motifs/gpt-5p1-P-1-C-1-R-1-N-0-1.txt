@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are playing beach volleyball. Each game’s outcome depends on the players’ intrinsic serving, passing, and attacking abilities, along with their movement and stamina in the sand, modulated by how much effort and intensity they put into that game.  
+All games are 2-on-2 and take place on the same day.
+
+CONDITIONS  
+In the first game, Mira and Lana lost to Zoe and Harper.  
+In the second game, Mira and Quinn lost to Zoe and Harper.  
+In the third game, Mira and Riley lost to Tessa and Ivy.
+
+QUERIES  
+Query 1: Out of 100 random beach volleyball players, where do you think Zoe ranks in terms of intrinsic beach volleyball ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mira put into the second game?  
+Query 3: In a new game later this same day between Mira and Harper (Team 1) and Zoe and Lana (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Quinn and Riley (Team 1) and Tessa and Ivy (Team 2), who would win and by how much?
+<END_SCENARIO>

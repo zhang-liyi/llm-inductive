@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a series of rowing races (eights). In each race, the boat that wins depends on the average speed the athletes can maintain, based on their intrinsic rowing power modulated by the effort they put into that specific race.
+Athletes compete in fixed teams of 8.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, the team of Barnaby, Al, Bo, Cy, Dan, Ed, Fred, and Gil lost to the team of Hal, Ian, Jon, Ken, Leo, Mat, Ned, and Oli.
+In the second race, the team of Hal, Ian, Jon, Ken, Leo, Mat, Ned, and Oli beat the team of Barnaby, Al, Bo, Cy, Dan, Ed, Fred, and Gil.
+In the third race, the team of Barnaby, Al, Bo, Cy, Dan, Ed, Fred, and Gil lost to the team of Hal, Ian, Jon, Ken, Leo, Mat, Ned, and Oli.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Barnaby ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Hal put into the third race?
+Query 3: In a new race later this same day between Barnaby and Al (Team 1) and Hal and Ian (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Bo and Cy (Team 1) and Jon and Ken (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the players are competing in a series of half-court basketball games. In each game, the team that wins depends on the players’ intrinsic shooting accuracy, ball-handling, and defensive ability, modulated by how much effort they put into that specific game.  
+Players compete either 1-on-1 or in 2-on-2 teams.  
+All games take place on the same day.
+
+CONDITIONS  
+In the first game, Jamal and Owen beat Riley and Marco.  
+In the second game, Jamal beat Devin.  
+In the third game, Jamal and Owen beat Devin and Riley.
+
+QUERIES  
+Query 1: Out of 100 random basketball players, where do you think Jamal ranks in terms of intrinsic skill?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Devin put into the third game?  
+Query 3: In a new game later this same day between Jamal and Owen (Team 1) and Marco and Devin (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Riley and Marco (Team 1) and Owen and Leo (Team 2), who would win and by how much?  
+<END_SCENARIO>

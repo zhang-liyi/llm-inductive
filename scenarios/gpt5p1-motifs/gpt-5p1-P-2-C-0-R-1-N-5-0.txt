@@ -1,0 +1,21 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, three mixed-gender teams are playing a short ultimate frisbee round-robin. Each game is 7-on-7. The outcome of a game depends on the players’ intrinsic speed, throwing accuracy, catching consistency, and endurance, combined with how much effort they decide to put in for that game.
+All games take place on the same day.
+There are three fixed teams of seven whose rosters do not change:
+- Team Aurora: Lena, Priya, Jonah, Felix, Carmen, Omar, Tessa.
+- Team Borealis: Riley, Noah, Sasha, Devin, Marco, Haley, Quinn.
+- Team Comet: Iris, Leo, Mateo, Nina, Victor, Zoe, Colin.
+
+CONDITIONS
+In the first game, Aurora beat Borealis.
+In the second game, Aurora beat Comet.
+In the third game, Comet beat Borealis.
+In the fourth game, Comet beat Aurora.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Lena ranks in terms of intrinsic playing ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Quinn put into the first game?
+Query 3: In a new game later this same day between Aurora and Borealis, who would win and by how much?
+Query 4: In a new game later this same day between Borealis and Comet, who would win and by how much?
+<END_SCENARIO>

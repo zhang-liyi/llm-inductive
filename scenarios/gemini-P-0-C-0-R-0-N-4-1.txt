@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ice Hockey games. In each game, the team that wins depends on the average skating speed and puck handling of the athletes, based on their intrinsic skill modulated by other factors including how much effort they put into that game.
+Athletes compete as a team of 6 (5 skaters and 1 goalie).
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Sarah, Jen, Amy, Beth, Cat, and Deb beat Liz, Meg, Nan, Pam, Sue, and Val.
+In the second game, Sarah, Jen, Liz, Meg, Nan, and Pam beat Amy, Beth, Cat, Deb, Sue, and Val.
+In the third game, Sarah, Jen, Sue, Val, Amy, and Beth beat Liz, Meg, Nan, Pam, Cat, and Deb.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Sarah ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liz put into the third game?
+Query 3: In a new game later this same day between Sarah, Jen, Cat, Deb, Sue, and Val (Team 1) and Amy, Beth, Liz, Meg, Nan, and Pam (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Amy, Beth, Liz, Meg, Nan, and Pam (Team 1) and Cat, Deb, Sue, Val, Sarah, and Jen (Team 2), who would win and by how much?
+<END_SCENARIO>

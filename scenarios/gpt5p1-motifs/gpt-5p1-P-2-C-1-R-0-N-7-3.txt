@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of volleyball matches. The outcome of each match depends on the players’ intrinsic volleyball ability (such as jumping, timing, and coordination), modulated by how much effort they put into that match.
+Players compete either 1‑on‑1 in serving/receiving duels or in full teams of 9.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Jakob beat Boris.
+In the second match, Jakob, Anna, Clara, Daniel, Emma, Felix, Greta, Hugo, and Ines beat Boris, Jonas, Klara, Lukas, Mia, Nik, Olivia, Paul, and Quinn.
+In the third match, Jakob, Jonas, Klara, Lukas, Mia, Nik, Olivia, Paul, and Quinn lost to Boris, Anna, Clara, Daniel, Emma, Felix, Greta, Hugo, and Rina.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Jakob ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Boris put into the third match?
+Query 3: In a new match later this same day between Jakob, Anna, Clara, Daniel, Emma, Felix, Greta, Hugo, and Ines (Team 1) and Boris, Jonas, Klara, Lukas, Mia, Nik, Olivia, Paul, and Quinn (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Jakob, Jonas, Klara, Lukas, Mia, Nik, Olivia, Paul, and Quinn (Team 1) and Boris, Anna, Clara, Daniel, Emma, Felix, Greta, Hugo, and Rina (Team 2), who would win and by how much?
+<END_SCENARIO>

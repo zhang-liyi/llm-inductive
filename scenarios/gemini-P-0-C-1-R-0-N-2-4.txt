@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 4x100m Sprint Track relays. In each race, the team that wins depends on the total time taken to complete the relay, based on their intrinsic running speed and acceleration modulated by other factors including how much effort they put into that race.
+Athletes compete in teams of 4.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Dakota, Mike, Steve, and Bill beat Tom, Jerry, Phil, and Bob.
+In the second race, Dakota, Tom, Jerry, and Phil beat Mike, Steve, Bill, and Bob.
+In the third race, Dakota, Bob, Mike, and Tom beat Steve, Bill, Jerry, and Phil.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Dakota ranks in terms of intrinsic running speed and acceleration?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Steve put into the third race?
+Query 3: In a new race later this same day between Dakota, Mike, Steve, and Bill (Team 1) and Tom, Jerry, Phil, and Bob (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Mike, Steve, Bill, and Bob (Team 1) and Tom, Jerry, Phil, and Bob (Team 2), who would win and by how much?
+<END_SCENARIO>

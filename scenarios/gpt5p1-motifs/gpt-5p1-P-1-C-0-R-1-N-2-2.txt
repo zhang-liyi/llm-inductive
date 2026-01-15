@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing small-sided 4-on-4 soccer matches, with occasional 1-on-1 attacking drills. The outcome of each match depends on the players’ intrinsic soccer ability (first touch, speed, vision, finishing, defending) and how much effort they put in during that match.
+Players either compete as fixed 4-player teams or individually.
+
+CONDITIONS
+Team Cobalt (Hanna, Marco, Theo, Julian) beat Team Amber (Derek, Luis, Omar, Felix) in the first match.
+Team Silver (Rosa, Elin, Mateo, Karim) beat Team Amber (Derek, Luis, Omar, Felix) in the second match.
+Team Cobalt (Hanna, Marco, Theo, Julian) beat Team Silver (Rosa, Elin, Mateo, Karim) in the third match.
+In a 1-on-1 attacking drill, Marco beat Mateo.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Marco ranks in terms of intrinsic soccer ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Luis put into the second match?
+Query 3: In a new match later this same day between Team Cobalt (Hanna, Marco, Theo, Julian) and Team Amber (Derek, Luis, Omar, Felix), who would win and by how much?
+Query 4: In a new match later this same day between Team Silver (Rosa, Elin, Mateo, Karim) and Team Amber (Derek, Luis, Omar, Felix), who would win and by how much?
+<END_SCENARIO>

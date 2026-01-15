@@ -1,0 +1,22 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in rowing races using eights (8‑rower shells) and occasional single‑scull duels. The boat that wins depends on the rowers’ intrinsic power and technical rowing ability combined with the effort they put into that race.
+Rowers compete either individually in single sculls or as part of an 8‑rower crew.
+All races take place on the same day.
+
+Crew Alpha usually consists of Aaron, Blake, Carlos, Ethan, Felix, Hugo, Ivan, and James.
+Crew Beta usually consists of Kyle, Liam, Mason, Noah, Owen, Oscar, Ryan, and Victor.
+Crew Gamma usually consists of Ben, Cole, Drew, Eric, Finn, Gabe, Leo, and Nate.
+Diego is the only rower who moves between crews.
+
+CONDITIONS
+In the first race, Diego rowed with Crew Alpha (replacing James), and Crew Alpha beat Crew Beta.
+In the second race, Diego rowed with Crew Beta (replacing Victor), and Crew Beta beat Crew Gamma.
+In a later single‑scull race, Leo beat Diego.
+
+QUERIES
+Query 1: Out of 100 random rowers, where do you think Diego ranks in terms of intrinsic rowing strength and technique?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Leo put into the single‑scull race?
+Query 3: In a new eights race later this same day between Diego, Aaron, Blake, Carlos, Ethan, Felix, Hugo, and Ivan (Crew 1) and Kyle, Liam, Mason, Noah, Owen, Oscar, Ryan, and Victor (Crew 2), who would win and by how much?
+Query 4: In a new eights race later this same day between Aaron, Blake, Carlos, Ethan, Felix, Hugo, Ivan, and James (Crew 1) and Diego, Ben, Cole, Drew, Eric, Finn, Gabe, and Nate (Crew 2), who would win and by how much?
+<END_SCENARIO>

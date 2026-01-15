@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of ultimate frisbee scrimmages. Outcomes depend on intrinsic speed, throwing accuracy, catching skill, and game sense, together with the level of effort each player brings to each point.
+Games are either 1v1 cutting‑and‑defense drills or 9‑a‑side scrimmages.
+All games take place on the same day.
+
+CONDITIONS
+In the first scrimmage, Lina, Alex, Brooke, Carlos, Dana, Ethan, Farah, Gabe, and Hana beat Ivan, Julia, Kai, Malik, Nora, Omar, Priya, Quinn, and Ravi.  
+In the second scrimmage, Lina, Ivan, Julia, Kai, Nora, Omar, Quinn, Ravi, and Zach beat Alex, Brooke, Carlos, Dana, Ethan, Farah, Gabe, Hana, and Priya.  
+In a 1v1 drill, Lina beat Malik.  
+In the third scrimmage, Lina, Brooke, Ethan, Farah, Hana, Ivan, Malik, Priya, and Willow beat Alex, Carlos, Dana, Gabe, Julia, Kai, Nora, Omar, and Quinn.
+
+QUERIES
+Query 1: Out of 100 random ultimate frisbee players, where do you think Lina ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Malik put into the 1v1 drill against Lina?  
+Query 3: In a new 9‑a‑side game later this same day between Lina, Alex, Brooke, Dana, Ethan, Ivan, Julia, Nora, and Quinn (Team 1) and Carlos, Farah, Gabe, Hana, Kai, Malik, Omar, Priya, and Ravi (Team 2), who would win and by how much?  
+Query 4: In a new 9‑a‑side game later this same day between Lina, Brooke, Carlos, Ethan, Farah, Ivan, Kai, Malik, and Zach (Team 1) and Alex, Dana, Gabe, Hana, Julia, Lina, Nora, Omar, Priya, and Quinn (Team 2), who would win and by how much?
+<END_SCENARIO>

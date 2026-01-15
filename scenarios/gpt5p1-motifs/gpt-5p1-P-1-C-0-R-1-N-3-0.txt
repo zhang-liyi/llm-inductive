@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, three 5‑player basketball teams compete in a series of full‑court games. In each game, the winning team is the one whose players have higher overall basketball ability (shooting, defense, ball‑handling, decision‑making) combined with how much focused effort they put into that game. All players stay on fixed teams for the entire event.
+Team Rockets: Miles, Aaron, Blake, Carter, Diego.
+Team Falcons: Jamal, Theo, Marcus, Leo, Bryce.
+Team Comets: Ethan, Noah, Julian, Omar, Kai.
+Miles always plays on Team Rockets.
+
+CONDITIONS
+In the first game, Falcons beat Rockets.
+In the second game, Comets beat Rockets.
+In the third game, Falcons beat Comets.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Jamal ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Miles put into the second game?
+Query 3: In a new game later this same day between Falcons and Rockets, who would win and by how much?
+Query 4: In a new game later this same day between Comets and Rockets, who would win and by how much?
+<END_SCENARIO>

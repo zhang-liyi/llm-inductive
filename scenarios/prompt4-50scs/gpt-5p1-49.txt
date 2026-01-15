@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in bouldering rounds. On each set of problems, climbers try to complete as many boulders as possible in limited attempts. A climber or team “beats” another if they complete more problems or the same number with fewer attempts. Performance depends on intrinsic power, technique, and problem-solving, along with how much effort they spend in that round.  
+Climbers compete both individually and in small teams of 3, where the team score is based on the combined performance of all members.  
+All rounds take place on the same day.
+
+CONDITIONS  
+In the first round, Kai beat Rowan.  
+In the second round, Rowan beat Tessa.  
+In the third round, Kai, Tessa, and Uma beat Rowan, Vince, and a substitute.  
+In the fourth round, Vince beat Uma.
+
+QUERIES  
+Query 1: Out of 100 random boulderers, where do you think Kai ranks in terms of intrinsic climbing ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Rowan put into the second round?  
+Query 3: In a new round later this same day between Kai, Uma, and a substitute (Team 1) and Rowan, Tessa, and Vince (Team 2), who would win and by how much?  
+Query 4: In a new round later this same day between Tessa and Uma (Team 1) and Rowan and a strong substitute (Team 2), who would win and by how much?
+<END_SCENARIO>

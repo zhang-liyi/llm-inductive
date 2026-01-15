@@ -1,0 +1,16 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of small-sided basketball games. In each game, the team that wins depends on the players’ intrinsic shooting, ball-handling, and defensive ability, together with how much effort and focus they put into that particular game. Players compete either individually or in teams of five. All games take place on the same day.
+
+CONDITIONS
+In the first game, Jordan beat Alex.
+In the second game, Jordan, Riley, Sam, Taylor, and Quinn beat Alex, Devin, Eli, Finn, and Gray.
+In the third game, Jordan, Alex, Devin, Eli, and Finn beat Hugo, Riley, Sam, Taylor, and Quinn.
+In the fourth game, Alex, Devin, Eli, Finn, and Gray beat Hugo, Riley, Sam, Taylor, and Quinn.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Jordan ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Hugo put into the fourth game?
+Query 3: In a new game later this same day between Jordan, Riley, Sam, Taylor, and Quinn (Team 1) and Alex, Devin, Eli, Finn, and Gray (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Alex, Devin, Eli, Finn, and Gray (Team 1) and Hugo, Riley, Sam, Taylor, and Quinn (Team 2), who would win and by how much?
+<END_SCENARIO>

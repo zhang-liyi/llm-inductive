@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND  
+This event is a series of half‑court basketball games. Each squad has 8 players who rotate in and out, and two 8‑player squads face each other in each game. The team that wins is the one whose players, through shooting, ball handling, and defense, perform better based entirely on their intrinsic basketball ability and the effort they put into that game.  
+There are also occasional 1‑on‑1 games to  a fixed number of baskets.  
+All games occur on the same day.  
+Most players remain in fixed 8‑player squads, but one standout player, Miguel, is allowed to join different squads in different games.
+
+CONDITIONS  
+In the first game, Miguel with Alex, Brandon, Corey, Dylan, Evan, Frank, and Grant (Squad Storm) beat Hayden, Isaac, Jordan, Kevin, Logan, Miles, Nathan, and Owen (Squad Blaze).  
+In the second game, Squad Blaze beat Patrick, Quincy, Riley, Sean, Trent, Uriel, Victor, and Wyatt (Squad Titans).  
+In the third game, Miguel with Patrick, Quincy, Riley, Sean, Trent, Uriel, and Victor (the Titans core) beat Squad Blaze.  
+In a 1‑on‑1 game later that day, Miguel beat Hayden.
+
+QUERIES  
+Query 1: Out of 100 random basketball players, where do you think Miguel ranks in terms of intrinsic basketball ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Logan put into the second game?  
+Query 3: In a new 8‑player game later this same day between Miguel, Patrick, Quincy, Riley, Sean, Trent, Uriel, and Victor (Team 1) and Hayden, Isaac, Jordan, Kevin, Logan, Miles, Nathan, and Owen (Team 2), who would win and by how much?  
+Query 4: In a new 8‑player game later this same day between Alex, Brandon, Corey, Dylan, Evan, Frank, Grant, and Wyatt (Team 1, without Miguel) and Hayden, Isaac, Jordan, Kevin, Logan, Miles, Nathan, and Owen (Team 2), who would win and by how much?
+<END_SCENARIO>

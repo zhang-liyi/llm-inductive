@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 3-on-3 volleyball games. The winning team in each game is determined by the players’ intrinsic volleyball abilities (serving, passing, setting, attacking) combined with how much effort they put into that game.
+Teams are of size three.
+Most players remain in fixed trios for the day, but Carlos moves between different lineups across games.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Carlos, Liam, and Noah beat Peter, Quinn, and Ryan.
+In the second game, Carlos, Oliver, and Sean beat Peter, Quinn, and Ryan.
+In the third game, Carlos, Tara, and Uma beat Liam, Noah, and Oliver.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Carlos ranks in terms of intrinsic volleyball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Liam put into the third game?
+Query 3: In a new game later this same day between Carlos, Noah, and Sean (Team 1) and Peter, Quinn, and Oliver (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Liam, Noah, and Oliver (Team 1) and Peter, Quinn, and Ryan (Team 2), who would win and by how much?
+<END_SCENARIO>

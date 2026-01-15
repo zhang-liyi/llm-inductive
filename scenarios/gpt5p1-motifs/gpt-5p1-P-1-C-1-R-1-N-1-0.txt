@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 3-on-3 half-court basketball games. In each game, the team that wins depends on the players’ intrinsic skills such as shooting accuracy, quickness, and ball-handling, combined with how much effort they put in on offense and defense in that particular game.
+All games are played on the same day.
+
+CONDITIONS
+In the first game, Alex, Ben, and Chris beat Riley, Dana, and Eva.  
+In the second game, Dana, Eva, and Finn beat Riley, Alex, and Ben.  
+In the third game, Alex, Ben, and Chris beat Riley, Finn, and Taylor.  
+In a later one-on-one game, Chris beat Riley.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Riley ranks in terms of intrinsic basketball ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Chris put into the third game?  
+Query 3: In a new 3-on-3 game later this same day between Alex, Ben, and Chris (Team 1) and Dana, Eva, and Finn (Team 2), who would win and by how much?  
+Query 4: In a new 3-on-3 game later this same day between Riley, Taylor, and Max (Team 1) and Alex, Ben, and Chris (Team 2), who would win and by how much?
+<END_SCENARIO>

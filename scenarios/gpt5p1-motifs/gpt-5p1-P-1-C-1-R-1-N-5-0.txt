@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 7-on-7 basketball games on the same court. In each game, the team that wins depends on the players’ intrinsic basketball skill (shooting, ball-handling, defense) combined with how much effort they put in during that game.  
+Players sometimes also compete in 1-on-1 games.  
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Riley lost to Blake.  
+In the second game, Riley, Owen, Parker, Quinn, Seth, Troy, and Uriel lost to Aaron, Blake, Carlos, Devin, Ethan, Finn, and Grant.  
+In the third game, Riley, Victor, Wyatt, Xavier, Yuri, Zane, and Owen lost to Hector, Isaac, Jordan, Kyle, Leo, Mason, and Nolan.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Riley ranks in terms of intrinsic basketball skill?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Blake put into the first game?  
+Query 3: In a new 7-on-7 game later this same day between Riley, Owen, Parker, Quinn, Seth, Troy, and Victor (Team 1) and Aaron, Blake, Carlos, Devin, Ethan, Finn, and Grant (Team 2), who would win and by how much?  
+Query 4: In a new 7-on-7 game later this same day between Riley, Wyatt, Xavier, Yuri, Zane, Uriel, and Parker (Team 1) and Hector, Isaac, Jordan, Kyle, Leo, Mason, and Nolan (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Badminton matches. In each match, the team that wins depends on the speed and reaction time of the players, based on their intrinsic reflexes modulated by other factors including how much effort they put in to that match.
+Athletes compete as a team of two.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Viktor and Ken beat Jin and Taro.
+In the second match, Viktor and Jin beat Ken and Ryu.
+In the third match, Viktor and Ryu lost to Jin and Taro.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Viktor ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Viktor put into the third match?
+Query 3: In a new match later this same day between Viktor and Ken (Team 1) and Jin and Ryu (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Jin and Taro (Team 1) and Ken and Ryu (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,181 @@
+var identity = function(x) {
+  return x;
+};
+
+var argMax = function(ar) {
+  return maxWith(identity, ar)[0];
+};
+
+var argmax = argMax;
+
+var mean = listMean;
+
+var model = function() {
+  // BACKGROUND KNOWLEDGE
+  // Each cyclist has an intrinsic strength (e.g., combining aerobic power and endurance) that is fixed for the whole day.
+  // We'll measure intrinsic strength in arbitrary "cycling strength units" on a scale roughly centered around 100.
+  var intrinsic_strength = mem(function({cyclist}) {
+    // Prior mixture over low / medium / high strength cyclists.
+    var low_mean = 80;    // weaker club-level riders
+    var mid_mean = 100;   // typical strong amateur
+    var high_mean = 120;  // particularly strong / near-elite
+
+    var low_prior = 0.3;
+    var mid_prior = 0.4;
+    var high_prior = 0.3;
+
+    var strength_bucket_mean = categorical({
+      ps: [low_prior, mid_prior, high_prior],
+      vs: [low_mean, mid_mean, high_mean]
+    });
+
+    var strength_sd = 10;
+
+    var sampled_strength = gaussian(strength_bucket_mean, strength_sd);
+    // Strength cannot be negative.
+    return Math.max(sampled_strength, 0);
+  });
+
+  // Ranking intrinsic strength out of N cyclists: how many random cyclists this cyclist is stronger than.
+  var intrinsic_strength_rank = function({cyclist, out_of_n_cyclists}) {
+    // Draw N-1 random "other cyclists" from the population.
+    var this_strength = intrinsic_strength({cyclist: cyclist});
+    var random_cyclist_ids = mapN(
+      function(i) { return uniform(0, 1000); },
+      out_of_n_cyclists - 1
+    );
+
+    return sum(map(
+      function(other_id) {
+        return this_strength > intrinsic_strength({cyclist: other_id});
+      },
+      random_cyclist_ids
+    ));
+  };
+
+  // Effort in a given race is a proportion in [0, 1], where 1 = all-out.
+  // It depends on intrinsic strength (stronger riders can more often go hard)
+  // and mildly on the race index (later races slightly lower effort on average due to fatigue).
+  var effort_in_race = mem(function({cyclist, race}) {
+    var strength = intrinsic_strength({cyclist: cyclist});
+
+    // Normalize strength roughly to [0, 1] over a typical [70, 130] range.
+    var norm_strength = (strength - 70) / 60;
+    norm_strength = Math.min(Math.max(norm_strength, 0), 1);
+
+    // Base Beta parameters as a function of normalized strength:
+    // stronger riders -> higher alpha (more mass near high effort),
+    // somewhat smaller beta.
+    var base_alpha = 1.5 + 3 * norm_strength;      // between ~1.5 and 4.5
+    var base_beta = 1.5 + 2 * (1 - norm_strength); // between ~1.5 and 3.5
+
+    // Simple fatigue model: later races shift mass toward lower efforts.
+    // race starts at 1. As race increases, effective alpha decreases and beta increases.
+    var fatigue_factor = 1 + 0.1 * (race - 1);
+    var alpha = base_alpha / fatigue_factor;
+    var beta_param = base_beta * fatigue_factor;
+
+    var safe_alpha = Math.max(alpha, 0.5);
+    var safe_beta = Math.max(beta_param, 0.5);
+
+    return beta({a: safe_alpha, b: safe_beta});
+  });
+
+  // Effort in percentage units [0, 100%].
+  var effort_percentage_in_race = function({cyclist, race}) {
+    return 100 * effort_in_race({cyclist: cyclist, race: race});
+  };
+
+  // Individual performance in a race (higher = better).
+  // Units: arbitrary "performance points" proportional to strength * effort,
+  // plus some noise for day-to-day variation, tactics, etc.
+  var individual_performance_in_race = mem(function({cyclist, race}) {
+    var strength = intrinsic_strength({cyclist: cyclist});
+    var effort = effort_in_race({cyclist: cyclist, race: race});
+
+    // Base performance: product of strength and effort, scaled.
+    var base_performance = strength * effort; // strength units * (0-1)
+    // Scale to a convenient magnitude.
+    var scaled_performance = base_performance;
+
+    // Add Gaussian noise (unmodeled factors).
+    var noise_sd = 10;
+    var noisy_performance = scaled_performance + gaussian(0, noise_sd);
+
+    return Math.max(noisy_performance, 0);
+  });
+
+  // Team performance in a race is the mean of its riders' performances plus small team-level noise.
+  var team_performance_in_race = function({team, race}) {
+    var rider_performances = map(
+      function(cyclist) {
+        return individual_performance_in_race({cyclist: cyclist, race: race});
+      },
+      team
+    );
+
+    var mean_rider_performance = listMean(rider_performances);
+
+    var team_noise_sd = 5;
+    var team_perf = mean_rider_performance + gaussian(0, team_noise_sd);
+
+    return Math.max(team_perf, 0);
+  };
+
+  // Team 1 beats Team 2 in a race if its team performance is greater.
+  var beat = function({team1, team2, race}) {
+    return team_performance_in_race({team: team1, race: race}) >
+           team_performance_in_race({team: team2, race: race});
+  };
+
+  // Predictive function: for a hypothetical future race,
+  // return P(Team 2 wins) between 0 and 1.
+  // 0   = Team 1 always wins
+  // 0.5 = roughly even odds
+  // 1   = Team 2 always wins
+  var who_would_win_by_how_much = function({team1, team2, race}) {
+    var num_future_races_to_simulate = 100;
+    // Use race indices beyond the given one, to avoid overlapping with observed races.
+    var random_future_race_ids = mapN(
+      function(i) { return uniform(race + 1, 1000); },
+      num_future_races_to_simulate
+    );
+
+    // Count how many times Team 2 beats Team 1.
+    var team2_wins = sum(map(
+      function(random_race_id) {
+        // Team 2 wins if they beat Team 1 in that simulated race.
+        return beat({team1: team2, team2: team1, race: random_race_id});
+      },
+      random_future_race_ids
+    ));
+
+    return team2_wins / num_future_races_to_simulate;
+  };
+
+  // CONDITIONS
+  // In the first race, Leo beat Jonah.  
+  condition(beat({team1: ['leo'], team2: ['jonah'], race: 1}))
+
+  // In the second race, Leo and Mara beat Jonah and Priya.  
+  condition(beat({team1: ['leo', 'mara'], team2: ['jonah', 'priya'], race: 2}))
+
+  // In the third race, Priya and Jonah beat Leo and Sam.
+  condition(beat({team1: ['priya', 'jonah'], team2: ['leo', 'sam'], race: 3}))
+
+  // QUERIES
+  // Query 1: Out of 100 random road cyclists, where do you think Leo ranks in terms of intrinsic strength?  
+  // Query 2: On a percentage scale from 0 to 100%, how much effort do you think Sam put into the third race?  
+  // Query 3: In a new race later this same day between Leo and Mara (Team 1) and Jonah and Sam (Team 2), who would win and by how much?  
+  // Query 4: In a new race later this same day between Priya and Leo (Team 1) and Jonah and Mara (Team 2), who would win and by how much?  
+  return {
+    query1: intrinsic_strength_rank({cyclist: 'leo', out_of_n_cyclists: 100}),
+    query2: effort_percentage_in_race({cyclist: 'sam', race: 3}),
+    query3: who_would_win_by_how_much({team1: ['leo', 'mara'], team2: ['jonah', 'sam'], race: 4}),
+    query4: who_would_win_by_how_much({team1: ['priya', 'leo'], team2: ['jonah', 'mara'], race: 5})
+  };
+};
+
+// Now we run the model and collect an estimate.
+var posterior = Infer({model: model, method: "MCMC", samples: 10000});
+json.write('inference_results/result-20.json', posterior);

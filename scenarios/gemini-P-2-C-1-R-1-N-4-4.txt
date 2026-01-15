@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Field Hockey training games, played 6-on-6 on a half-pitch. In each game, the team that wins depends on the dribbling speed and passing accuracy of the athletes, based on their intrinsic technique modulated by other factors including how much effort they put into that game.
+The training group is divided into three color-coded squads: Gold, Silver, and Bronze. One player, Malik, rotates between squads to balance the numbers.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Gold Squad (with Malik) beat Silver Squad.
+In the second game, Bronze Squad (with Malik) beat Gold Squad.
+In the third game, Silver Squad (with Malik) lost to Bronze Squad.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Malik ranks in terms of intrinsic technique?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Malik put into the third game?
+Query 3: In a new game later this same day between Gold Squad (with Malik) and Bronze Squad, who would win and by how much?
+Query 4: In a new game later this same day between Silver Squad (without Malik) and Gold Squad (without Malik), who would win and by how much?
+<END_SCENARIO>

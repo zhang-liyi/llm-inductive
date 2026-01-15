@@ -1,0 +1,22 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a one-day indoor volleyball tournament. In each match, the result depends on each player's intrinsic volleyball ability (serving, passing, setting, attacking, blocking, and defense) and how much effort they put into that match. Higher combined ability and effort across the team leads to better coordination, more successful plays, and ultimately more points.
+All matches are 6-on-6.
+Players have fixed teams and always play with the same teammates.
+
+Team 1 (Maya’s team): Maya, Lena, Sofia, Hannah, Riley, Zoe  
+Team 2: Caleb, Jonah, Priya, Marcus, Olivia, Ben  
+Team 3: Diego, Tara, Lucas, Nia, Ethan, Grace  
+
+CONDITIONS
+In the first match, Maya, Lena, Sofia, Hannah, Riley, and Zoe lost to Caleb, Jonah, Priya, Marcus, Olivia, and Ben.  
+In the second match, Maya, Lena, Sofia, Hannah, Riley, and Zoe lost to Diego, Tara, Lucas, Nia, Ethan, and Grace.  
+In the third match, Maya, Lena, Sofia, Hannah, Riley, and Zoe beat Caleb, Jonah, Priya, Marcus, Olivia, and Ben.  
+In the fourth match, Maya, Lena, Sofia, Hannah, Riley, and Zoe lost to Diego, Tara, Lucas, Nia, Ethan, and Grace.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Maya ranks in terms of intrinsic volleyball ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Diego put into the fourth match?  
+Query 3: In a new match later this same day between Maya, Lena, Sofia, Hannah, Riley, and Zoe (Team 1) and Caleb, Jonah, Priya, Marcus, Olivia, and Ben (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Caleb, Jonah, Priya, Marcus, Olivia, and Ben (Team 1) and Diego, Tara, Lucas, Nia, Ethan, and Grace (Team 2), who would win and by how much?
+<END_SCENARIO>

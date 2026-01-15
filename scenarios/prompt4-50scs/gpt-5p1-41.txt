@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, archers are competing in a series of team rounds. The team that wins is the one whose arrows land closer to the center on average, which depends on each archer’s intrinsic accuracy and steadiness, modulated by how much effort and concentration they bring to that round.
+Archers compete both individually and in three-person teams.
+All rounds take place during the same tournament day.
+
+CONDITIONS
+In the first round, Ava beat Daniel.
+In the second round, Ava, Emma, and Felix beat Daniel, Hugo, and Iris.
+In the third round, Daniel, Emma, and Iris beat Ava, Felix, and Hugo.
+In the fourth round, Felix beat Hugo.
+
+QUERIES
+Query 1: Out of 100 random archers, where do you think Ava ranks in terms of intrinsic shooting accuracy?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Daniel put into the third round?
+Query 3: In a new team round later this same day between Ava, Emma, and Felix (Team 1) and Daniel, Hugo, and Iris (Team 2), who would win and by how much?
+Query 4: In a new team round later this same day between Ava and Daniel (Team 1) and Felix and Hugo (Team 2), who would win and by how much?
+<END_SCENARIO>

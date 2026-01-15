@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of volleyball matches. In each match, the team that wins depends on their ability to score points, based on their intrinsic vertical jump and spiking power, modulated by other factors including how much effort they put into that match.
+Athletes compete as a team of three.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Zhu, Lang, and Feng beat Kim, Park, and Lee.
+In the second match, Zhu, Kim, and Park beat Lang, Feng, and Lee.
+In the third match, Zhu, Lee, and Lang lost to Kim, Park, and Feng.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Zhu ranks in terms of intrinsic spiking power?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Zhu put into the third match?
+Query 3: In a new match later this same day between Zhu, Lang, and Feng (Team 1) and Kim, Park, and Lee (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Kim, Park, and Lang (Team 1) and Zhu, Feng, and Lee (Team 2), who would win and by how much?
+<END_SCENARIO>

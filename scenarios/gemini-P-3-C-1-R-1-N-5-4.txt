@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Field Hockey matches. In each match, the team that wins depends on the goals scored, based on the athletes' intrinsic stick work and stamina, modulated by other factors including how much effort they put into that match.
+Athletes compete in teams of 7.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, The Strikers and Sarah lost to The Defenders.
+In the second match, The Midfielders and Sarah lost to The Defenders.
+In the third match, The Strikers and Sarah beat The Midfielders.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Sarah ranks in terms of intrinsic stick work and stamina?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think The Defenders put into the second match?
+Query 3: In a new match later this same day between The Midfielders and Sarah (Team 1) and The Strikers (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between The Defenders (Team 1) and The Strikers and Sarah (Team 2), who would win and by how much?
+<END_SCENARIO>

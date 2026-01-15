@@ -1,0 +1,20 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, three 9-a-side indoor volleyball teams play a round of matches. Each match outcome depends on the players’ intrinsic volleyball capabilities—serving, setting, attacking, blocking, defensive reactions—combined with how much effort they invest in that match.
+Teams have fixed rosters of 9 players that never change during the event.
+Team Phoenix: Alina, Becca, Cara, Dana, Elise, Fiona, Greta, Holly, Iris.
+Team Titans: Jonah, Marco, Stefan, Leo, Victor, Amir, Colin, Reese, Toby.
+Team Waves: Marcus, Ben, Oliver, Felix, Hugo, Simon, Derek, Evan, Neil.
+All matches are played on the same day.
+
+CONDITIONS
+In the first match, Phoenix beat Waves.
+In the second match, Titans beat Waves.
+In the third match, Phoenix beat Waves again.
+
+QUERIES
+Query 1: Out of 100 random volleyball players, where do you think Marcus ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Oliver put into the third match?
+Query 3: In a new match later this same day between Phoenix and Titans, who would win and by how much?
+Query 4: In a new match later this same day between Waves and Titans, who would win and by how much?
+<END_SCENARIO>

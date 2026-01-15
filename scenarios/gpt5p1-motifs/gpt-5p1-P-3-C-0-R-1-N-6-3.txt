@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND
+This event is a small-sided rugby tournament. Each side has 8 fixed players, and the same players line up together in every game.
+Game results are determined by the players’ intrinsic rugby ability and the level of effort and physical commitment they bring to that game.
+All games are played on the same day.
+Caleb is on Team Iron in every game he plays.
+
+CONDITIONS
+In the first game, Team Storm beat Team Iron.
+In the second game, Team Crest beat Team Iron.
+In the third game, Team Iron beat Team Storm.
+In the fourth game, Team Storm beat Team Crest.
+
+QUERIES
+Query 1: Out of 100 random rugby players, where do you think Caleb ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jonah from Team Storm put into the first game?
+Query 3: In a new game later this same day between Team Iron and Team Crest, who would win and by how much?
+Query 4: In a new game later this same day between Team Storm and Team Iron, who would win and by how much?
+<END_SCENARIO>

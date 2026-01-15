@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of field hockey matches. In each match, the winning side is determined by the players’ intrinsic endurance, stick skills, and spatial awareness, influenced by how much effort they invest in that particular match.  
+Athletes compete in 1-on-1 drills and in small teams.  
+All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Ava beat Harper.  
+In the second match, Ava and Liam beat Harper and Zoe.  
+In the third match, Zoe and Mia beat Liam and Harper.  
+In the fourth match, Mia beat Ava.
+
+QUERIES  
+Query 1: Out of 100 random field hockey athletes, where do you think Ava ranks in terms of intrinsic strength?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Harper put into the third match?  
+Query 3: In a new match later this same day between Ava and Liam (Team 1) and Mia and Zoe (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Harper and Taylor (Team 1) and Liam and Zoe (Team 2), who would win and by how much?
+<END_SCENARIO>

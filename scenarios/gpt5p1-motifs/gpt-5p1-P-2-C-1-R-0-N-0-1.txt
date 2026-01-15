@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the players are competing in table tennis matches, mostly doubles with one or two singles games. Outcomes depend on the players’ intrinsic racket control, reaction speed, and tactical sense, combined with how much focus and effort they put into each match.  
+All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Lena and Chen beat Marco and Nina.  
+In the second match, Lena beat Marco.  
+In the third match, Nina and Marco beat Lena and Omar.  
+In the fourth match, Lena and Nina beat Chen and Omar.
+
+QUERIES  
+Query 1: Out of 100 random table tennis players, where do you think Lena ranks in terms of intrinsic playing ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Omar put into the third match?  
+Query 3: In a new match later this same day between Lena and Omar (Team 1) and Chen and Marco (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Lena and Chen (Team 1) and Nina and Marco (Team 2), who would win and by how much?  
+<END_SCENARIO>

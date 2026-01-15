@@ -1,0 +1,19 @@
+<START_SCENARIO>
+BACKGROUND
+This is an 8-a-side soccer tournament. Match outcomes depend on the players’ intrinsic soccer skill and the amount of effort they exert in each match.
+Players compete either in 1-on-1 contests or in 8-player teams.
+All matches occur on the same day.
+Most players remain on their club’s fixed squad, but Priya moves between different squads.
+
+CONDITIONS
+In the first match, Priya played for Club Aurora and Club Titan beat Aurora.
+In the second match, Priya played for Club Nova and Club Titan beat Nova.
+In the third match, Leo beat Priya in a 1-on-1 penalty shootout.
+In the fourth match, Priya played for Club Titan and Titan beat Aurora.
+
+QUERIES
+Query 1: Out of 100 random soccer players, where do you think Priya ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Priya put into the third match?
+Query 3: In a new match later this same day between Priya and the other players on Club Aurora (Team 1) and the fixed lineup of Club Nova (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Club Titan without Priya (Team 1) and Club Nova with Priya added to its usual lineup (Team 2), who would win and by how much?
+<END_SCENARIO>

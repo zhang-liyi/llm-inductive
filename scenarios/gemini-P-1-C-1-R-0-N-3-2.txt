@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee matches. In each match, the team that wins depends on the speed and catching reliability the athletes are able to perform, based on their intrinsic athleticism modulated by other factors including how much effort they put in to that match.
+Athletes compete as a team of 5.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Alex, Ben, Chris, Dan, and Eric beat Fred, Greg, Hank, Ian, and Mason.
+In the second match, Jack, Kyle, Leo, Mike, and Nick beat Oscar, Paul, Quinn, Ray, and Mason.
+In the third match, Mason, Sam, Tom, Vic, and Will lost to Alex, Ben, Jack, Kyle, and Leo.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Mason ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Mason put into the third match?
+Query 3: In a new match later this same day between Alex, Ben, Jack, Kyle, and Leo (Team 1) and Fred, Greg, Hank, Ian, and Oscar (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Mason, Paul, Quinn, Ray, and Sam (Team 1) and Chris, Dan, Eric, Mike, and Nick (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a softball league. Teams are comprised of 9 members each. The winning team in any match is decided by the aggregate performance speed and accuracy of the players, derived from their intrinsic talent modulated by other factors including how much effort they exert during the innings.
+Players remain on fixed teams for all matches.
+All matches occur during the same tournament day.
+
+CONDITIONS
+In the first match, The Comets (led by Harper) beat The Meteors.
+In the second match, The Comets (led by Harper) beat The Asteroids.
+In the third match, The Comets (led by Harper) beat The Nebulas.
+
+QUERIES
+Query 1: Out of 100 random softball players, where do you think Harper ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think The Nebulas put into the third match?
+Query 3: In a new match later this same day between The Comets (led by Harper) and The Meteors, who would win and by how much?
+Query 4: In a new match later this same day between The Meteors and The Asteroids, who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the players are competing in a series of full-court basketball scrimmages. In each scrimmage, the team that wins is the one that shoots, defends, and moves the ball more effectively, determined by the players’ intrinsic basketball skills and physical ability along with the effort they put in that scrimmage.
+Players compete either individually (in short 1-on-1 style duels) or in teams of eight.
+All scrimmages take place on the same day.
+
+CONDITIONS
+In the first duel, Diego lost to Marcus.
+In the second scrimmage, Diego, Aaron, Ben, Chris, Dylan, Ethan, Felix, and Grant lost to Marcus, Isaac, Jason, Kyle, Liam, Noah, Owen, and Paul.
+In the third scrimmage, Diego, Isaac, Jason, Kyle, Liam, Quinn, Ryan, and Trevor lost to Marcus, Aaron, Ben, Chris, Dylan, Ethan, Felix, and Owen.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Diego ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Diego put into the third scrimmage?
+Query 3: In a new scrimmage later this same day between Diego, Aaron, Chris, Ethan, Isaac, Kyle, Liam, and Ryan (Team 1) and Marcus, Ben, Dylan, Felix, Grant, Jason, Noah, and Owen (Team 2), who would win and by how much?
+Query 4: In a new scrimmage later this same day between Aaron, Ben, Chris, Dylan, Ethan, Felix, Isaac, and Jason (Team 1) and Grant, Kyle, Liam, Noah, Owen, Paul, Quinn, and Trevor (Team 2), who would win and by how much?
+<END_SCENARIO>

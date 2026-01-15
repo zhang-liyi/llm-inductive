@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of speed Lacrosse matches. In each match, the team that wins depends on the number of goals scored, based on their intrinsic agility and stick skills modulated by other factors including how much effort they put into that match.
+Athletes compete either individually (1v1) or as a fixed team of three.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Jim, Tom, and Paul beat Gary, Mike, and Steve.
+In the second match, Jim beat Gary.
+In the third match, Jim, Tom, and Paul beat Gary, Mike, and Steve.
+In the fourth match, Jim, Tom, and Paul lost to Gary, Mike, and Steve.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jim ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jim put into the fourth match?
+Query 3: In a new match later this same day between Jim and Gary (Team 1) and Tom and Mike (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Paul and Steve (Team 1) and Jim and Gary (Team 2), who would win and by how much?
+<END_SCENARIO>

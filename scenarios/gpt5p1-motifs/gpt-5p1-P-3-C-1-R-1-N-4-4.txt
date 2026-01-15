@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a one-day ice hockey tournament with 6-player sides on the ice. The result of each game depends on the players’ intrinsic ice hockey ability and how much effort they put in during that particular game. Athletes can compete either individually in shootout contests or as part of 6-player teams.
+
+The Glaciers are a fixed team composed of Anton, Boris, Cody, Denis, Erik, and Filip. The Blizzards are a fixed team composed of Greg, Henrik, Ivan, Jakob, Karl, and Lukas. Lena plays in several games but does not belong to a fixed team, instead joining different lineups.
+
+CONDITIONS
+In the first game, the Glaciers beat the Blizzards.  
+In the second game, Lena, Mia, Noah, Olivia, Pavel, and Quinn lost to the Glaciers.  
+In the third game, Lena, Rina, Stefan, Tomas, Uma, and Viktor lost to the Blizzards.  
+In an individual shootout skills contest, Lena beat Henrik.
+
+QUERIES
+Query 1: Out of 100 random ice hockey players, where do you think Lena ranks in terms of intrinsic ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Cody put into the first game?  
+Query 3: In a new game later this same day between Lena, Mia, Noah, Olivia, Pavel, and Quinn (Team 1) and Greg, Henrik, Ivan, Jakob, Karl, and Lukas (Team 2), who would win and by how much?  
+Query 4: In a new game later this same day between Anton, Boris, Cody, Denis, Erik, and Filip (Team 1) and Lena, Rina, Stefan, Tomas, Uma, and Greg (Team 2), who would win and by how much?
+<END_SCENARIO>

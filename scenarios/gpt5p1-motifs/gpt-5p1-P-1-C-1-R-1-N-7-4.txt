@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in an indoor field hockey series. Each team fields 9 players at a time. The result of each match depends on players’ intrinsic stick‑handling, passing, and defensive ability, along with the effort they put in.
+Most athletes play on stable teams: the Lynx, the Falcons, and the Vipers. Omar is a rotating player who sometimes fills in for different teams. There are also individual shootout contests between attackers and goalkeepers.
+All matches occur on the same day.
+
+CONDITIONS
+In the first match, the Lynx with Omar in the lineup lost to the Falcons.
+In the second match, the Vipers with Omar in the lineup lost to the Lynx’s regular squad.
+In the third match, the Falcons beat the Vipers using their regular squads without Omar.
+In an individual shootout contest, Omar lost to Leo from the Falcons.
+
+QUERIES
+Query 1: Out of 100 random field hockey players, where do you think Omar ranks in terms of intrinsic field hockey ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Omar put into the first match?
+Query 3: In a new match later this same day between the Falcons and the Lynx with Omar added to the Lynx, who would win and by how much?
+Query 4: In a new match later this same day between the Falcons and the Vipers with Omar added to the Vipers, who would win and by how much?
+<END_SCENARIO>

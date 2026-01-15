@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+The athletes are participating in a Handball competition. The victor of each game is decided by the aggregate throwing power and tactical awareness of the team, dependent on their intrinsic talent and the specific effort put into that game.
+Teams consist of 7 players each.
+The games are played back-to-back.
+
+CONDITIONS
+In the first game, the team of Ali, Bo, Cy, Dax, Eli, Fox, and Gil beat the team of Otis, Hal, Jay, Kip, Lee, Mel, and Ned.
+In the second game, the team of Hal, Jay, Kip, Lee, Mel, Ned, and Gil beat the team of Otis, Ali, Bo, Cy, Dax, Eli, and Fox.
+In the third game, the team of Ali, Hal, Bo, Jay, Cy, Kip, and Dax lost to the team of Otis, Eli, Lee, Fox, Mel, Gil, and Ned.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Otis ranks in terms of intrinsic talent?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Gil put into the second game?
+Query 3: In a new game later this same day between the team of Ali, Bo, Cy, Dax, Eli, Fox, and Hal (Team 1) and the team of Otis, Jay, Kip, Lee, Mel, Ned, and Gil (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between the team of Otis, Ali, Hal, Bo, Jay, Cy, and Kip (Team 1) and the team of Dax, Eli, Lee, Fox, Mel, Gil, and Ned (Team 2), who would win and by how much?
+<END_SCENARIO>

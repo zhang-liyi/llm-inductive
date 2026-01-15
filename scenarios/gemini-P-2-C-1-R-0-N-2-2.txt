@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of swimming relays. In each race, the team that wins depends on the total time it takes the athletes to complete the distance, based on their intrinsic stroke technique and speed modulated by other factors including how much effort they put in to that race.
+Athletes compete as a team of 4.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Marcus, Finn, Owen, and Kyle beat Seth, Ryan, Jake, and Paul.
+In the second race, Marcus, Seth, Ryan, and Jake beat Finn, Owen, Kyle, and Paul.
+In the third race, Seth, Ryan, Jake, and Kyle beat Marcus, Paul, Finn, and Owen.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Marcus ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Marcus put into the third race?
+Query 3: In a new race later this same day between Marcus, Finn, Owen, and Kyle (Team 1) and Seth, Ryan, Jake, and Paul (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Seth, Ryan, Jake, and Kyle (Team 1) and Marcus, Paul, Finn, and Owen (Team 2), who would win and by how much?
+<END_SCENARIO>

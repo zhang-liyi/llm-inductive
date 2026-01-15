@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+In this event, the athletes are competing in a series of small-sided rugby matches. In each match, the team that wins depends on the players’ intrinsic strength, speed, and decision-making, modulated by how much effort they put in during that match.  
+Athletes compete either individually (in skill-focused 1-on-1 contests) or in small teams.  
+All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Dana beat Leo.  
+In the second match, Dana and Morgan beat Leo and Priya.  
+In the third match, Morgan lost to Priya.
+
+QUERIES  
+Query 1: Out of 100 random rugby athletes, where do you think Dana ranks in terms of intrinsic strength?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Morgan put into the third match?  
+Query 3: In a new match later this same day between Dana and Morgan (Team 1) and Priya and Taylor (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Leo and Priya (Team 1) and Morgan and Casey (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Badminton matches. In each match, the team that wins depends on the speed of returns and shuttlecock control, based on the athletes' intrinsic reflexes modulated by other factors including how much effort they put in to that match.
+Athletes compete as a team of two.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Wei and Kai beat Bo and Jun.
+In the second match, Wei and Bo beat Kai and Jun.
+In the third match, Wei and Jun beat Kai and Bo.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Wei ranks in terms of intrinsic reflexes?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Kai put into the third match?
+Query 3: In a new match later this same day between Wei and Kai (Team 1) and Bo and Jun (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Kai and Bo (Team 1) and Jun and a new player, Yan (Team 2), who would win and by how much?
+<END_SCENARIO>

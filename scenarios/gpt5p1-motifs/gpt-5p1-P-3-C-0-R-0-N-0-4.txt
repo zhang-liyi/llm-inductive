@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of table tennis matches. In each match, the winner is determined by how precisely and quickly the players can place and return the ball, based on their intrinsic reaction speed, touch, and anticipation, modulated by how much effort they put into that match.
+Athletes compete either individually or as doubles teams.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Ravi and Mei lost to Dana and Luke.
+In the second match, Ravi lost to Luke.
+In the third match, Ravi and Mei beat Sara and Dana.
+In the fourth match, Ravi and Mei lost to Luke and Sara.
+
+QUERIES
+Query 1: Out of 100 random table tennis players, where do you think Ravi ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Luke put into the second match?
+Query 3: In a new doubles match later this same day between Ravi and Mei (Team 1) and Luke and Dana (Team 2), who would win and by how much?
+Query 4: In a new doubles match later this same day between Sara and Mei (Team 1) and Ravi and Dana (Team 2), who would win and by how much?
+<END_SCENARIO>

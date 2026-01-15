@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND  
+This event is a round-robin table tennis competition. Match outcomes depend on each player’s intrinsic table tennis skills (spin control, reflexes, placement) and how much effort they put into each match.  
+There are both singles and doubles matches, with players switching partners over the course of the day.  
+All matches take place on the same day.
+
+CONDITIONS  
+In the first match, Chen beat Priya.  
+In the second match, Chen and Luis beat Priya and Mei.  
+In the third match, Priya and Luis beat Chen and Arjun.  
+
+QUERIES  
+Query 1: Out of 100 random table tennis players, where do you think Chen ranks in terms of intrinsic table tennis ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Luis put into the third match?  
+Query 3: In a new match later this same day between Chen and Priya (Team 1) and Luis and Mei (Team 2), who would win and by how much?  
+Query 4: In a new match later this same day between Chen and Mei (Team 1) and Priya and Arjun (Team 2), who would win and by how much?  
+<END_SCENARIO>

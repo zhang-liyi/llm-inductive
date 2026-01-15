@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, boxers are competing in a series of bouts. In each bout, the winner is determined by punching power, speed, defensive skill, and ring control, all shaped by how much effort and focus the boxer commits in that bout.  
+Boxers compete either individually or in small teams where the overall performance of the team decides the winner.  
+All bouts take place on the same day.
+
+CONDITIONS
+In the first bout, Jake beat Ryan.  
+In the second bout, Leo beat Jake.  
+In the third bout, Jake and Zara beat Ryan and Omar.  
+In the fourth bout, Leo and Omar beat Ryan and Zara.
+
+QUERIES
+Query 1: Out of 100 random boxers, where do you think Leo ranks in terms of intrinsic striking ability and skill?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jake put into the third bout?  
+Query 3: In a new bout later this same day between Jake and Leo (Team 1) and Ryan and Omar (Team 2), who would win and by how much?  
+Query 4: In a new bout later this same day between Zara (Team 1) and Ryan (Team 2), who would win and by how much?
+<END_SCENARIO>

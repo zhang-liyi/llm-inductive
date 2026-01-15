@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a 6-on-6 Ultimate Frisbee tournament. In each game, the team that wins depends on the speed and throwing accuracy of the athletes, based on their intrinsic agility modulated by factors such as how much effort they put into that game.
+Athletes compete as a team of six.
+All games take place on the same afternoon.
+
+CONDITIONS
+In the first game, the Falcons beat the Hawks (comprising Tobias, Jay, Kai, Ray, Ben, and Dan).
+In the second game, the Eagles beat the Hawks (comprising Tobias, Jay, Kai, Ray, Ben, and Dan).
+In the third game, the Hawks (comprising Tobias, Jay, Kai, Ray, Ben, and Dan) lost to the Owls.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Tobias ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think the Owls put into the third game?
+Query 3: In a new game later this same day between the Falcons (Team 1) and the Hawks (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between the Eagles (Team 1) and the Owls (Team 2), who would win and by how much?
+<END_SCENARIO>

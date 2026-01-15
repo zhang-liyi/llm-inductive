@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of 5-on-5 and occasional 1-on-1 basketball games. In each game, the team that wins depends on the players’ intrinsic basketball ability—such as shooting touch, quickness, and game sense—combined with how much effort they put into that specific game on both offense and defense.
+Games all take place on the same day.
+
+CONDITIONS
+In the first game, Jordan beat Marco.
+In the second game, Jordan, Ava, Noah, Li, and Sam beat Marco, Priya, Ben, Cara, and Hugo.
+In the third game, Jordan, Ava, Noah, Li, and Sam lost to Priya, Ben, Cara, Hugo, and Talia.
+In the fourth game, Marco, Noah, Cara, Zane, and Willow beat Ben, Hugo, Ava, Priya, and Sam.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Jordan ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Priya put into the third game?
+Query 3: In a new game later this same day between Jordan, Ava, Noah, Li, and Sam (Team 1) and Marco, Priya, Ben, Cara, and Zane (Team 2), who would win and by how much?
+Query 4: In a new game later this same day between Hugo, Talia, Willow, Ben, and Priya (Team 1) and Marco, Ava, Sam, Cara, and Noah (Team 2), who would win and by how much?
+<END_SCENARIO>

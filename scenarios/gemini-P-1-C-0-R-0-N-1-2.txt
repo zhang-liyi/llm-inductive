@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee matches. In each match, the team that wins depends on the catching reliability and throwing precision of the athletes, based on their intrinsic athleticism modulated by other factors including how much effort they put into that match.
+Athletes compete as a team of three.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Dan, Ben, and Jerry beat Quinn, Val, and Rick.
+In the second match, Dan, Sarah, and Mike beat Quinn, Val, and Rick.
+In the third match, Ben, Sarah, and Tom beat Quinn, Val, and Rick.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Quinn ranks in terms of intrinsic athleticism?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Dan put into the second match?
+Query 3: In a new match later this same day between Dan and Sarah (Team 1) and Quinn and Val (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Quinn and Rick (Team 1) and Jerry and Mike (Team 2), who would win and by how much?
+<END_SCENARIO>

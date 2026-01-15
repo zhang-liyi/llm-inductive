@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of full-court basketball scrimmages. In each scrimmage, the team that wins depends on the players’ intrinsic basketball ability (shooting, ball-handling, speed, decision-making) combined with how much effort they put in that game.
+Players compete either individually or in teams of 6.
+All games take place on the same day.
+
+CONDITIONS
+In the first scrimmage, Maya, Leo, Priya, Sam, Jordan, and Elena beat Noah, Chris, Talia, Victor, Hannah, and Omar.
+In the second scrimmage, Maya, Leo, Priya, Sam, Jordan, and Elena beat Kim, Diego, Riley, Ben, Noah, and Talia.
+In the third scrimmage, Noah, Chris, Kim, Diego, Riley, and Ben beat Talia, Victor, Hannah, Omar, Quinn, and Zoe.
+Later that day, Maya beat Noah.
+
+QUERIES
+Query 1: Out of 100 random basketball players, where do you think Maya ranks in terms of intrinsic basketball ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Noah put into the third scrimmage?
+Query 3: In a new scrimmage later this same day between Maya, Leo, Priya, Sam, Jordan, and Elena (Team 1) and Noah, Chris, Victor, Kim, Diego, and Riley (Team 2), who would win and by how much?
+Query 4: In a new scrimmage later this same day between Jordan, Noah, Talia, Hannah, Omar, and Ben (Team 1) and Chris, Kim, Diego, Riley, Victor, and Quinn (Team 2), who would win and by how much?
+<END_SCENARIO>

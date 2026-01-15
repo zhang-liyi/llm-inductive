@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Ultimate Frisbee matches. In each match, the team that wins depends on the number of points scored, which is determined by the athletes' intrinsic throwing accuracy and speed, modulated by other factors including how much effort they put into that match.
+Athletes compete in teams of 7.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, The Falcons and Rohan lost to The Hawks.
+In the second match, The Eagles and Rohan lost to The Hawks.
+In the third match, The Falcons and Rohan beat The Eagles.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Rohan ranks in terms of intrinsic throwing accuracy and speed?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think The Hawks put into the second match?
+Query 3: In a new match later this same day between The Eagles and Rohan (Team 1) and The Falcons (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between The Hawks (Team 1) and The Falcons and Rohan (Team 2), who would win and by how much?
+<END_SCENARIO>

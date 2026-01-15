@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of Tennis matches. In each match, the team that wins depends on the average precision and speed with which the athletes are able to return the ball, based on their intrinsic skill modulated by other factors including how much effort they put in to that match.
+Athletes compete either individually or as a team of two.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Mike beat Jamie.
+In the second match, Mike and Dave beat Jamie and Sarah.
+In the third match, Sarah and Jen beat Jamie and Dave.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jamie ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Jamie put into the third match?
+Query 3: In a new match later this same day between Jamie and Sarah (Team 1) and Mike and Jen (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Dave and Sarah (Team 1) and Mike and Jen (Team 2), who would win and by how much?
+<END_SCENARIO>

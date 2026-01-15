@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, swimmers compete in a 4x100m freestyle relay. The winning team is determined by the total time taken to complete the laps, which relies on the hydrodynamic efficiency and propulsion of the swimmers, based on their intrinsic skill and the effort they put into the heat.
+Athletes compete in teams of four.
+All races take place on the same day.
+
+CONDITIONS
+In the first heat, Marcus, Noah, Oliver, and Peter lost to Quinn, Riley, Steve, and Toby.
+In the second heat, Marcus, Adam, Brian, and Carl lost to Dave, Evan, Fred, and George.
+In the third heat, Marcus, Henry, Ian, and Jack beat Kyle, Liam, Mike, and Nate.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Marcus ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Quinn put into the first heat?
+Query 3: In a new race later this same day between Marcus, Noah, Oliver, and Peter (Team 1) and Dave, Evan, Fred, and George (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Quinn, Riley, Steve, and Toby (Team 1) and Kyle, Liam, Mike, and Nate (Team 2), who would win and by how much?
+<END_SCENARIO>

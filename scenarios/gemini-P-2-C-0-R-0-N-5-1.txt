@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in a series of Handball games. In each game, the team that wins depends on the average throwing power and defensive agility of the players, based on their intrinsic skill modulated by other factors including how much effort they put into that game.
+Athletes compete in teams of 7.
+All games take place on the same day.
+
+CONDITIONS
+In the first game, Ria, Sue, Tom, Vic, Wil, Xan, and Yur beat Ada, Bob, Cal, Dav, Eva, Fay, and Gus.
+In the second game, Ria, Sue, Ada, Bob, Cal, Dav, and Eva beat Hal, Ian, Jon, Ken, Leo, Mat, and Nic.
+In the third game, Ria, Sue, Hal, Ian, Jon, Ken, and Leo lost to Tom, Vic, Wil, Xan, Yur, Fay, and Gus.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Ria ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Ria put into the third game?
+Query 3: In a new game later this same day between Team 1 (Ria, Sue, Tom, Vic, Wil, Xan, Yur) and Team 2 (Hal, Ian, Jon, Ken, Leo, Mat, Nic), who would win and by how much?
+Query 4: In a new game later this same day between Team 1 (Ada, Bob, Cal, Dav, Eva, Fay, Gus) and Team 2 (Hal, Ian, Jon, Ken, Leo, Mat, Nic), who would win and by how much?
+<END_SCENARIO>

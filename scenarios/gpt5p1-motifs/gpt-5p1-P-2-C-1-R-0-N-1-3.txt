@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the cyclists are competing in a series of three-rider team sprint races on an indoor track. In each race, the winning team is determined by the cyclists’ intrinsic track cycling ability (including power, speed, and pacing), along with the level of effort they put into that particular race.
+Cyclists compete on three-rider teams.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Ethan, Mia, and Jack beat Oliver, Grace, and Nina.  
+In the second race, Ethan, Oliver, and Leo beat Mia, Grace, and Jack.  
+In the third race, Ethan, Grace, and Nina lost to Oliver, Leo, and Jack.
+
+QUERIES
+Query 1: Out of 100 random track cyclists, where do you think Ethan ranks in terms of intrinsic track cycling ability?  
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Grace put into the third race?  
+Query 3: In a new race later this same day between Ethan, Mia, and Grace (Team 1) and Oliver, Jack, and Nina (Team 2), who would win and by how much?  
+Query 4: In a new race later this same day between Ethan, Leo, and Nina (Team 1) and Mia, Oliver, and Jack (Team 2), who would win and by how much?
+<END_SCENARIO>

@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes compete in Ultimate Frisbee matches. Each team consists of 7 players. The team that wins depends on the collective speed, handling, and tactical awareness of the players (intrinsic ability), modulated by the intensity and effort they exert during the match.
+The teams are fixed for the duration of the event.
+All matches occur on the same weekend.
+
+CONDITIONS
+In the first match, Caleb's team beat the Falcons.
+In the second match, Caleb's team beat the Vipers.
+In the third match, Caleb's team beat the Badgers.
+
+QUERIES
+Query 1: Out of 100 random Ultimate Frisbee players, where do you think Caleb ranks in terms of intrinsic ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think the Falcons put into the first match?
+Query 3: In a new match later this same weekend between Caleb's team and the Hornets (a new team), who would win and by how much?
+Query 4: In a new match later this same weekend between the Falcons and the Vipers, who would win and by how much?
+<END_SCENARIO>

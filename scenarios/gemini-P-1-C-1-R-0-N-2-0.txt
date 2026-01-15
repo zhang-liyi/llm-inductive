@@ -1,0 +1,17 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, athletes are competing in a series of Ultimate Frisbee matches. In each match, the team that wins depends on the collective scoring ability of the players, based on their intrinsic speed and throwing accuracy modulated by other factors including how much effort they put into that match.
+Athletes compete either individually (in a skills challenge) or as a team of 4.
+All matches take place on the same day.
+
+CONDITIONS
+In the first match, Parker lost to Alex.
+In the second match, Alex, Sam, Jordan, and Riley beat Parker, Jamie, Cameron, and Quinn.
+In the third match, Parker, Alex, Riley, and Quinn lost to Sam, Jordan, Jamie, and Cameron.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Parker ranks in terms of intrinsic speed and throwing accuracy?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Alex put into the third match?
+Query 3: In a new match later this same day between Parker, Jamie, Cameron, and Quinn (Team 1) and Alex, Sam, Jordan, and Riley (Team 2), who would win and by how much?
+Query 4: In a new match later this same day between Parker, Alex, Sam, and Jordan (Team 1) and Riley, Jamie, Cameron, and Quinn (Team 2), who would win and by how much?
+<END_SCENARIO>

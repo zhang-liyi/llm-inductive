@@ -1,0 +1,18 @@
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are playing a series of small-sided field hockey scrimmages. In each scrimmage, the winning team is determined by the average level of field-hockey ability of the players (such as stick control, acceleration, and shooting accuracy), combined with how much effort they put into that scrimmage.
+Players compete either individually in 1-on-1 skill contests or in 6-a-side teams.
+All scrimmages take place on the same day.
+
+CONDITIONS
+In the first scrimmage, Sofia, Talia, Uma, Vera, Wren, and Xena beat Aria, Bea, Cara, Dara, Elsa, and Freya.
+In the second scrimmage, Talia, Uma, Vera, Wren, Xena, and Yara lost to Sofia, Aria, Bea, Cara, Dara, and Elsa.
+In a later 1-on-1 dribbling and shooting contest, Sofia beat Vera.
+In the fourth scrimmage, Talia, Uma, Vera, Wren, Xena, and Yara beat Sofia, Aria, Bea, Cara, Dara, and Freya.
+
+QUERIES
+Query 1: Out of 100 random field hockey players, where do you think Sofia ranks in terms of intrinsic field-hockey ability?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Yara put into the fourth scrimmage?
+Query 3: In a new scrimmage later this same day between Sofia, Talia, Uma, Vera, Wren, and Xena (Team 1) and Aria, Bea, Cara, Dara, Elsa, and Freya (Team 2), who would win and by how much?
+Query 4: In a new scrimmage later this same day between Talia, Uma, Vera, Wren, Xena, and Yara (Team 1) and Sofia, Aria, Bea, Cara, Dara, and Elsa (Team 2), who would win and by how much?
+<END_SCENARIO>
