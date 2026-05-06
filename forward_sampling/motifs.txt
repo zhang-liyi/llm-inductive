@@ -1,0 +1,22 @@
+# probability / difficulty
+sports_P = [
+    'X consistently wins',
+    'X consistently loses',
+    'X wins all but one match',
+    'X loses all but one match'
+]
+
+# confounded teammates
+sports_C = [
+    'X always teams up with the same teammate(s)',
+    'X teams up with different player(s) most of the times'
+]
+
+# round-robin
+sports_R = [
+    'players rotate across teams',
+    'players have fixed teams'
+]
+
+# team-size
+sports_N = list(range(2, 10)) 

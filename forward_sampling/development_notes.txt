@@ -1,0 +1,15 @@
+Idea: sample from joint distribution (instead of inferring posterior) to construct these input-output pairs. Scenario = Background + Conditions + Queries. ‘Background’ is a description of the sport and team-size. ‘Conditions’ are a few match observations. ‘Queries’ ask about individual strengths, effort-in-match, and some future match result.
+
+For i in range(num_backgrounds):
+* Sample the joint distribution, 
+* For j in range (num_matches): 
+* * Sample variables: individual inherent strengths, which individuals are playing, their effort-in-match, and match result
+
+Caveat: each scenario comes with, say, 3 match observations. So the individual inherent strength variable can be fixed every M matches (M > 3).
+
+For every M matches, the first of these 3 matches form the Conditions and are concatenated with the Background. These are then concatenated with the Queries. These then constitute the Scenario.
+
+How to form the Queries and their ground truth answers?
+Query on inherent strength: pick a random individual from this Scenario (the answer is already given; just the already-sampled individual strength).
+Query on effort-in-match: pick a random individual from this Scenario (the answer is already given, similarly).
+Query on a future match result: since M > 3, we ask what would happen in the match(es) that has already been sampled (those M-3 matches).

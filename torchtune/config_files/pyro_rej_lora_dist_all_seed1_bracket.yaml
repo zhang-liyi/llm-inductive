@@ -1,0 +1,112 @@
+# Bracket-format variant: swaps instruction and wraps outputs as <N> at tokenize time.
+# Derived from pyro_rej_lora_dist_all_seed1.yaml.
+# LoRA r=8, pyro-distribution loss, trained on pyro-rej data (all),
+# val/test on the combined pyro-rej eval JSON (<=200 per category).
+
+output_dir: ./ckpt/llama3_8B/pyro_rej_lora_dist_r8_all_seed1_bracket
+
+# Model
+model:
+  _component_: torchtune.models.llama3.lora_llama3_8b
+  lora_attn_modules: ['q_proj', 'v_proj', 'output_proj']
+  apply_lora_to_mlp: True
+  apply_lora_to_output: False
+  lora_rank: 8
+  lora_alpha: 16
+  lora_dropout: 0.0
+
+tokenizer:
+  _component_: torchtune.models.llama3.llama3_tokenizer
+  path: <DATA_ROOT>/resources/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/e1945c40cd546c78e41f1151f4db032b271faeaa/tokenizer.model
+  max_seq_len: null
+
+checkpointer:
+  _component_: torchtune.training.FullModelHFCheckpointer
+  checkpoint_dir: <DATA_ROOT>/resources/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/e1945c40cd546c78e41f1151f4db032b271faeaa/
+  checkpoint_files:
+    filename_format: model-{}-of-{}.safetensors
+    max_filename: "00004"
+  recipe_checkpoint: null
+  output_dir: ${output_dir}
+  model_type: LLAMA3
+resume_from_checkpoint: False
+save_adapter_weights_only: False
+
+# Empty cross-eval component: disables probabilistic_reasoning WebPPL val/test.
+dataset:
+  _component_: torchtune.datasets.custom_empty_crosseval.data
+  packed: False
+seed: 1
+shuffle: True
+batch_size: 2
+metaeval_steps: 0
+
+# Pyro-REJ training mode
+pyro_train_json: data/pyro-rej/pytorch_rej_all_train.json
+pyro_val_json: data/pyro-rej/pytorch_rej_eval_val.json
+pyro_test_json: data/pyro-rej/pytorch_rej_eval_test.json
+
+# Swap instruction → BRACKET_INSTRUCTION and wrap outputs as <N>
+bracket_format: True
+
+# Tag appears in CSV filenames so 'rej' is visible in every output file.
+dataset_tag: pyro_rej_all_bracket
+# Eval cap: 627 val/test examples / batch_size 2 → 314 batches; 400 leaves headroom.
+pyro_val_batches: 400
+
+optimizer:
+  _component_: torch.optim.AdamW
+  fused: True
+  weight_decay: 0.
+  lr: 5e-5
+meta_optimizer:
+  _component_: torch.optim.AdamW
+  fused: True
+  weight_decay: 0.
+  lr: 1e-5
+lr_scheduler:
+  _component_: torchtune.training.lr_schedulers.get_cosine_schedule_with_warmup
+  num_warmup_steps: 100
+
+loss:
+  _component_: torchtune.modules.loss.CEWithChunkedOutputLoss
+
+loss_on_format_tokens: False
+loss_mode: distribution
+
+epochs: 500
+max_steps_per_epoch: null
+gradient_accumulation_steps: 1
+clip_grad_norm: null
+compile: False
+
+metric_logger:
+  _component_: torchtune.training.metric_logging.DiskLogger
+  log_dir: ${output_dir}/logs
+log_every_n_steps: 1
+log_peak_memory_stats: True
+
+device: cuda
+dtype: bf16
+
+enable_activation_checkpointing: True
+enable_activation_offloading: False
+
+profiler:
+  _component_: torchtune.training.setup_torch_profiler
+  enabled: False
+
+  output_dir: ${output_dir}/profiling_outputs
+
+  cpu: True
+  cuda: True
+
+  profile_memory: False
+  with_stack: False
+  record_shapes: True
+  with_flops: False
+
+  wait_steps: 5
+  warmup_steps: 3
+  active_steps: 2
+  num_cycles: 1

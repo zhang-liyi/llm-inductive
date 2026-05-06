@@ -1,0 +1,63 @@
+You are generating a synthetic "open-world" sports scenario for training/evaluating probabilistic reasoning in LLMs. 
+
+Core idea
+- A scenario describes a small sports world where outcomes depend on (i) each athlete's intrinsic strength and (ii) multiple latent, match-dependent factors (e.g., effort, fatigue, teamwork chemistry, strategy matchups, weather, injuries, home advantage, equipment).
+- Observations are incomplete and noisy: the reader must infer hidden traits and hidden match factors from a few results and contextual clues.
+
+Freedom requirement (important)
+- Do NOT use a rigid template like "BACKGROUND / CONDITIONS / QUERIES".
+- You may vary format: a short story, a coach's notes, a sports journalist recap, a chat log, a referee report, a table of results, etc.
+- Vary the number of observed events (e.g., 3–8 results) and the number of queries (e.g., 3–6).
+- Keep the scenario self-contained.
+
+Output formatting
+- Produce exactly 1 scenario.
+- Wrap the scenario in <START_SCENARIO> ... <END_SCENARIO>.
+- Inside the scenario, include:
+  (a) a narrative + observable match results,
+  (b) enough detail to imply latent factors without explicitly revealing them,
+  (c) a set of queries that require inference and uncertainty.
+
+Sports world design constraints (must-have)
+- Create a scenario where, for one of the players denoted 'X', <P>, <C>, and <R>. Use <N> for team-size. <1v1 OPTION>Use a random name for player 'X' (don't actually use 'X').
+- Choose from the following sports subdomains for this scenario: <SUBDOMAINS>.
+- Do not specify exact point totals; if needed, use qualitative margins ("narrowly", "comfortably", "by a lot", "slightly", "in overtime", "came from behind").
+- You may include time ordering ("earlier that day", "two days later") and let fatigue/learning matter.
+
+Latent factors (must-have)
+- The scenario must have at least TWO latent match-dependent factors beyond intrinsic strength.
+- At least one factor should plausibly vary across matches (e.g. effort, fatigue, tilt, coordination, weather).
+
+Queries (must-have)
+Make queries that require:
+1) Estimating an athlete's intrinsic strength as a distribution or percentile rank (e.g., "out of 100 athletes, where do they rank?").
+2) Inferring a latent match factor on a 0–100 scale for a specific match (effort / teamwork / fatigue / etc.).
+3) Predicting outcomes of 1–2 hypothetical future matches, including *who wins* and *by how much* qualitatively (or as a probability), while acknowledging uncertainty.
+Important: each query should be answerable by one number. Wrong examples: 1) explicitly asking for verbal justification; 2) asking about two players' intrinsic strengths within one query. However, do not explicitly say 'answer the queries in one number'. It should be implicit in the queries like in the example scenario below.
+
+Uncertainty instruction
+- Ensure that multiple explanations remain plausible. Do not leak the true strengths or factor values.
+- Avoid making any single athlete dominate all outcomes; include at least one "surprising" result that is explainable via latent factors.
+
+An example scenario is given below. Remember to vary the form and story, but keep the query format the same.
+
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of synchronized diving tournaments. Each tournament consists of a series of rounds. In each match, athletes compete as part of a team. In a given round, each team receives a combined score based on the difficulty of the dive and the execution of the dive. Athletes compete either individually or as a team.
+All matches take place on the same day.
+
+CONDITIONS
+In the first round, Jamie and Gale beat Sam and Jordan.
+In the second round, Jamie and Gale beat Blake and Avery.
+In the third round, Jamie and Avery beat Blake and Sam.
+In the fourth round, Cameron and Gale beat Dakota and Joe.
+In the fifth round, Jamie and Cameron lost to Blake and Avery.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jamie ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100% (where 0=extremely easy, 100=as difficult as possible), how difficult of a dive do you think the team Jamie was on in the third round attempted?
+Query 3: In a new round later this same day between Jamie and Gale (Team 1) and Sam and Alice (Team 2), who would win and by how much?
+Query 4: In a new round later this same day between Jamie and Cameron (Team 1) and Avery and Drew (Team 2), who would win and by how much?
+<END_SCENARIO>
+
+Now generate the scenario following all rules above.

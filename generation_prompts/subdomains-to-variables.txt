@@ -1,0 +1,202 @@
+{
+  "Basketball": [
+    ["intrinsic strength", "explosiveness", "top-end speed", "agility", "vertical reach", "ball-handling control", "shooting accuracy", "passing precision", "defensive anticipation", "stamina"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "movement sharpness on the day", "decision clarity", "focus stability", "confidence on the day", "coordination sharpness", "recovery state", "tactical discipline in-match"]
+  ],
+  "Soccer": [
+    ["intrinsic strength", "acceleration", "top-end speed", "agility", "ball control", "passing accuracy", "shooting accuracy", "defensive positioning", "aerobic endurance", "physical balance"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "first-touch sharpness on the day", "decision clarity", "focus stability", "confidence on the day", "recovery state", "tactical discipline in-match", "composure under pressure"]
+  ],
+  "Tennis": [
+    ["intrinsic strength", "serve power", "serve accuracy", "groundstroke consistency", "shot precision", "court speed", "agility", "anticipation", "stamina", "balance"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "shot commitment in-match", "recovery state", "composure under pressure", "decision clarity"]
+  ],
+  "Table Tennis": [
+    ["intrinsic strength", "reaction speed", "hand-eye coordination", "stroke precision", "spin generation ability", "footwork speed", "anticipation", "consistency", "balance", "explosiveness"],
+    ["effort-in-match", "fatigue level", "timing sharpness", "focus stability", "confidence on the day", "touch sensitivity on the day", "decision clarity", "recovery state", "composure under pressure", "movement sharpness on the day"]
+  ],
+  "Badminton": [
+    ["intrinsic strength", "explosiveness", "court speed", "agility", "jump ability", "stroke precision", "shot consistency", "reaction speed", "anticipation", "stamina"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "decision clarity", "recovery state", "movement sharpness on the day", "composure under pressure"]
+  ],
+  "Volleyball": [
+    ["intrinsic strength", "explosiveness", "vertical jump ability", "blocking reach", "spike power", "serve accuracy", "setting precision", "reaction speed", "agility", "stamina"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "coordination sharpness", "decision clarity", "recovery state", "composure under pressure"]
+  ],
+  "Beach Volleyball": [
+    ["intrinsic strength", "explosiveness", "jump ability", "balance", "agility on sand", "ball control", "serve accuracy", "spike power", "defensive reaction speed", "stamina"],
+    ["effort-in-match", "fatigue level", "heat strain level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "movement sharpness on the day", "recovery state", "composure under pressure"]
+  ],
+  "Baseball": [
+    ["intrinsic strength", "bat speed", "contact precision", "pitch recognition", "throwing velocity", "throwing accuracy", "fielding reflexes", "running speed", "hand-eye coordination", "balance"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "decision clarity", "throwing sharpness on the day", "reaction sharpness on the day", "composure under pressure"]
+  ],
+  "Softball": [
+    ["intrinsic strength", "bat speed", "contact precision", "pitch recognition", "throwing velocity", "throwing accuracy", "fielding reflexes", "running speed", "hand-eye coordination", "balance"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "decision clarity", "throwing sharpness on the day", "reaction sharpness on the day", "composure under pressure"]
+  ],
+  "Cricket": [
+    ["intrinsic strength", "bat control", "timing quality", "bowling accuracy", "bowling pace", "fielding reflexes", "throwing accuracy", "running speed", "hand-eye coordination", "stamina"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "decision clarity", "bowling rhythm on the day", "reaction sharpness on the day", "composure under pressure"]
+  ],
+  "Rugby": [
+    ["intrinsic strength", "power", "acceleration", "top-end speed", "agility", "tackling technique", "passing accuracy", "ball-carrying balance", "aerobic endurance", "explosiveness"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "movement sharpness on the day", "focus stability", "confidence on the day", "decision clarity", "recovery state", "tactical discipline in-match", "composure under contact"]
+  ],
+  "American Football": [
+    ["intrinsic strength", "power", "acceleration", "top-end speed", "agility", "reaction speed", "throwing accuracy", "catch reliability", "blocking technique", "explosiveness"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "movement sharpness on the day", "focus stability", "confidence on the day", "decision clarity", "reaction sharpness on the day", "tactical discipline in-match", "composure under pressure"]
+  ],
+  "Ice Hockey": [
+    ["intrinsic strength", "skating speed", "acceleration", "agility on skates", "puck control", "shot power", "shot accuracy", "reaction speed", "balance", "stamina"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "decision clarity", "movement sharpness on the day", "recovery state", "composure under pressure"]
+  ],
+  "Field Hockey": [
+    ["intrinsic strength", "speed", "agility", "stick control", "passing accuracy", "shooting accuracy", "reaction speed", "anticipation", "stamina", "balance"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "decision clarity", "movement sharpness on the day", "recovery state", "tactical discipline in-match"]
+  ],
+  "Lacrosse": [
+    ["intrinsic strength", "speed", "agility", "stick control", "passing accuracy", "shooting power", "shooting accuracy", "reaction speed", "balance", "stamina"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "decision clarity", "movement sharpness on the day", "recovery state", "composure under pressure"]
+  ],
+  "Handball": [
+    ["intrinsic strength", "explosiveness", "jump ability", "throwing power", "throwing accuracy", "agility", "reaction speed", "ball control", "balance", "stamina"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "decision clarity", "movement sharpness on the day", "recovery state", "composure under pressure"]
+  ],
+  "Swimming": [
+    ["intrinsic strength", "aerobic capacity", "anaerobic capacity", "stroke efficiency", "start explosiveness", "turn efficiency", "water feel", "rhythm consistency", "mobility", "power"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "breathing control on the day", "timing sharpness", "focus stability", "confidence on the day", "recovery state", "pacing discipline in-race"]
+  ],
+  "Rowing": [
+    ["intrinsic strength", "aerobic capacity", "anaerobic capacity", "stroke power", "stroke efficiency", "rhythm consistency", "balance", "core stability", "mobility", "pain tolerance"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "coordination sharpness", "recovery state", "pacing discipline in-race", "stroke rhythm on the day"]
+  ],
+  "Sprint Track (100–400m)": [
+    ["intrinsic strength", "explosiveness", "start reaction speed", "acceleration", "top-end speed", "speed endurance", "running mechanics efficiency", "stride power", "balance", "mobility"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "start sharpness on the day", "focus stability", "confidence on the day", "movement sharpness on the day", "recovery state", "pacing discipline in-race"]
+  ],
+  "Distance Running": [
+    ["intrinsic strength", "aerobic capacity", "lactate tolerance", "running economy", "stride efficiency", "stamina", "pain tolerance", "balance", "mobility", "finishing kick speed"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "breathing control on the day", "focus stability", "confidence on the day", "recovery state", "pacing discipline in-race", "movement sharpness on the day"]
+  ],
+  "Cycling (Road)": [
+    ["intrinsic strength", "aerobic capacity", "anaerobic power", "sustained power output", "cadence efficiency", "climbing ability", "sprint power", "bike-handling skill", "fatigue resistance", "balance"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "recovery state", "focus stability", "confidence on the day", "pacing discipline in-race", "decision clarity", "movement sharpness on the day"]
+  ],
+  "Cycling (Track)": [
+    ["intrinsic strength", "explosive power", "anaerobic capacity", "sustained power output", "cadence efficiency", "acceleration", "speed endurance", "bike-handling precision", "balance", "pain tolerance"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "recovery state", "focus stability", "confidence on the day", "timing sharpness", "pacing discipline in-race", "decision clarity"]
+  ],
+  "Mountain Biking": [
+    ["intrinsic strength", "aerobic capacity", "explosive power", "bike-handling skill", "balance", "agility", "descending control", "climbing ability", "reaction speed", "fatigue resistance"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "reaction sharpness on the day", "decision clarity", "recovery state", "movement sharpness on the day"]
+  ],
+  "Speed Skating": [
+    ["intrinsic strength", "leg power", "acceleration", "top-end speed", "speed endurance", "glide efficiency", "balance", "cornering technique", "anaerobic capacity", "mobility"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "recovery state", "movement sharpness on the day", "pacing discipline in-race"]
+  ],
+  "Figure Skating": [
+    ["intrinsic strength", "explosiveness", "balance", "rotation speed", "jump technique", "edge control", "flexibility", "coordination", "rhythm consistency", "stamina"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "coordination sharpness", "recovery state", "composure under pressure"]
+  ],
+  "Alpine Skiing": [
+    ["intrinsic strength", "leg power", "balance", "agility", "reaction speed", "edge control", "turning precision", "explosiveness", "coordination", "pain tolerance"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "reaction sharpness on the day", "decision clarity", "movement sharpness on the day", "composure under pressure"]
+  ],
+  "Cross-Country Skiing": [
+    ["intrinsic strength", "aerobic capacity", "upper-body power", "leg power", "glide efficiency", "rhythm consistency", "stamina", "balance", "mobility", "fatigue resistance"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "breathing control on the day", "focus stability", "confidence on the day", "recovery state", "pacing discipline in-race", "movement sharpness on the day"]
+  ],
+  "Snowboarding": [
+    ["intrinsic strength", "balance", "agility", "edge control", "explosiveness", "coordination", "reaction speed", "air awareness", "leg power", "stability"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "coordination sharpness", "movement sharpness on the day", "reaction sharpness on the day", "composure under pressure"]
+  ],
+  "Surfing": [
+    ["intrinsic strength", "balance", "explosiveness", "paddling power", "wave-reading skill", "board control", "coordination", "agility", "reaction speed", "stamina"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "timing sharpness", "decision clarity", "recovery state", "movement sharpness on the day"]
+  ],
+  "Sailing": [
+    ["intrinsic strength", "balance", "coordination", "reaction speed", "fine motor control", "aerobic endurance", "tactical processing speed", "spatial awareness", "core stability", "mobility"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "decision clarity", "confidence on the day", "reaction sharpness on the day", "coordination sharpness", "composure under pressure"]
+  ],
+  "Canoe Slalom": [
+    ["intrinsic strength", "upper-body power", "balance", "boat control", "reaction speed", "agility", "stroke precision", "coordination", "anaerobic capacity", "core stability"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "decision clarity", "coordination sharpness", "movement sharpness on the day"]
+  ],
+  "Kayaking": [
+    ["intrinsic strength", "upper-body power", "aerobic capacity", "anaerobic capacity", "stroke efficiency", "boat control", "balance", "coordination", "reaction speed", "core stability"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "recovery state", "pacing discipline in-race", "coordination sharpness"]
+  ],
+  "Triathlon": [
+    ["intrinsic strength", "aerobic capacity", "fatigue resistance", "swimming efficiency", "cycling power", "running economy", "transition skill", "stamina", "mobility", "pain tolerance"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "breathing control on the day", "focus stability", "confidence on the day", "recovery state", "pacing discipline in-race", "movement sharpness on the day"]
+  ],
+  "Weightlifting": [
+    ["intrinsic strength", "explosive power", "rate of force development", "balance", "mobility", "bar-path precision", "coordination", "core stability", "grip strength", "technique consistency"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "coordination sharpness", "recovery state", "composure under pressure"]
+  ],
+  "Powerlifting": [
+    ["intrinsic strength", "maximal force production", "bracing ability", "bar-path control", "mobility", "balance", "grip strength", "technique consistency", "pain tolerance", "core stability"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "coordination sharpness", "recovery state", "movement sharpness on the day", "composure under pressure"]
+  ],
+  "Wrestling": [
+    ["intrinsic strength", "grip strength", "explosiveness", "balance", "agility", "takedown technique", "reaction speed", "body control", "stamina", "pain tolerance"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "reaction sharpness on the day", "decision clarity", "recovery state", "composure under pressure"]
+  ],
+  "Boxing": [
+    ["intrinsic strength", "punching power", "hand speed", "footwork speed", "reaction speed", "defensive reflexes", "balance", "stamina", "timing ability", "pain tolerance"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "timing sharpness", "decision clarity", "recovery state", "composure under pressure"]
+  ],
+  "Mixed Martial Arts": [
+    ["intrinsic strength", "striking power", "grappling strength", "explosiveness", "reaction speed", "balance", "agility", "stamina", "body control", "pain tolerance"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "timing sharpness", "decision clarity", "recovery state", "composure under pressure"]
+  ],
+  "Judo": [
+    ["intrinsic strength", "grip strength", "balance", "explosiveness", "throwing technique", "reaction speed", "body control", "agility", "stamina", "pain tolerance"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "timing sharpness", "decision clarity", "recovery state", "composure under pressure"]
+  ],
+  "Taekwondo": [
+    ["intrinsic strength", "leg speed", "kicking power", "flexibility", "balance", "reaction speed", "distance control", "explosiveness", "agility", "stamina"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "timing sharpness", "decision clarity", "movement sharpness on the day", "composure under pressure"]
+  ],
+  "Fencing": [
+    ["intrinsic strength", "reaction speed", "footwork speed", "distance control", "point precision", "balance", "coordination", "agility", "anticipation", "explosiveness"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "timing sharpness", "decision clarity", "reaction sharpness on the day", "composure under pressure"]
+  ],
+  "Archery": [
+    ["intrinsic strength", "fine motor control", "postural stability", "draw consistency", "aim precision", "breath control", "focus capacity", "coordination", "balance", "technique consistency"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "breathing control on the day", "timing sharpness", "coordination sharpness", "composure under pressure"]
+  ],
+  "Shooting Sports": [
+    ["intrinsic strength", "fine motor control", "postural stability", "aim precision", "trigger control", "breath control", "focus capacity", "coordination", "balance", "technique consistency"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "breathing control on the day", "timing sharpness", "coordination sharpness", "composure under pressure"]
+  ],
+  "Golf": [
+    ["intrinsic strength", "clubhead speed", "swing consistency", "shot precision", "distance control", "putting accuracy", "touch sensitivity", "balance", "mobility", "coordination"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "timing sharpness", "touch sensitivity on the day", "decision clarity", "composure under pressure"]
+  ],
+  "Disc Golf": [
+    ["intrinsic strength", "throwing power", "release precision", "distance control", "touch sensitivity", "balance", "coordination", "mobility", "shot consistency", "focus capacity"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "timing sharpness", "touch sensitivity on the day", "decision clarity", "composure under pressure"]
+  ],
+  "Ultimate Frisbee": [
+    ["intrinsic strength", "speed", "agility", "throwing precision", "catch reliability", "jump ability", "reaction speed", "stamina", "spatial awareness", "balance"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "decision clarity", "movement sharpness on the day", "reaction sharpness on the day", "recovery state", "tactical discipline in-match"]
+  ],
+  "Pickleball": [
+    ["intrinsic strength", "reaction speed", "hand-eye coordination", "shot precision", "touch sensitivity", "footwork speed", "balance", "coordination", "consistency", "agility"],
+    ["effort-in-match", "fatigue level", "timing sharpness", "focus stability", "confidence on the day", "touch sensitivity on the day", "decision clarity", "movement sharpness on the day", "recovery state", "composure under pressure"]
+  ],
+  "Squash": [
+    ["intrinsic strength", "speed", "agility", "shot precision", "shot consistency", "reaction speed", "stamina", "balance", "coordination", "anticipation"],
+    ["effort-in-match", "fatigue level", "minor pain burden", "timing sharpness", "focus stability", "confidence on the day", "decision clarity", "movement sharpness on the day", "recovery state", "composure under pressure"]
+  ],
+  "Climbing (Sport Climbing)": [
+    ["intrinsic strength", "grip strength", "pulling power", "balance", "mobility", "body control", "movement efficiency", "coordination", "endurance", "route-reading skill"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "decision clarity", "coordination sharpness", "recovery state", "composure under pressure"]
+  ],
+  "Bouldering": [
+    ["intrinsic strength", "grip strength", "explosive power", "balance", "mobility", "body control", "coordination", "movement efficiency", "contact strength", "route-reading skill"],
+    ["effort-in-match", "effort-in-match", "fatigue level", "minor pain burden", "focus stability", "confidence on the day", "decision clarity", "coordination sharpness", "recovery state", "composure under pressure"]
+  ]
+}

@@ -1,0 +1,23 @@
+You will be asked to generate a scenario based on the given example scenario. A scenario consists of a background, 3 or 4 conditions, and 4 queries. Generate scenarios in the domain of sports. Keep the type of queries the same. In the conditions, keep them relatively concise similar to the example, and do not exactly specify the win and loss points. Also, prioritize the form "A beat B" compared to "A beat B 1 on 1" or "A beat B in a singles match". Notice that the background discusses that performance depends on individual-inherent variable(s), <MAIN_VARIABLE>, and episodic variable(s), <EPISODIC_VARIABLE>. You can improvise the phrasing, instead of saying "performance depends on x and y".
+
+Create scenarios where, for one of the players denoted 'X', <P>, <C>, and <R>. Choose <N> for team-size. <1v1 OPTION>Use a random name for player 'X' (don't actually use 'X'). Query 1 should ask about the individual-inherent factor. Query 2 should ask about the episodic factor. 
+
+Use the following sports subdomain for the scenario: <SUBDOMAINS>. Here is the example scenario, and be sure to use the same <START_SCENARIO> <END_SCENARIO> to wrap around the scenario:
+
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of canoe races. In each race, the team that wins depends on the average speed with which the athletes are able to row, based on their intrinsic strength modulated by other factors including how much effort they put in to that race.
+Athletes compete either individually or as a team.
+All races take place on the same day.
+
+CONDITIONS
+In the first race, Alice beat Casey.
+In the second race, Alice and Ness beat Casey and Max.
+In the third race, Max and Alice lost to Casey and Ness.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Alice ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Max put into the third race?
+Query 3: In a new race later this same day between Alice and Ness (Team 1) and Max and Taylor (Team 2), who would win and by how much?
+Query 4: In a new race later this same day between Max and Casey (Team 1) and Ness and Willow (Team 2), who would win and by how much?
+<END_SCENARIO>  

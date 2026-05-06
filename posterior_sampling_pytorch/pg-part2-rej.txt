@@ -1,0 +1,100 @@
+You will be asked to write code to model and answer different questions, using Python with PyTorch and Pyro.
+Below are some examples of models for other scenarios in Python/Pyro. Notice how the models are formatted.
+
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of synchronized diving tournaments. Each tournament consists of a series of rounds. In each match, athletes compete as part of a team. In a given round, each team receives a combined score based on the difficulty of the dive and the execution of the dive. Athletes compete either individually or as a team.
+All matches take place on the same day.
+
+CONDITIONS
+In the first round, Jamie and Gale beat Sam and Jordan.
+In the second round, Jamie and Gale beat Blake and Avery.
+In the third round, Jamie and Avery beat Blake and Sam.
+In the fourth round, Cameron and Gale beat Dakota and Joe.
+In the fifth round, Jamie and Cameron lost to Blake and Avery.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jamie ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100% (where 0=extremely easy, 100=as difficult as possible), how difficult of a dive do you think the team Jamie was on in the third round attempted?
+Query 3: In a new round later this same day between Jamie and Gale (Team 1) and Sam and Alice (Team 2), who would win and by how much?
+Query 4: In a new round later this same day between Jamie and Cameron (Team 1) and Avery and Drew (Team 2), who would win and by how much?
+<END_SCENARIO>
+
+<START_LANGUAGE_TO_PYRO_CODE>
+# CONDITIONS
+In the first round, Jamie and Gale beat Sam and Jordan.
+    soft_beat(['jamie', 'gale'], ['sam', 'jordan'], 1, 'cond_1')
+In the second round, Jamie and Gale beat Blake and Avery.
+    soft_beat(['jamie', 'gale'], ['blake', 'avery'], 2, 'cond_2')
+In the third round, Jamie and Avery beat Blake and Sam.
+    soft_beat(['jamie', 'avery'], ['blake', 'sam'], 3, 'cond_3')
+In the fourth round, Cameron and Gale beat Dakota and Joe.
+    soft_beat(['cameron', 'gale'], ['dakota', 'joe'], 4, 'cond_4')
+In the fifth round, Jamie and Cameron lost to Blake and Avery.
+    soft_lost(['jamie', 'cameron'], ['blake', 'avery'], 5, 'cond_5')
+
+# QUERIES
+Query 1: Out of 100 random athletes, where do you think Jamie ranks in terms of intrinsic skill?
+    intrinsic_skill_rank(samples, 'jamie', 100)
+Query 2: On a percentage scale from 0 to 100% (where 0=extremely easy, 100=as difficult as possible), how difficult of a dive do you think the team Jamie was on in the third round attempted?
+    query_team_dive_difficulty_in_round(samples, ('jamie', 'avery'), 3)
+Query 3: In a new round later this same day between Jamie and Gale (Team 1) and Sam and Alice (Team 2), who would win and by how much?
+    who_would_win_by_how_much(samples, ['jamie', 'gale'], ['sam', 'alice'])
+Query 4:  In a new round later this same day between Jamie and Cameron (Team 1) and Avery and Drew (Team 2), who would win and by how much?
+    who_would_win_by_how_much(samples, ['jamie', 'cameron'], ['avery', 'drew'])
+<END_LANGUAGE_TO_PYRO_CODE>
+
+<START_SCRATCHPAD>
+In this event, the athletes are competing in a series of synchronized diving tournaments. Each tournament consists of a series of rounds. In each match, athletes compete as part of a team.
+
+In a given round, each team receives a score based on the difficulty of the dive and the execution of the dive.
+
+How difficult of a dive a team takes on varies in any given round. Teams can differ in the difficulty they attempt on any given round. The same team may try different levels of difficulty on different rounds. The dives each team takes in a given match are chosen before the tournament begins and are therefore independent of the outcome of the previous round.
+
+How a team's execution score is calculated is not described here, but we can guess that it will causally depend on the average skill of the athletes on the team and how difficult the attempted dive was. If the athletes are highly skilled, but the dive is very difficult, they may not execute well. Conversely, if athletes are highly skilled but the dive is not very difficult, the team may get a high execution score.
+
+Note that an athlete's intrinsic skill remains constant throughout a tournament. An athlete neither gets more nor less skilled between rounds. You can assume that all rounds take place on the same day.
+
+A team's overall score is determined by the sum of the difficulty and execution scores. Difficulty and execution scores are weighted equally.
+
+The team that gets the highest score in any given round wins.
+
+Athletes compete either individually or as a team.
+All matches take place on the same day.
+
+<START_CONCEPT_TRACE>
+- intrinsic_skill
+
+- intrinsic_skill_rank
+  - depends on: intrinsic_skill
+
+- team_dive_difficulty_in_round
+  - depends on: intrinsic_skill
+
+- team_execution_in_round
+  - depends on: intrinsic_skill, team_dive_difficulty_in_round
+
+- overall_team_score
+  - depends on: team_execution_in_round, team_dive_difficulty_in_round
+- soft_beat
+  - depends on: overall_team_score
+- soft_lost
+  - depends on: overall_team_score
+- who_would_win_by_how_much
+  - depends on: overall_team_score
+<END_CONCEPT_TRACE>
+<END_SCRATCHPAD>
+
+Now, let's consider a new example. Write a natural language description of the causal structure of the underlying model.
+
+Make sure to describe the structure of the world that would allow you to reason about the scenario provided. Make sure to RELATE ALL RELEVANT INFORMATION in the scenario (background, conditions, queries) in your description.
+
+The code will later, separately, be written - based on your natural language description. You can consider the translated sentences for what may be relevant to incorporate.
+
+The natural language should describe the general, causal model of the situation and what factors matter. Draw on your prior common sense knowledge about the world to write this description, and make sure to include any frequencies, probabilities, and units for causal factors you mention. Consider whether the context in which events occur (e.g., the environment, the supervisor, the location, or the session) introduces shared variation across participants that should be modeled.
+
+After you write your natural language description, use the description and scenario to extract out a list of concepts that your description implies. Include any dependencies between the concepts, and make sure to sort the concepts so that named concepts appear before any that depend on them. This should be enclosed in <START_CONCEPT_TRACE> and <END_CONCEPT_TRACE>.
+
+Follow the prompts and start your response with <START_SCRATCHPAD> and end with <END_SCRATCHPAD>.
+
+Here is the scenario, as well as a parse of the scenario conditions and questions. Functions called in the parse MUST appear in the concept trace!

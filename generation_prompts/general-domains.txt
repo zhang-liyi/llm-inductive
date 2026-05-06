@@ -1,0 +1,46 @@
+You will be asked to generate a scenario based on the given example scenario format. Each scenario consists of a BACKGROUND, 4 to 8 CONDITIONS, and 4 QUERIES. Generate a scenario in a domain different from the example’s domain. Keep the type of queries the same as the example: (1) ranking a person’s intrinsic trait among 100 people, (2) estimating a situational/event-dependent factor on a 0–100% scale, and (3–4) predicting outcomes of new situations later the same day. The entities in the scenario do not have to be persons; they can be persons, objects, products, or other comparable entities.
+
+Here is the example scenario from one domain:
+
+<START_SCENARIO> 
+BACKGROUND 
+In this event, the athletes are competing in a series of canoe races. In each race, the team that wins depends on the average speed with which the athletes are able to row, based on their intrinsic strength modulated by other factors including how much effort they put in to that race. Athletes compete either individually or as a team. All races take place on the same day. 
+CONDITIONS 
+In the first race, Alice beat Casey. In the second race, Alice and Ness beat Casey and Max. In the third race, Max and Alice lost to Casey and Ness. 
+QUERIES 
+Query 1: Out of 100 random athletes, where do you think Alice ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Max put into the third race? 
+Query 3: In a new race later this same day between Alice and Ness (Team 1) and Max and Taylor (Team 2), who would win and by how much? 
+Query 4: In a new race later this same day between Max and Casey (Team 1) and Ness and Willow (Team 2), who would win and by how much? 
+<END_SCENARIO> 
+
+For the new scenario, choose the <DOMAIN> domain.
+
+Formatting requirements: 
+- Wrap the scenario with the exact tags <START_SCENARIO> and <END_SCENARIO>. 
+- Use the exact section headers: BACKGROUND, CONDITIONS, QUERIES. 
+- CONDITIONS must be concise, 3 or 4 bullet-like sentences, similar length/style to the example. 
+- QUERIES must be exactly 4 queries, labeled “Query 1” through “Query 4”. 
+- Do NOT include disclaimers, references, citations, or meta-commentary. Just generate scenario.
+
+Content constraints (to make it “open-world” and inference-heavy): 
+- In the BACKGROUND, describe a setting where observed outcomes depend on the following factors:   
+(i) Choose <N_ind> intrinsic entity property/properties that are relatively stable across time, AND   
+(ii) Choose <N_epi> situational factors that vary by event and can change within a relatively short time period, AND
+- Create a scenario where, for one of the entities denoted 'X', <P>, <C>, and <R>. Choose <N> for how many entities appear in the conditions on each side (e.g. N=2 means A and B outperform X and Y). <1v1 OPTION>Use a random name for entity 'X' (don't actually use 'X'). 
+- Ensure the situational factor is clearly event-specific (it can differ between the first, second, third event). 
+- All observed events should occur on the same day, and the two hypothetical follow-up situations in Query 3 and Query 4 must also be later that same day. 
+- Keep the “comparison outcome” structure analogous to “A beat B”: use forms like “Alice outperformed Casey”, “Alice did better than Casey”, “Alice completed the task more successfully than Casey”, “Alice handled the situation better than Casey”, “Alice achieved a better outcome than Casey”, etc. Avoid explicit numeric measurements; do not specify exact values. 
+- Entities may act individually or as a pair/group. If pairs/groups are used, the outcome should depend on the average (or combined) intrinsic property modulated by the situational factor. 
+- Avoid gore, violence, or graphic injury descriptions. Keep cases realistic and understandable without extreme detail. Now generate a distinct scenario that follows the format exactly.
+
+For each scenario: 
+- BACKGROUND: 2–4 sentences. 
+- CONDITIONS: 3–4 lines describing observed outcomes between named entities or entity-pairs. 
+- QUERIES: exactly four queries matching the template below: Query 1 asks for intrinsic trait rank among 100. Query 2 asks for event-specific factor percentage for a specific condition event. Query 3 and Query 4 ask who would do better in new later-that-day situations and “by how much” (keep “by how much” qualitative; do not give exact numbers).
+
+Template for QUERIES wording (must keep this structure, only adapt the domain-specific nouns):
+Query 1: Out of 100 random <ENTITY_TYPE>, where do you think <NAME> ranks in terms of intrinsic <INTRINSIC_TRAIT>?
+Query 2: On a percentage scale from 0 to 100%, how strong was <SITUATIONAL_FACTOR> in the <Nth> event for <NAME>?
+Query 3: In a new situation later this same day involving <pair/group A> versus <pair/group B>, who would have the better outcome and by how much?
+Query 4: In a new situation later this same day involving <pair/group C> versus <pair/group D>, who would have the better outcome and by how much?

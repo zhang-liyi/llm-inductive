@@ -1,0 +1,91 @@
+"""Build combined gemini-direct datasets for SFT training, mirroring the
+layout of `posterior_sampling_pytorch/build_rej_combined.py`.
+
+Produces, under ../torchtune/data/gemini-direct/:
+    gemini_sports_plus_diverse_train.json   (sports + sports_diverse train)
+    gemini_all_train.json                   (all four categories train)
+    gemini_eval_val.json                    (<=200/category, interleaved)
+    gemini_eval_test.json                   (<=200/category, interleaved)
+
+Invoke:  python build_combined.py
+"""
+import json
+import os
+import random
+
+HERE     = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(HERE, "..", "torchtune", "data", "gemini-direct")
+
+CATEGORIES   = ["sports", "sports_diverse", "healthcare", "general"]
+MAX_PER_CAT  = 200
+SHUFFLE_SEED = 42
+
+
+def load(category, split):
+    path = os.path.join(DATA_DIR, f"gemini_{category}_{split}.json")
+    with open(path) as f:
+        return json.load(f)
+
+
+def take_subset(data, k, rng):
+    if len(data) <= k:
+        return list(data)
+    idx = sorted(rng.sample(range(len(data)), k))
+    return [data[i] for i in idx]
+
+
+def interleave(lists):
+    out = []
+    i = 0
+    while True:
+        added = False
+        for lst in lists:
+            if i < len(lst):
+                out.append(lst[i])
+                added = True
+        if not added:
+            break
+        i += 1
+    return out
+
+
+def main():
+    rng = random.Random(SHUFFLE_SEED)
+
+    sports_train         = load("sports",         "train")
+    sports_diverse_train = load("sports_diverse", "train")
+    healthcare_train     = load("healthcare",     "train")
+    general_train        = load("general",        "train")
+
+    sports_plus_diverse  = sports_train + sports_diverse_train
+    all_domains          = sports_train + sports_diverse_train + healthcare_train + general_train
+
+    a = os.path.join(DATA_DIR, "gemini_sports_plus_diverse_train.json")
+    with open(a, "w") as f:
+        json.dump(sports_plus_diverse, f, indent=2)
+    print(f"{a}  ({len(sports_plus_diverse)} examples)")
+
+    b = os.path.join(DATA_DIR, "gemini_all_train.json")
+    with open(b, "w") as f:
+        json.dump(all_domains, f, indent=2)
+    print(f"{b}  ({len(all_domains)} examples)")
+
+    for split, out_name in [("val",  "gemini_eval_val.json"),
+                            ("test", "gemini_eval_test.json")]:
+        per_cat = []
+        sizes = {}
+        for cat in CATEGORIES:
+            data   = load(cat, split)
+            subset = take_subset(data, MAX_PER_CAT, rng)
+            per_cat.append(subset)
+            sizes[cat] = len(subset)
+        combined = interleave(per_cat)
+        out_path = os.path.join(DATA_DIR, out_name)
+        with open(out_path, "w") as f:
+            json.dump(combined, f, indent=2)
+        sizes_str = "  ".join(f"{k}={v}" for k, v in sizes.items())
+        print(f"{out_path}  ({len(combined)} examples)  [{sizes_str}]")
+
+
+if __name__ == "__main__":
+    main()

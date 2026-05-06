@@ -1,0 +1,396 @@
+You will be asked to write code to model and answer different questions, using Python with PyTorch and Pyro.
+Below are some examples of models for other scenarios in Python/Pyro. Notice how the models are formatted.
+
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of synchronized diving tournaments. Each tournament consists of a series of rounds. In each match, athletes compete as part of a team. In a given round, each team receives a combined score based on the difficulty of the dive and the execution of the dive. Athletes compete either individually or as a team.
+All matches take place on the same day.
+
+CONDITIONS
+In the first round, Jamie and Gale beat Sam and Jordan.
+In the second round, Jamie and Gale beat Blake and Avery.
+In the third round, Jamie and Avery beat Blake and Sam.
+In the fourth round, Cameron and Gale beat Dakota and Joe.
+In the fifth round, Jamie and Cameron lost to Blake and Avery.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jamie ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100% (where 0=extremely easy, 100=as difficult as possible), how difficult of a dive do you think the team Jamie was on in the third round attempted?
+Query 3: In a new round later this same day between Jamie and Gale (Team 1) and Sam and Alice (Team 2), who would win and by how much?
+Query 4: In a new round later this same day between Jamie and Cameron (Team 1) and Avery and Drew (Team 2), who would win and by how much?
+<END_SCENARIO>
+
+<START_LANGUAGE_TO_PYRO_CODE>
+# CONDITIONS
+In the first round, Jamie and Gale beat Sam and Jordan.
+    soft_beat(['jamie', 'gale'], ['sam', 'jordan'], 1, 'cond_1')
+In the second round, Jamie and Gale beat Blake and Avery.
+    soft_beat(['jamie', 'gale'], ['blake', 'avery'], 2, 'cond_2')
+In the third round, Jamie and Avery beat Blake and Sam.
+    soft_beat(['jamie', 'avery'], ['blake', 'sam'], 3, 'cond_3')
+In the fourth round, Cameron and Gale beat Dakota and Joe.
+    soft_beat(['cameron', 'gale'], ['dakota', 'joe'], 4, 'cond_4')
+In the fifth round, Jamie and Cameron lost to Blake and Avery.
+    soft_lost(['jamie', 'cameron'], ['blake', 'avery'], 5, 'cond_5')
+
+# QUERIES
+Query 1: Out of 100 random athletes, where do you think Jamie ranks in terms of intrinsic skill?
+    intrinsic_skill_rank(samples, 'jamie', 100)
+Query 2: On a percentage scale from 0 to 100% (where 0=extremely easy, 100=as difficult as possible), how difficult of a dive do you think the team Jamie was on in the third round attempted?
+    query_team_dive_difficulty_in_round(samples, ('jamie', 'avery'), 3)
+Query 3: In a new round later this same day between Jamie and Gale (Team 1) and Sam and Alice (Team 2), who would win and by how much?
+    who_would_win_by_how_much(samples, ['jamie', 'gale'], ['sam', 'alice'])
+Query 4:  In a new round later this same day between Jamie and Cameron (Team 1) and Avery and Drew (Team 2), who would win and by how much?
+    who_would_win_by_how_much(samples, ['jamie', 'cameron'], ['avery', 'drew'])
+<END_LANGUAGE_TO_PYRO_CODE>
+
+<START_SCRATCHPAD>
+In this event, the athletes are competing in a series of synchronized diving tournaments. Each tournament consists of a series of rounds. In each match, athletes compete as part of a team.
+
+In a given round, each team receives a score based on the difficulty of the dive and the execution of the dive.
+
+How difficult of a dive a team takes on varies in any given round. Teams can differ in the difficulty they attempt on any given round. The same team may try different levels of difficulty on different rounds. The dives each team takes in a given match are chosen before the tournament begins and are therefore independent of the outcome of the previous round.
+
+How a team's execution score is calculated is not described here, but we can guess that it will causally depend on the average skill of the athletes on the team and how difficult the attempted dive was. If the athletes are highly skilled, but the dive is very difficult, they may not execute well. Conversely, if athletes are highly skilled but the dive is not very difficult, the team may get a high execution score.
+
+Note that an athlete's intrinsic skill remains constant throughout a tournament. An athlete neither gets more nor less skilled between rounds. You can assume that all rounds take place on the same day.
+
+A team's overall score is determined by the sum of the difficulty and execution scores. Difficulty and execution scores are weighted equally.
+
+The team that gets the highest score in any given round wins.
+
+Athletes compete either individually or as a team.
+All matches take place on the same day.
+
+<START_CONCEPT_TRACE>
+- intrinsic_skill
+
+- intrinsic_skill_rank
+  - depends on: intrinsic_skill
+
+- team_dive_difficulty_in_round
+  - depends on: intrinsic_skill
+
+- team_execution_in_round
+  - depends on: intrinsic_skill, team_dive_difficulty_in_round
+
+- overall_team_score
+  - depends on: team_execution_in_round, team_dive_difficulty_in_round
+- soft_beat
+  - depends on: overall_team_score
+- soft_lost
+  - depends on: overall_team_score
+- who_would_win_by_how_much
+  - depends on: overall_team_score
+<END_CONCEPT_TRACE>
+<END_SCRATCHPAD>
+
+<START_PYRO_MODEL>
+import argparse
+import json
+import datetime
+import torch
+import torch.nn.functional as F
+import pyro
+import pyro.distributions as dist
+import math as _math
+import random as _random
+from pyro.poutine import trace as _pt_trace
+from pyro.distributions import Unit as _Unit
+
+torch.set_default_dtype(torch.float64)
+
+# ── Athletes that appear in the conditions ────────────────────────────────────
+ATHLETES = ['jamie', 'gale', 'sam', 'jordan', 'blake', 'avery', 'cameron', 'dakota', 'joe']
+
+# ── (team, round) pairs from the conditions, in original order ────────────────
+TEAM_ROUNDS = [
+    (['jamie',   'gale'],    1),
+    (['sam',     'jordan'],  1),
+    (['jamie',   'gale'],    2),
+    (['blake',   'avery'],   2),
+    (['jamie',   'avery'],   3),   # also used by query 2
+    (['blake',   'sam'],     3),
+    (['cameron', 'gale'],    4),
+    (['dakota',  'joe'],     4),
+    (['jamie',   'cameron'], 5),
+    (['blake',   'avery'],   5),
+]
+
+# Temperature for soft beat/lost likelihoods.
+# overall_team_score is O(~5000); BEAT_TEMP=100 makes the soft boundary
+# sharp (sigmoid(±50) ≈ 0/1) but everywhere-finite and smooth.
+BEAT_TEMP = 100.0
+
+
+def _team_key(team, round_id):
+    """Canonical sample-site name for a (team, round) pair."""
+    return '_'.join(team) + f'_r{round_id}'
+
+
+# ── Shared skill prior (used in model and query helpers) ──────────────────────
+_SKILL_PRIOR = dist.MixtureSameFamily(
+    dist.Categorical(probs=torch.tensor([0.33, 0.33, 0.34])),
+    dist.Normal(torch.tensor([80., 100., 140.]), torch.tensor([10., 10., 10.])),
+)
+
+
+def _dive_difficulty_prior(average_team_skill_in_round):
+    """
+    3-component Gaussian mixture for dive difficulty.
+    Prior weights depend on average team skill, mirroring the WebPPL if/elif.
+    """
+    s = average_team_skill_in_round
+    p_easy      = torch.where(s > 120, torch.tensor(0.05),
+                  torch.where(s <  80, torch.tensor(0.80), torch.tensor(0.20)))
+    p_medium    = torch.where(s > 120, torch.tensor(0.15),
+                  torch.where(s <  80, torch.tensor(0.15), torch.tensor(0.60)))
+    p_difficult = torch.where(s > 120, torch.tensor(0.80),
+                  torch.where(s <  80, torch.tensor(0.05), torch.tensor(0.20)))
+    return dist.MixtureSameFamily(
+        dist.Categorical(probs=torch.stack([p_easy, p_medium, p_difficult])),
+        dist.Normal(torch.tensor([30., 60., 90.]), torch.tensor([10., 10., 10.])),
+    )
+
+
+# ── Pyro model ────────────────────────────────────────────────────────────────
+
+def model():
+    # ── intrinsic_skill (mem'd per athlete) ──────────────────────────────────
+    intrinsic_skill = {}
+    for athlete in ATHLETES:
+        raw = pyro.sample(f"intrinsic_skill_{athlete}", _SKILL_PRIOR)
+        intrinsic_skill[athlete] = raw.clamp(min=0.)
+
+    # ── team_dive_difficulty_in_round (mem'd per team × round) ───────────────
+    team_dive_difficulty_in_round = {}
+    for (team, round_id) in TEAM_ROUNDS:
+        average_team_skill_in_round = (
+            sum(intrinsic_skill[a] for a in team) / len(team)
+        )
+        raw = pyro.sample(
+            f"team_diff_{_team_key(team, round_id)}",
+            _dive_difficulty_prior(average_team_skill_in_round),
+        )
+        team_dive_difficulty_in_round[(tuple(team), round_id)] = raw.clamp(0., 100.)
+
+    # ── Derived quantities (deterministic given samples) ──────────────────────
+
+    def average_team_skill_in_round(team):
+        return sum(intrinsic_skill[a] for a in team) / len(team)
+
+    def team_execution_in_round(team, round_id):
+        diff = team_dive_difficulty_in_round[(tuple(team), round_id)]
+        return average_team_skill_in_round(team) * (100. - diff)
+
+    def overall_team_score(team, round_id):
+        diff = team_dive_difficulty_in_round[(tuple(team), round_id)]
+        return team_execution_in_round(team, round_id) + diff
+
+    # ── Conditions (soft likelihoods) ─────────────────────────────────────────
+    # beat(team1, team2, round)  →  score_diff > 0  →  factor(logsigmoid(+diff/T))
+    # lost(team1, team2, round)  →  score_diff < 0  →  factor(logsigmoid(-diff/T))
+
+    def soft_beat(team1, team2, round_id, name):
+        score_diff = overall_team_score(team1, round_id) - overall_team_score(team2, round_id)
+        pyro.factor(name, F.logsigmoid(score_diff / BEAT_TEMP))
+
+    def soft_lost(team1, team2, round_id, name):
+        score_diff = overall_team_score(team1, round_id) - overall_team_score(team2, round_id)
+        pyro.factor(name, F.logsigmoid(-score_diff / BEAT_TEMP))
+
+    # In the first round, Jamie and Gale beat Sam and Jordan.
+    soft_beat(['jamie', 'gale'],    ['sam', 'jordan'],   1, 'cond_1')
+    # In the second round, Jamie and Gale beat Blake and Avery.
+    soft_beat(['jamie', 'gale'],    ['blake', 'avery'],  2, 'cond_2')
+    # In the third round, Jamie and Avery beat Blake and Sam.
+    soft_beat(['jamie', 'avery'],   ['blake', 'sam'],    3, 'cond_3')
+    # In the fourth round, Cameron and Gale beat Dakota and Joe.
+    soft_beat(['cameron', 'gale'],  ['dakota', 'joe'],   4, 'cond_4')
+    # In the fifth round, Jamie and Cameron lost to Blake and Avery.
+    soft_lost(['jamie', 'cameron'], ['blake', 'avery'],  5, 'cond_5')
+
+
+# ── Inference ─────────────────────────────────────────────────────────────────
+
+def run_inference(num_samples=1000, max_attempts=10_000_000):
+    """Importance-weighted rejection sampling.
+
+    Target posterior = prior × ∏ᵢ sigmoid(diffᵢ / BEAT_TEMP), exactly the
+    distribution the NUTS + pyro.factor(logsigmoid(...)) formulation targets.
+    Procedure: draw from the prior (via a model trace), sum the log-factor
+    values at every Unit site (= Σ logsigmoid(diff/T) ≤ 0), and accept with
+    probability exp(sum). Accepted samples are i.i.d. from the soft posterior.
+    """
+    kept = {}
+    accepted = 0
+    attempts = 0
+    while accepted < num_samples and attempts < max_attempts:
+        attempts += 1
+        tr = _pt_trace(model).get_trace()
+        log_accept = 0.0
+        for _name, _node in tr.nodes.items():
+            if _node.get('type') != 'sample':
+                continue
+            _fn = _node.get('fn')
+            if isinstance(_fn, _Unit):
+                _lf = _fn.log_factor
+                if hasattr(_lf, 'item'):
+                    _lf = _lf.item()
+                log_accept += _lf
+        if _math.log(_random.random()) >= log_accept:
+            continue
+        for _name, _node in tr.nodes.items():
+            if _node.get('type') != 'sample':
+                continue
+            if isinstance(_node.get('fn'), _Unit):
+                continue
+            kept.setdefault(_name, []).append(_node['value'])
+        accepted += 1
+    if accepted < num_samples:
+        print(f"[WARN] rejection sampler: only {accepted}/{num_samples} "
+              f"accepted after {attempts} attempts.")
+    return {k: torch.stack(v) for k, v in kept.items()}
+
+
+# ── Query helpers (post-hoc, matching WebPPL queries) ────────────────────────
+
+def intrinsic_skill_rank(samples, athlete='jamie', out_of_n_athletes=100):
+    """
+    Query 1: Out of 100 random athletes, where does athlete rank?
+    Mirrors: intrinsic_skill_rank({athlete, out_of_n_athletes: 100})
+    """
+    s_post = samples[f'intrinsic_skill_{athlete}'].double()
+    others = _SKILL_PRIOR.sample((s_post.shape[0], out_of_n_athletes - 1)).clamp(min=0.)
+    rank   = (s_post.unsqueeze(1) > others).double().sum(dim=1)
+    return dict(mean=rank.mean().item(), std=rank.std().item(),
+                p10=rank.quantile(0.10).item(), p90=rank.quantile(0.90).item(),
+                raw=rank.tolist())
+
+
+def query_team_dive_difficulty_in_round(samples, team=('jamie', 'avery'), round_id=3):
+    """
+    Query 2: Dive difficulty for a team in a given round (0–100 scale).
+    Mirrors: team_dive_difficulty_in_round({team: ['jamie','avery'], round: 3})
+    """
+    key = f"team_diff_{_team_key(list(team), round_id)}"
+    d = samples[key].double().clamp(0., 100.)
+    return dict(mean=d.mean().item(), std=d.std().item(),
+                p10=d.quantile(0.10).item(), p90=d.quantile(0.90).item(),
+                raw=d.tolist())
+
+
+def who_would_win_by_how_much(samples, team1, team2, n_future=100):
+    """
+    Queries 3 & 4: P(team2 wins) over simulated future rounds.
+    Mirrors: who_would_win_by_how_much({team1, team2, round})
+    New athletes (e.g. alice, drew) are drawn fresh from the skill prior.
+    """
+    all_players = list(set(team1 + team2))
+    n_post      = samples[f'intrinsic_skill_{ATHLETES[0]}'].shape[0]
+    p_team2_wins = []
+
+    for i in range(n_post):
+        # Use posterior skill for known athletes; prior for unknowns (alice, drew)
+        skill = {}
+        for a in all_players:
+            key = f'intrinsic_skill_{a}'
+            skill[a] = (samples[key][i].double() if key in samples
+                        else _SKILL_PRIOR.sample().clamp(min=0.))
+
+        wins = 0.0
+        for _ in range(n_future):
+            def sim_score(team):
+                avg_s = sum(skill[a] for a in team) / len(team)
+                d = _dive_difficulty_prior(avg_s).sample().clamp(0., 100.)
+                return avg_s * (100. - d) + d  # execution + difficulty
+
+            # Sigmoid readout matches the model's likelihood (logsigmoid factor)
+            # used at inference; binary `>` would be a different (T→0) likelihood
+            # at readout time and produces a discretised win-probability histogram.
+            wins += torch.sigmoid((sim_score(team2) - sim_score(team1)) / BEAT_TEMP).item()
+
+        p_team2_wins.append(wins / n_future)
+
+    p2 = torch.tensor(p_team2_wins)
+    return dict(p_team2_wins=p2.mean().item(),
+                p10=p2.quantile(0.10).item(), p90=p2.quantile(0.90).item(),
+                raw=p2.tolist())
+
+
+# ── Main ──────────────────────────────────────────────────────────────────────
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--seed', type=int, default=42, help='Random seed for reproducibility')
+    args = parser.parse_args()
+    pyro.set_rng_seed(args.seed)
+
+    print("Running importance-weighted rejection on diving model (1000 accepted samples) …")
+    samples = run_inference(num_samples=1000)
+    print(f"  num accepted = {next(iter(samples.values())).shape[0]}")
+
+    print("\n=== Query 1: Jamie's skill rank out of 100 athletes ===")
+    q1 = intrinsic_skill_rank(samples, 'jamie', 100)
+    print(f"  mean={q1['mean']:.1f}  std={q1['std']:.1f}  "
+          f"[p10={q1['p10']:.1f}, p90={q1['p90']:.1f}]")
+
+    print("\n=== Query 2: Dive difficulty for Jamie+Avery in round 3 (0–100) ===")
+    q2 = query_team_dive_difficulty_in_round(samples, ('jamie', 'avery'), 3)
+    print(f"  mean={q2['mean']:.1f}  std={q2['std']:.1f}  "
+          f"[p10={q2['p10']:.1f}, p90={q2['p90']:.1f}]")
+
+    print("\n=== Query 3: P(Sam+Alice beat Jamie+Gale) in a future round ===")
+    q3 = who_would_win_by_how_much(samples, ['jamie', 'gale'], ['sam', 'alice'])
+    print(f"  P(team2 wins) = {q3['p_team2_wins']:.3f}  "
+          f"[p10={q3['p10']:.3f}, p90={q3['p90']:.3f}]")
+
+    print("\n=== Query 4: P(Avery+Drew beat Jamie+Cameron) in a future round ===")
+    q4 = who_would_win_by_how_much(samples, ['jamie', 'cameron'], ['avery', 'drew'])
+    print(f"  P(team2 wins) = {q4['p_team2_wins']:.3f}  "
+          f"[p10={q4['p10']:.3f}, p90={q4['p90']:.3f}]")
+
+    # ── Save full posterior distributions ─────────────────────────────────────
+    tm = datetime.datetime.now()
+    result = {
+        'query1': {'description': "Jamie's rank out of 100 athletes",
+                   'samples': q1['raw'], 'mean': q1['mean'], 'std': q1['std']},
+        'query2': {'description': 'Dive difficulty Jamie+Avery round 3 (0-100)',
+                   'samples': q2['raw'], 'mean': q2['mean'], 'std': q2['std']},
+        'query3': {'description': 'P(Sam+Alice beat Jamie+Gale)',
+                   'samples': q3['raw'], 'mean': q3['p_team2_wins']},
+        'query4': {'description': 'P(Avery+Drew beat Jamie+Cameron)',
+                   'samples': q4['raw'], 'mean': q4['p_team2_wins']},
+    }
+    out_path = f'inference_results/result-diving-pytorch.json'
+    with open(out_path, 'w') as f:
+        json.dump(result, f)
+<END_PYRO_MODEL>
+
+Now, let's consider a new example. Write code to model the following scenario.
+
+Write a world model in Python using PyTorch and Pyro that contains relevant background knowledge, conditions the posterior using soft likelihoods via pyro.factor(), and defines post-hoc query functions to answer the question(s), following the examples provided. Be sure to account for the information provided, where appropriate, into your model.
+
+Include units where appropriate, and write these in the comments. Sometimes you may need to posit new latents to build into your model.
+
+You should not write any new pyro.factor() or soft_beat()/soft_lost() calls beyond those provided in the parse (which is included in the START and END LANGUAGE_TO_PYRO_CODE tags).
+
+If multiple queries are asked in the scenario, be sure to define post-hoc query functions for ALL the queries that are included in the parse, and call them all in the if __name__ == '__main__': block.
+
+Make sure that any function that is referenced is also defined.
+
+Functions should relate to each other -- think about the CAUSAL STRUCTURE of the scenario and make sure the code reflects the dependencies between variables appropriately.
+Consider the concept trace provided when defining functions, and which functions should depend on other functions.
+
+Follow the format in the prompts. Follow the designs of the example program as much as possible, although you may change aspects of the code if the scenario is different enough. In particular, pay attention to the part of the example program where it uses 3 categories for the dive difficulty prior and how each category depends on intrinsic skill.
+
+Be sure to copy each already translated condition into the model() function, with the original scenario text as a comment, like in the examples.
+The comments should have the exact text of each sentence, followed by a single soft_beat() or soft_lost() call.
+Your model should be enclosed in the brackets <START_PYRO_MODEL> and <END_PYRO_MODEL> like in the examples.
+
+Use dist.MixtureSameFamily for Gaussian mixture priors (skill and difficulty).
+Use torch.where for conditional prior weights based on skill thresholds.
+Clamp skill values with .clamp(min=0.) and difficulty values with .clamp(0., 100.).
+Use pyro.factor() with F.logsigmoid() for all soft beat/lost conditions.
+Query functions take `samples` (the dict returned by run_inference()) as their first argument.
+Unknown athletes appearing only in queries should be sampled fresh from the skill prior inside the query function.

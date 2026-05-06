@@ -1,0 +1,56 @@
+You will be asked to write code to model and answer different questions, using Python with PyTorch and Pyro.
+Below are some examples of models for other scenarios in Python/Pyro. Notice how the models are formatted.
+
+<START_SCENARIO>
+BACKGROUND
+In this event, the athletes are competing in a series of synchronized diving tournaments. Each tournament consists of a series of rounds. In each match, athletes compete as part of a team. In a given round, each team receives a combined score based on the difficulty of the dive and the execution of the dive. Athletes compete either individually or as a team.
+All matches take place on the same day.
+
+CONDITIONS
+In the first round, Jamie and Gale beat Sam and Jordan.
+In the second round, Jamie and Gale beat Blake and Avery.
+In the third round, Jamie and Avery beat Blake and Sam.
+In the fourth round, Cameron and Gale beat Dakota and Joe.
+In the fifth round, Jamie and Cameron lost to Blake and Avery.
+
+QUERIES
+Query 1: Out of 100 random athletes, where do you think Jamie ranks in terms of intrinsic skill?
+Query 2: On a percentage scale from 0 to 100% (where 0=extremely easy, 100=as difficult as possible), how difficult of a dive do you think the team Jamie was on in the third round attempted?
+Query 3: In a new round later this same day between Jamie and Gale (Team 1) and Sam and Alice (Team 2), who would win and by how much?
+Query 4: In a new round later this same day between Jamie and Cameron (Team 1) and Avery and Drew (Team 2), who would win and by how much?
+<END_SCENARIO>
+
+<START_LANGUAGE_TO_PYRO_CODE>
+# CONDITIONS
+In the first round, Jamie and Gale beat Sam and Jordan.
+    soft_beat(['jamie', 'gale'], ['sam', 'jordan'], 1, 'cond_1')
+In the second round, Jamie and Gale beat Blake and Avery.
+    soft_beat(['jamie', 'gale'], ['blake', 'avery'], 2, 'cond_2')
+In the third round, Jamie and Avery beat Blake and Sam.
+    soft_beat(['jamie', 'avery'], ['blake', 'sam'], 3, 'cond_3')
+In the fourth round, Cameron and Gale beat Dakota and Joe.
+    soft_beat(['cameron', 'gale'], ['dakota', 'joe'], 4, 'cond_4')
+In the fifth round, Jamie and Cameron lost to Blake and Avery.
+    soft_lost(['jamie', 'cameron'], ['blake', 'avery'], 5, 'cond_5')
+
+# QUERIES
+Query 1: Out of 100 random athletes, where do you think Jamie ranks in terms of intrinsic skill?
+    intrinsic_skill_rank(samples, 'jamie', 100)
+Query 2: On a percentage scale from 0 to 100% (where 0=extremely easy, 100=as difficult as possible), how difficult of a dive do you think the team Jamie was on in the third round attempted?
+    query_team_dive_difficulty_in_round(samples, ('jamie', 'avery'), 3)
+Query 3: In a new round later this same day between Jamie and Gale (Team 1) and Sam and Alice (Team 2), who would win and by how much?
+    who_would_win_by_how_much(samples, ['jamie', 'gale'], ['sam', 'alice'])
+Query 4:  In a new round later this same day between Jamie and Cameron (Team 1) and Avery and Drew (Team 2), who would win and by how much?
+    who_would_win_by_how_much(samples, ['jamie', 'cameron'], ['avery', 'drew'])
+<END_LANGUAGE_TO_PYRO_CODE>
+
+Now, let's consider a new example. Translate the conditions and query into Python/Pyro code, following the examples provided. If there are two statements joined together, write this as a single line condition (e.g., using `and` as appropriate).
+
+Reflect on what each sentence means and make sure the translation captures that knowledge.
+
+Be sure to copy each sentence from the conditions directly into the code as a comment.
+The comments should have the exact text of each sentence, followed by a single condition.
+There is no need to write other Python/Pyro definitions -- just translate each sentence.
+The broader Pyro model will be written separately, at another time.
+
+Follow the prompts and start your response with <START_LANGUAGE_TO_PYRO_CODE> and end with <END_LANGUAGE_TO_PYRO_CODE>.

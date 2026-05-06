@@ -1,0 +1,38 @@
+You will be asked to generate 5 scenarios based on the given example scenario format. Each scenario consists of a BACKGROUND, 4 to 8 CONDITIONS, and 4 QUERIES. Generate scenarios in the domain of medicine/clinical care. Keep the type of queries the same as the example: (1) ranking a person’s intrinsic health-related trait among 100 people, (2) estimating a situational/episode-dependent factor on a 0–100% scale, and (3–4) predicting outcomes of new clinical situations later the same day.
+
+Here is the example scenario from a different domain:
+
+<START_SCENARIO> 
+BACKGROUND 
+In this event, the athletes are competing in a series of canoe races. In each race, the team that wins depends on the average speed with which the athletes are able to row, based on their intrinsic strength modulated by other factors including how much effort they put in to that race. Athletes compete either individually or as a team. All races take place on the same day. 
+CONDITIONS 
+In the first race, Alice beat Casey. In the second race, Alice and Ness beat Casey and Max. In the third race, Max and Alice lost to Casey and Ness. 
+QUERIES 
+Query 1: Out of 100 random athletes, where do you think Alice ranks in terms of intrinsic strength?
+Query 2: On a percentage scale from 0 to 100%, how much effort do you think Max put into the third race? 
+Query 3: In a new race later this same day between Alice and Ness (Team 1) and Max and Taylor (Team 2), who would win and by how much? 
+Query 4: In a new race later this same day between Max and Casey (Team 1) and Ness and Willow (Team 2), who would win and by how much? 
+<END_SCENARIO>  
+
+Formatting requirements: 
+- Wrap EACH scenario with the exact tags <START_SCENARIO> and <END_SCENARIO>. 
+- Use the exact section headers: BACKGROUND, CONDITIONS, QUERIES. 
+- CONDITIONS must be concise, 3 or 4 bullet-like sentences, similar length/style to the example. 
+- QUERIES must be exactly 4 queries, labeled “Query 1” through “Query 4”. 
+- Do NOT include medical disclaimers, references, citations, or meta-commentary. Just generate scenarios.  
+Content constraints (to make it “open-world” and inference-heavy): 
+- In the BACKGROUND, describe a medical setting where observed outcomes depend on the following factors:   
+(i) Choose <N_ind> of the following intrinsic patient property/properties: [baseline disease severity, immune competence, physiologic resilience / recovery speed, airway reactivity, pain tolerance / pain sensitivity, medication sensitivity (side-effect propensity), medication responsiveness (expected benefit at standard dose), insulin sensitivity / glucose regulation efficiency, renal clearance / baseline drug metabolism rate, clotting tendency / bleeding tendency, baseline inflammation tendency, migraine threshold / trigger susceptibility, autonomic stability (orthostatic tolerance), allergy tendency (atopy baseline), baseline propensity toward dehydration, baseline anxiety / stress reactivity, sleep need / vulnerability to sleep loss, GI motility tendency (nausea/constipation propensity), baseline mobility / functional reserve, cognitive reserve / delirium susceptibility], AND   
+(ii) Choose <N_epi> of the following factors that varies by episode and can change within the same day: [medication adherence for that episode (took it or not, timing), correct technique of administration that episode (e.g., inhaler technique), hydration intake that episode, food intake / meal composition that episode, physical activity level right before/during the episode, sleep quality in the preceding hours (same-day sleep), acute stress level that episode, exposure to allergens/irritants that episode, exposure to infectious contacts that episode, environmental conditions that episode (heat, humidity, air quality), timing of dosing relative to symptoms/meals, monitoring intensity that episode (more frequent checks vs less), clinician/nurse attentiveness or skill that episode, patient understanding of instructions that episode, rest and trigger avoidance that episode (light/noise, screen time), posture changes / overexertion that episode, missed meals / fasting that episode, caffeine/alcohol intake that episode, use of PRN meds that episode (as-needed use), care workflow delays that episode (wait time, interruptions)], AND
+(iii) a multilevel factor where there are two possible nurses, hospitals, or clinics. Different individuals can be cared for by a different entity, while some individuals are cared for by the same entity. Mention this multilevel factor briefly in BACKGROUND, and in CONDITIONS, you describe where or by whom each individual is cared for.
+- Create scenarios where, for one of the patients denoted 'X', <P>, <C>, and <R>. Choose <N> for how many patients appear in the conditions on each side (e.g. N=2 means A and B recovered better than X and Y). <1v1 OPTION>Use a random name for patient 'X' (don't actually use 'X'). 
+- Ensure the situational factor is clearly “per-episode” (it can differ between the first, second, third event). 
+- All clinical events should occur on the same day, and the two hypothetical follow-up situations in Query 3 and Query 4 must also be later that same day. 
+- Keep the “comparison outcome” structure analogous to “A beat B”: Use forms like “Alice improved more than Casey”, “Alice stabilized while Casey worsened”, “Alice had fewer symptoms than Casey”, “Alice responded better than Casey”, “Alice recovered faster than Casey”, etc.   Avoid explicit numeric vitals/lab values; do not specify exact measurements. 
+- Patients may be treated individually or as a pair/group with shared exposure/treatment (analogous to teams). If pairs/groups are used, the outcome should depend on the average (or combined) intrinsic resilience modulated by the situational factor (e.g., adherence, timing, exposure, care quality). 
+- Avoid gore, violence, or graphic injury descriptions. Keep cases realistic and general (urgent care, outpatient, ward, ED) without extreme detail.  Now generate 5 distinct medical scenarios that follow the format exactly. 
+
+For each scenario: 
+- BACKGROUND: 2–4 sentences. 
+- CONDITIONS: 3–4 lines describing observed outcomes between named patients or patient-pairs (use “X improved more than Y” style). 
+- QUERIES: exactly four queries matching the template below:   Query 1 asks for intrinsic trait rank among 100.   Query 2 asks for episodic factor percentage for a specific condition event.   Query 3 and Query 4 ask who would do better in new later-that-day clinical situations and “by how much” (keep “by how much” qualitative; do not give exact numbers).  Template for QUERIES wording (must keep this structure, only adapt the medical nouns): Query 1: Out of 100 random patients, where do you think <NAME> ranks in terms of intrinsic <INTRINSIC_TRAIT>? Query 2: On a percentage scale from 0 to 100%, how strong was <SITUATIONAL_FACTOR> in the <Nth> clinical episode for <NAME>? Query 3: In a new clinical episode later this same day involving <pair/group A> versus <pair/group B>, who would have the better outcome and by how much? Query 4: In a new clinical episode later this same day involving <pair/group C> versus <pair/group D>, who would have the better outcome and by how much?

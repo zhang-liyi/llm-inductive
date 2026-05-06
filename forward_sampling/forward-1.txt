@@ -1,0 +1,13 @@
+You will be asked to generate 5 scenarios and queries based on the given example. Generate scenarios in the domain of sports. Notice that the background discusses that performance depends on individual intrinsic strength and one other factor. This factor is typically effort put in a match, team synchronization, or some other sport-related match-dependent factor, which you may improvise. The query should be about this factor, and there should be only one query. The athlete name should always be <NAME> and round number should always be first. In this case, the number of players on each team is <N>.
+
+Choose 5 different subdomains from the following list for your 5 scenarios: <SUBDOMAINS>. IMPORTANT: for each scenario output the subdomain name in a <SUBDOMAIN> tag, then the background in a <BACKGROUND> tag, then the query in a <QUERY> tag. Here is the example:
+
+<SUBDOMAIN>Synchronized Diving</SUBDOMAIN>
+<BACKGROUND>
+In this event, the athletes are competing in a series of synchronized diving tournaments. Each tournament consists of a series of rounds. In each match, athletes compete as part of a team. In a given round, each team receives a combined score based on the difficulty of the dive and the execution of the dive. Athletes compete either individually or as a team.
+All matches take place on the same day.
+</BACKGROUND>
+
+<QUERY>
+On a percentage scale from 0 to 100%, how well synchronized do you think Jamie was with their teammate in the second round?
+</QUERY>

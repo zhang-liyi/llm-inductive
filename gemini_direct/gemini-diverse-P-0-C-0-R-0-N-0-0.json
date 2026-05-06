@@ -1,0 +1,18 @@
+{
+  "scenario_id": "diverse-P-0-C-0-R-0-N-0-0",
+  "scenario_path": "scenarios/gemini-diverse-P-0-C-0-R-0-N-0-0.txt",
+  "queries": [
+    "Out of 100 random competitive beach volleyball players, where do you think Sofia ranks in terms of intrinsic skill?",
+    "On a scale from 0 to 100 (where 0=completely fresh, 100=total physical exhaustion), what was Elena's likely fatigue level during her 5:00 PM match?",
+    "In a hypothetical match the next morning in calm weather between Chloe and Maya (Team 1) and Zoe and Lily (Team 2), what is the probability (from 0 to 100) that Team 1 wins?",
+    "If Elena and Sofia (Team 1) played Chloe and Harper (Team 2) indoors with no wind and both teams fully rested, what is the probability (from 0 to 100) that Team 1 wins?"
+  ],
+  "gemini_prompt": "Answer the queries in the scenario and return only a list of integers, each wrapped in < and >. For example, an output can be: [<mean1>, <mean2>]. For queries on individual rank, a higher number means a higher ranking (e.g. 100 means the individual ranks highest in that criterion; 1 is lowest). For queries on which of the two teams wins, a smaller number means the first team more likely wins.\n\nHere is the scenario:\n\n<START_SCENARIO>\n**Spikes & Sand: The Coastal Clash Recap**\n*By CourtSide Reporter*\n\nThe local beach volleyball invitational was a grueling one-day gauntlet that tested not just raw vertical leap, but adaptability. The morning started with dead-calm weather, but by the late afternoon, gusts were howling off the coast, completely altering the trajectory of serves and sets. Add in the scorching mid-day sand, and physical endurance became the ultimate currency. \n\nHere is how the key matchups unfolded:\n\n**9:00 AM:** In perfect, calm conditions, the established duo of Elena and Sofia opened the day by comfortably dispatching Chloe and Maya. \n**11:00 AM:** As the sand began to heat up, Zoe and Harper teamed up to narrowly edge out Chloe and Lily in a marathon three-setter.\n**1:00 PM:** With the coastal winds starting to pick up, Elena and Sofia returned to the court and comfortably swept Zoe and Harper.\n**3:00 PM:** With the wind now howling, Chloe and Harper formed a new pair and pulled off a shocking blowout, defeating Maya and Lily by a massive margin. Many spectators wondered if the heavy wind perfectly favored Chloe's signature low-trajectory serves, or if Maya and Lily simply lacked the communication to handle the chaotic gusts.\n**5:00 PM:** An exhausted Elena and Sofia faced the red-hot Chloe and Harper. Despite visibly lagging and struggling to chase down deep shots in the heavy wind, Elena and Sofia managed to come from behind and win narrowly in the final few points.\n\n**Reader Predictions:**\nQuery 1: Out of 100 random competitive beach volleyball players, where do you think Sofia ranks in terms of intrinsic skill?\nQuery 2: On a scale from 0 to 100 (where 0=completely fresh, 100=total physical exhaustion), what was Elena's likely fatigue level during her 5:00 PM match?\nQuery 3: In a hypothetical match the next morning in calm weather between Chloe and Maya (Team 1) and Zoe and Lily (Team 2), what is the probability (from 0 to 100) that Team 1 wins?\nQuery 4: If Elena and Sofia (Team 1) played Chloe and Harper (Team 2) indoors with no wind and both teams fully rested, what is the probability (from 0 to 100) that Team 1 wins?\n<END_SCENARIO>",
+  "gemini_raw": "[<95>, <90>, <20>, <5>]",
+  "gemini_answers": [
+    95,
+    90,
+    20,
+    5
+  ]
+}

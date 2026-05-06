@@ -1,0 +1,37 @@
+<FLIGHT>
+
+The choice of a flight depends on 4 features:
+1. departure time
+2. duration
+3. number of stops
+4. cost
+
+For each feature, the user's preference weight can be one of 5 levels:
+1. strongly prefers lower values
+2. somewhat prefers lower values
+3. indifferent
+4. somewhat prefers higher values
+5. strongly prefers higher values
+
+<HOTEL>
+
+The choice of a hotel depends on 4 features: distance to downtown, price, rating, and amenities.
+Distance and price are numeric features. Rating and amenities are ordinal features.
+
+For each feature, the user's preference weight can be one of 5 levels:
+1. strongly prefers lower values
+2. somewhat prefers lower values
+3. indifferent
+4. somewhat prefers higher values
+5. strongly prefers higher values
+
+<SHOPPING>
+
+A shopping goal consists of: desired attributes, such as “waterproof” or “soft sole”; desired options, such as “color = black and blue” or “size = XL”; a price limit.
+
+For each feature, the user's preference weight can be one of 5 levels:
+1. irrelevant
+2. slightly important
+3. moderately important
+4. very important
+5. essential
