@@ -241,8 +241,8 @@ def convert_text(text: str,
                    ``def run_inference(num_samples=N, ...)``.
     wrap_json    : if True, rewrite the program's ``json.dump(result, ...)``
                    call so the on-disk JSON is ``{'seeds': [0],
-                   'queries': result}`` (matches the combined-posterior layout
-                   that ``compare_to_humans.py`` reads).
+                   'queries': result}`` (matches the combined-posterior
+                   layout used by the downstream aggregators).
     """
     if mode not in ('soft', 'hard'):
         raise ValueError(f"mode must be 'soft' or 'hard'; got {mode!r}")

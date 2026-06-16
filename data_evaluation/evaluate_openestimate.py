@@ -446,8 +446,8 @@ def metrics_at_span_multitoken(
         "pred_mode": pred_mode,
         "gt_mode":   gt_mode,
         # No 101-bin pred_dist for multi-token (not directly available);
-        # downstream aggregator (aggregate_pyrorej_all.py) only reads
-        # `mae` and `ce_mean` from OE results, so this is fine.
+        # the downstream calibration aggregator only reads `mae` and
+        # `ce_mean` from OE results, so this is fine.
         "pred_dist": [],
     }
 
