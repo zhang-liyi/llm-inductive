@@ -54,7 +54,7 @@ from evaluate_text_classification import (  # noqa: E402
     score_example as tc_score_example,
 )
 
-HF_CACHE = "<DATA_ROOT>/hg_cache"
+HF_CACHE = "/home/aj9225/llm-inductive/data_root/hg_cache"
 BT_TEST_FULL_JSONL = (
     _THIS.parent / "data_processing" / "bayesian_teaching_test.jsonl"
 )

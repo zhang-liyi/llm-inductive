@@ -47,8 +47,8 @@ from evaluate_bayesian_teaching import (  # noqa: E402
 )
 
 
-BAYES_DATA_DIR = Path("<DATA_ROOT>/bayes-llm/data")
-MOREBENCH_DIR = Path("<DATA_ROOT>/morebench")
+BAYES_DATA_DIR = Path("/home/aj9225/llm-inductive/data_root/bayes-llm/data")
+MOREBENCH_DIR = Path("/home/aj9225/llm-inductive/data_root/morebench")
 PROMPT_INSTRUCTION = (
     "Output only the answer choice in angular brackets, for example <LETTER>, "
     "where LETTER is one of A, B, C, D, etc."
@@ -57,7 +57,7 @@ PROMPT_INSTRUCTION = (
 # the next token is then the bare letter A..Z (ids 32..57 in Llama3 tokenizer).
 ASSISTANT_PREFILL = "The answer is: <"
 DEFAULT_MODEL_PATH = (
-    "<DATA_ROOT>/resources/"
+    "/home/aj9225/llm-inductive/data_root/resources/"
     "models--meta-llama--Meta-Llama-3-8B-Instruct/"
     "snapshots/e1945c40cd546c78e41f1151f4db032b271faeaa"
 )
@@ -139,7 +139,7 @@ def load_mmlu_val() -> List[Tuple[str, dict]]:
     scoring time, same as for the other datasets.
     """
     from datasets import load_from_disk
-    val = load_from_disk("<DATA_ROOT>/hg_cache/mmlu_validation_disk")
+    val = load_from_disk("/home/aj9225/llm-inductive/data_root/hg_cache/mmlu_validation_disk")
     letters = ["A", "B", "C", "D"]
     out = []
     for ex in val:
@@ -157,7 +157,7 @@ def load_hellaswag_val() -> List[Tuple[str, dict]]:
     """HellaSwag validation split (10042 examples, 4-way MC)."""
     from datasets import load_from_disk
     val = load_from_disk(
-        "<DATA_ROOT>/hg_cache/hellaswag_validation_disk"
+        "/home/aj9225/llm-inductive/data_root/hg_cache/hellaswag_validation_disk"
     )
     out = []
     letters = ["A", "B", "C", "D"]
@@ -182,7 +182,7 @@ def load_winogrande_val() -> List[Tuple[str, dict]]:
     """Winogrande (debiased) validation split (1267 examples, 2-way MC)."""
     from datasets import load_from_disk
     val = load_from_disk(
-        "<DATA_ROOT>/hg_cache/winogrande_validation_disk"
+        "/home/aj9225/llm-inductive/data_root/hg_cache/winogrande_validation_disk"
     )
     letters = ["A", "B"]
     out = []
@@ -212,7 +212,7 @@ def load_arc_challenge_val() -> List[Tuple[str, dict]]:
     """
     from datasets import load_from_disk
     val = load_from_disk(
-        "<DATA_ROOT>/hg_cache/arc_challenge_validation_disk"
+        "/home/aj9225/llm-inductive/data_root/hg_cache/arc_challenge_validation_disk"
     )
     out = []
     for ex in val:
@@ -250,7 +250,7 @@ def load_truthfulqa_val() -> List[Tuple[str, dict]]:
     2..13).  Exactly one choice per question is correct (MC1)."""
     from datasets import load_from_disk
     val = load_from_disk(
-        "<DATA_ROOT>/hg_cache/truthfulqa_mc_validation_disk"
+        "/home/aj9225/llm-inductive/data_root/hg_cache/truthfulqa_mc_validation_disk"
     )
     out = []
     for ex in val:

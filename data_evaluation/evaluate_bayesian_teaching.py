@@ -169,7 +169,7 @@ def remap_prompt_to_abc(prompt: str) -> str:
 
 
 DEFAULT_MODEL_PATH = (
-    "<DATA_ROOT>/resources/"
+    "/home/aj9225/llm-inductive/data_root/resources/"
     "models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/"
     "e1945c40cd546c78e41f1151f4db032b271faeaa"
 )

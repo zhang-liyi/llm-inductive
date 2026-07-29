@@ -43,12 +43,12 @@ from torchtune.models.qwen2 import (
 from torchtune.modules.peft import get_adapter_params, set_trainable_params
 
 DEFAULT_LLAMA_PATH = (
-    "<DATA_ROOT>/resources/"
+    "/home/aj9225/llm-inductive/data_root/resources/"
     "models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/"
     "e1945c40cd546c78e41f1151f4db032b271faeaa"
 )
 DEFAULT_QWEN_PATH = (
-    "<DATA_ROOT>/resources/qwen/Qwen2-7B-Instruct"
+    "/home/aj9225/llm-inductive/data_root/resources/qwen/Qwen2-7B-Instruct"
 )
 
 _LORA_KW = dict(

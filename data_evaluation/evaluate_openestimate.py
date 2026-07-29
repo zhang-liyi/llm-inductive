@@ -55,7 +55,7 @@ from torchtune.models.llama3 import llama3_8b, lora_llama3_8b
 from torchtune.training.checkpointing._checkpointer import FullModelHFCheckpointer
 
 DEFAULT_MODEL_PATH = (
-    "<DATA_ROOT>/resources/"
+    "/home/aj9225/llm-inductive/data_root/resources/"
     "models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/"
     "e1945c40cd546c78e41f1151f4db032b271faeaa"
 )
