@@ -1,0 +1,15 @@
+# Dependencies for the MoReBench evaluation only (not training).
+#
+#   conda create -n indllm python=3.9 && conda activate indllm
+#   pip install -r requirements-eval.txt
+#
+# torchtune itself is VENDORED in this repo (torchtune/torchtune/) — do not
+# pip install it, and make sure `torchtune/` is on PYTHONPATH or that you run
+# from the repo root.
+
+torch==2.7.0
+transformers==4.57.6
+numpy==1.26.4
+pandas==2.2.3
+safetensors==0.5.2
+torchao==0.9.0

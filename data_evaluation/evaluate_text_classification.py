@@ -19,6 +19,10 @@ Usage
         --ckpt_dir <lora-ckpt-dir-or-pretrained-base> \\
         --dataset cls45|chembench|legalbench \\
         --output_file out.json
+
+The ``morebench`` / ``morebench_theory`` datasets are 2-way (A/B) rather than
+4-way and must be built first with ``data_processing/prepare_morebench.py``;
+everything downstream of the loader is unchanged.
 """
 
 import argparse
@@ -44,6 +48,7 @@ from evaluate_bayesian_teaching import (  # noqa: E402
 
 
 BAYES_DATA_DIR = Path("<DATA_ROOT>/bayes-llm/data")
+MOREBENCH_DIR = Path("<DATA_ROOT>/morebench")
 PROMPT_INSTRUCTION = (
     "Output only the answer choice in angular brackets, for example <LETTER>, "
     "where LETTER is one of A, B, C, D, etc."
@@ -267,6 +272,40 @@ def load_truthfulqa_val() -> List[Tuple[str, dict]]:
     return out
 
 
+def _load_morebench(filename: str) -> List[Tuple[str, dict]]:
+    """MoReBench recast as teacher-forced 2-way (A/B) items.
+
+    Built by ``data_processing/prepare_morebench.py``: each item shows a moral
+    dilemma plus one expert-written rubric criterion and asks whether a
+    well-reasoned response should make that point.  Gold comes from the sign of
+    the criterion's weight in MoReBench's own rubric, which is exactly what
+    their scorer rewards.  Prompts already end with ``Answer:``, so nothing
+    here differs from the other datasets except the loader.
+    """
+    path = MOREBENCH_DIR / filename
+    if not path.exists():
+        raise FileNotFoundError(
+            f"{path} not found. Build it first:\n"
+            f"    python data_processing/prepare_morebench.py "
+            f"--data_root {MOREBENCH_DIR.parent}"
+        )
+    with open(path) as fh:
+        blob = json.load(fh)
+    return [(it["task"], {"input": it["input"], "output": it["output"],
+                          "meta": it["meta"]})
+            for it in blob["items"]]
+
+
+def load_morebench() -> List[Tuple[str, dict]]:
+    """Theory-neutral set, 1880 items; by_task axis is the dilemma source."""
+    return _load_morebench("morebench_binary.json")
+
+
+def load_morebench_theory() -> List[Tuple[str, dict]]:
+    """Framework-conditional set, 642 items; by_task axis is the moral theory."""
+    return _load_morebench("morebench_theory_binary.json")
+
+
 LOADERS = {
     "cls45": load_cls45_val,
     "chembench": load_chembench_val,
@@ -276,6 +315,8 @@ LOADERS = {
     "hellaswag": load_hellaswag_val,
     "winogrande": load_winogrande_val,
     "arc_challenge": load_arc_challenge_val,
+    "morebench": load_morebench,
+    "morebench_theory": load_morebench_theory,
 }
 
 
@@ -383,13 +424,18 @@ def evaluate(model, tokenizer, examples: List[Tuple[str, dict]],
         true_idx = CHOICE_LETTERS.index(out[0])
         probs = score_example(model, tokenizer, prompt, letter_ids,
                               device, max_seq_len)
-        items.append({
+        item = {
             "task": task,
             "probs": probs.tolist(),
             "true_idx": true_idx,
             "true_letter": out[0],
             "pred_idx": int(probs.argmax()),
-        })
+        }
+        # Loaders may attach per-example metadata (MoReBench uses this to carry
+        # criterion weight / rubric dimension so results can be sliced later).
+        if "meta" in ex:
+            item["meta"] = ex["meta"]
+        items.append(item)
         if (i + 1) % progress_every == 0:
             print(f"  {i + 1}/{len(examples)} done", flush=True)
 
