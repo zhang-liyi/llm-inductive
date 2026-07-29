@@ -52,15 +52,15 @@ re-run, re-ordering or slicing of the data.
 Usage
 -----
     # one-off, needs internet (run on a login node, not a compute node)
-    python data_processing/prepare_morebench.py --data_root <DATA_ROOT>
+    python data_processing/prepare_morebench.py --data_root /home/aj9225/llm-inductive/data_root
 
     # if the CSVs are already downloaded
-    python data_processing/prepare_morebench.py --data_root <DATA_ROOT> --offline
+    python data_processing/prepare_morebench.py --data_root /home/aj9225/llm-inductive/data_root --offline
 
 Writes
-    <DATA_ROOT>/morebench/raw/morebench_{public,theory}.csv     (cached source)
-    <DATA_ROOT>/morebench/morebench_binary.json                 (dataset A)
-    <DATA_ROOT>/morebench/morebench_theory_binary.json          (dataset B)
+    /home/aj9225/llm-inductive/data_root/morebench/raw/morebench_{public,theory}.csv     (cached source)
+    /home/aj9225/llm-inductive/data_root/morebench/morebench_binary.json                 (dataset A)
+    /home/aj9225/llm-inductive/data_root/morebench/morebench_theory_binary.json          (dataset B)
 """
 
 import argparse

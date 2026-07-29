@@ -3,9 +3,10 @@
 #  Moral benchmark (MoReBench) evaluation.
 #
 #  1. pip install -r requirements-eval.txt
-#  2. python download_data.py           <- once, on a login node
-#  3. Fill in the 2 settings below, put the models in place.
-#  4. bash run_morebench.sh
+#  2. python download_data.py                          <- login node
+#  3. python download_models.py                        <- login node
+#  4. unzip finetuned_checkpoints.zip -d data_root/
+#  5. Put your email below, then: bash run_morebench.sh
 #
 #  Submits 8 SLURM jobs (base + 3 fine-tuned seeds x 2 datasets), under an
 #  hour each. Results go to data_evaluation/results/text_cls/.
@@ -15,30 +16,26 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-# ----------------------------- FILL THESE IN ---------------------------------
+# ----------------------------- FILL THIS IN ----------------------------------
 
 # Your email, for SLURM job notifications.
-EMAIL="you@example.edu"
-
-# Your downloaded base model — the snapshot directory containing config.json.
-# Use ONE of these; comment out the other.
-BASE_MODEL="/path/to/models--meta-llama--Meta-Llama-3-8B-Instruct/snapshots/e1945c40cd546c78e41f1151f4db032b271faeaa"
-CKPT_PREFIX="pyro_rej"            # Llama-3-8B
-# BASE_MODEL="/path/to/models--Qwen--Qwen2-7B-Instruct/snapshots/<hash>"
-# CKPT_PREFIX="qwen_pyro_rej"     # Qwen2-7B
+EMAIL="akshay.jagadish@princeton.edu"
 
 # ------------------------- nothing to edit below -----------------------------
 #
-# Unpack the 3 fine-tuned models into data_root/ckpt/ so that this holds:
+# Base model: downloaded by download_models.py. To run the Qwen row instead,
+# switch both lines below to the commented alternatives.
 #
-#   data_root/ckpt/${CKPT_PREFIX}_lora_dist_r8_all_seed{1,2,3}_bracket_lora8_dist/epoch_0/
-#
-# Each epoch_0/ is a self-contained model (~16 GB: merged weights, config and
-# tokenizer), so budget ~48 GB for the three. Keep 'qwen' out of the path for
-# Llama checkpoints and in it for Qwen ones — the architecture is detected from
-# the path string.
+# Fine-tuned models: unzip finetuned_checkpoints.zip inside data_root/, which
+# gives data_root/ckpt/<model-name>/epoch_0/ for each of the 3 seeds.
+
+BASE_SUBDIR="base_models/Meta-Llama-3-8B-Instruct"
+CKPT_PREFIX="pyro_rej"
+# BASE_SUBDIR="base_models/Qwen2-7B-Instruct"
+# CKPT_PREFIX="qwen_pyro_rej"
 
 DATA_ROOT="$PWD/data_root"
+BASE_MODEL="$DATA_ROOT/$BASE_SUBDIR"
 CKPT_ROOT="$DATA_ROOT/ckpt"
 export DATA_ROOT BASE_MODEL CKPT_ROOT CKPT_PREFIX EMAIL
 

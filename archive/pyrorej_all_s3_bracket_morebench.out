@@ -1,0 +1,53 @@
+Loading morebench validation split ...
+  1880 examples across 6 tasks
+[llama3] loading LoRA ckpt from /home/aj9225/llm-inductive/data_root/ckpt/pyro_rej_lora_dist_r8_all_seed3_bracket_lora8_dist/epoch_0  (4 shards)
+Letter token ids (A..Z): [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+  50/1880 done
+  100/1880 done
+  150/1880 done
+  200/1880 done
+  250/1880 done
+  300/1880 done
+  350/1880 done
+  400/1880 done
+  450/1880 done
+  500/1880 done
+  550/1880 done
+  600/1880 done
+  650/1880 done
+  700/1880 done
+  750/1880 done
+  800/1880 done
+  850/1880 done
+  900/1880 done
+  950/1880 done
+  1000/1880 done
+  1050/1880 done
+  1100/1880 done
+  1150/1880 done
+  1200/1880 done
+  1250/1880 done
+  1300/1880 done
+  1350/1880 done
+  1400/1880 done
+  1450/1880 done
+  1500/1880 done
+  1550/1880 done
+  1600/1880 done
+  1650/1880 done
+  1700/1880 done
+  1750/1880 done
+  1800/1880 done
+  1850/1880 done
+
+=== Text-Classification Eval Summary ===
+  Dataset : morebench
+  Overall : acc=0.862  NLL=0.319  MAE=0.138  ECE=0.041  n=1880
+  ai_risk_dilemmas                                  : acc=0.870  NLL=0.326  ECE=0.050  n=722
+  daily_dilemmas                                    : acc=0.857  NLL=0.315  ECE=0.038  n=756
+  expert_written_collab                             : acc=0.955  NLL=0.282  ECE=0.185  n=22
+  expert_written_ethic_bowl                         : acc=0.856  NLL=0.321  ECE=0.067  n=188
+  expert_written_ethic_unwrapped                    : acc=0.821  NLL=0.333  ECE=0.097  n=134
+  expert_written_literature                         : acc=0.897  NLL=0.279  ECE=0.069  n=58
+
+Results saved to /home/aj9225/llm-inductive/data_evaluation/results/text_cls/pyrorej_all_s3_bracket_morebench.json

@@ -1,0 +1,27 @@
+Loading morebench_theory validation split ...
+  642 examples across 5 tasks
+[llama3] loading pretrained model from /home/aj9225/llm-inductive/data_root/base_models/Meta-Llama-3-8B-Instruct  (4 shards)
+Letter token ids (A..Z): [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+  50/642 done
+  100/642 done
+  150/642 done
+  200/642 done
+  250/642 done
+  300/642 done
+  350/642 done
+  400/642 done
+  450/642 done
+  500/642 done
+  550/642 done
+  600/642 done
+
+=== Text-Classification Eval Summary ===
+  Dataset : morebench_theory
+  Overall : acc=0.720  NLL=1.040  MAE=0.280  ECE=0.222  n=642
+  Act Utilitarianism                                : acc=0.662  NLL=1.420  ECE=0.311  n=68
+  Aristotelian Virtue Ethics                        : acc=0.708  NLL=0.959  ECE=0.233  n=106
+  Gauthierian Contractarianism                      : acc=0.685  NLL=1.167  ECE=0.258  n=146
+  Kantian Deontology                                : acc=0.763  NLL=0.983  ECE=0.209  n=114
+  Scanlonian Contractualism                         : acc=0.745  NLL=0.900  ECE=0.197  n=208
+
+Results saved to /home/aj9225/llm-inductive/data_evaluation/results/text_cls/base_morebench_theory.json

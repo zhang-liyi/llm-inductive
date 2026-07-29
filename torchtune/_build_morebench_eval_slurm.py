@@ -76,6 +76,9 @@ def build_job(tag: str, ckpt: str, dataset: str, pretrained: bool) -> str:
     flag = " \\\n    --pretrained" if pretrained else ""
     body = SBATCH_HEADER.format(job_name=job) + (
         f"mkdir -p {RESULTS}/text_cls {ARCHIVE}\n"
+        # The vendored torchtune (repo/torchtune/torchtune/) must be importable
+        # from data_evaluation/, where the job cd's to.
+        f"export PYTHONPATH={BASE_DIR}/torchtune\n"
         f"cd {EVAL_DIR}\n"
         f"python {EVAL_DIR}/evaluate_text_classification.py \\\n"
         f"    --ckpt_dir {ckpt} \\\n"
