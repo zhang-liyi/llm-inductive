@@ -1,0 +1,91 @@
+Loading mmlu validation split …
+  1531 examples across 57 tasks
+  subsampled 500 of 1531 (seed=1234); first idxs [3, 5, 6, 11, 15]
+  sliced [0:500] → 500
+[llama3] loading LoRA ckpt from /home/aj9225/llm-inductive/data_root/ckpt/pyro_rej_lora_dist_r8_all_seed3_bracket_lora8_dist/epoch_0  (4 shards)
+Letter token ids (A..Z): [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+Stop token ids: [128009, 128001]
+KV-cached generation: True
+  25/500  acc=0.640 NLL=1.178  n=25
+  50/500  acc=0.620 NLL=1.330  n=50
+  75/500  acc=0.693 NLL=1.179  n=75
+  100/500  acc=0.690 NLL=1.190  n=100
+  125/500  acc=0.664 NLL=1.387  n=125
+  150/500  acc=0.667 NLL=1.350  n=150
+  175/500  acc=0.680 NLL=1.286  n=175
+  200/500  acc=0.685 NLL=1.233  n=200
+  225/500  acc=0.684 NLL=1.284  n=225
+  250/500  acc=0.696 NLL=1.308  n=250
+  275/500  acc=0.713 NLL=1.227  n=275
+  300/500  acc=0.710 NLL=1.205  n=300
+  325/500  acc=0.686 NLL=1.247  n=325
+  350/500  acc=0.674 NLL=1.268  n=350
+  375/500  acc=0.672 NLL=1.266  n=375
+  400/500  acc=0.657 NLL=1.337  n=400
+  425/500  acc=0.642 NLL=1.444  n=425
+  450/500  acc=0.642 NLL=1.454  n=450
+  475/500  acc=0.651 NLL=1.446  n=475
+  500/500  acc=0.658 NLL=1.424  n=500
+
+=== CoT Text-Classification Eval Summary ===
+  Dataset : mmlu
+  Overall : acc=0.658  NLL=1.424  MAE=0.510  ECE=0.224  n=500
+  CoT     : valid=0.974  agree=0.938  trunc=0.006  mean_tokens=197.3
+  abstract_algebra                                  : acc=0.000  NLL=3.923  ECE=0.871  n=3
+  anatomy                                           : acc=0.750  NLL=0.751  ECE=0.219  n=4
+  astronomy                                         : acc=0.667  NLL=1.137  ECE=0.306  n=6
+  clinical_knowledge                                : acc=0.727  NLL=0.714  ECE=0.166  n=11
+  college_biology                                   : acc=0.875  NLL=0.233  ECE=0.130  n=8
+  college_chemistry                                 : acc=0.667  NLL=2.715  ECE=0.540  n=3
+  college_computer_science                          : acc=0.000  NLL=1.720  ECE=0.530  n=3
+  college_mathematics                               : acc=0.000  NLL=5.920  ECE=0.986  n=2
+  college_medicine                                  : acc=0.727  NLL=0.914  ECE=0.195  n=11
+  college_physics                                   : acc=0.667  NLL=1.138  ECE=0.291  n=6
+  computer_security                                 : acc=0.667  NLL=1.983  ECE=0.330  n=3
+  conceptual_physics                                : acc=0.875  NLL=1.037  ECE=0.200  n=8
+  econometrics                                      : acc=1.000  NLL=0.063  ECE=0.059  n=4
+  electrical_engineering                            : acc=1.000  NLL=0.173  ECE=0.140  n=6
+  elementary_mathematics                            : acc=0.778  NLL=0.865  ECE=0.189  n=9
+  formal_logic                                      : acc=0.333  NLL=1.097  ECE=0.510  n=3
+  global_facts                                      : acc=0.500  NLL=1.332  ECE=0.427  n=4
+  high_school_biology                               : acc=0.692  NLL=1.734  ECE=0.302  n=13
+  high_school_chemistry                             : acc=0.375  NLL=3.506  ECE=0.578  n=8
+  high_school_computer_science                      : acc=0.667  NLL=1.699  ECE=0.322  n=3
+  high_school_european_history                      : acc=0.667  NLL=1.872  ECE=0.290  n=6
+  high_school_geography                             : acc=0.400  NLL=1.729  ECE=0.511  n=5
+  high_school_government_and_politics               : acc=0.750  NLL=0.324  ECE=0.160  n=8
+  high_school_macroeconomics                        : acc=0.750  NLL=1.493  ECE=0.291  n=12
+  high_school_mathematics                           : acc=0.667  NLL=0.649  ECE=0.345  n=6
+  high_school_microeconomics                        : acc=0.875  NLL=0.613  ECE=0.198  n=8
+  high_school_physics                               : acc=0.200  NLL=2.677  ECE=0.719  n=5
+  high_school_psychology                            : acc=0.913  NLL=0.336  ECE=0.148  n=23
+  high_school_statistics                            : acc=0.444  NLL=1.702  ECE=0.388  n=9
+  high_school_us_history                            : acc=0.857  NLL=0.654  ECE=0.235  n=7
+  high_school_world_history                         : acc=0.636  NLL=1.598  ECE=0.331  n=11
+  human_aging                                       : acc=0.625  NLL=2.512  ECE=0.423  n=8
+  human_sexuality                                   : acc=0.800  NLL=1.581  ECE=0.194  n=5
+  international_law                                 : acc=1.000  NLL=0.001  ECE=0.001  n=4
+  jurisprudence                                     : acc=0.600  NLL=3.027  ECE=0.520  n=5
+  logical_fallacies                                 : acc=0.800  NLL=1.452  ECE=0.186  n=5
+  machine_learning                                  : acc=0.667  NLL=2.653  ECE=0.664  n=3
+  management                                        : acc=1.000  NLL=0.001  ECE=0.001  n=4
+  marketing                                         : acc=0.909  NLL=0.745  ECE=0.174  n=11
+  medical_genetics                                  : acc=1.000  NLL=0.001  ECE=0.001  n=1
+  miscellaneous                                     : acc=0.769  NLL=0.551  ECE=0.141  n=26
+  moral_disputes                                    : acc=0.643  NLL=1.000  ECE=0.306  n=14
+  moral_scenarios                                   : acc=0.400  NLL=1.661  ECE=0.301  n=35
+  nutrition                                         : acc=0.545  NLL=2.011  ECE=0.449  n=11
+  philosophy                                        : acc=0.643  NLL=1.117  ECE=0.262  n=14
+  prehistory                                        : acc=0.636  NLL=1.380  ECE=0.306  n=11
+  professional_accounting                           : acc=0.375  NLL=2.004  ECE=0.419  n=8
+  professional_law                                  : acc=0.434  NLL=2.849  ECE=0.471  n=53
+  professional_medicine                             : acc=0.875  NLL=0.240  ECE=0.114  n=8
+  professional_psychology                           : acc=0.815  NLL=1.093  ECE=0.233  n=27
+  public_relations                                  : acc=0.400  NLL=3.716  ECE=0.597  n=5
+  security_studies                                  : acc=0.800  NLL=1.252  ECE=0.239  n=10
+  sociology                                         : acc=1.000  NLL=0.023  ECE=0.023  n=7
+  us_foreign_policy                                 : acc=1.000  NLL=0.013  ECE=0.013  n=3
+  virology                                          : acc=0.000  NLL=1.165  ECE=0.401  n=1
+  world_religions                                   : acc=0.667  NLL=2.188  ECE=0.312  n=3
+
+Results saved to /home/aj9225/llm-inductive/data_evaluation/results/text_cls/cotsc_pyrorej_all_s3_bracket_mmlu_s0.json

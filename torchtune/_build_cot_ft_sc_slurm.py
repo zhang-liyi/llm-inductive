@@ -158,6 +158,9 @@ def emit(args, seed, j, sub, name, script, extra, total, max_new, jobkey):
         body = SBATCH_HEADER.format(
             job_name=f"{JOB_PREFIX}{seed}-{jobkey[:7]}-s{j}{tail}",
             walltime=args.walltime) + (
+            # The vendored torchtune (repo/torchtune/torchtune/) must be
+            # importable from data_evaluation/, where the job cd's to.
+            f"export PYTHONPATH={BASE_DIR}/torchtune\n"
             f"cd {EVAL_DIR}\n"
             f"python {EVAL_DIR}/{script} \\\n"
             f"    --ckpt_dir {ckpt} \\\n"

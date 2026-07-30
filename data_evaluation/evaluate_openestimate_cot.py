@@ -294,7 +294,7 @@ def main():
     ap.add_argument("--pretrained", action="store_true")
     ap.add_argument("--model_path", default=DEFAULT_MODEL_PATH)
     ap.add_argument("--data_path",
-        default="/home/aj9225/llm-inductive/data_root/inductive-llm-more/data_processing/"
+        default="/home/aj9225/llm-inductive/data_processing/"
                 "openestimate_test.json")
     ap.add_argument("--split", choices=["dev", "test", "all"], default="all")
     ap.add_argument("--start_idx", type=int, default=0)

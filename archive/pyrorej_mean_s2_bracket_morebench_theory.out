@@ -1,0 +1,27 @@
+Loading morebench_theory validation split ...
+  642 examples across 5 tasks
+[llama3] loading LoRA ckpt from /scratch/gpfs/GRIFFITHS/lz3156/inductive-llm/torchtune/ckpt/llama3_8B/pyro_rej_lora_mean_r8_all_seed2_bracket_lora8_mean_only/epoch_0  (4 shards)
+Letter token ids (A..Z): [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+  50/642 done
+  100/642 done
+  150/642 done
+  200/642 done
+  250/642 done
+  300/642 done
+  350/642 done
+  400/642 done
+  450/642 done
+  500/642 done
+  550/642 done
+  600/642 done
+
+=== Text-Classification Eval Summary ===
+  Dataset : morebench_theory
+  Overall : acc=0.664  NLL=0.916  MAE=0.336  ECE=0.238  n=642
+  Act Utilitarianism                                : acc=0.647  NLL=1.091  ECE=0.310  n=68
+  Aristotelian Virtue Ethics                        : acc=0.604  NLL=0.919  ECE=0.281  n=106
+  Gauthierian Contractarianism                      : acc=0.603  NLL=1.022  ECE=0.311  n=146
+  Kantian Deontology                                : acc=0.719  NLL=0.868  ECE=0.200  n=114
+  Scanlonian Contractualism                         : acc=0.712  NLL=0.810  ECE=0.202  n=208
+
+Results saved to /home/aj9225/llm-inductive/data_evaluation/results/text_cls/pyrorej_mean_s2_bracket_morebench_theory.json

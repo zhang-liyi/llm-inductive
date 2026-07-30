@@ -266,7 +266,7 @@ def main():
     ap.add_argument("--pretrained", action="store_true")
     ap.add_argument("--model_path", default=DEFAULT_MODEL_PATH)
     ap.add_argument("--data_path",
-        default="/home/aj9225/llm-inductive/data_root/inductive-llm-more/data_processing/"
+        default="/home/aj9225/llm-inductive/data_processing/"
                 "bayesian_teaching_test_base.jsonl")
     ap.add_argument("--tasks", nargs="+", default=None,
                     choices=["flight", "hotel", "webshop"])

@@ -1,0 +1,130 @@
+Loading hellaswag validation split …
+  10042 examples across 192 tasks
+  subsampled 500 of 10042 (seed=1234); first idxs [27, 40, 52, 94, 122]
+  sliced [0:500] → 500
+[llama3] loading LoRA ckpt from /home/aj9225/llm-inductive/data_root/ckpt/pyro_rej_lora_dist_r8_all_seed3_bracket_lora8_dist/epoch_0  (4 shards)
+Letter token ids (A..Z): [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+Stop token ids: [128009, 128001]
+KV-cached generation: True
+  25/500  acc=0.480 NLL=2.824  n=25
+  50/500  acc=0.560 NLL=2.516  n=50
+  75/500  acc=0.600 NLL=2.419  n=75
+  100/500  acc=0.580 NLL=2.310  n=100
+  125/500  acc=0.576 NLL=2.292  n=125
+  150/500  acc=0.560 NLL=2.388  n=150
+  175/500  acc=0.571 NLL=2.360  n=175
+  200/500  acc=0.585 NLL=2.278  n=200
+  225/500  acc=0.604 NLL=2.170  n=225
+  250/500  acc=0.608 NLL=2.193  n=250
+  275/500  acc=0.607 NLL=2.197  n=275
+  300/500  acc=0.623 NLL=2.105  n=300
+  325/500  acc=0.634 NLL=2.046  n=325
+  350/500  acc=0.634 NLL=2.035  n=350
+  375/500  acc=0.648 NLL=1.946  n=375
+  400/500  acc=0.647 NLL=1.960  n=400
+  425/500  acc=0.656 NLL=1.924  n=425
+  450/500  acc=0.660 NLL=1.901  n=450
+  475/500  acc=0.657 NLL=1.920  n=475
+  500/500  acc=0.658 NLL=1.910  n=500
+
+=== CoT Text-Classification Eval Summary ===
+  Dataset : hellaswag
+  Overall : acc=0.658  NLL=1.910  MAE=0.634  ECE=0.282  n=500
+  CoT     : valid=0.940  agree=0.966  trunc=0.000  mean_tokens=162.3
+  Applying sunscreen                                : acc=0.000  NLL=1.716  ECE=0.431  n=1
+  Archery                                           : acc=1.000  NLL=0.003  ECE=0.003  n=1
+  Bathing dog                                       : acc=0.000  NLL=7.127  ECE=0.998  n=1
+  Blowing leaves                                    : acc=1.000  NLL=0.017  ECE=0.017  n=1
+  Calf roping                                       : acc=1.000  NLL=0.180  ECE=0.165  n=1
+  Camel ride                                        : acc=0.667  NLL=2.379  ECE=0.330  n=3
+  Canoeing                                          : acc=0.000  NLL=2.134  ECE=0.267  n=1
+  Cars & Other Vehicles                             : acc=1.000  NLL=0.002  ECE=0.002  n=3
+  Carving jack-o-lanterns                           : acc=1.000  NLL=0.004  ECE=0.004  n=1
+  Chopping wood                                     : acc=0.000  NLL=2.281  ECE=0.245  n=1
+  Clean and jerk                                    : acc=0.714  NLL=1.927  ECE=0.310  n=7
+  Computers and Electronics                         : acc=0.720  NLL=1.248  ECE=0.230  n=25
+  Cutting the grass                                 : acc=0.750  NLL=0.854  ECE=0.174  n=8
+  Decorating the Christmas tree                     : acc=1.000  NLL=0.004  ECE=0.004  n=1
+  Disc dog                                          : acc=0.000  NLL=7.502  ECE=0.998  n=1
+  Doing crunches                                    : acc=1.000  NLL=0.001  ECE=0.001  n=1
+  Doing karate                                      : acc=1.000  NLL=0.002  ECE=0.002  n=1
+  Drinking beer                                     : acc=0.500  NLL=4.415  ECE=0.491  n=2
+  Education and Communications                      : acc=0.714  NLL=1.446  ECE=0.240  n=14
+  Family Life                                       : acc=0.732  NLL=1.751  ECE=0.261  n=56
+  Finance and Business                              : acc=0.929  NLL=0.615  ECE=0.105  n=14
+  Food and Entertaining                             : acc=0.609  NLL=2.032  ECE=0.335  n=23
+  Fun sliding down                                  : acc=0.000  NLL=2.591  ECE=0.806  n=1
+  Gargling mouthwash                                : acc=0.833  NLL=0.591  ECE=0.242  n=6
+  Grooming dog                                      : acc=0.000  NLL=2.322  ECE=0.639  n=1
+  Hand car wash                                     : acc=0.000  NLL=6.258  ECE=0.992  n=1
+  Hand washing clothes                              : acc=0.000  NLL=6.942  ECE=0.996  n=1
+  Having an ice cream                               : acc=0.714  NLL=2.208  ECE=0.424  n=7
+  Health                                            : acc=0.692  NLL=1.402  ECE=0.259  n=26
+  High jump                                         : acc=0.333  NLL=3.792  ECE=0.646  n=3
+  Hitting a pinata                                  : acc=0.500  NLL=3.941  ECE=0.497  n=2
+  Holidays and Traditions                           : acc=1.000  NLL=0.072  ECE=0.070  n=1
+  Home and Garden                                   : acc=0.680  NLL=1.793  ECE=0.317  n=25
+  Horseback riding                                  : acc=0.500  NLL=1.902  ECE=0.448  n=2
+  Ice fishing                                       : acc=0.600  NLL=2.569  ECE=0.434  n=5
+  Installing carpet                                 : acc=1.000  NLL=0.001  ECE=0.001  n=1
+  Ironing clothes                                   : acc=1.000  NLL=0.001  ECE=0.001  n=1
+  Kneeling                                          : acc=0.500  NLL=4.566  ECE=0.496  n=2
+  Layup drill in basketball                         : acc=0.500  NLL=2.623  ECE=0.472  n=2
+  Longboarding                                      : acc=0.000  NLL=6.006  ECE=0.994  n=1
+  Making a cake                                     : acc=1.000  NLL=0.198  ECE=0.164  n=2
+  Making a lemonade                                 : acc=1.000  NLL=0.002  ECE=0.002  n=2
+  Making a sandwich                                 : acc=1.000  NLL=0.002  ECE=0.002  n=1
+  Mixing drinks                                     : acc=1.000  NLL=0.001  ECE=0.001  n=1
+  Mooping floor                                     : acc=0.000  NLL=4.209  ECE=0.919  n=1
+  Personal Care and Style                           : acc=0.672  NLL=1.887  ECE=0.287  n=122
+  Pets and Animals                                  : acc=0.429  NLL=4.118  ECE=0.569  n=7
+  Philosophy and Religion                           : acc=1.000  NLL=0.002  ECE=0.002  n=1
+  Plastering                                        : acc=1.000  NLL=0.137  ECE=0.122  n=2
+  Plataform diving                                  : acc=0.000  NLL=5.899  ECE=0.976  n=1
+  Playing badminton                                 : acc=0.000  NLL=1.368  ECE=0.611  n=1
+  Playing bagpipes                                  : acc=1.000  NLL=0.002  ECE=0.002  n=1
+  Playing beach volleyball                          : acc=0.000  NLL=5.011  ECE=0.989  n=1
+  Playing guitarra                                  : acc=0.000  NLL=5.815  ECE=0.939  n=2
+  Playing harmonica                                 : acc=0.000  NLL=5.369  ECE=0.785  n=3
+  Playing piano                                     : acc=1.000  NLL=0.001  ECE=0.001  n=1
+  Playing saxophone                                 : acc=0.500  NLL=2.789  ECE=0.607  n=2
+  Playing violin                                    : acc=0.375  NLL=3.689  ECE=0.616  n=8
+  Preparing pasta                                   : acc=1.000  NLL=0.008  ECE=0.008  n=1
+  Putting in contact lenses                         : acc=1.000  NLL=0.011  ECE=0.011  n=2
+  Raking leaves                                     : acc=0.500  NLL=3.849  ECE=0.494  n=2
+  Relationships                                     : acc=0.800  NLL=1.695  ECE=0.368  n=5
+  Removing curlers                                  : acc=0.000  NLL=7.002  ECE=0.998  n=1
+  Rock climbing                                     : acc=1.000  NLL=0.026  ECE=0.025  n=1
+  Roof shingle removal                              : acc=1.000  NLL=0.002  ECE=0.002  n=1
+  Rope skipping                                     : acc=0.000  NLL=8.002  ECE=0.998  n=1
+  Running a marathon                                : acc=0.833  NLL=1.024  ECE=0.163  n=6
+  Scuba diving                                      : acc=0.000  NLL=5.202  ECE=0.986  n=1
+  Sharpening knives                                 : acc=0.571  NLL=3.107  ECE=0.495  n=7
+  Shot put                                          : acc=0.000  NLL=5.700  ECE=0.988  n=2
+  Shoveling snow                                    : acc=0.500  NLL=3.359  ECE=0.685  n=2
+  Shuffleboard                                      : acc=0.000  NLL=4.825  ECE=0.958  n=2
+  Skiing                                            : acc=1.000  NLL=0.003  ECE=0.003  n=1
+  Slacklining                                       : acc=1.000  NLL=0.004  ECE=0.004  n=1
+  Smoking hookah                                    : acc=0.000  NLL=2.937  ECE=0.829  n=1
+  Snatch                                            : acc=0.000  NLL=2.477  ECE=0.547  n=1
+  Snow tubing                                       : acc=0.000  NLL=6.144  ECE=0.981  n=1
+  Sports and Fitness                                : acc=0.667  NLL=1.062  ECE=0.267  n=6
+  Starting a campfire                               : acc=0.000  NLL=3.712  ECE=0.918  n=2
+  Surfing                                           : acc=0.500  NLL=0.600  ECE=0.196  n=2
+  Swimming                                          : acc=0.000  NLL=7.447  ECE=0.990  n=1
+  Tai chi                                           : acc=1.000  NLL=0.283  ECE=0.246  n=1
+  Tango                                             : acc=1.000  NLL=0.003  ECE=0.003  n=1
+  Tennis serve with ball bouncing                   : acc=1.000  NLL=0.076  ECE=0.073  n=1
+  Throwing darts                                    : acc=1.000  NLL=0.004  ECE=0.004  n=1
+  Travel                                            : acc=0.889  NLL=0.335  ECE=0.086  n=9
+  Triple jump                                       : acc=0.000  NLL=4.246  ECE=0.886  n=1
+  Using parallel bars                               : acc=1.000  NLL=0.001  ECE=0.001  n=1
+  Using uneven bars                                 : acc=0.000  NLL=1.012  ECE=0.467  n=1
+  Wakeboarding                                      : acc=1.000  NLL=0.711  ECE=0.509  n=1
+  Washing face                                      : acc=0.667  NLL=2.712  ECE=0.398  n=6
+  Welding                                           : acc=0.000  NLL=3.097  ECE=0.801  n=1
+  Work World                                        : acc=1.000  NLL=0.077  ECE=0.066  n=6
+  Wrapping presents                                 : acc=1.000  NLL=0.002  ECE=0.002  n=1
+  Youth                                             : acc=0.200  NLL=4.740  ECE=0.903  n=5
+
+Results saved to /home/aj9225/llm-inductive/data_evaluation/results/text_cls/cotsc_pyrorej_all_s3_bracket_hellaswag_s3.json

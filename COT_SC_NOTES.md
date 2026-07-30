@@ -1,7 +1,8 @@
 # Fine-tuned + CoT + self-consistency
 
-Same setup as the moral benchmark guide — same dependencies, same
-`python download_data.py`, same models in `data_root/ckpt/`. Nothing extra.
+Same setup as the moral benchmark guide (`MOREBENCH_HANDOFF.md`) — same
+dependencies, same `python download_data.py`, same models in `data_root/ckpt/`.
+Nothing extra.
 
 ## Run it
 

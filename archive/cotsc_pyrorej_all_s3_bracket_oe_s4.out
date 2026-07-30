@@ -1,0 +1,38 @@
+Loaded 181 examples  (split='all')
+  sliced [0:181] → 181 examples
+[llama3] loading LoRA ckpt from /home/aj9225/llm-inductive/data_root/ckpt/pyro_rej_lora_dist_r8_all_seed3_bracket_lora8_dist/epoch_0  (4 shards)
+Number token IDs (sample 0-5): [15, 16, 17, 18, 19, 20]
+Stop token ids: [128009, 128001]
+KV-cached generation: True
+  10/181  MAE=13.506 n=10
+  20/181  MAE=12.612 n=20
+  30/181  MAE=11.093 n=30
+  40/181  MAE=10.738 n=40
+  50/181  MAE=11.461 n=50
+  60/181  MAE=12.455 n=60
+  70/181  MAE=13.513 n=70
+  80/181  MAE=14.320 n=80
+  90/181  MAE=15.067 n=90
+  100/181  MAE=15.387 n=100
+  110/181  MAE=16.689 n=110
+  120/181  MAE=17.456 n=120
+  130/181  MAE=19.147 n=130
+  140/181  MAE=20.961 n=140
+  150/181  MAE=22.321 n=150
+  160/181  MAE=23.647 n=160
+  170/181  MAE=24.113 n=170
+  180/181  MAE=24.423 n=180
+
+=== OpenEstimate Chain-of-Thought Summary ===
+  Split      : all  (181 examples)
+  MAE (mean) : 24.396 ± 16.992  (median 20.368)
+  MAE (std)  : 18.296 ± 14.249
+  CE_mean    : 5.007
+  CE_dist    : 4.999
+  CoT        : valid=1.000  trunc=0.006  mean_tokens=237.1
+  MAE by dataset:
+    glassdoor    11.068  (n=46)
+    nhanes       21.427  (n=74)
+    pitchbook    38.047  (n=61)
+
+Results saved to /home/aj9225/llm-inductive/data_evaluation/results/openestimate/cotsc_pyrorej_all_s3_bracket_openestimate_s4.json

@@ -1,0 +1,36 @@
+Loading truthfulqa validation split …
+  817 examples across 1 tasks
+  subsampled 500 of 817 (seed=1234); first idxs [1, 2, 4, 5, 7]
+  sliced [0:500] → 500
+[llama3] loading LoRA ckpt from /home/aj9225/llm-inductive/data_root/ckpt/pyro_rej_lora_dist_r8_all_seed3_bracket_lora8_dist/epoch_0  (4 shards)
+Letter token ids (A..Z): [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+Stop token ids: [128009, 128001]
+KV-cached generation: True
+  25/500  acc=0.560 NLL=2.505  n=25
+  50/500  acc=0.500 NLL=2.404  n=50
+  75/500  acc=0.533 NLL=2.251  n=75
+  100/500  acc=0.580 NLL=2.060  n=100
+  125/500  acc=0.584 NLL=1.987  n=125
+  150/500  acc=0.573 NLL=2.029  n=150
+  175/500  acc=0.566 NLL=2.017  n=175
+  200/500  acc=0.590 NLL=1.902  n=200
+  225/500  acc=0.604 NLL=1.852  n=225
+  250/500  acc=0.588 NLL=1.989  n=250
+  275/500  acc=0.589 NLL=1.976  n=275
+  300/500  acc=0.590 NLL=1.981  n=300
+  325/500  acc=0.600 NLL=1.891  n=325
+  350/500  acc=0.600 NLL=1.873  n=350
+  375/500  acc=0.584 NLL=1.958  n=375
+  400/500  acc=0.590 NLL=1.917  n=400
+  425/500  acc=0.588 NLL=1.949  n=425
+  450/500  acc=0.582 NLL=1.970  n=450
+  475/500  acc=0.581 NLL=1.986  n=475
+  500/500  acc=0.580 NLL=1.985  n=500
+
+=== CoT Text-Classification Eval Summary ===
+  Dataset : truthfulqa
+  Overall : acc=0.580  NLL=1.985  MAE=0.844  ECE=0.309  n=500
+  CoT     : valid=0.966  agree=0.919  trunc=0.000  mean_tokens=173.5
+  truthfulqa                                        : acc=0.580  NLL=1.985  ECE=0.309  n=500
+
+Results saved to /home/aj9225/llm-inductive/data_evaluation/results/text_cls/cotsc_pyrorej_all_s3_bracket_truthfulqa_s3.json

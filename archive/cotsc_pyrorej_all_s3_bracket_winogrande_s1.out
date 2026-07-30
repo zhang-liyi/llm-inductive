@@ -1,0 +1,36 @@
+Loading winogrande validation split …
+  1267 examples across 1 tasks
+  subsampled 500 of 1267 (seed=1234); first idxs [3, 5, 8, 11, 15]
+  sliced [0:500] → 500
+[llama3] loading LoRA ckpt from /home/aj9225/llm-inductive/data_root/ckpt/pyro_rej_lora_dist_r8_all_seed3_bracket_lora8_dist/epoch_0  (4 shards)
+Letter token ids (A..Z): [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+Stop token ids: [128009, 128001]
+KV-cached generation: True
+  25/500  acc=0.600 NLL=1.160  n=25
+  50/500  acc=0.600 NLL=1.177  n=50
+  75/500  acc=0.547 NLL=1.393  n=75
+  100/500  acc=0.560 NLL=1.436  n=100
+  125/500  acc=0.592 NLL=1.477  n=125
+  150/500  acc=0.600 NLL=1.571  n=150
+  175/500  acc=0.611 NLL=1.588  n=175
+  200/500  acc=0.590 NLL=1.671  n=200
+  225/500  acc=0.596 NLL=1.622  n=225
+  250/500  acc=0.604 NLL=1.617  n=250
+  275/500  acc=0.607 NLL=1.613  n=275
+  300/500  acc=0.613 NLL=1.621  n=300
+  325/500  acc=0.603 NLL=1.622  n=325
+  350/500  acc=0.603 NLL=1.620  n=350
+  375/500  acc=0.605 NLL=1.610  n=375
+  400/500  acc=0.615 NLL=1.567  n=400
+  425/500  acc=0.616 NLL=1.548  n=425
+  450/500  acc=0.622 NLL=1.549  n=450
+  475/500  acc=0.632 NLL=1.524  n=475
+  500/500  acc=0.626 NLL=1.554  n=500
+
+=== CoT Text-Classification Eval Summary ===
+  Dataset : winogrande
+  Overall : acc=0.626  NLL=1.554  MAE=0.428  ECE=0.265  n=500
+  CoT     : valid=0.978  agree=0.914  trunc=0.000  mean_tokens=118.3
+  winogrande                                        : acc=0.626  NLL=1.554  ECE=0.265  n=500
+
+Results saved to /home/aj9225/llm-inductive/data_evaluation/results/text_cls/cotsc_pyrorej_all_s3_bracket_winogrande_s1.json

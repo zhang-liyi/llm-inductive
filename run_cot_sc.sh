@@ -17,7 +17,7 @@ cd "$(dirname "$0")"
 # ----------------------------- FILL THESE IN ---------------------------------
 
 # Your email, for SLURM job notifications.
-EMAIL="you@example.edu"
+EMAIL="akshay.jagadish@princeton.edu"
 
 # Same as in run_morebench.sh.
 CKPT_PREFIX="pyro_rej"            # or "qwen_pyro_rej" for Qwen2-7B

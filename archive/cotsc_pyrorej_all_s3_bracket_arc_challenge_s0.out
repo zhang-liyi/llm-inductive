@@ -1,0 +1,27 @@
+Loading arc_challenge validation split …
+  299 examples across 1 tasks
+  --subsample_n 500 >= split size 299; using the full split
+  sliced [0:299] → 299
+[llama3] loading LoRA ckpt from /home/aj9225/llm-inductive/data_root/ckpt/pyro_rej_lora_dist_r8_all_seed3_bracket_lora8_dist/epoch_0  (4 shards)
+Letter token ids (A..Z): [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+Stop token ids: [128009, 128001]
+KV-cached generation: True
+  25/299  acc=0.840 NLL=1.007  n=25
+  50/299  acc=0.900 NLL=0.593  n=50
+  75/299  acc=0.880 NLL=0.505  n=75
+  100/299  acc=0.830 NLL=0.646  n=100
+  125/299  acc=0.808 NLL=0.766  n=125
+  150/299  acc=0.833 NLL=0.683  n=150
+  175/299  acc=0.834 NLL=0.698  n=175
+  200/299  acc=0.835 NLL=0.705  n=200
+  225/299  acc=0.844 NLL=0.649  n=225
+  250/299  acc=0.836 NLL=0.716  n=250
+  275/299  acc=0.829 NLL=0.747  n=275
+
+=== CoT Text-Classification Eval Summary ===
+  Dataset : arc_challenge
+  Overall : acc=0.823  NLL=0.790  MAE=0.371  ECE=0.121  n=299
+  CoT     : valid=0.973  agree=0.966  trunc=0.007  mean_tokens=168.6
+  arc_challenge                                     : acc=0.823  NLL=0.790  ECE=0.121  n=299
+
+Results saved to /home/aj9225/llm-inductive/data_evaluation/results/text_cls/cotsc_pyrorej_all_s3_bracket_arc_challenge_s0.json
